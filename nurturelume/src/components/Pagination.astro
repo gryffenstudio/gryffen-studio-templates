@@ -10,14 +10,13 @@ const maxPage = Math.min(pageLength, normalizedCurrentPage + 1); // Ensure maxPa
 ---
 
 <div class='space-x-10 hidden md:flex'>
-    {firstUrl}
     {
         prevUrl && (
             <a
-                class='flex bg-brand-red text-white rounded-full w-96 h-10 items-center justify-center hover:opacity-75'
+                class='flex bg-brand-red text-white rounded-full w-10 h-10 items-center justify-center hover:opacity-75'
                 href={prevUrl}
             >
-                {prevUrl}
+                <span class='icon-[maki--arrow] rotate-180' />
             </a>
         )
     }
@@ -37,9 +36,9 @@ const maxPage = Math.min(pageLength, normalizedCurrentPage + 1); // Ensure maxPa
                 {Array.from({ length: Math.min(pageLength, 3) - 1 }, (_, i) => i + 2).map((num) => (
                     <a
                         href={`${firstUrl}?page=${num}`}
-                        class={`flex w-96 bg-brand-red text-white rounded-md w-10 h-10 items-center justify-center hover:opacity-75`}
+                        class={`flex bg-brand-red text-white rounded-md w-10 h-10 items-center justify-center hover:opacity-75`}
                     >
-                        {`${firstUrl}?page=${num}`}
+                        {num}
                     </a>
                 ))}
             </>

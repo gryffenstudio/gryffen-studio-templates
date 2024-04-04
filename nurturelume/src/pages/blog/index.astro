@@ -9,7 +9,7 @@ export const prerender = false;
 const posts = await getPosts();
 
 const currentPage: number | null = +Astro.url.searchParams?.get('page')! || 1;
-const postsPerPage: number = 1;
+const postsPerPage: number = 4;
 const totalPages: number = Math.ceil(posts.length / postsPerPage);
 const pathname = new URL(Astro.request.url).pathname.split('/');
 const firstPath = pathname[1];
