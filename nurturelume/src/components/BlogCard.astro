@@ -2,6 +2,7 @@
 import { urlFor } from '../utils/image';
 import { formatDate } from '../utils';
 import { type Post } from '../utils/sanity';
+import heroImage from '../assets/images/Hero-Image.png';
 import { Image } from 'astro:assets';
 
 interface Props {
@@ -21,15 +22,10 @@ const { post } = Astro.props satisfies Props;
         {
             post.mainImage ? (
                 <div class='flex bg-orange-500 bg-opacity-10 p-4 items-center justify-center'>
-                    <Image
-                        src={urlFor(post.mainImage).url()}
-                        alt='Cover image'
-                        height={300}
-                        width={400}
-                    />
+                    <Image src={urlFor(post.mainImage)?.url() ?? heroImage} alt='Cover Image' height='300' width='400' />
                 </div>
             ) : (
-                <div class='bg-red-600' />
+                <div class='bg-orange-500 bg-opacity-10 w-full' />
             )
         }
         <div class='p-4 flex flex-col w-full space-y-4 lg:flex-row lg:space-y-0 lg:justify-between'>

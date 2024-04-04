@@ -24,7 +24,7 @@ const post = await getPost(slug);
     <Hero
         header={post.title}
         subHeader={post.description}
-        imageSrc={urlFor(post.mainImage) ? urlFor(post.mainImage).url() : null}
+        imageSrc={post.mainImage ? urlFor(post.mainImage)?.url() : null}
     >
         <div class='flex flex-col mb-6 lg:mb-0 lg:items-stretch space-y-6'>
             <p class='font-visby-medium text-center md:text-left'>
