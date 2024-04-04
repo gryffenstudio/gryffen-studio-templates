@@ -1,0 +1,50 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getPost, getPosts, type Post } from '../../utils/sanity';
+import Hero from '../../components/Hero.astro';
+import BlogCard from '../../components/BlogCard.astro';
+import { type GetStaticPaths } from 'astro';
+import Pagination from '../../components/Pagination.astro';
+
+export async function getStaticPaths({ paginate }: any) {
+    const posts = await getPosts();
+    return paginate(posts, {
+        pageSize: 1,
+    }) satisfies GetStaticPaths;
+}
+
+const { page }: any = Astro.props;
+const pathname = new URL(Astro.request.url).pathname.split('/');
+const firstPath = pathname[1];
+---
+
+<Layout
+    title={'NurtureLume Blog'}
+    description={'Learn information about finding childcare and being a childcare provider on our NurtureLume Blog!'}
+    robots={false}
+>
+    <Hero
+        header='Explore Our Childcare Knowledge Base'
+        subHeader='Delivering a centralized platform to assist parents in their childcare discovery journey and equip providers with a simplified childcare management system.'
+    />
+    <main
+        class='mb-10 flex w-full flex-col items-center justify-center space-y-16 px-4 md:px-10 lg:px-16 xl:px-24'
+    >
+        <section
+            class='grid grid-cols-1 gap-y-10 w-full h-full justify-items-center lg:justify-items-stretch lg:grid-cols-2 lg:gap-x-10'
+        >
+            {
+                page.data.map((post: Post) => {
+                    return <BlogCard post={post} />;
+                })
+            }
+        </section>
+        <Pagination
+            prevUrl={page.url.prev}
+            nextUrl={page.url.next}
+            currentPage={page.currentPage}
+            firstUrl={`/${firstPath}`}
+            pageLength={page.lastPage}
+        />
+    </main>
+</Layout>

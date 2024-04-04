@@ -1,0 +1,26 @@
+---
+interface Props {
+    icon: string;
+    backgroundColor: string;
+    header: string;
+    subHeader: string;
+}
+
+const { icon, backgroundColor, header, subHeader } = Astro.props satisfies Props;
+---
+
+<div
+    class='flex h-full w-full flex-col items-center space-y-6 text-center lg:flex-row lg:items-start lg:space-y-0'
+>
+    <span
+        class=`flex items-center justify-center lg:mr-6 mt-2 h-fit w-fit p-2 rounded-full ${backgroundColor}`
+    >
+        <span class=`${icon} h-[2rem] w-[2rem] rounded-full text-white`></span>
+    </span>
+    <div
+        class='flex flex-col items-center justify-center space-y-4 text-center lg:items-stretch lg:space-y-0 lg:text-start'
+    >
+        <h4 class='font-visby-heavy text-lg text-black lg:mb-2'>{header}</h4>
+        <p class='font-visby-medium text-lg text-brand-gray-2'>{subHeader}</p>
+    </div>
+</div>

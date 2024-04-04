@@ -1,0 +1,47 @@
+---
+import type { InferGetStaticParamsType } from 'astro';
+import { PortableText } from 'astro-portabletext';
+import Layout from '../../layouts/Layout.astro';
+import { formatDate } from '../../utils';
+import { urlFor } from '../../utils/image';
+import { getPost, getPosts } from '../../utils/sanity';
+import Hero from '../../components/Hero.astro';
+
+export async function getStaticPaths() {
+    const posts = await getPosts();
+    return posts.map((post) => ({
+        params: { slug: post.slug.current },
+    }));
+}
+
+type Params = InferGetStaticParamsType<typeof getStaticPaths>;
+const { slug } = Astro.params as Params;
+
+const post = await getPost(slug);
+---
+
+<Layout title={post.title} description={post.description} robots={false}>
+    <Hero
+        header={post.title}
+        subHeader={post.description}
+        imageSrc={urlFor(post.mainImage) ? urlFor(post.mainImage).url() : null}
+    >
+        <div class='flex flex-col mb-6 lg:mb-0 lg:items-stretch space-y-6'>
+            <p class='font-visby-medium text-center md:text-left'>
+                Published on {formatDate(post._createdAt)}
+            </p>
+            <p class='font-visby-medium text-center md:text-left'>
+                Written by: {post.author!.name!}
+            </p>
+        </div>
+    </Hero>
+    <main
+        class='mb-10 flex w-full flex-col items-center space-y-16 px-4 md:px-10 lg:px-16 xl:px-24'
+    >
+        <article class='flex flex-col items-start space-y-4'>
+            <div class='font-visby-medium space-y-6 [h1]:text-xl'>
+                <PortableText value={post.body} />
+            </div>
+        </article>
+    </main>
+</Layout>

@@ -1,0 +1,101 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import ModalButton from '../components/ModalButton';
+import HomeSection from '../components/HomeSection.astro';
+import FeatureCard from '../components/FeatureCard.astro';
+---
+
+<Layout
+    title='All-in-One Childcare Software Solution for Connecting Parents with Childcare Providers | NurtureLume'
+    description='NurtureLume offers a centralized platform to support parents in finding perfect-fit childcare and equip providers with an easy-to-use childcare management system.'
+    robots={false}
+>
+    <Hero
+        header='Illuminate Your Childcare Journey'
+        subHeader='Delivering a centralized platform to assist parents in their childcare discovery journey and equip providers with a simplified childcare management system.'
+    />
+    <main
+        class='mb-10 flex w-full flex-col items-center justify-center space-y-16 px-4 md:px-10 lg:px-16 xl:px-24'
+    >
+        <h3 class='w-full text-center font-visby-medium text-3xl md:text-5xl'>
+            All-in-One Childcare Software Solution
+        </h3>
+        <div class='flex w-full flex-col items-center justify-center space-y-16'>
+            <div
+                class='flex min-h-full min-w-full flex-col items-center justify-center space-y-16 md:flex-row md:space-x-6 md:space-y-0 lg:space-x-24 xl:space-x-52'
+            >
+                <FeatureCard
+                    title='Childcare Marketplace'
+                    icon='icon-[material-symbols--search-rounded]'
+                    backgroundColor='bg-brand-blue'
+                    body='Families can discover verified and trusted childcare providers by posting jobs to our childcare marketplace'
+                />
+                <FeatureCard
+                    title='Management'
+                    icon='icon-[material-symbols--manage-accounts-outline-rounded]'
+                    backgroundColor='bg-brand-red'
+                    body='Childcare providers can efficiently streamline their business operations through their provider dashboard'
+                />
+            </div>
+            <div
+                class='flex min-h-full min-w-full flex-col items-center justify-center space-y-16 md:flex-row md:space-x-6 md:space-y-0 lg:space-x-24 xl:space-x-52'
+            >
+                <FeatureCard
+                    title='Communication'
+                    icon='icon-[mdi--clipboard-edit-outline]'
+                    backgroundColor='bg-brand-orange'
+                    body='Families can receive real-time updates through instant messaging and photos/videos in their daily activity log'
+                />
+                <FeatureCard
+                    title='Billing and Payments'
+                    icon='icon-[material-symbols--attach-money-rounded]'
+                    body='Experience seamless management of billing and payments, centralized for your convinience and ease of use'
+                    backgroundColor='bg-brand-green-1'
+                />
+            </div>
+        </div>
+        <h3 class='w-full text-center font-visby-medium text-3xl md:text-5xl'>
+            How can NurtureLume help you?
+        </h3>
+        <HomeSection
+            href='/families'
+            title='Families'
+            header='Discover Your Perfect-Fit Childcare'
+            body='Discover childcare options and post job opportunities to secure care for your child.'
+            icon='icon-[mdi--family]'
+            iconSide='right'
+            backgroundColor='bg-brand-purple'
+        />
+        <HomeSection
+            href='/babysitters-and-nannies'
+            title='Babysitters and Nannies'
+            header='Connect With Families Near You'
+            body='Explore childcare jobs posted by families in need and provide real-time updates during your visit'
+            icon='icon-[mdi--pram]'
+            iconSide='left'
+            backgroundColor='bg-brand-red'
+        />
+        <HomeSection
+            href='/daycare-centers'
+            title='Daycare Centers'
+            header='Streamline Your Daycare Operations'
+            body='Optimize your daycare center management activites all in one place'
+            icon='icon-[mdi--pram]'
+            iconSide='right'
+            backgroundColor='bg-brand-green-1'
+        />
+        <div class='flex flex-col space-y-6 px-6 md:px-10 lg:px-16 xl:px-24'>
+            <h2 class='w-full text-center font-visby-medium text-3xl md:text-5xl'>
+                Want to stay updated?
+            </h2>
+            <h3 class='w-full text-center font-visby-medium text-lg md:text-xl'>
+                Click below to join the pre-launch list and stay up to date with upcoming
+                announcements, features, and more!
+            </h3>
+        </div>
+        <div>
+            <ModalButton buttonKey='2' client:visible />
+        </div>
+    </main>
+</Layout>
