@@ -16,10 +16,6 @@ function PricingComponent(props: PricingComponentProps) {
         setIsYearly((prev) => !prev);
     }
 
-    useEffect(() => {
-        console.log(props.userType);
-    }, []);
-
     switch (props.userType) {
         case 'family':
             card1 = <FamiliesPricingCard plan='free' billing={isYearly ? 'yearly' : 'monthly'} />;

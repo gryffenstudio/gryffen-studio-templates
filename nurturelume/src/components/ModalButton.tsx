@@ -265,7 +265,6 @@ function ModalButton(props: ModalButtonProps) {
     }
 
     useEffect(() => {
-        console.log('Running Effect');
         let timer: NodeJS.Timeout;
         if (
             localStorage.getItem('first_visit') === 'true' &&
