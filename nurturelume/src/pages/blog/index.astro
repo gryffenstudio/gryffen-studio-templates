@@ -16,7 +16,7 @@ const firstPath = pathname[1];
 const nextUrl: string | null = currentPage < totalPages ? firstPath + '?page=' + (currentPage + 1) : null
 const prevUrl: string | null = currentPage > 1 ? firstPath + '?page=' + (currentPage - 1) : null
 const postsForPage: Post[] = posts.slice((currentPage - 1) * postsPerPage, currentPage * postsPerPage)
-console.log(currentPage)
+
 ---
 
 <Layout

@@ -1,5 +1,5 @@
 ---
-import type { InferGetStaticParamsType } from 'astro';
+import type {Params} from 'astro';
 import { PortableText } from 'astro-portabletext';
 import Layout from '../../layouts/Layout.astro';
 import { formatDate } from '../../utils';
@@ -7,17 +7,12 @@ import { urlFor } from '../../utils/image';
 import { getPost, getPosts } from '../../utils/sanity';
 import Hero from '../../components/Hero.astro';
 
-export async function getStaticPaths() {
-    const posts = await getPosts();
-    return posts.map((post) => ({
-        params: { slug: post.slug.current },
-    }));
-}
 
-type Params = InferGetStaticParamsType<typeof getStaticPaths>;
+export const prerender = false;
+
 const { slug } = Astro.params as Params;
 
-const post = await getPost(slug);
+const post = await getPost(slug ?? '');
 ---
 
 <Layout title={post.title} description={post.description} robots={false}>
