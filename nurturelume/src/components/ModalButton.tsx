@@ -297,6 +297,7 @@ function ModalButton(props: ModalButtonProps) {
                         <span className='mr-2 font-visby-medium text-xl text-black'>X</span>
                     </button>
                     <form className='mt-4 w-[85%]' name='contactForm' data-netlify="true">
+                        <input type="hidden" name="form-name" value="contactForm"/>
                         <h3 className='text-center font-visby-medium md:text-xl'>
                             Hi there! Tap in and join the pre-launch list to stay up to date with
                             upcoming announcements, features, and more!{' '}
@@ -310,6 +311,7 @@ function ModalButton(props: ModalButtonProps) {
                                 type='checkbox'
                                 ref={familiesCheckbox}
                                 id='families'
+                                name='families'
                             />
                             <label
                                 className='text-brand-gray font-visby-regular text-[16px]'
@@ -324,6 +326,7 @@ function ModalButton(props: ModalButtonProps) {
                                 type='checkbox'
                                 ref={babysittersCheckbox}
                                 id='babysitters'
+                                name='babysitters'
                             />
                             <label
                                 className='text-brand-gray font-visby-regular text-[16px]'
@@ -338,6 +341,7 @@ function ModalButton(props: ModalButtonProps) {
                                 type='checkbox'
                                 ref={daycareCheckbox}
                                 id='daycare'
+                                name='daycare'
                             />
                             <label
                                 className='text-brand-gray font-visby-regular text-[16px]'
@@ -345,7 +349,7 @@ function ModalButton(props: ModalButtonProps) {
                             >
                                 Daycare Centers & In-Home Daycare
                             </label>
-                            <br />
+                            <br/>
                         </div>
                         <label
                             className='text-brand-gray mb-1 block font-visby-regular  text-xs'
@@ -358,6 +362,7 @@ function ModalButton(props: ModalButtonProps) {
                             className='border-brand-gray block h-12 w-full rounded-lg border  p-2.5 text-sm text-black focus:border-brand-red focus:outline-none focus:ring-0'
                             type='email'
                             id='email'
+                            name='email'
                             autoComplete={'email'}
                             placeholder='Enter Email Address'
                             required

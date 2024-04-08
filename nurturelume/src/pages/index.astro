@@ -98,4 +98,60 @@ import FeatureCard from '../components/FeatureCard.astro';
             <ModalButton buttonKey='2' client:visible />
         </div>
     </main>
+    <form name='contactForm' data-netlify="true" netlify-honeypot="bot-field" hidden>
+                        <h3>
+                            Hi there! Tap in and join the pre-launch list to stay up to date with
+                            upcoming announcements, features, and more!{' '}
+                        </h3>
+                        <h4 >
+                            Check one or more boxes of which applies to you.
+                        </h4>
+                        <div >
+                            <input
+                                type='checkbox'
+                                id='families'
+                                name='families'
+                            />
+                            <label
+                                for='families'
+                            >
+                                Families
+                            </label>
+                        </div>
+                        <div>
+                            <input
+                                type='checkbox'
+                                id='babysitters'
+                                name='babysitters'
+                            />
+                            <label
+                                for='babysitters'
+                            >
+                                Babysitters & Nannies
+                            </label>
+                        </div>
+                        <div>
+                            <input
+                                type='checkbox'
+                                id='daycare'
+                                name='daycare'
+                            />
+                            <label
+                                for='daycare'
+                            >
+                                Daycare Centers & In-Home Daycare
+                            </label>
+                            <br />
+                        </div>
+                        <label
+                            for='email'
+                        >
+                            Email Address
+                        </label>
+                        <input
+                            type='email'
+                            id='email'
+                            name='email'
+                        />
+                    </form>
 </Layout>
