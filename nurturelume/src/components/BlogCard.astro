@@ -22,7 +22,12 @@ const { post } = Astro.props satisfies Props;
         {
             post.mainImage ? (
                 <div class='flex bg-orange-500 bg-opacity-10 p-4 items-center justify-center'>
-                    <Image src={urlFor(post.mainImage)?.url() ?? heroImage} alt='Cover Image' height='300' width='400' />
+                    <Image
+                        src={urlFor(post.mainImage)?.url() ?? heroImage}
+                        alt='Cover Image'
+                        height='300'
+                        width='400'
+                    />
                 </div>
             ) : (
                 <div class='bg-orange-500 bg-opacity-10 w-full' />

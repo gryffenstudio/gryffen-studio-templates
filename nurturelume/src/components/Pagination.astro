@@ -56,11 +56,9 @@ const maxPage = Math.min(pageLength, normalizedCurrentPage + 1); // Ensure maxPa
     {
         Array.from({ length: maxPage - minPage + 1 }, (_, i) => i + minPage).map(
             (num) =>
-                (num !== 1 &&
-                num !== pageLength) &&
-                ((currentPage !== 1 &&
-                currentPage !== pageLength) ||
-                    (pageLength <= 3)) && ( // Exclude the first and last pages from the loop
+                num !== 1 &&
+                num !== pageLength &&
+                ((currentPage !== 1 && currentPage !== pageLength) || pageLength <= 3) && ( // Exclude the first and last pages from the loop
                     <a
                         href={`${firstUrl}?page=${num}`}
                         class={`flex ${currentPage === num ? 'bg-white border-2 border-brand-red text-brand-red hover:bg-brand-red pointer-events-none hover:text-white' : 'bg-brand-red text-white hover:opacity-75'} rounded-md w-10 h-10 items-center justify-center`}
@@ -73,7 +71,7 @@ const maxPage = Math.min(pageLength, normalizedCurrentPage + 1); // Ensure maxPa
 
     {/* Render '...' if the current page is more than 2 spaces away from the last page */}
     {
-        (pageLength - currentPage >= 3) && (pageLength > 4) && (
+        pageLength - currentPage >= 3 && pageLength > 4 && (
             <span class='flex w-10 h-10 items-center justify-center'> ...</span>
         )
     }

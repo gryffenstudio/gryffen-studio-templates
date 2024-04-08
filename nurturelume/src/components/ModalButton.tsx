@@ -296,8 +296,8 @@ function ModalButton(props: ModalButtonProps) {
                     <button className='place-self-end' onClick={() => setIsOpen(false)}>
                         <span className='mr-2 font-visby-medium text-xl text-black'>X</span>
                     </button>
-                    <form className='mt-4 w-[85%]' name='contactForm' data-netlify="true">
-                        <input type="hidden" name="form-name" value="contactForm"/>
+                    <form className='mt-4 w-[85%]' name='contactForm' method='post'>
+                        <input type='hidden' name='form-name' value='contactForm' />
                         <h3 className='text-center font-visby-medium md:text-xl'>
                             Hi there! Tap in and join the pre-launch list to stay up to date with
                             upcoming announcements, features, and more!{' '}
@@ -349,7 +349,7 @@ function ModalButton(props: ModalButtonProps) {
                             >
                                 Daycare Centers & In-Home Daycare
                             </label>
-                            <br/>
+                            <br />
                         </div>
                         <label
                             className='text-brand-gray mb-1 block font-visby-regular  text-xs'
