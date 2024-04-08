@@ -99,3 +99,9 @@ import FeatureCard from '../components/FeatureCard.astro';
         </div>
     </main>
 </Layout>
+
+<script>
+    if(!localStorage.getItem('first_visit')){
+        localStorage.setItem('first_visit', 'true');
+    }
+</script>
