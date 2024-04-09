@@ -41,6 +41,7 @@ function ModalButton(props: ModalButtonProps) {
             }).then((response) => {
                 if (response.ok) {
                     console.log('nice');
+                    myForm.reset();
                     setIsOpen(false);
                 } else {
                     throw new Error('Failed to submit form');
