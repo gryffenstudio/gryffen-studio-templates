@@ -1,19 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import {
-    type Content,
-    CreateContactCommand,
-    type CreateContactRequest,
-    GetContactCommand,
-    type GetContactRequest,
-    SendEmailCommand,
-    type SendEmailRequest,
-    SESv2Client,
-    UpdateContactCommand,
-} from '@aws-sdk/client-sesv2';
-import { fromCognitoIdentityPool } from '@aws-sdk/credential-providers';
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import type { UpdateContactRequest } from '@aws-sdk/client-sesv2/dist-types/models/models_1';
 
 interface ModalButtonProps {
     buttonKey: string;
@@ -45,7 +30,6 @@ function ModalButton(props: ModalButtonProps) {
 
     return (
         <>
-            <ToastContainer autoClose={2000} position='top-center' />
             <button className='btn-join' onClick={() => setIsOpen(true)}>
                 Join the pre-launch list
             </button>
