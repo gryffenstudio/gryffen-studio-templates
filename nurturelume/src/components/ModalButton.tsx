@@ -1,4 +1,4 @@
-import {type FormEvent, useEffect, useRef, useState} from 'react';
+import { type FormEvent, useEffect, useRef, useState } from 'react';
 
 interface ModalButtonProps {
     buttonKey: string;
@@ -28,26 +28,27 @@ function ModalButton(props: ModalButtonProps) {
         };
     }, []);
     function handleSubmit(event: React.FormEvent<HTMLFormElement>): void {
-      event.preventDefault();
+        event.preventDefault();
 
-      const myForm = event.currentTarget;
-      const formData = new FormData(myForm);
+        const myForm = event.currentTarget;
+        const formData = new FormData(myForm);
 
-      try {
-        fetch("/", {
-          method: "POST",
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          body: new URLSearchParams(formData as any).toString(),
-        }).then(response => {
-          if (response.ok) {
-            console.log("nice")
-          } else {
-            throw new Error('Failed to submit form');
-          }
-        });
-      } catch (error) {
-        alert(error);
-      }
+        try {
+            fetch('/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams(formData as any).toString(),
+            }).then((response) => {
+                if (response.ok) {
+                    console.log('nice');
+                    setIsOpen(false);
+                } else {
+                    throw new Error('Failed to submit form');
+                }
+            });
+        } catch (error) {
+            alert(error);
+        }
     }
 
     return (
@@ -64,7 +65,14 @@ function ModalButton(props: ModalButtonProps) {
                     <button className='place-self-end' onClick={() => setIsOpen(false)}>
                         <span className='mr-2 font-visby-medium text-xl text-black'>X</span>
                     </button>
-                    <form className='mt-4 w-[85%]' name='contactForm' id="contactForm" data-netlify="true" method='post' onSubmit={handleSubmit}>
+                    <form
+                        className='mt-4 w-[85%]'
+                        name='contactForm'
+                        id='contactForm'
+                        data-netlify='true'
+                        method='post'
+                        onSubmit={handleSubmit}
+                    >
                         <input type='hidden' name='form-name' value='contactForm' />
                         <h3 className='text-center font-visby-medium md:text-xl'>
                             Hi there! Tap in and join the pre-launch list to stay up to date with
