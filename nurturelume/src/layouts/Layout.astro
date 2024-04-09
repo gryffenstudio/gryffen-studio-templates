@@ -21,18 +21,19 @@ const { title, description, robots } = Astro.props satisfies Props;
         <meta name='generator' content={Astro.generator} />
         <SEO title={title} description={description} url={Astro.url} robots={robots} />
         <title>{title}</title>
-
-        <!-- Google tag (gtag.js) -->
-        <script type="text/partytown" is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-4QEEVC1TVV"></script>
-        <script type="text/partytown" is:inline>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-          gtag('config', 'G-4QEEVC1TVV');
-        </script>
+        <!-- Google Tag Manager -->
+        <script is:inline type="text/partytown">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MCDXH8DQ');</script>
+        <!-- End Google Tag Manager -->
     </head>
     <body class='h-dvh overflow-x-hidden'>
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MCDXH8DQ"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
         <Navbar />
         <slot />
         <Footer />
