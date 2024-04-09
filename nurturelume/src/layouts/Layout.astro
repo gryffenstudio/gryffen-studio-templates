@@ -30,6 +30,7 @@ const { title, description, robots } = Astro.props satisfies Props;
         <meta name='generator' content={Astro.generator} />
         <SEO title={title} description={description} url={Astro.url} robots={robots} />
         <title>{title}</title>
+        <ViewTransitions />
     </head>
     <body class='h-dvh overflow-x-hidden'>
         <Navbar />
