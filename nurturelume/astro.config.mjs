@@ -54,7 +54,7 @@ export default defineConfig({
         robotsTxt(),
         partytown({
             config: {
-                forward: ['dataLayer.push', 'gtag'],
+                forward: ['dataLayer.push'],
             },
         }),
         sanity({
