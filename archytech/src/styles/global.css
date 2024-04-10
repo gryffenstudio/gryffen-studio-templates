@@ -1,0 +1,27 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+@layer base {
+    h1 {
+        @apply text-center font-visby-heavy text-5xl md:text-left xl:text-[64px];
+    }
+    h2 {
+        @apply text-center font-visby-medium text-3xl md:text-left md:text-5xl;
+    }
+    blockquote {
+        @apply ml-3 border-l-2 border-brand-blue;
+    }
+    a {
+        @apply text-blue-500 decoration-0;
+    }
+}
+
+@layer utilities {
+    .hamburger-toggle {
+        @apply [&>div::after]:translate-y-0 [&>div::after]:-rotate-45 [&>div::before]:translate-y-0 [&>div::before]:rotate-45 [&>div]:h-0 [&>div]:bg-white;
+    }
+}
+
