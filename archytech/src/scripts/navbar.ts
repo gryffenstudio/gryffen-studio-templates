@@ -6,11 +6,8 @@ let isMenuOpen = false;
 let storedLogoColor = logo?.classList.contains('fill-brand-black') ? 'fill-brand-black' : 'fill-white';
 
 
-
 // Function to toggle menu visibility and color
 function toggleMenu() {
-    // Get the current scroll position
-    let scrollPosition = window.scrollY;
     // Toggle menu visibility
     menuToggleElement?.classList.toggle('duration-0', true);
     menu?.classList.toggle('translate-x-full');
@@ -30,6 +27,8 @@ function toggleMenu() {
         menuToggleElement?.classList.add('before:bg-white');
         menuToggleElement?.classList.remove(storedLogoColor === 'fill-brand-black' ? 'after:bg-brand-black' : 'after:bg-white');
         menuToggleElement?.classList.add('after:bg-white');
+        document.documentElement.style.setProperty('--scrollbar-track-color', '#303136');
+        document.documentElement.style.setProperty('--scrollbar-thumb-color', '#FFFFFF');
     }
     else {
         logo?.classList.remove('fill-white');
@@ -40,7 +39,10 @@ function toggleMenu() {
         menuToggleElement?.classList.add(storedLogoColor === 'fill-brand-black' ? 'before:bg-brand-black' : 'before:bg-white');
         menuToggleElement?.classList.remove('after:bg-white');
         menuToggleElement?.classList.add(storedLogoColor === 'fill-brand-black' ? 'after:bg-brand-black' : 'after:bg-white');
+        document.documentElement.style.setProperty('--scrollbar-track-color', storedLogoColor === 'fill-brand-black' ? '#FFFFFF' : '#303136');
+        document.documentElement.style.setProperty('--scrollbar-thumb-color', storedLogoColor === 'fill-brand-black' ? '#303136' : '#FFFFFF');
     }
+
 }
 
 function updateLogoAndMenuToggleColors(){
@@ -58,6 +60,9 @@ function updateLogoAndMenuToggleColors(){
         menuToggleElement?.classList.add('before:bg-brand-black');
         menuToggleElement?.classList.remove('after:bg-white');
         menuToggleElement?.classList.add('after:bg-brand-black');
+        document.documentElement.style.setProperty('--scrollbar-track-color', '#FFFFFF');
+        document.documentElement.style.setProperty('--scrollbar-thumb-color', '#303136');
+
     } else {
         // Toggle logo color to fill-brand-black
         logo?.classList.remove('fill-brand-black');
@@ -69,6 +74,8 @@ function updateLogoAndMenuToggleColors(){
         menuToggleElement?.classList.add('before:bg-white');
         menuToggleElement?.classList.remove('after:bg-brand-black');
         menuToggleElement?.classList.add('after:bg-white');
+        document.documentElement.style.setProperty('--scrollbar-track-color', '#303136');
+        document.documentElement.style.setProperty('--scrollbar-thumb-color', '#FFFFFF');
     }
 }
 

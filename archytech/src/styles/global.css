@@ -25,25 +25,28 @@
     }
 }
 
-/* width */
-::-webkit-scrollbar {
-    width: 20px;
-    transition: width 2s ease;
+:root {
+    /* Define CSS variables for scrollbar colors */
+    --scrollbar-track-color: theme('colors.brand-black'); /* Default track color */
+    --scrollbar-thumb-color: #f1f1f1; /* Default thumb color */
+}
 
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background: #FFFFFF;
-    transition: background 2s ease;
-
+    background: var(--scrollbar-track-color);
+    transition: color 200ms ease;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: theme('colors.brand-black');
+    background: var(--scrollbar-thumb-color);
     border-radius: 5px;
-    transition: background 2s ease;
+    transition: color 200ms ease;
 }
 
 /* Handle on hover */
