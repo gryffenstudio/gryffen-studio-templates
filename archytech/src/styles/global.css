@@ -6,13 +6,13 @@
 
 @layer base {
     h1 {
-        @apply text-center font-visby-heavy text-5xl md:text-left xl:text-[64px];
+        @apply text-center text-5xl md:text-left xl:text-[64px];
     }
     h2 {
-        @apply text-center font-visby-medium text-3xl md:text-left md:text-5xl;
+        @apply text-center text-3xl md:text-left md:text-5xl;
     }
     blockquote {
-        @apply ml-3 border-l-2 border-brand-blue;
+        @apply ml-3 border-l-2 border-brand-black;
     }
     a {
         @apply text-blue-500 decoration-0;
@@ -23,5 +23,31 @@
     .hamburger-toggle {
         @apply [&>div::after]:translate-y-0 [&>div::after]:-rotate-45 [&>div::before]:translate-y-0 [&>div::before]:rotate-45 [&>div]:h-0 [&>div]:bg-white;
     }
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 20px;
+    transition: width 2s ease;
+
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #FFFFFF;
+    transition: background 2s ease;
+
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: theme('colors.brand-black');
+    border-radius: 5px;
+    transition: background 2s ease;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
 
