@@ -1,10 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Hero from "../components/Hero.astro";
+import Hero from '../components/Hero.astro';
 ---
 
-<Layout title="Landing - Archytech" description="Build with Archytech" robots={false}>
-	<Hero />
-	<main class="h-[8000px]">
-	</main>
+<Layout title='Landing - Archytech' description='Build with Archytech' robots={false}>
+    <Hero>
+        <p class='text-white'>We believe in</p>
+        <h1 class='text-white text-left text-5xl'>Great Architecure</h1>
+        <p class='text-white'>The foremost marketplace for designing and constructing houses globally, distinguished for its unparalleled reliability and trustworthiness.</p>
+    </Hero>
+    <main class='h-[8000px]'></main>
 </Layout>
