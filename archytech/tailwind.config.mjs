@@ -5,6 +5,7 @@ export default {
         extend: {
             colors: {
                 'brand-black': '#303136',
+                'brand-gray': '#9D9D9D',
             },
         },
         fontFamily: {
