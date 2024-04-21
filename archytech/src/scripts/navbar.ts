@@ -10,7 +10,7 @@ let storedLogoColor = logo?.classList.contains('fill-brand-black')
 // Function to toggle menu visibility and color
 function toggleMenu() {
     // Toggle menu visibility
-    menuToggleElement?.classList.toggle('duration-0', true);
+    menuToggleElement?.classList.toggle('duration-200', false);
     menu?.classList.toggle('translate-x-full');
     menu?.classList.toggle('invisible');
     menuToggle?.classList.toggle('hamburger-toggle');
@@ -63,10 +63,11 @@ function toggleMenu() {
 }
 
 function updateLogoAndMenuToggleColors() {
+    menuToggleElement?.classList.toggle('duration-200', true);
     // Get the current scroll position
     let scrollPosition = window.scrollY;
     // Check if the scroll position is greater than or equal to 850px
-    if (scrollPosition >= 850 && !isMenuOpen) {
+    if (scrollPosition / window.innerHeight >= 0.91 && !isMenuOpen) {
         // Toggle logo color to fill-brand-black
         logo?.classList.remove('fill-white');
         logo?.classList.add('fill-brand-black');
@@ -99,7 +100,7 @@ function updateLogoAndMenuToggleColors() {
 document.getElementById('menu-toggle')?.addEventListener('click', function () {
     let scrollPosition = window.scrollY;
     // Update storedLogoColor when menu is first opened
-    if (isMenuOpen && scrollPosition >= 850) {
+    if (isMenuOpen && scrollPosition / window.innerHeight >= 0.9) {
         storedLogoColor = 'fill-brand-black';
     } else {
         storedLogoColor = 'fill-white';

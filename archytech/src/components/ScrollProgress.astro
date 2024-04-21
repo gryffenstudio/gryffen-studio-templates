@@ -1,0 +1,30 @@
+---
+interface Props {
+    isHeroScrollProgress: boolean;
+    grayHeightClass: string[];
+    blackHeightClass: string[][];
+    progress?: number;
+}
+const { isHeroScrollProgress, grayHeightClass, blackHeightClass, progress } = Astro.props satisfies Props;
+---
+
+<div class='flex space-x-6 items-center'>
+    <div class='flex flex-col'>
+        {blackHeightClass[0].length > 1 &&
+            <span class=`${blackHeightClass[0][0]} border-l-2 border-solid border-brand-black` />
+            <span class=`${grayHeightClass} border-l-2 border-solid border-brand-gray` />
+            <span class=`${blackHeightClass[0][1]} border-l-2 border-solid border-brand-black` />
+        }
+        {
+            blackHeightClass[0].length === 1 && progress === 0 ?
+            <span class=`${grayHeightClass} border-l-2 border-solid border-brand-gray` />
+            <span class=`${blackHeightClass[0][0]} border-l-2 border-solid border-brand-black` />
+            :
+            <span class=`${blackHeightClass[0][0]} border-l-2 border-solid border-brand-black` />
+            <span class=`${grayHeightClass} border-l-2 border-solid border-brand-gray` />
+        }
+    </div>
+    <p class=`${isHeroScrollProgress ? 'block' : 'hidden'} text-brand-gray`>
+        Scroll to see how we work
+    </p>
+</div>

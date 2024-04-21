@@ -1,0 +1,54 @@
+---
+import CustomImage from './CustomImage.astro';
+import ScrollProgress from './ScrollProgress.astro';
+
+interface Props {
+    sectionNum: number;
+    imageSrc: ImageMetadata[];
+}
+const { sectionNum, imageSrc } = Astro.props satisfies Props;
+let grayHeightClassVal = ['h-16'];
+let blackHeightClassVal = [['h-48']];
+// switch(sectionNum % 2){
+//     case 0:
+// }
+---
+
+<section class='flex flex-col w-full space-y-8'>
+    <div class='flex space-x-8'>
+        <div class='flex flex-col space-y-2 items-center'>
+            <span class='text-3xl font-black text-brand-gray'>01</span>
+            <ScrollProgress
+                isHeroScrollProgress={false}
+                grayHeightClass={grayHeightClassVal}
+                blackHeightClass={blackHeightClassVal}
+                progress={0}
+            />
+        </div>
+        <div class='flex flex-col'>
+            <h2
+                class='text-brand-black text-start font-semibold place-self-start text-2xl relative tracking-wide'
+            >
+                RESEARCH
+                <span
+                    class='after:absolute after:block after:w-[70px] after:h-[4px] after:bg-brand-black after:mt-2 after:rounded-full'
+                ></span>
+            </h2>
+            <p class='text-brand-black mt-16'>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                exercitation ullamco laboris.
+            </p>
+        </div>
+    </div>
+    <CustomImage
+        mobileImgUrl={imageSrc[0]}
+        desktopImgUrl={imageSrc[1]}
+        imageSizes={[
+            [327, 448],
+            [710, 448],
+        ]}
+        alt=`Section ${sectionNum} Image`
+        classList=''
+    />
+</section>

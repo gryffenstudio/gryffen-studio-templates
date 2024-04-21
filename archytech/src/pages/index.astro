@@ -1,31 +1,36 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
+import ScrollProgress from '../components/ScrollProgress.astro';
+import HomeSection from '../components/HomeSection.astro';
+import section1ImgSM from '../assets/images/Section-1-Img-SM.png';
+import section1Img from '../assets/images/Section-1-Img.png';
 ---
 
 <Layout title='Landing - Archytech' description='Build with Archytech' robots={false}>
     <Hero>
         <div
-            class='z-10 lg:pl-16 relative flex w-full items-start justify-center flex-col space-y-8'
+            class='z-20 md:pl-16 relative flex w-full items-start justify-center flex-col space-y-8 md:space-y-10'
         >
-            <p class='text-white mt-64'>We believe in</p>
-            <h1 class='text-white text-left text-5xl'>Great Architecure</h1>
-            <p class='text-white lg:w-[50%]'>
+            <p class='text-white text-sm md:text-md mt-64'>We believe in</p>
+            <h1 class='hero-h1'>Great Architecure</h1>
+            <p class='text-white md:text-xl md:w-[65%] lg:w-[44%]'>
                 The foremost marketplace for designing and constructing houses globally,
                 distinguished for its unparalleled reliability and trustworthiness.
             </p>
-            <div class='flex space-x-6 items-center'>
-                <div class='flex flex-col'>
-                    <span class='h-12 border-l-2 border-solid border-brand-gray'></span>
-                    <span class='h-24 border-l-2 border-solid border-brand-black'></span>
-                </div>
-                <p class='text-brand-gray'>Scroll to see how we work</p>
-            </div>
+            <ScrollProgress
+                isHeroScrollProgress={true}
+                grayHeightClass={['h-12']}
+                blackHeightClass={[['h-24']]}
+                progress={0}
+            />
         </div>
         <div
-            class='hidden bg-brand-black bg-blend-luminosity backdrop-blur-xl bg-opacity-25 z-0 absolute top-0 left-0 w-[45%] h-full lg:block'
+            class='bg-brand-black bg-blend-luminosity md:backdrop-blur-xl bg-opacity-50 z-10 absolute top-0 left-0 w-full md:w-[45%] h-full'
         >
         </div>
     </Hero>
-    <main class='h-[8000px]'></main>
+    <main class='h-full w-full mt-8 px-4 items-center justify-center'>
+        <HomeSection sectionNum={1} imageSrc={[section1ImgSM, section1Img]} />
+    </main>
 </Layout>

@@ -4,7 +4,7 @@ import { visionTool } from '@sanity/vision';
 import { schemaTypes } from './schema';
 export default defineConfig({
     name: 'default',
-    title: 'nurturelume',
+    title: 'archytech',
 
     projectId: 'zgzkbg6y',
     dataset: 'production',

@@ -19,6 +19,12 @@
     }
 }
 
+@layer components {
+    .hero-h1 {
+        @apply text-white font-semibold text-left text-4xl md:text-6xl lg:text-8xl;
+    }
+}
+
 @layer utilities {
     .hamburger-toggle {
         @apply [&>div::after]:translate-y-0 [&>div::after]:-rotate-45 [&>div::before]:translate-y-0 [&>div::before]:rotate-45 [&>div]:h-0 [&>div]:bg-white;
