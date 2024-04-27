@@ -3,7 +3,9 @@
     "description": "NurtureLume offers a centralized platform to support parents in finding perfect-fit childcare and equip providers with an easy-to-use childcare management system.",
     "image": {
         "src": "https://nurturelume.com/images/Logo.png",
-        "alt": "NurtureLume Logo"
+        "alt": "NurtureLume Logo",
+        "width": "43",
+        "height": "51"
     },
     "url": "https://nurturelume.com",
     "id": "https://nurturelume.com/#website"

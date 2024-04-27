@@ -5,32 +5,121 @@ import ScrollProgress from '../components/ScrollProgress.astro';
 import HomeSection from '../components/HomeSection.astro';
 import section1ImgSM from '../assets/images/Section-1-Img-SM.png';
 import section1Img from '../assets/images/Section-1-Img.png';
+import section2ImgSM from '../assets/images/Section-2-Img-SM.png';
+import section2Img from '../assets/images/Section-2-Img.png';
+import section3ImgSM from '../assets/images/Section-3-Img-SM.png';
+import section3Img from '../assets/images/Section-3-Img.png';
+import section4ImgSM from '../assets/images/Section-4-Img-SM.png';
+import section4Img from '../assets/images/Section-4-Img.png';
+import heroImage from '../assets/images/Landing-Hero.png';
+import heroImageSM from '../assets/images/Landing-Hero-SM.png';
+import newsletterSectionImage from '../assets/images/Newsletter-Section-Image.png';
+import newsletterSectionImageSM from '../assets/images/Newsletter-Section-Image-SM.png';
 ---
 
 <Layout title='Landing - Archytech' description='Build with Archytech' robots={false}>
-    <Hero>
+    <Hero heroBackgroundImgSrcList={[heroImageSM.src, heroImage.src]}>
         <div
-            class='z-20 md:pl-16 relative flex w-full items-start justify-center flex-col space-y-8 md:space-y-10'
+            class='z-20 pt-64 md:pt-64 lg:pt-80 md:pl-16 lg:pl-24 relative flex w-full flex-col space-y-8 md:space-y-10'
         >
-            <p class='text-white text-sm md:text-md mt-64'>We believe in</p>
-            <h1 class='hero-h1'>Great Architecure</h1>
-            <p class='text-white md:text-xl md:w-[65%] lg:w-[44%]'>
+            <p class='text-white text-sm md:text-xl'>We believe in</p>
+            <h1 class='hero-h1 tracking-wide'>Great Architecure</h1>
+            <p class='text-white md:text-xl md:w-[65%] lg:w-[35%]'>
                 The foremost marketplace for designing and constructing houses globally,
                 distinguished for its unparalleled reliability and trustworthiness.
             </p>
             <ScrollProgress
                 isHeroScrollProgress={true}
-                grayHeightClass={['h-12']}
-                blackHeightClass={[['h-24']]}
-                progress={0}
+                barColor='bg-brand-black'
+                progressColor='bg-brand-gray'
+                barHeight='h-48 lg:h-56'
+                progress='bottom-[75%]'
             />
         </div>
         <div
-            class='bg-brand-black bg-blend-luminosity md:backdrop-blur-xl bg-opacity-50 z-10 absolute top-0 left-0 w-full md:w-[45%] h-full'
+            class='bg-brand-black bg-blend-luminosity md:backdrop-blur-xl bg-opacity-50 z-10 absolute top-0 left-0 w-full md:w-[43%] h-full'
         >
         </div>
     </Hero>
-    <main class='h-full w-full mt-8 px-4 items-center justify-center'>
-        <HomeSection sectionNum={1} imageSrc={[section1ImgSM, section1Img]} />
+    <main class='w-full items-center justify-center'>
+        <HomeSection
+            sectionNum={1}
+            sectionHeader='RESEARCH'
+            sectionDescription='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporincididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrudexercitation ullamco laboris.'
+            sectionProgress='bottom-[75%]'
+            imageSrc={[section1ImgSM, section1Img]}
+        />
+        <HomeSection
+            sectionNum={2}
+            sectionHeader='DESIGN + DOCUMENTATION'
+            sectionDescription='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.'
+            sectionProgress='bottom-[50%]'
+            imageSrc={[section2ImgSM, section2Img]}
+        />
+        <HomeSection
+            sectionNum={3}
+            sectionHeader='PRICING'
+            sectionDescription='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.'
+            sectionProgress='bottom-[25%]'
+            imageSrc={[section3ImgSM, section3Img]}
+        />
+        <HomeSection
+            sectionNum={4}
+            sectionHeader='CONSTRUCTION'
+            sectionDescription='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.'
+            sectionProgress='bottom-[0%]'
+            imageSrc={[section4ImgSM, section4Img]}
+        />
+        <section
+            class='relative flex flex-col items-center justify-center w-full py-8 px-4 bg-brand-black bg-blend-luminosity'
+        >
+            <!-- Mobile Image -->
+            <img
+                class='absolute z-0 inset-0 w-full h-full object-cover object-center block md:hidden'
+                src={newsletterSectionImageSM.src}
+                alt='Mobile Image'
+                decoding='async'
+                loading='lazy'
+            />
+            <!-- Desktop Image -->
+            <img
+                class='z-0 absolute inset-0 w-full h-full object-cover object-center hidden md:block'
+                src={newsletterSectionImage.src}
+                alt='Desktop Image'
+                decoding='async'
+                loading='lazy'
+            />
+            <div class='flex flex-col z-10 items-center justify-center space-y-8'>
+                <h2 class='text-white text-start font-semibold text-3xl relative tracking-wide'>
+                    STAY UP TO DATE WITH OUR NEWSLETTER
+                    <span
+                        class='after:absolute after:block after:w-[70px] after:h-[3px] after:bg-white after:mt-2 after:rounded-full'
+                    ></span>
+                </h2>
+                <form
+                    class='mt-4 w-full flex flex-col items-center'
+                    name='contactForm'
+                    id='contactForm'
+                    data-netlify='true'
+                    method='post'
+                >
+                    <input
+                        class='border-brand-gray block h-12 w-[327px] lg:w-[355px] rounded-lg border p-2.5 text-sm text-black focus:border-brand-red focus:outline-none focus:ring-0'
+                        type='email'
+                        id='email'
+                        name='email'
+                        placeholder='Enter your email'
+                        required
+                    />
+                    <button
+                        type='submit'
+                        id='subscribe-button'
+                        class='mt-4 h-12 w-[327px] lg:w-[355px] rounded-md bg-brand-purple py-2 font-visby-medium text-white hover:bg-opacity-80'
+                    >
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+        </section>
     </main>
 </Layout>

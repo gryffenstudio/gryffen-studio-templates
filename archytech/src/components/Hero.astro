@@ -1,14 +1,15 @@
 ---
-import Image from 'astro/components/Image.astro';
-import heroImage from '../assets/images/Landing-Hero.png';
-import heroImageSM from '../assets/images/Landing-Hero-SM.png';
+interface Props {
+    heroBackgroundImgSrcList: string[];
+}
+const { heroBackgroundImgSrcList } = Astro.props satisfies Props;
 ---
 
-<header class='h-full w-full px-12 bg-brand-black bg-blend-luminosity'>
+<header class='h-full w-full px-6 bg-brand-black bg-blend-luminosity'>
     <!-- Mobile Image -->
     <img
         class='absolute inset-0 w-full h-full object-cover object-center block md:hidden'
-        src={heroImageSM.src}
+        src={heroBackgroundImgSrcList[0]}
         alt='Mobile Image'
         decoding='async'
         loading='lazy'
@@ -16,7 +17,7 @@ import heroImageSM from '../assets/images/Landing-Hero-SM.png';
     <!-- Desktop Image -->
     <img
         class='absolute inset-0 w-full h-full object-cover object-center hidden md:block'
-        src={heroImage.src}
+        src={heroBackgroundImgSrcList[1]}
         alt='Desktop Image'
         decoding='async'
         loading='lazy'

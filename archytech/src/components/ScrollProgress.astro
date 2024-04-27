@@ -1,28 +1,43 @@
 ---
 interface Props {
     isHeroScrollProgress: boolean;
-    grayHeightClass: string[];
-    blackHeightClass: string[][];
-    progress?: number;
+    // grayHeightClass?: string[][];
+    // blackHeightClass?: string[][];
+    // whiteHeightClass?: string[];
+    barColor: string;
+    progressColor: string;
+    barHeight: string;
+    progress: string;
 }
-const { isHeroScrollProgress, grayHeightClass, blackHeightClass, progress } = Astro.props satisfies Props;
+const {
+    isHeroScrollProgress,
+    barColor,
+    progressColor,
+    barHeight,
+    // grayHeightClass,
+    // blackHeightClass,
+    progress,
+} = Astro.props satisfies Props;
 ---
 
 <div class='flex space-x-6 items-center'>
-    <div class='flex flex-col'>
-        {blackHeightClass[0].length > 1 &&
+    <!-- <div class='flex flex-col'>
+        {blackHeightClass && blackHeightClass[0].length > 1 &&
             <span class=`${blackHeightClass[0][0]} border-l-2 border-solid border-brand-black` />
             <span class=`${grayHeightClass} border-l-2 border-solid border-brand-gray` />
             <span class=`${blackHeightClass[0][1]} border-l-2 border-solid border-brand-black` />
         }
         {
-            blackHeightClass[0].length === 1 && progress === 0 ?
+            blackHeightClass && blackHeightClass[0].length === 1 && progress === 0 ?
             <span class=`${grayHeightClass} border-l-2 border-solid border-brand-gray` />
             <span class=`${blackHeightClass[0][0]} border-l-2 border-solid border-brand-black` />
             :
             <span class=`${blackHeightClass[0][0]} border-l-2 border-solid border-brand-black` />
             <span class=`${grayHeightClass} border-l-2 border-solid border-brand-gray` />
         }
+    </div> -->
+    <div class=`relative w-[2px] ${barColor} rounded-full ${barHeight}`>
+        <div class=`${progressColor} absolute w-[2px] ${progress} h-[25%] rounded-full`></div>
     </div>
     <p class=`${isHeroScrollProgress ? 'block' : 'hidden'} text-brand-gray`>
         Scroll to see how we work

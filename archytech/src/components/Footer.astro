@@ -1,0 +1,34 @@
+---
+import SocialIcon from './SocialIcon.astro';
+---
+
+<footer class='bottom-0 flex items-center flex-col w-full py-8 lg:px-16 px-6'>
+    <div class='flex flex-col space-y-6'>
+        <a class='h-[35px] w-[35px] lg:h-[51px] lg:w-[43px]' href='/' aria-label='Home'>
+            <svg
+                id='logo'
+                class='h-[35px] w-[35px] lg:h-[51px] lg:w-[43px] fill-brand-black'
+                viewBox='0 0 43 51'
+                xmlns='http://www.w3.org/2000/svg'
+            >
+                <path
+                    d='M5.08594 51H1.99219L19.3125 3H22.6875L40.0078 51H36.9141L21.1172 6.77344H20.8828L5.08594 51ZM9.46875 32.9297H32.5313V35.6484H9.46875V32.9297Z'
+                ></path>
+                <rect x='19' y='3' width='4' height='48'></rect>
+                <rect x='33' width='4' height='24' transform='rotate(90 33 0)'></rect>
+            </svg>
+        </a>
+        <div class='flex space-x-6 text-sm'>
+            <a href='/studio' class='text-brand-black font-bold hover:opacity-50'>Studio</a>
+            <a href='/team' class='text-brand-black font-bold hover:opacity-50'>Team</a>
+            <a href='/projects' class='text-brand-black font-bold hover:opacity-50'>Projects</a>
+            <a href='/blog' class='text-brand-black font-bold hover:opacity-50'>Blog</a>
+            <a href='/contact' class='text-brand-black font-bold hover:opacity-50'>Contact</a>
+        </div>
+        <div class='flex space-x-2'>
+            <SocialIcon href='instagram.com' icon='icon-[ri--instagram-line]' />
+            <SocialIcon href='facebook.com' icon='icon-[ri--facebook-fill]' />
+            <SocialIcon href='linkedin.com' icon='icon-[ri--linkedin-fill]' />
+        </div>
+    </div>
+</footer>

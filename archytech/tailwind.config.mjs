@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+
+import { addDynamicIconSelectors } from '@iconify/tailwind';
+
 export default {
     content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
     theme: {
@@ -13,5 +16,5 @@ export default {
             sans: ['Inter', 'sans-serif'],
         },
     },
-    plugins: [],
+    plugins: [addDynamicIconSelectors()],
 };
