@@ -2,14 +2,16 @@
 interface Props {
     icon: string;
     href: string;
+    label: string;
 }
 
-const { icon, href } = Astro.props;
+const { icon, href, label } = Astro.props;
 ---
 
 <a
     href={href}
     class='flex items-center justify-center h-8 w-8 rounded-full bg-brand-black hover:opacity-50'
+    aria-label={label}
 >
     <span class=`${icon} h-5 w-5 rounded-full text-white`></span>
 </a>
