@@ -8,7 +8,7 @@ interface Props {
 const { heroBackgroundImgSrcList } = Astro.props satisfies Props;
 ---
 
-<header class='h-full w-full px-6 bg-brand-black bg-blend-luminosity'>
+<header class='relative h-full w-full px-6 bg-brand-black bg-blend-luminosity'>
     <!-- Mobile Image -->
     <Image
         class='absolute inset-0 w-full h-full object-cover object-center block md:hidden'
@@ -17,7 +17,7 @@ const { heroBackgroundImgSrcList } = Astro.props satisfies Props;
     />
 
     <!-- Desktop Image -->
-        <Image
+    <Image
         class='absolute inset-0 w-full h-full object-cover object-center hidden md:block'
         src={heroBackgroundImgSrcList[1]}
         alt='Hero Image'
