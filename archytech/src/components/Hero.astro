@@ -1,26 +1,26 @@
 ---
+import CustomImage from './CustomImage.astro';
+import { Image } from 'astro:assets';
+
 interface Props {
-    heroBackgroundImgSrcList: string[];
+    heroBackgroundImgSrcList: ImageMetadata[];
 }
 const { heroBackgroundImgSrcList } = Astro.props satisfies Props;
 ---
 
 <header class='h-full w-full px-6 bg-brand-black bg-blend-luminosity'>
     <!-- Mobile Image -->
-    <img
+    <Image
         class='absolute inset-0 w-full h-full object-cover object-center block md:hidden'
         src={heroBackgroundImgSrcList[0]}
-        alt='Mobile Image'
-        decoding='async'
-        loading='lazy'
+        alt='Hero Image'
     />
+
     <!-- Desktop Image -->
-    <img
+        <Image
         class='absolute inset-0 w-full h-full object-cover object-center hidden md:block'
         src={heroBackgroundImgSrcList[1]}
-        alt='Desktop Image'
-        decoding='async'
-        loading='lazy'
+        alt='Hero Image'
     />
     <slot />
 </header>

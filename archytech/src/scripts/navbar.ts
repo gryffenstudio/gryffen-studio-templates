@@ -62,49 +62,236 @@ function toggleMenu() {
     }
 }
 
+// Function to calculate the scroll percentage relative to the full document height
+function calculateScrollPercentage() {
+    const scrollPosition = window.scrollY;
+    const documentHeight = document.documentElement.scrollHeight;
+    const windowHeight = window.innerHeight;
+
+    // Calculate the scroll percentage relative to the full document height
+    const scrollPercentage = (scrollPosition / (documentHeight - windowHeight)) * 100;
+
+    return scrollPercentage;
+}
+
+// Function to update logo and menu toggle colors based on scroll position and device type
 function updateLogoAndMenuToggleColors() {
     menuToggleElement?.classList.toggle('duration-200', true);
-    // Get the current scroll position
-    let scrollPosition = window.scrollY;
-    // Check if the scroll position is greater than or equal to 850px
-    if (scrollPosition / window.innerHeight >= 0.91 && !isMenuOpen) {
-        // Toggle logo color to fill-brand-black
-        logo?.classList.remove('fill-white');
-        logo?.classList.add('fill-brand-black');
-        // Toggle menu toggle color to bg-brand-black
-        menuToggleElement?.classList.remove('bg-white');
-        menuToggleElement?.classList.add('bg-brand-black');
-        menuToggleElement?.classList.remove('before:bg-white');
-        menuToggleElement?.classList.add('before:bg-brand-black');
-        menuToggleElement?.classList.remove('after:bg-white');
-        menuToggleElement?.classList.add('after:bg-brand-black');
-        document.documentElement.style.setProperty('--scrollbar-track-color', '#FFFFFF');
-        document.documentElement.style.setProperty('--scrollbar-thumb-color', '#303136');
+    const scrollPercentage = calculateScrollPercentage();
+    const isSmallMobile = isSmallMobileDevice(); // Check if the device is small mobile
+    const isLargeMobile = isLargeMobileDevice(); // Check if the device is large mobile
+
+    if (isSmallMobile) {
+        // Apply small mobile-specific color changes based on scroll percentage
+        if (
+            window.location.pathname === '/' &&
+            !isMenuOpen &&
+            ((scrollPercentage >= 19 && scrollPercentage <= 40) ||
+                (scrollPercentage >= 62 && scrollPercentage <= 83))
+        ) {
+            setElementColor(
+                'fill-brand-black',
+                'bg-brand-black',
+                'before:bg-brand-black',
+                'after:bg-brand-black',
+            );
+            setScrollbarColors('#FFFFFF', '#303136');
+        } else if (
+            window.location.pathname === '/' &&
+            !isMenuOpen &&
+            ((scrollPercentage >= 41 && scrollPercentage <= 62) || scrollPercentage >= 83)
+        ) {
+            setElementColor('fill-white', 'bg-white', 'before:bg-white', 'after:bg-white');
+            setScrollbarColors('#FFFFFF', '#303136');
+        } else if (window.location.pathname !== '/' && scrollPercentage >= 19 && !isMenuOpen) {
+            setElementColor(
+                'fill-brand-black',
+                'bg-brand-black',
+                'before:bg-brand-black',
+                'after:bg-brand-black',
+            );
+            setScrollbarColors('#FFFFFF', '#303136');
+        } else {
+            setElementColor('fill-white', 'bg-white', 'before:bg-white', 'after:bg-white');
+            setScrollbarColors('#303136', '#FFFFFF');
+        }
+    } else if (isLargeMobile) {
+        // Apply large mobile-specific color changes based on scroll percentage
+        if (
+            window.location.pathname === '/' &&
+            !isMenuOpen &&
+            ((scrollPercentage >= 22 && scrollPercentage <= 43) ||
+                (scrollPercentage >= 65 && scrollPercentage <= 86))
+        ) {
+            setElementColor(
+                'fill-brand-black',
+                'bg-brand-black',
+                'before:bg-brand-black',
+                'after:bg-brand-black',
+            );
+            setScrollbarColors('#FFFFFF', '#303136');
+        } else if (
+            window.location.pathname === '/' &&
+            !isMenuOpen &&
+            ((scrollPercentage >= 43 && scrollPercentage <= 65) || scrollPercentage >= 86)
+        ) {
+            setElementColor('fill-white', 'bg-white', 'before:bg-white', 'after:bg-white');
+            setScrollbarColors('#FFFFFF', '#303136');
+        } else if (window.location.pathname !== '/' && scrollPercentage >= 19 && !isMenuOpen) {
+            setElementColor(
+                'fill-brand-black',
+                'bg-brand-black',
+                'before:bg-brand-black',
+                'after:bg-brand-black',
+            );
+            setScrollbarColors('#FFFFFF', '#303136');
+        } else {
+            setElementColor('fill-white', 'bg-white', 'before:bg-white', 'after:bg-white');
+            setScrollbarColors('#303136', '#FFFFFF');
+        }
     } else {
-        // Toggle logo color to fill-brand-black
-        logo?.classList.remove('fill-brand-black');
-        logo?.classList.add('fill-white');
-        // Toggle menu toggle color to bg-white
-        menuToggleElement?.classList.remove('bg-brand-black');
-        menuToggleElement?.classList.add('bg-white');
-        menuToggleElement?.classList.remove('before:bg-brand-black');
-        menuToggleElement?.classList.add('before:bg-white');
-        menuToggleElement?.classList.remove('after:bg-brand-black');
-        menuToggleElement?.classList.add('after:bg-white');
-        document.documentElement.style.setProperty('--scrollbar-track-color', '#303136');
-        document.documentElement.style.setProperty('--scrollbar-thumb-color', '#FFFFFF');
+        // Apply desktop-specific color changes based on scroll percentage
+        if (
+            window.location.pathname === '/' &&
+            !isMenuOpen &&
+            ((scrollPercentage >= 29 && scrollPercentage <= 50) ||
+                (scrollPercentage >= 72 && scrollPercentage <= 93))
+        ) {
+            setElementColor(
+                'fill-brand-black',
+                'bg-brand-black',
+                'before:bg-brand-black',
+                'after:bg-brand-black',
+            );
+            setScrollbarColors('#FFFFFF', '#303136');
+        } else if (
+            window.location.pathname === '/' &&
+            !isMenuOpen &&
+            ((scrollPercentage >= 50 && scrollPercentage <= 72) || scrollPercentage >= 93)
+        ) {
+            setElementColor('fill-white', 'bg-white', 'before:bg-white', 'after:bg-white');
+            setScrollbarColors('#FFFFFF', '#303136');
+        } else if (window.location.pathname !== '/' && scrollPercentage >= 19 && !isMenuOpen) {
+            setElementColor(
+                'fill-brand-black',
+                'bg-brand-black',
+                'before:bg-brand-black',
+                'after:bg-brand-black',
+            );
+            setScrollbarColors('#FFFFFF', '#303136');
+        } else {
+            setElementColor('fill-white', 'bg-white', 'before:bg-white', 'after:bg-white');
+            setScrollbarColors('#303136', '#FFFFFF');
+        }
     }
+}
+
+// Helper function to check if the device is a small mobile device based on viewport width
+function isSmallMobileDevice() {
+    return window.innerWidth <= 427; // Adjust threshold based on desired breakpoint for mobile view
+}
+
+// Helper function to check if the device is a small mobile device based on viewport width
+function isLargeMobileDevice() {
+    return window.innerWidth >= 428 && window.innerWidth <= 1020; // Adjust threshold based on desired breakpoint for mobile view
+}
+
+// Helper function to set element colors
+function setElementColor(
+    fillClass: string,
+    bgClass: string,
+    beforeClass: string,
+    afterClass: string,
+) {
+    logo?.classList.remove('fill-white', 'fill-brand-black');
+    logo?.classList.add(fillClass);
+    menuToggleElement?.classList.remove(
+        'bg-white',
+        'bg-brand-black',
+        'before:bg-white',
+        'before:bg-brand-black',
+        'after:bg-white',
+        'after:bg-brand-black',
+    );
+    menuToggleElement?.classList.add(bgClass, beforeClass, afterClass);
+}
+
+// Helper function to set scrollbar colors
+function setScrollbarColors(trackColor: string, thumbColor: string) {
+    document.documentElement.style.setProperty('--scrollbar-track-color', trackColor);
+    document.documentElement.style.setProperty('--scrollbar-thumb-color', thumbColor);
 }
 
 // Event listener for menu toggle button
 document.getElementById('menu-toggle')?.addEventListener('click', function () {
-    let scrollPosition = window.scrollY;
+    const scrollPercentage = calculateScrollPercentage();
+    const isSmallMobile = isSmallMobileDevice(); // Check if the device is small mobile
+    const isLargeMobile = isLargeMobileDevice(); // Check if the device is large mobile
     // Update storedLogoColor when menu is first opened
-    if (isMenuOpen && scrollPosition / window.innerHeight >= 0.9) {
-        storedLogoColor = 'fill-brand-black';
+    if (isSmallMobile) {
+        if (
+            window.location.pathname === '/' &&
+            isMenuOpen &&
+            ((scrollPercentage >= 19 && scrollPercentage <= 40) ||
+                (scrollPercentage >= 62 && scrollPercentage <= 83))
+        ) {
+            storedLogoColor = 'fill-brand-black';
+        } else if (
+            window.location.pathname === '/' &&
+            isMenuOpen &&
+            ((scrollPercentage >= 41 && scrollPercentage <= 62) || scrollPercentage >= 83)
+        ) {
+            storedLogoColor = 'fill-white';
+        } else if (window.location.pathname !== '/' && scrollPercentage >= 19 && isMenuOpen) {
+            storedLogoColor = 'fill-brand-black';
+        } else {
+            storedLogoColor = 'fill-white';
+        }
+    } else if (isLargeMobile) {
+        // Apply large mobile-specific color changes based on scroll percentage
+        if (
+            window.location.pathname === '/' &&
+            isMenuOpen &&
+            ((scrollPercentage >= 22 && scrollPercentage <= 43) ||
+                (scrollPercentage >= 65 && scrollPercentage <= 86))
+        ) {
+            storedLogoColor = 'fill-brand-black';
+        } else if (
+            window.location.pathname === '/' &&
+            isMenuOpen &&
+            ((scrollPercentage >= 43 && scrollPercentage <= 65) || scrollPercentage >= 86)
+        ) {
+            storedLogoColor = 'fill-white';
+        } else if (window.location.pathname !== '/' && scrollPercentage >= 19 && isMenuOpen) {
+            storedLogoColor = 'fill-brand-black';
+        } else {
+            setElementColor('fill-white', 'bg-white', 'before:bg-white', 'after:bg-white');
+            setScrollbarColors('#303136', '#FFFFFF');
+        }
     } else {
-        storedLogoColor = 'fill-white';
+        // Apply desktop-specific color changes based on scroll percentage
+        if (
+            window.location.pathname === '/' &&
+            isMenuOpen &&
+            ((scrollPercentage >= 29 && scrollPercentage <= 50) ||
+                (scrollPercentage >= 72 && scrollPercentage <= 93))
+        ) {
+            storedLogoColor = 'fill-brand-black';
+        } else if (
+            window.location.pathname === '/' &&
+            isMenuOpen &&
+            ((scrollPercentage >= 50 && scrollPercentage <= 72) || scrollPercentage >= 93)
+        ) {
+            storedLogoColor = 'fill-white';
+        } else if (window.location.pathname !== '/' && scrollPercentage >= 19 && isMenuOpen) {
+            storedLogoColor = 'fill-brand-black';
+        } else {
+            storedLogoColor = 'fill-white';
+        }
     }
+
+    console.log(storedLogoColor);
+
     toggleMenu();
 });
 

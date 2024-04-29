@@ -2,8 +2,10 @@
 import SocialIcon from './SocialIcon.astro';
 ---
 
-<footer class='bottom-0 flex items-center flex-col w-full py-8 lg:px-16 px-6'>
-    <div class='flex flex-col space-y-6'>
+<footer class='bottom-0 flex flex-col space-y-6 py-8 lg:px-16 px-6'>
+    <div
+        class='flex w-full flex-col space-y-6 md:flex-row md:space-y-0 md:justify-between place-self-center md:items-center'
+    >
         <a class='h-[35px] w-[35px] lg:h-[51px] lg:w-[43px]' href='/' aria-label='Home'>
             <svg
                 id='logo'
@@ -18,7 +20,7 @@ import SocialIcon from './SocialIcon.astro';
                 <rect x='33' width='4' height='24' transform='rotate(90 33 0)'></rect>
             </svg>
         </a>
-        <div class='flex space-x-6 text-sm'>
+        <div class='flex space-x-6 md:space-x-16 text-sm'>
             <a href='/studio' class='text-brand-black font-bold hover:opacity-50'>Studio</a>
             <a href='/team' class='text-brand-black font-bold hover:opacity-50'>Team</a>
             <a href='/projects' class='text-brand-black font-bold hover:opacity-50'>Projects</a>
@@ -26,9 +28,26 @@ import SocialIcon from './SocialIcon.astro';
             <a href='/contact' class='text-brand-black font-bold hover:opacity-50'>Contact</a>
         </div>
         <div class='flex space-x-2'>
-            <SocialIcon href='instagram.com' icon='icon-[ri--instagram-line]' label='Instagram Link' />
-            <SocialIcon href='facebook.com' icon='icon-[ri--facebook-fill]' label='Facebook Link' />
-            <SocialIcon href='linkedin.com' icon='icon-[ri--linkedin-fill]' label='LinkedIn Link' />
+            <SocialIcon
+                href='https://www.instagram.com'
+                icon='icon-[ri--instagram-line]'
+                label='Instagram Link'
+            />
+            <SocialIcon
+                href='https://www.facebook.com'
+                icon='icon-[ri--facebook-fill]'
+                label='Facebook Link'
+            />
+            <SocialIcon
+                href='https://www.linkedin.com'
+                icon='icon-[ri--linkedin-fill]'
+                label='LinkedIn Link'
+            />
         </div>
+    </div>
+    <span class='w-full border-b-[1px] border-solid border-brand-black'></span>
+    <div class='flex space-x-6 md:space-x-16 md:justify-center text-sm'>
+        <a href='/terms' class='text-brand-black font-bold hover:opacity-50'>Terms</a>
+        <a href='/privacy' class='text-brand-black font-bold hover:opacity-50'>Privacy</a>
     </div>
 </footer>

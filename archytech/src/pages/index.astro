@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
+import { Image } from 'astro:assets';
 import ScrollProgress from '../components/ScrollProgress.astro';
 import HomeSection from '../components/HomeSection.astro';
 import section1ImgSM from '../assets/images/Section-1-Img-SM.png';
@@ -18,7 +19,7 @@ import newsletterSectionImageSM from '../assets/images/Newsletter-Section-Image-
 ---
 
 <Layout title='Landing - Archytech' description='Build with Archytech' robots={false}>
-    <Hero heroBackgroundImgSrcList={[heroImageSM.src, heroImage.src]}>
+    <Hero heroBackgroundImgSrcList={[heroImageSM, heroImage]}>
         <div
             class='z-20 pt-64 md:pt-64 lg:pt-80 md:pl-16 lg:pl-24 relative flex w-full flex-col space-y-8 md:space-y-10'
         >
@@ -74,20 +75,16 @@ import newsletterSectionImageSM from '../assets/images/Newsletter-Section-Image-
             class='relative flex flex-col items-center justify-center w-full py-8 px-4 bg-brand-black bg-blend-luminosity'
         >
             <!-- Mobile Image -->
-            <img
+            <Image
                 class='absolute z-0 inset-0 w-full h-full object-cover object-center block md:hidden'
-                src={newsletterSectionImageSM.src}
-                alt='Mobile Image'
-                decoding='async'
-                loading='lazy'
+                src={newsletterSectionImageSM}
+                alt='Mobile Newsletter Image'
             />
             <!-- Desktop Image -->
-            <img
+            <Image
                 class='z-0 absolute inset-0 w-full h-full object-cover object-center hidden md:block'
-                src={newsletterSectionImage.src}
-                alt='Desktop Image'
-                decoding='async'
-                loading='lazy'
+                src={newsletterSectionImage}
+                alt='Desktop Newsletter Image'
             />
             <div class='flex flex-col z-10 items-center justify-center space-y-8'>
                 <h2 class='text-white text-start font-semibold text-3xl relative tracking-wide'>
@@ -98,8 +95,8 @@ import newsletterSectionImageSM from '../assets/images/Newsletter-Section-Image-
                 </h2>
                 <form
                     class='mt-4 w-full flex flex-col items-center'
-                    name='contactForm'
-                    id='contactForm'
+                    name='newsletterForm'
+                    id='newsletterForm'
                     data-netlify='true'
                     method='post'
                 >
@@ -108,6 +105,7 @@ import newsletterSectionImageSM from '../assets/images/Newsletter-Section-Image-
                         type='email'
                         id='email'
                         name='email'
+                        autocomplete='email'
                         placeholder='Enter your email'
                         required
                     />
