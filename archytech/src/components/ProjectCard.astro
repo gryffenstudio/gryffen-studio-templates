@@ -2,12 +2,10 @@
 import cabinHouseProject from '../assets/images/Cabin-House-Project.png';
 import cabinHouseProjectSM from '../assets/images/Cabin-House-Project-SM.png';
 import CustomImage from './CustomImage.astro';
+import { Image } from 'astro:assets'
 ---
 
-<!-- <div
-    class='flex w-[90%] flex-col items-center duration-200 hover:scale-105 space-y-6 justify-center border-2 shadow-md shadow-brand-blue rounded-m md:w-[70%] lg:w-full'
-> -->
-<a class='relative group flex flex-col text-white' href=`/projects/first`>
+<a class='relative group items-center justify-center flex flex-col text-white' href=`/projects/first`>
     <!-- {
             post.mainImage ? (
                 <div class='flex bg-orange-500 bg-opacity-10 p-4 items-center justify-center'>
@@ -22,6 +20,18 @@ import CustomImage from './CustomImage.astro';
                 <div class='bg-brand-black bg-opacity-10 w-full' />
             )
         } -->
+        <!-- Mobile Image -->
+            <!-- <Image
+                class='w-full group-hover:blur-sm block md:hidden'
+                src={cabinHouseProjectSM}
+                alt='Mobile Newsletter Image'
+            /> -->
+            <!-- Desktop Image -->
+            <!-- <Image
+                class='w-full hidden md:block group-hover:blur-sm'
+                src={cabinHouseProject}
+                alt='Desktop Newsletter Image'
+            /> -->
     <CustomImage
         mobileImgUrl={cabinHouseProjectSM}
         desktopImgUrl={cabinHouseProject}
@@ -30,7 +40,7 @@ import CustomImage from './CustomImage.astro';
             [358, 448],
         ]}
         alt=`Project Image`
-        classList='group-hover:blur-sm'
+        classList='group-hover:blur-sm w-full'
     />
     <p class='hidden z-20 absolute bottom-6 left-6 text-xl text-start group-hover:block'>
         Cabin House
