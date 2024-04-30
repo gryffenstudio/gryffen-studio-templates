@@ -30,32 +30,3 @@
         @apply [&>div::after]:translate-y-0 [&>div::after]:-rotate-45 [&>div::before]:translate-y-0 [&>div::before]:rotate-45 [&>div]:h-0 [&>div]:bg-white;
     }
 }
-
-:root {
-    /* Define CSS variables for scrollbar colors */
-    --scrollbar-track-color: theme('colors.brand-black'); /* Default track color */
-    --scrollbar-thumb-color: #f1f1f1; /* Default thumb color */
-}
-
-/* Scrollbar */
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-    background: var(--scrollbar-track-color);
-    transition: color 200ms ease;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-    background: var(--scrollbar-thumb-color);
-    border-radius: 5px;
-    transition: color 200ms ease;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-    background: #555;
-}
