@@ -24,7 +24,7 @@ const { title, description, robots } = Astro.props;
         <SEO title={title} description={description} url={Astro.url} robots={robots} />
         <title>{title}</title>
     </head>
-    <body class='h-screen'>
+    <body class='h-dvh min-h-dvh'>
         <Navbar />
         <slot />
         <Footer />
