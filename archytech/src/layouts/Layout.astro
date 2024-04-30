@@ -18,13 +18,13 @@ const { title, description, robots } = Astro.props;
     <head>
         <meta charset='UTF-8' />
         <meta name='description' content='Astro description' />
-        <meta name='viewport' content='width=device-width' />
+        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
         <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
         <meta name='generator' content={Astro.generator} />
         <SEO title={title} description={description} url={Astro.url} robots={robots} />
         <title>{title}</title>
     </head>
-    <body class='h-dvh overflow-x-hidden'>
+    <body class='h-dvh'>
         <Navbar />
         <slot />
         <Footer />
