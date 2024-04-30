@@ -4,6 +4,8 @@ import ScrollProgress from '../../components/ScrollProgress.astro';
 import Layout from '../../layouts/Layout.astro';
 import heroImage from '../../assets/images/Projects-Hero.png';
 import heroImageSM from '../../assets/images/Projects-Hero-SM.png';
+import ProjectCard from '../../components/ProjectCard.astro';
+import ContactUsSection from '../../components/ContactUsSection.astro';
 ---
 
 <Layout
@@ -12,17 +14,17 @@ import heroImageSM from '../../assets/images/Projects-Hero-SM.png';
     robots={false}
 >
     <Hero heroBackgroundImgSrcList={[heroImageSM, heroImage]}>
-        <div
-            class='bottom-10 z-20 md:pl-16 lg:pl-24 absolute flex w-full flex-col space-y-8 md:space-y-10'
-        >
-            <h2 class='hero-h1 bottom-0 tracking-wide'>Projects</h2>
-            <ScrollProgress
-                isHeroScrollProgress={true}
-                barColor='bg-brand-black'
-                progressColor='bg-brand-gray'
-                barHeight='h-48 lg:h-56'
-                progress='bottom-[75%]'
-            />
+        <div class='bottom-10 z-20 absolute flex w-full flex-col space-y-8 md:space-y-10'>
+            <h2 class='hero-h1 bottom-0 tracking-wide px-6 lg:px-16'>Projects</h2>
+            <div class='px-6 lg:px-16'>
+                <ScrollProgress
+                    isHeroScrollProgress={true}
+                    barColor='bg-brand-black'
+                    progressColor='bg-brand-gray'
+                    barHeight='h-48 lg:h-56'
+                    progress='bottom-[75%]'
+                />
+            </div>
         </div>
         <div
             class='bg-brand-black bg-blend-luminosity md:backdrop-blur-xl bg-opacity-50 z-10 absolute top-0 left-0 w-full md:w-[43%] h-full'
@@ -30,31 +32,54 @@ import heroImageSM from '../../assets/images/Projects-Hero-SM.png';
         </div>
     </Hero>
     <main class='w-full items-center justify-center'>
-        <div class='flex flex-col space-y-4 items-start py-8 lg:py-24 lg:px-16 px-4'>
-            <button
-                id='residential-filter-button'
-                class='text-brand-black text-lg hover:text-brand-gray'>RESIDENTIAL</button
-            >
-            <span
-                id='residentual-underline'
-                class='after:absolute after:block after:w-[70px] after:h-[3px] after:bg-brand-black after:mt-2 after:rounded-full'
-            ></span>
-            <button
-                id='commercial-filter-button'
-                class='text-brand-black text-lg hover:text-brand-gray'>COMMERCIAL</button
-            >
-            <span
-                id='commercial-underline'
-                class='after:absolute after:block after:w-[70px] after:h-[3px] after:bg-brand-black after:mt-2 after:rounded-full'
-            ></span>
-            <button
-                id='in-progress-filter-button'
-                class='text-brand-black text-lg hover:text-brand-gray'>IN PROGRESS</button
-            >
-            <span
-                id='in-progress-underline'
-                class='after:absolute after:block after:w-[70px] after:h-[3px] after:bg-brand-black after:mt-2 after:rounded-full'
-            ></span>
-        </div>
+        <section class='flex flex-col space-y-4 items-start py-8 lg:py-24 lg:px-16 px-4'>
+            <div class='relative'>
+                <button
+                    id='residential-filter-button'
+                    class='text-brand-black text-lg hover:text-brand-gray transform transition-colors duration-200'
+                    >RESIDENTIAL</button
+                >
+                <span
+                    id='residential-underline'
+                    class='invisible relative -bottom-1 left-0 after:block after:transform after:transition-transform after:duration-300 after:-translate-x-full after:w-[70px] after:h-[3px] after:bg-brand-black after:rounded-full'
+                ></span>
+            </div>
+            <div class='relative'>
+                <button
+                    id='commercial-filter-button'
+                    class='text-brand-black text-lg hover:text-brand-gray'>COMMERCIAL</button
+                >
+                <span
+                    id='commercial-underline'
+                    class='invisible relative -bottom-1 left-0 after:block after:transform after:transition-transform after:duration-300 after:-translate-x-full after:w-[70px] after:h-[3px] after:bg-brand-black after:rounded-full'
+                ></span>
+            </div>
+            <div>
+                <button
+                    id='in-progress-filter-button'
+                    class='text-brand-black text-lg hover:text-brand-gray'>IN PROGRESS</button
+                >
+                <span
+                    id='in-progress-underline'
+                    class='invisible relative -bottom-1 left-0 after:block after:transform after:transition-transform after:duration-300 after:-translate-x-full after:w-[70px] after:h-[3px] after:bg-brand-black after:rounded-full'
+                ></span>
+            </div>
+        </section>
+        <section class='grid grid-cols-1 gap-y-6 justify-items-center py-8 lg:py-24 lg:px-16 px-4'>
+            <ProjectCard />
+            <ProjectCard />
+            <ProjectCard />
+            <ProjectCard />
+            <ProjectCard />
+            <ProjectCard />
+            <ProjectCard />
+            <ProjectCard />
+            <ProjectCard />
+            <ProjectCard />
+            <ProjectCard />
+            <ProjectCard />
+        </section>
+        <ContactUsSection />
     </main>
+    <script src='../../scripts/projects.ts'></script>
 </Layout>

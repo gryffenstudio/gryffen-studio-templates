@@ -12,7 +12,7 @@ interface Props {
 const { sectionNum, sectionHeader, sectionDescription, sectionProgress, imageSrc } = Astro.props satisfies Props;
 ---
 {sectionNum % 2 === 1 ? 
-    <section class='flex flex-col lg:flex-row w-full space-y-8 lg:space-y-0 lg:justify-around py-8 lg:py-24 lg:px-16 px-4'>
+    <section class='flex flex-col lg:flex-row w-full space-y-8 lg:space-y-0 lg:justify-around py-8 lg:py-24 lg:px-16 px-6'>
         <div class='flex space-x-8 lg:mr-8 lg:w-1/2'>
             <div class='flex flex-col space-y-2 items-center'>
                 <span class='text-3xl font-black text-brand-black'>0{sectionNum}</span>

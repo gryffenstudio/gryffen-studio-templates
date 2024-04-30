@@ -1,0 +1,41 @@
+---
+import cabinHouseProject from '../assets/images/Cabin-House-Project.png';
+import cabinHouseProjectSM from '../assets/images/Cabin-House-Project-SM.png';
+import CustomImage from './CustomImage.astro';
+---
+
+<!-- <div
+    class='flex w-[90%] flex-col items-center duration-200 hover:scale-105 space-y-6 justify-center border-2 shadow-md shadow-brand-blue rounded-m md:w-[70%] lg:w-full'
+> -->
+<a class='relative group flex flex-col text-white' href=`/projects/first`>
+    <!-- {
+            post.mainImage ? (
+                <div class='flex bg-orange-500 bg-opacity-10 p-4 items-center justify-center'>
+                    <Image
+                        src={urlFor(post.mainImage)?.url() ?? heroImage}
+                        alt='Cover Image'
+                        height='300'
+                        width='400'
+                    />
+                </div>
+            ) : (
+                <div class='bg-brand-black bg-opacity-10 w-full' />
+            )
+        } -->
+    <CustomImage
+        mobileImgUrl={cabinHouseProjectSM}
+        desktopImgUrl={cabinHouseProject}
+        imageSizes={[
+            [327, 448],
+            [358, 448],
+        ]}
+        alt=`Project Image`
+        classList='group-hover:blur-sm'
+    />
+    <p class='hidden z-20 absolute bottom-6 left-6 text-xl text-start group-hover:block'>
+        Cabin House
+    </p>
+    <span
+        class='hidden bg-brand-black bg-blend-luminosity bg-opacity-20 z-10 absolute w-full h-full group-hover:block'
+    ></span>
+</a>
