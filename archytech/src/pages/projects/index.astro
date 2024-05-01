@@ -73,7 +73,7 @@ console.log('Projects!: ', projects[0]);
         </section>
         <section class='grid grid-cols-1 gap-y-6 justify-items-center md:grid-cols-2 lg:grid-cols-3 md:gap-x-16 lg:gap-y-10'>
             {projects.map((project: any) => {
-                return <ProjectCard projectName={project.data.projectName} projectImageMobileSrc={project.data.heroImageMobile} 
+                return <ProjectCard projectName={project.data.projectName} projectSlug={project.data.slug} projectImageMobileSrc={project.data.heroImageMobile} 
                 projectImageDesktopSrc={project.data.heroImageDesktop} projectImageAlt={project.data.heroImageAlt}/>
             })}
         </section>

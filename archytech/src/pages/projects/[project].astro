@@ -3,24 +3,15 @@ import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
     const projects = await getCollection('projects')
-    let projectSlug: string[] = []
-    return projects.map((project: any) => {
-    
-    // Extract project name and handle potential undefined values
-    projectSlug = project.data?.projectName?.split(' ') || [];
-    
-    // Create params object with project name as slug (replace spaces with dashes)
-    return (
-        {
-            params: {
-                project: projectSlug.join('-').toLowerCase(), // Use projectName after ensuring it's defined
-            },
-            props: { project }
-        }
-    )})
+    return projects.map((project: any) => ({
+        params: {
+            project: project.data.slug, 
+        },
+        props: { project }
+    }))
 }
 
 const { project } = Astro.props;
 ---
 
-<h1>{project}</h1>
+<h1>{project.data.projectName}</h1>

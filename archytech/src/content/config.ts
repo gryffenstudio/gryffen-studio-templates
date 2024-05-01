@@ -6,6 +6,7 @@ const projectCollection = defineCollection({
         projectName: z.string().max(100, {
             message: 'Project name is too long!'
         }),
+        slug: z.string(),
         category: z.enum(['residential', 'commercial', 'in_progress', 'all']),
         location: z.string(),
         buildingSize: z.string(),

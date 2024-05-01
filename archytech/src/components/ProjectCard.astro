@@ -7,15 +7,16 @@ import { Image } from 'astro:assets'
 
 interface Props {
     projectName: string;
+    projectSlug: string;
     projectImageMobileSrc: ImageMetadata;
     projectImageDesktopSrc: ImageMetadata;
     projectImageAlt: string;
 }
 
-const {projectName, projectImageMobileSrc, projectImageDesktopSrc, projectImageAlt} = Astro.props;
+const {projectName, projectSlug, projectImageMobileSrc, projectImageDesktopSrc, projectImageAlt} = Astro.props;
 ---
 
-<a class='relative group items-center justify-center flex flex-col text-white' href=`/projects/${projectName}`>
+<a class='relative group items-center justify-center flex flex-col text-white' href=`/projects/${projectSlug}`>
     <CustomImage
         mobileImgUrl={projectImageMobileSrc}
         desktopImgUrl={projectImageDesktopSrc}
