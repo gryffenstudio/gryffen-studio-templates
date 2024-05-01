@@ -50,7 +50,7 @@ const { sectionNum, sectionHeader, sectionDescription, sectionProgress, imageSrc
         />
     </section>
 :
-    <section class='flex flex-col lg:flex-row w-full space-y-8 lg:space-y-0 lg:justify-around py-2 lg:py-24 lg:px-16 px-6 bg-brand-black'>
+    <section class='flex flex-col lg:flex-row w-full space-y-8 lg:space-y-0 lg:justify-around pb-8 lg:py-24 lg:px-16 px-6 bg-brand-black'>
         <CustomImage
             mobileImgUrl={imageSrc[0]}
             desktopImgUrl={imageSrc[1]}
@@ -61,7 +61,7 @@ const { sectionNum, sectionHeader, sectionDescription, sectionProgress, imageSrc
             alt=`Section ${sectionNum} Image`
             classList='hidden lg:block'
         />
-        <div class='flex space-x-8 lg:ml-8 lg:w-1/2'>
+        <div class='flex space-x-8 h-full lg:ml-8 lg:w-1/2'>
             <div class='flex flex-col space-y-2 items-center'>
                 <span class='text-3xl font-black text-white'>0{sectionNum}</span>
                 <ScrollProgress
