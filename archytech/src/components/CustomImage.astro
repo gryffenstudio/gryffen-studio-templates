@@ -7,7 +7,7 @@ interface Props {
     desktopImgUrl: ImageMetadata;
     imageSizes: number[][];
     alt: string;
-    classList: string;
+    classList?: string;
 }
 
 const { mobileImgUrl, desktopImgUrl, imageSizes, alt, classList } = Astro.props;
@@ -28,7 +28,7 @@ const desktopImg = await getImage({
 ---
 
 <picture class={classList}>
-    <source media='(max-width: 811px)' srcset={mobileImg.src} />
-    <source media='(min-width: 812px)' srcset={desktopImg.src} />
-    <img src={desktopImg.src} alt={alt} />
+    <source media='(max-width: 810px)' srcset={mobileImg.src} />
+    <source media='(min-width: 811px)' srcset={desktopImg.src} />
+    <img src={desktopImg.src} alt={alt} loading="lazy" decoding="async" />
 </picture>

@@ -3,37 +3,33 @@ import cabinHouseProject from '../assets/images/Cabin-House-Project.png';
 import cabinHouseProjectSM from '../assets/images/Cabin-House-Project-SM.png';
 import CustomImage from './CustomImage.astro';
 import { Image } from 'astro:assets'
+
+
+interface Props {
+    projectName: string;
+    projectImageMobileSrc: ImageMetadata;
+    projectImageDesktopSrc: ImageMetadata;
+    projectImageAlt: string;
+}
+
+const {projectName, projectImageMobileSrc, projectImageDesktopSrc, projectImageAlt} = Astro.props;
 ---
 
-<a class='relative group items-center justify-center flex flex-col text-white' href=`/projects/first`>
-    <!-- {
-            post.mainImage ? (
-                <div class='flex bg-orange-500 bg-opacity-10 p-4 items-center justify-center'>
-                    <Image
-                        src={urlFor(post.mainImage)?.url() ?? heroImage}
-                        alt='Cover Image'
-                        height='300'
-                        width='400'
-                    />
-                </div>
-            ) : (
-                <div class='bg-brand-black bg-opacity-10 w-full' />
-            )
-        } -->
+<a class='relative group items-center justify-center flex flex-col text-white' href=`/projects/${projectName}`>
     <CustomImage
-        mobileImgUrl={cabinHouseProjectSM}
-        desktopImgUrl={cabinHouseProject}
+        mobileImgUrl={projectImageMobileSrc}
+        desktopImgUrl={projectImageDesktopSrc}
         imageSizes={[
             [327, 448],
             [358, 448],
         ]}
-        alt=`Project Image`
-        classList='group-hover:blur-sm'
+        alt={projectImageAlt}
+        classList='group-hover:blur-sm shadow-md shadow-brand-black transform transition-all duration-300'
     />
     <p class='hidden z-20 absolute bottom-6 left-6 text-xl text-start group-hover:block'>
-        Cabin House
+        {projectName}
     </p>
     <span
-        class='hidden bg-brand-black bg-blend-luminosity bg-opacity-20 z-10 absolute w-full h-full group-hover:block'
+        class='hidden bg-brand-black bg-blend-luminosity bg-opacity-20 z-10 absolute w-full h-full transform transition-all duration-300 group-hover:block'
     ></span>
 </a>
