@@ -78,8 +78,8 @@ function updateLogoAndMenuToggleColors() {
         if (
             window.location.pathname === '/' &&
             !isMenuOpen &&
-            ((scrollPercentage >= 16 && scrollPercentage <= 37) ||
-                (scrollPercentage >= 59 && scrollPercentage <= 80))
+            ((scrollPercentage >= 17 && scrollPercentage <= 38) ||
+                (scrollPercentage >= 60 && scrollPercentage <= 81))
         ) {
             setElementColor(
                 'fill-brand-black',
@@ -90,7 +90,7 @@ function updateLogoAndMenuToggleColors() {
         } else if (
             window.location.pathname === '/' &&
             !isMenuOpen &&
-            ((scrollPercentage >= 37 && scrollPercentage <= 59) || scrollPercentage >= 80)
+            ((scrollPercentage >= 38 && scrollPercentage <= 60) || scrollPercentage >= 81)
         ) {
             setElementColor('fill-white', 'bg-white', 'before:bg-white', 'after:bg-white');
         } else if (
@@ -112,8 +112,8 @@ function updateLogoAndMenuToggleColors() {
         if (
             window.location.pathname === '/' &&
             !isMenuOpen &&
-            ((scrollPercentage >= 21 && scrollPercentage <= 42) ||
-                (scrollPercentage >= 66 && scrollPercentage <= 85))
+            ((scrollPercentage >= 20 && scrollPercentage <= 41) ||
+                (scrollPercentage >= 65 && scrollPercentage <= 84))
         ) {
             setElementColor(
                 'fill-brand-black',
@@ -124,7 +124,7 @@ function updateLogoAndMenuToggleColors() {
         } else if (
             window.location.pathname === '/' &&
             !isMenuOpen &&
-            ((scrollPercentage >= 42 && scrollPercentage <= 66) || scrollPercentage >= 85)
+            ((scrollPercentage >= 41 && scrollPercentage <= 65) || scrollPercentage >= 84)
         ) {
             setElementColor('fill-white', 'bg-white', 'before:bg-white', 'after:bg-white');
         } else if (
