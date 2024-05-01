@@ -78,8 +78,8 @@ function updateLogoAndMenuToggleColors() {
         if (
             window.location.pathname === '/' &&
             !isMenuOpen &&
-            ((scrollPercentage >= 18 && scrollPercentage <= 39) ||
-                (scrollPercentage >= 61 && scrollPercentage <= 82))
+            ((scrollPercentage >= 16 && scrollPercentage <= 36) ||
+                (scrollPercentage >= 59 && scrollPercentage <= 80))
         ) {
             setElementColor(
                 'fill-brand-black',
@@ -90,7 +90,7 @@ function updateLogoAndMenuToggleColors() {
         } else if (
             window.location.pathname === '/' &&
             !isMenuOpen &&
-            ((scrollPercentage >= 39 && scrollPercentage <= 61) || scrollPercentage >= 82)
+            ((scrollPercentage >= 36 && scrollPercentage <= 59) || scrollPercentage >= 80)
         ) {
             setElementColor('fill-white', 'bg-white', 'before:bg-white', 'after:bg-white');
         } else if (
