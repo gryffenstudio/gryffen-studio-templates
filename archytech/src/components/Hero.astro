@@ -3,8 +3,9 @@ import { Image } from 'astro:assets';
 
 interface Props {
     heroBackgroundImgSrcList: ImageMetadata[];
+    alt: string;
 }
-const { heroBackgroundImgSrcList } = Astro.props satisfies Props;
+const { heroBackgroundImgSrcList, alt } = Astro.props satisfies Props;
 ---
 
 <header class='relative h-full w-full bg-brand-black bg-blend-luminosity'>
@@ -12,14 +13,18 @@ const { heroBackgroundImgSrcList } = Astro.props satisfies Props;
     <Image
         class='absolute inset-0 w-full h-full object-cover object-center block md:hidden'
         src={heroBackgroundImgSrcList[0]}
-        alt='Hero Image'
+        alt={alt}
+        height='812px'
+        width="1440px"
     />
 
     <!-- Desktop Image -->
     <Image
         class='absolute inset-0 w-full h-full object-cover object-center hidden md:block'
         src={heroBackgroundImgSrcList[1]}
-        alt='Hero Image'
+        alt={alt}
+        height='1023px'
+        width="1440px"
     />
     <slot />
 </header>

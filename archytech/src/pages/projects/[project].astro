@@ -1,5 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+import ScrollProgress from '../../components/ScrollProgress.astro';
 
 export async function getStaticPaths() {
     const projects = await getCollection('projects')
@@ -12,7 +15,44 @@ export async function getStaticPaths() {
 }
 
 const { project } = Astro.props;
----
 
-<h1>{project.data.projectName}
-</h1>
+let projectCategoryText = ''
+
+switch(project.data.category){
+    case 'residential': projectCategoryText = 'Residential'; break;
+    case 'commercial': projectCategoryText = 'Commercial'; break;
+    case 'in_progress': projectCategoryText = 'In Progress'; break;
+}
+---
+<Layout
+    title=`${project.data.projectName} | Archytech ${project.data.category} Projects`
+    description='Successful Projects Completed and In Progress for Archytech'
+    robots={false}
+>
+    <Hero heroBackgroundImgSrcList={[project.data.heroImageMobile, project.data.heroImageDesktop]} alt={project.data.heroImageAlt}>
+        <div class='bottom-10 z-20 absolute flex w-full flex-col space-y-8 md:space-y-10'>
+            <h2 class='hero-h1 bottom-0 tracking-wide px-6 lg:px-20'>{project.data.projectName}</h2>
+            <div class='block lg:flex space-y-8 h-full justify-between px-6 lg:px-20'>
+                <div class="relative right-0 place-self-end flex flex-col text-white lg:hidden">
+                    <p class="font-bold">{project.data.location.toUpperCase()}</p>
+                    <p class="font-bold">SIZE: <span class="font-normal">{project.data.buildingSize}</span></p>
+                    <p class="font-bold">YEAR: <span class="font-normal">{project.data.completionYear}</span></p>
+                </div>
+                <ScrollProgress
+                    isHeroScrollProgress={true}
+                    barColor='bg-brand-black'
+                    progressColor='bg-brand-gray'
+                    barHeight='h-48 lg:h-56'
+                    progress='bottom-[75%]'
+                />
+                <div class="hidden relative right-0 place-self-end lg:flex flex-col text-white">
+                    <p class="font-bold">{project.data.location.toUpperCase()}</p>
+                    <p class="font-bold">SIZE: <span class="font-normal">{project.data.buildingSize}</span></p>
+                    <p class="font-bold">YEAR: <span class="font-normal">{project.data.completionYear}</span></p>
+                </div>
+            </div>
+        </div>
+    </Hero>
+
+
+</Layout>
