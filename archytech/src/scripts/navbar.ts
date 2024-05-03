@@ -72,14 +72,15 @@ function updateLogoAndMenuToggleColors() {
     const scrollPercentage = calculateScrollPercentage();
     const isSmallMobile = isSmallMobileDevice(); // Check if the device is small mobile
     const isLargeMobile = isLargeMobileDevice(); // Check if the device is large mobile
+    const isLaptopScreen = isLaptopScreenDevice(); // Check if the device is laptop screen
 
     if (isSmallMobile) {
         // Apply small mobile-specific color changes based on scroll percentage
         if (
             window.location.pathname === '/' &&
             !isMenuOpen &&
-            ((scrollPercentage >= 17 && scrollPercentage <= 38) ||
-                (scrollPercentage >= 60 && scrollPercentage <= 81))
+            ((scrollPercentage >= 17 && scrollPercentage < 38) ||
+                (scrollPercentage >= 60 && scrollPercentage < 81))
         ) {
             setElementColor(
                 'fill-brand-black',
@@ -90,7 +91,7 @@ function updateLogoAndMenuToggleColors() {
         } else if (
             window.location.pathname === '/' &&
             !isMenuOpen &&
-            ((scrollPercentage >= 38 && scrollPercentage <= 60) || scrollPercentage >= 81)
+            ((scrollPercentage >= 38 && scrollPercentage < 60) || scrollPercentage >= 81)
         ) {
             setElementColor('fill-white', 'bg-white', 'before:bg-white', 'after:bg-white');
         } else if (
@@ -112,8 +113,8 @@ function updateLogoAndMenuToggleColors() {
         if (
             window.location.pathname === '/' &&
             !isMenuOpen &&
-            ((scrollPercentage >= 20 && scrollPercentage <= 41) ||
-                (scrollPercentage >= 65 && scrollPercentage <= 84))
+            ((scrollPercentage >= 20 && scrollPercentage < 41) ||
+                (scrollPercentage >= 65 && scrollPercentage < 84))
         ) {
             setElementColor(
                 'fill-brand-black',
@@ -124,7 +125,7 @@ function updateLogoAndMenuToggleColors() {
         } else if (
             window.location.pathname === '/' &&
             !isMenuOpen &&
-            ((scrollPercentage >= 41 && scrollPercentage <= 65) || scrollPercentage >= 84)
+            ((scrollPercentage >= 41 && scrollPercentage < 65) || scrollPercentage >= 84)
         ) {
             setElementColor('fill-white', 'bg-white', 'before:bg-white', 'after:bg-white');
         } else if (
@@ -141,13 +142,13 @@ function updateLogoAndMenuToggleColors() {
         } else {
             setElementColor('fill-white', 'bg-white', 'before:bg-white', 'after:bg-white');
         }
-    } else {
-        // Apply desktop-specific color changes based on scroll percentage
+    } else if (isLaptopScreen) {
+        // Apply laptop-specific color changes based on scroll percentage
         if (
             window.location.pathname === '/' &&
             !isMenuOpen &&
-            ((scrollPercentage >= 29 && scrollPercentage <= 50) ||
-                (scrollPercentage >= 72 && scrollPercentage <= 93))
+            ((scrollPercentage >= 21 && scrollPercentage < 41) ||
+                (scrollPercentage >= 63 && scrollPercentage < 84))
         ) {
             setElementColor(
                 'fill-brand-black',
@@ -158,7 +159,42 @@ function updateLogoAndMenuToggleColors() {
         } else if (
             window.location.pathname === '/' &&
             !isMenuOpen &&
-            ((scrollPercentage >= 50 && scrollPercentage <= 72) || scrollPercentage >= 93)
+            ((scrollPercentage >= 41 && scrollPercentage < 63) || scrollPercentage >= 84)
+        ) {
+            setElementColor('fill-white', 'bg-white', 'before:bg-white', 'after:bg-white');
+        } else if (
+            window.location.pathname !== '/' &&
+            scrollPosition / window.innerHeight >= 0.91 &&
+            !isMenuOpen
+        ) {
+            setElementColor(
+                'fill-brand-black',
+                'bg-brand-black',
+                'before:bg-brand-black',
+                'after:bg-brand-black',
+            );
+        } else {
+            setElementColor('fill-white', 'bg-white', 'before:bg-white', 'after:bg-white');
+        }
+    }
+    else {
+        // Apply desktop-specific color changes based on scroll percentage
+        if (
+            window.location.pathname === '/' &&
+            !isMenuOpen &&
+            ((scrollPercentage >= 29 && scrollPercentage < 50) ||
+                (scrollPercentage >= 72 && scrollPercentage < 93))
+        ) {
+            setElementColor(
+                'fill-brand-black',
+                'bg-brand-black',
+                'before:bg-brand-black',
+                'after:bg-brand-black',
+            );
+        } else if (
+            window.location.pathname === '/' &&
+            !isMenuOpen &&
+            ((scrollPercentage >= 50 && scrollPercentage < 72) || scrollPercentage >= 93)
         ) {
             setElementColor('fill-white', 'bg-white', 'before:bg-white', 'after:bg-white');
         } else if (
@@ -188,6 +224,10 @@ function isLargeMobileDevice() {
     return window.innerWidth >= 428 && window.innerWidth <= 1020; // Adjust threshold based on desired breakpoint for mobile view
 }
 
+function isLaptopScreenDevice() {
+    return window.innerWidth >= 1021 && window.innerWidth <= 1919; // Adjust threshold based on desired breakpoint for mobile view
+}
+
 // Helper function to set element colors
 function setElementColor(
     fillClass: string,
@@ -215,19 +255,21 @@ document.getElementById('menu-toggle')?.addEventListener('click', function () {
     const scrollPercentage = calculateScrollPercentage();
     const isSmallMobile = isSmallMobileDevice(); // Check if the device is small mobile
     const isLargeMobile = isLargeMobileDevice(); // Check if the device is large mobile
+    const isLaptopScreen = isLaptopScreenDevice(); // Check if the device is laptop screen
+
     // Update storedLogoColor when menu is first opened
     if (isSmallMobile) {
         if (
             window.location.pathname === '/' &&
             isMenuOpen &&
-            ((scrollPercentage >= 18 && scrollPercentage <= 39) ||
-                (scrollPercentage >= 61 && scrollPercentage <= 82))
+            ((scrollPercentage >= 17 && scrollPercentage < 38) ||
+                (scrollPercentage >= 60 && scrollPercentage < 81))
         ) {
             storedLogoColor = 'fill-brand-black';
         } else if (
             window.location.pathname === '/' &&
             isMenuOpen &&
-            ((scrollPercentage >= 39 && scrollPercentage <= 61) || scrollPercentage >= 82)
+            ((scrollPercentage >= 38 && scrollPercentage < 60) || scrollPercentage >= 81)
         ) {
             storedLogoColor = 'fill-white';
         } else if (
@@ -244,14 +286,38 @@ document.getElementById('menu-toggle')?.addEventListener('click', function () {
         if (
             window.location.pathname === '/' &&
             isMenuOpen &&
-            ((scrollPercentage >= 21 && scrollPercentage <= 42) ||
-                (scrollPercentage >= 64 && scrollPercentage <= 85))
+            ((scrollPercentage >= 20 && scrollPercentage < 41) ||
+                (scrollPercentage >= 65 && scrollPercentage < 84))
         ) {
             storedLogoColor = 'fill-brand-black';
         } else if (
             window.location.pathname === '/' &&
             isMenuOpen &&
-            ((scrollPercentage >= 42 && scrollPercentage <= 64) || scrollPercentage >= 85)
+            ((scrollPercentage >= 41 && scrollPercentage < 65) || scrollPercentage >= 84)
+        ) {
+            storedLogoColor = 'fill-white';
+        } else if (
+            window.location.pathname !== '/' &&
+            scrollPosition / window.innerHeight >= 0.91 &&
+            isMenuOpen
+        ) {
+            storedLogoColor = 'fill-brand-black';
+        } else {
+            storedLogoColor = 'fill-white';
+        }
+    } else if (isLaptopScreen) {
+        // Apply large mobile-specific color changes based on scroll percentage
+        if (
+            window.location.pathname === '/' &&
+            isMenuOpen &&
+            ((scrollPercentage >= 21 && scrollPercentage < 41) ||
+                (scrollPercentage >= 63 && scrollPercentage < 84))
+        ) {
+            storedLogoColor = 'fill-brand-black';
+        } else if (
+            window.location.pathname === '/' &&
+            isMenuOpen &&
+            ((scrollPercentage >= 41 && scrollPercentage < 63) || scrollPercentage >= 84)
         ) {
             storedLogoColor = 'fill-white';
         } else if (
@@ -264,7 +330,7 @@ document.getElementById('menu-toggle')?.addEventListener('click', function () {
             storedLogoColor = 'fill-white';
         }
     } else {
-        // Apply desktop-specific color changes based on scroll percentage
+        // Apply monitor-specific color changes based on scroll percentage
         if (
             window.location.pathname === '/' &&
             isMenuOpen &&
