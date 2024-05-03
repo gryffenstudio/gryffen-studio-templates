@@ -1,0 +1,19 @@
+---
+interface Props {
+    id: string;
+    buttonText: string;
+}
+
+const {id, buttonText} = Astro.props;
+---
+<div class='relative'>
+    <button
+        id=`${id}-filter-button`
+        class='text-brand-black text-lg hover:text-brand-gray transform transition-colors duration-200'
+        >{buttonText}</button
+    >
+    <span
+        id=`${id}-underline`
+        class='invisible relative -bottom-1 left-0 after:block after:transform after:transition-transform after:duration-300 after:-translate-x-full after:w-[70px] after:h-[3px] after:bg-brand-black after:rounded-full'
+    ></span>
+</div>
