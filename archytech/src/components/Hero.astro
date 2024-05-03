@@ -14,6 +14,8 @@ const { heroBackgroundImgSrcList, alt } = Astro.props satisfies Props;
         class='absolute inset-0 w-full h-full object-cover object-center block md:hidden'
         src={heroBackgroundImgSrcList[0]}
         alt={alt}
+        width="375"
+        height="812"
     />
 
     <!-- Desktop Image -->
@@ -21,6 +23,8 @@ const { heroBackgroundImgSrcList, alt } = Astro.props satisfies Props;
         class='absolute inset-0 w-full h-full object-cover object-center hidden md:block'
         src={heroBackgroundImgSrcList[1]}
         alt={alt}
+        width="1440"
+        height="1024"
     />
     <slot />
 </header>
