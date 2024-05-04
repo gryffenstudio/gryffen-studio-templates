@@ -38,6 +38,7 @@ const { sectionNum, sectionHeader, sectionDescription, sectionProgress, imageSrc
                 </p>
             </div>
         </div>
+        <div class="w--[327px] h-[448]">
         <CustomImage
             mobileImgUrl={imageSrc[0]}
             desktopImgUrl={imageSrc[1]}
@@ -46,8 +47,9 @@ const { sectionNum, sectionHeader, sectionDescription, sectionProgress, imageSrc
                 [710, 448],
             ]}
             alt=`Section ${sectionNum} Image`
-            classList='place-self-center'
+            classList='place-self-center w-full h-auto'
         />
+        </div>
     </section>
 :
     <section class='flex flex-col lg:flex-row w-full space-y-8 lg:space-y-0 lg:justify-around pb-8 lg:py-24 lg:px-16 px-6 bg-brand-black'>

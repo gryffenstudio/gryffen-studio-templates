@@ -30,5 +30,5 @@ const desktopImg = await getImage({
 <picture class={classList}>
     <source media='(max-width: 810px)' srcset={mobileImg.src} />
     <source media='(min-width: 811px)' srcset={desktopImg.src} />
-    <img src={desktopImg.src} alt={alt} loading="lazy" decoding="async" />
+    <img src={desktopImg.src} alt={alt} height={desktopImg.attributes.height} width={desktopImg.attributes.width} />
 </picture>
