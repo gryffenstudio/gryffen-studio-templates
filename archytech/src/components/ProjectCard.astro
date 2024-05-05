@@ -22,12 +22,12 @@ const {projectName, projectSlug, projectCategory, projectImageMobileSrc, project
             [358, 448],
         ]}
         alt={projectImageAlt}
-        classList='group-hover:blur-sm shadow-md shadow-brand-black transform transition-all duration-300'
+        classList='group-hover:blur-sm blur-none shadow-md shadow-brand-black transform transition-all duration-300'
     />
-    <p class='hidden z-20 absolute bottom-6 left-6 text-xl text-start group-hover:block'>
+    <p class='block opacity-0 z-20 absolute bottom-6 left-6 text-xl text-start transform transition-opacity duration-300 group-hover:opacity-100'>
         {projectName}
     </p>
     <span
-        class='hidden bg-brand-black bg-blend-luminosity bg-opacity-20 z-10 absolute w-full h-full transform transition-all duration-300 group-hover:block'
+        class='block bg-opacity-0 bg-brand-black bg-blend-luminosity z-10 absolute w-full h-full transform transition-all duration-300 group-hover:bg-opacity-20'
     ></span>
 </a>
