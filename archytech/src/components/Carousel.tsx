@@ -19,6 +19,7 @@ function Carousel(props: CarouselProps) {
     };
 
     const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+        e.preventDefault(); // Prevent default scroll behavior
         if (!touchStartX.current) return;
 
         const touchCurrentX = e.touches[0].clientX;
@@ -50,6 +51,7 @@ function Carousel(props: CarouselProps) {
             className='w-full max-w-full overflow-hidden relative'
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
+            onTouchEnd={() => touchStartX.current = null}
         >
             <div
                 className='flex transition ease-in-out duration-700'
