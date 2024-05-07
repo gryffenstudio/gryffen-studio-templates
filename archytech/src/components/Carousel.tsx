@@ -47,7 +47,7 @@ function Carousel(props: CarouselProps) {
                         alt={carouselImage.alt}
                         height={681}
                         width={327}
-                        className='min-w-full h-auto sm:hidden'
+                        className='min-w-full h-auto block sm:hidden'
                         decoding='async'
                         loading='lazy'
                     />
@@ -59,7 +59,7 @@ function Carousel(props: CarouselProps) {
                         alt={carouselImage.alt}
                         height={681}
                         width={1196}
-                        className='min-w-full h-auto sm:flex'
+                        className='min-w-full h-auto hidden sm:flex'
                         decoding='async'
                         loading='lazy'
                     />
