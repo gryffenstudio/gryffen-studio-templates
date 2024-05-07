@@ -3,7 +3,7 @@ import { useSwipeable } from 'react-swipeable';
 
 interface CarouselImage {
     image: any;
-    imageAlt: string;
+    alt: string;
 }
 
 interface CarouselProps {
@@ -44,7 +44,9 @@ function Carousel(props: CarouselProps) {
                     <img
                         key={`mobile-${index}`}
                         src={carouselImage.image.src}
-                        alt={carouselImage.imageAlt}
+                        alt={carouselImage.alt}
+                        height={681}
+                        width={327}
                         className='min-w-full h-auto sm:hidden'
                         decoding='async'
                         loading='lazy'
@@ -54,7 +56,9 @@ function Carousel(props: CarouselProps) {
                     <img
                         key={`desktop-${index}`}
                         src={carouselImage.image.src}
-                        alt={carouselImage.imageAlt}
+                        alt={carouselImage.alt}
+                        height={681}
+                        width={1196}
                         className='min-w-full h-auto sm:flex'
                         decoding='async'
                         loading='lazy'
