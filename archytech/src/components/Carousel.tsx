@@ -75,7 +75,7 @@ function Carousel(props: CarouselProps) {
                 </button>
             </div>
 
-            <div className='absolute bottom-0 py-4 flex justify-center items-center w-full gap-10 sm:hidden'>
+            <div className='absolute bottom-0 py-4 flex justify-center items-center w-full gap-6 sm:hidden'>
                 {props.mobileImages.map((image: CarouselImage, i: number) => (
                     <div
                         key={'carousel-circle-' + i}

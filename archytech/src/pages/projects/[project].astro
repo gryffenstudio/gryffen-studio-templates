@@ -57,15 +57,15 @@ switch(project.data.category){
     </Hero>
 
     <main class="w-full items-center justify-center">
-        <section class="flex flex-col items-start justify-center space-y-10 py-8 px-6 lg:py-24 lg:px-40 lg:flex-row lg:justify-between lg:space-y-0">
-            <div class="relative flex flex-col space-y-10 lg:w-1/2">
+        <section class="flex flex-col items-start justify-center space-y-10 py-8 px-6 lg:py-20 lg:px-40 md:flex-row md:justify-between md:space-y-0">
+            <div class="relative flex flex-col space-y-10 md:w-1/2">
                 <h2 class='text-brand-black text-start font-semibold place-self-start text-2xl lg:text-3xl relative tracking-wide'>
                         Design Brief
                         <span
-                            class='after:absolute after:block after:w-[70px] after:h-[3px] after:bg-brand-black after:mt-2 after:rounded-full'
+                            class='after:absolute after:block after:w-[40%] after:h-[3px] after:bg-brand-black after:mt-2 after:rounded-full'
                         ></span>
                 </h2>
-                <p class="text-brand-black lg:w-3/4">
+                <p class="text-brand-black md:w-3/4">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
                 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -79,11 +79,31 @@ switch(project.data.category){
                 [598, 681],
             ]}
             alt={project.data.designBriefImageAlt}
-            classList='place-self-center'
+            classList='place-self-center flex justify-center w-full md:w-1/2 md:block md:justify-normal'
+            imgClassList="min-w-full h-auto"
             />
         </section>
-        <section class="flex place-content-center w-full py-8 px-6 lg:py-24 lg:px-40">
+        <section class="flex flex-col place-content-center w-full py-8 px-6 lg:px-40">
+                <h2
+                    class='text-brand-black text-start font-semibold place-self-start text-2xl mb-8 lg:text-3xl relative tracking-wide'
+                >
+                    Interior
+                    <span
+                        class='after:absolute after:block after:w-[40%] after:h-[3px] after:bg-brand-black after:mt-2 after:rounded-full'
+                    ></span>
+                </h2>
             <Carousel mobileImages={project.data.interiorImagesMobile} desktopImages={project.data.interiorImagesDesktop} client:load />
+        </section>
+        <section class="flex flex-col place-content-center w-full py-8 px-6 lg:px-40">
+                <h2
+                    class='text-brand-black text-start font-semibold place-self-start text-2xl mb-8 lg:text-3xl relative tracking-wide'
+                >
+                    Exterior
+                    <span
+                        class='after:absolute after:block after:w-[40%] after:h-[3px] after:bg-brand-black after:mt-2 after:rounded-full'
+                    ></span>
+                </h2>
+            <Carousel mobileImages={project.data.exteriorImagesMobile} desktopImages={project.data.exteriorImagesDesktop} client:load />
         </section>
     </main>
 
