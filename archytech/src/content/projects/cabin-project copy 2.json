@@ -16,21 +16,67 @@
     "designBriefImageDesktop": "../../assets/images/Project-Design-Brief-Img-Cabin.png",
     "designBriefImageAlt": "Cabin Project Design Brief Image",
     "interiorImagesMobile": [
-        "../../assets/images/Project-Hero-Img-Cabin-SM.png",
-        "../../assets/images/Project-Design-Brief-Img-Cabin-SM.png"
+        {
+            "image": "../../assets/images/Cabin-Project-Interior-Image-1-SM.png",
+            "alt": "Cabin Project Interior Design Image"
+        }
+        ,
+        {
+            "image": "../../assets/images/Cabin-Project-Interior-Image-1-SM.png",
+            "alt": "Cabin Project Interior Design Image"
+        }
+        ,
+        {
+            "image": "../../assets/images/Cabin-Project-Interior-Image-1-SM.png",
+            "alt": "Cabin Project Interior Design Image 2"
+        }
     ],
     "interiorImagesDesktop":[
-        "../../assets/images/Project-Hero-Img-Cabin-SM.png", 
-        "../../assets/images/Project-Design-Brief-Img-Cabin-SM.png"
+        {
+            "image": "../../assets/images/Cabin-Project-Interior-Image-1.png",
+            "alt": "Cabin Project Interior Design Image"
+        }
+        ,
+        {
+            "image": "../../assets/images/Cabin-Project-Interior-Image-1.png",
+            "alt": "Cabin Project Interior Design Image"
+        }
+        ,
+        {
+            "image": "../../assets/images/Cabin-Project-Interior-Image-1.png",
+            "alt": "Cabin Project Interior Design Image 2"
+        }
     ],
-    "interiorImageAlt": ["Cabin Project Interior Design Image", "Cabin Project Interior Design Image 2"],
     "exteriorImagesMobile":[
-            "../../assets/images/Project-Hero-Img-Cabin-SM.png",
-            "../../assets/images/Project-Design-Brief-Img-Cabin-SM.png"
+        {
+            "image": "../../assets/images/Cabin-Project-Exterior-Image-1-SM.png",
+            "alt": "Cabin Project Exterior Design Image"
+        }
+        ,
+        {
+            "image": "../../assets/images/Cabin-Project-Exterior-Image-1-SM.png",
+            "alt": "Cabin Project Exterior Design Image"
+        }
+        ,
+        {
+            "image": "../../assets/images/Cabin-Project-Exterior-Image-1-SM.png",
+            "alt": "Cabin Project Exterior Design Image 2"
+        }
     ],
     "exteriorImagesDesktop":[
-        "../../assets/images/Project-Hero-Img-Cabin-SM.png",
-        "../../assets/images/Project-Design-Brief-Img-Cabin-SM.png"
-    ],
-    "exteriorImageAlt": ["Cabin Project Exterior Design Image", "Cabin Project Exterior Design Image 2"]
+        {
+            "image": "../../assets/images/Cabin-Project-Exterior-Image-1.png",
+            "alt": "Cabin Project Exterior Design Image"
+        }
+        ,
+        {
+            "image": "../../assets/images/Cabin-Project-Exterior-Image-1.png",
+            "alt": "Cabin Project Exterior Design Image"
+        }
+        ,
+        {
+            "image": "../../assets/images/Cabin-Project-Exterior-Image-1.png",
+            "alt": "Cabin Project Exterior Design Image 2"
+        }
+    ]
 }

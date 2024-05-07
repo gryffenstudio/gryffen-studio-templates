@@ -354,9 +354,6 @@ document.getElementById('menu-toggle')?.addEventListener('click', function () {
             storedLogoColor = 'fill-white';
         }
     }
-
-    console.log(storedLogoColor);
-
     toggleMenu();
 });
 

@@ -3,6 +3,8 @@ import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import Hero from '../../components/Hero.astro';
 import ScrollProgress from '../../components/ScrollProgress.astro';
+import CustomImage from '../../components/CustomImage.astro';
+import Carousel from '../../components/Carousel';
 
 export async function getStaticPaths() {
     const projects = await getCollection('projects')
@@ -53,6 +55,37 @@ switch(project.data.category){
             </div>
         </div>
     </Hero>
+
+    <main class="w-full items-center justify-center">
+        <section class="flex flex-col items-start justify-center space-y-10 py-8 px-6 lg:py-24 lg:px-40 lg:flex-row lg:justify-between lg:space-y-0">
+            <div class="relative flex flex-col space-y-10 lg:w-1/2">
+                <h2 class='text-brand-black text-start font-semibold place-self-start text-2xl lg:text-3xl relative tracking-wide'>
+                        Design Brief
+                        <span
+                            class='after:absolute after:block after:w-[70px] after:h-[3px] after:bg-brand-black after:mt-2 after:rounded-full'
+                        ></span>
+                </h2>
+                <p class="text-brand-black lg:w-3/4">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </div>
+            <CustomImage
+            mobileImgUrl={project.data.designBriefImageMobile}
+            desktopImgUrl={project.data.designBriefImageDesktop}
+            imageSizes={[
+                [327, 327],
+                [598, 681],
+            ]}
+            alt={project.data.designBriefImageAlt}
+            classList='place-self-center'
+            />
+        </section>
+        <section class="flex place-content-center w-full py-8 px-6 lg:py-24 lg:px-40">
+            <Carousel mobileImages={project.data.interiorImagesMobile} desktopImages={project.data.interiorImagesDesktop} client:visible />
+        </section>
+    </main>
 
 
 </Layout>

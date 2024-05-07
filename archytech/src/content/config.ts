@@ -21,12 +21,22 @@ const projectCollection = defineCollection({
         designBriefImageMobile: image(),
         designBriefImageDesktop: image(),
         designBriefImageAlt: z.string(),
-        interiorImagesMobile: z.array(image()),
-        interiorImagesDesktop: z.array(image()),
-        interiorImageAlt: z.array(z.string()),
-        exteriorImagesMobile: z.array(image()),
-        exteriorImagesDesktop: z.array(image()),
-        exteriorImageAlt: z.array(z.string()),
+        interiorImagesMobile: z.array(z.object({
+            image: image(),
+            alt: z.string()
+        })),
+        interiorImagesDesktop: z.array(z.object({
+            image: image(),
+            alt: z.string()
+        })),
+        exteriorImagesMobile: z.array(z.object({
+            image: image(),
+            alt: z.string()
+        })),
+        exteriorImagesDesktop: z.array(z.object({
+            image: image(),
+            alt: z.string()
+        })),
     })
 });
 
