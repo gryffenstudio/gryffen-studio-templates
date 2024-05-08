@@ -37,14 +37,21 @@
                 // Show dropdown content (slide down animation)
                 contentDiv.classList.remove('max-h-0');
                 arrowIcon.classList.remove('text-brand-black');
+                header.classList.remove('text-brand-black');
                 contentDiv.classList.add('max-h-full');
                 contentDiv.classList.add('mb-4');
                 arrowIcon.classList.add('text-brand-purple');
+                header.classList.add('text-brand-purple');
+                arrowIcon.classList.add('rotate-180');
             } else {
                 // Hide dropdown content (slide up animation)
                 contentDiv.classList.remove('max-h-full');
                 contentDiv.classList.remove('mb-4');
                 arrowIcon.classList.remove('text-brand-purple');
+                header.classList.remove('text-brand-purple');
+                arrowIcon.classList.remove('rotate-180');
+                arrowIcon.classList.add('text-brand-black');
+                header.classList.add('text-brand-black');
                 contentDiv.classList.add('max-h-0');
             }
         }

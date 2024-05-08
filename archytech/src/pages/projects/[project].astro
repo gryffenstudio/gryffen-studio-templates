@@ -5,6 +5,7 @@ import Hero from '../../components/Hero.astro';
 import ScrollProgress from '../../components/ScrollProgress.astro';
 import CustomImage from '../../components/CustomImage.astro';
 import Carousel from '../../components/Carousel';
+import ContactUsSection from '../../components/ContactUsSection.astro';
 
 export async function getStaticPaths() {
     const projects = await getCollection('projects')
@@ -111,6 +112,5 @@ switch(project.data.category){
             <Carousel mobileImages={project.data.exteriorImagesMobile} desktopImages={project.data.exteriorImagesDesktop} client:load />
         </section>
     </main>
-
-
+    <ContactUsSection />
 </Layout>
