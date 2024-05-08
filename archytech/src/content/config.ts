@@ -40,6 +40,28 @@ const projectCollection = defineCollection({
     })
 });
 
+const teamCollection = defineCollection({
+    type: 'data',
+    schema: ({ image }) => z.object({
+        name: z.string().max(100, {
+            message: 'Team member name is too long!'
+        }),
+        role: z.string(),
+        slug: z.string(),
+        description1: z.string(),
+        description2: z.string(),
+        description3: z.string(),
+        location: z.string(),
+        phoneNumber: z.string(),
+        email: z.string().email(),
+        profileImageMobile: image(),
+        profileImageDesktop: image(),
+        cardImageMobile: image(),
+        cardImageDesktop: image()
+    })
+});
+
 export const collections = {
-    'projects': projectCollection
+    'projects': projectCollection,
+    'team': teamCollection
 }
