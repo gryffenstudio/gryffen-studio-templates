@@ -46,7 +46,7 @@ const team = await getCollection('team');
                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  
             </p>
         </div>
-        <section class='w-full grid grid-cols-1 gap-y-6 justify-items-center md:grid-cols-2 md:gap-x-16 lg:gap-y-10 lg:grid-cols-3 2xl:grid-cols-4'>
+            <section class='w-full grid grid-cols-1 gap-y-6 justify-items-center md:grid-cols-2 md:gap-x-16 lg:gap-y-10 lg:grid-cols-3 2xl:grid-cols-4'>
             {team.map((member: any) => {
                 return <TeamMemberCard name={member.data.name} role={member.data.role} slug={member.data.slug}
                         cardImageMobile={member.data.cardImageMobile} cardImageDesktop={member.data.cardImageDesktop}/>
