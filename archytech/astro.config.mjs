@@ -12,4 +12,7 @@ export default defineConfig({
     // output: 'hybrid',
     // adapter: netlify(),
     integrations: [react(), tailwind(), partytown(), robotsTxt(), sitemap()],
+    prefetch: {
+        prefetchAll: true
+    }
 });

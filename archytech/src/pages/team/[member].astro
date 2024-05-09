@@ -1,13 +1,148 @@
 ---
+import Hero from '../../components/Hero.astro';
+import ScrollProgress from '../../components/ScrollProgress.astro';
+import Layout from '../../layouts/Layout.astro';
+import heroImage from '../../assets/images/Team-Hero.png';
+import heroImageSM from '../../assets/images/Team-Hero-SM.png';
+import { getCollection } from 'astro:content';
+import CustomImage from '../../components/CustomImage.astro';
+import Icon from '../../components/Icon.astro';
+import type { CarouselImage } from '../../components/Carousel';
+
 export async function getStaticPaths() {
-  return [
-    { params: { member: 1 } },
-    { params: { member: 2 } },
-    { params: { member: 3 } }
-  ];
+    const members = await getCollection('team')
+    return members.map((member: any) => ({
+        params: {
+            member: member.data.slug, 
+        },
+        props: { member }
+    }))
 }
 
-const { member } = Astro.params;
+const completedProjects = await getCollection('projects', ({data}) => {
+    return data.completionYear !== null && data.completionYear?.trim() !== '';
+})
+
+let featuredProjectsMobile: CarouselImage[] = [];
+let featuredProjectsDesktop: CarouselImage[] = [];
+
+// Build featured project carousel image lists for both mobile and desktop
+for(let i = 0; i < 3; i ++){
+    let carouselImageMobile: CarouselImage = {} as CarouselImage;
+    let carouselImageDesktop: CarouselImage ={} as CarouselImage;
+
+    if(completedProjects[i]){
+        carouselImageMobile.image = completedProjects[i].data.cardImageMobile.src;
+        carouselImageMobile.alt = completedProjects[i].data.cardImageAlt;
+        carouselImageMobile.height = completedProjects[i].data.cardImageMobile.height;
+        carouselImageMobile.width = completedProjects[i].data.cardImageMobile.width;
+        carouselImageMobile.href = `projects/${completedProjects[i].data.slug}`
+
+        carouselImageDesktop.image = completedProjects[i].data.cardImageDesktop.src;
+        carouselImageDesktop.alt = completedProjects[i].data.cardImageAlt;
+        carouselImageDesktop.height = completedProjects[i].data.cardImageDesktop.height;
+        carouselImageDesktop.width = completedProjects[i].data.cardImageDesktop.width;
+        carouselImageDesktop.href = `projects/${completedProjects[i].data.slug}`
+
+        featuredProjectsMobile.push(carouselImageMobile);
+
+        featuredProjectsDesktop.push(carouselImageDesktop);
+    }
+}
+
+const { member } = Astro.props;
 ---
 
-<h1>{member}</h1>
+<Layout
+    title=`${member.data.name} - Archytech ${member.data.role}`
+    description=`Meet ${member.data.name}, our ${member.data.role} here at Archytech!`
+    robots={false}
+>
+    <Hero heroBackgroundImgSrcList={[heroImageSM, heroImage]} alt=`Team Member Hero Image`>
+        <div class='bottom-10 z-20 absolute flex w-full flex-col space-y-8 md:space-y-10'>
+            <h1 class='hero-h1 bottom-0 tracking-wide px-6 lg:px-20'>Team</h1>
+            <div class='px-6 lg:px-20'>
+                <ScrollProgress
+                    isHeroScrollProgress={true}
+                    barColor='bg-brand-black'
+                    progressColor='bg-brand-gray'
+                    barHeight='h-48 lg:h-56'
+                    progress='bottom-[75%]'
+                />
+            </div>
+        </div>
+        <div
+            class='bg-brand-black bg-blend-luminosity md:backdrop-blur-xl bg-opacity-20 z-10 absolute top-0 left-0 w-full md:w-[43%] h-full'
+        >
+        </div>
+    </Hero>
+
+    <main class='container mx-auto items-center space-y-10 py-10 px-6 md:px-10 md:py-20 md:space-y-20'>
+        <section class="flex flex-col space-y-6 md:flex-row md:space-x-8">
+            <div class="flex flex-col space-y-6 w-fit place-self-center md:place-self-auto md:w-1/2">
+                <div class="flex flex-col items-start space-y-2 md:hidden">
+                    <h2 class="block text-brand-black text-2xl text-left font-bold">
+                        {member.data.name}
+                    </h2>
+                    <p class="block text-brand-gray text-lg text-left font-medium">{member.data.role.toUpperCase()}</p>
+                </div>
+                <CustomImage
+                    mobileImgUrl={member.data.profileImageMobile}
+                    desktopImgUrl={member.data.profileImageDesktop}
+                    imageSizes={[
+                        [327, 637],
+                        [518, 637],
+                    ]}
+                    alt=`${member.data.name} Profile Image`
+                />
+                <div class="flex items-center space-x-4">
+                    <Icon 
+                        href=`tel:${member.data.phoneNumber.replace(/-/g,'')}`
+                        icon='icon-[mage--phone]' 
+                        label=`${member.data.name} phone number link`
+                    />
+                    <p class="text-brand-black">{member.data.phoneNumber}</p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <Icon 
+                        href=`mailto:${member.data.email}`
+                        icon='icon-[eva--email-outline]' 
+                        label=`${member.data.name} email link`
+                    />
+                    <p class="text-brand-black">{member.data.email}</p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <Icon 
+                        href=`https://maps.google.com/?q=${member.data.location}`
+                        icon='icon-[carbon--location]' 
+                        label=`${member.data.name} location link`
+                    />
+                    <p class="text-brand-black">{member.data.location}</p>
+                </div>
+            </div>
+            <div class="flex flex-col space-y-6 md:w-1/2">
+                <div class="hidden md:flex flex-col items-start space-y-2">
+                    <h2 class="block text-brand-black text-2xl text-left font-bold">
+                        {member.data.name}
+                    </h2>
+                    <p class="block text-brand-gray text-lg text-left font-medium">{member.data.role.toUpperCase()}</p>
+                </div>
+                <p class="text-brand-black leading-loose">
+                    {member.data.description1}
+                </p>
+                <p class="text-brand-black leading-loose">
+                    {member.data.description2}
+                </p>
+                <p class="text-brand-black leading-loose">
+                    {member.data.description3}
+                </p>
+            </div>
+        </section>
+        <section>
+
+        </section>
+    </main>
+
+
+
+</Layout>

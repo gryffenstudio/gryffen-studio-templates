@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { useSwipeable } from 'react-swipeable';
 
-interface CarouselImage {
+export interface CarouselImage {
     image: any;
     alt: string;
+    height?: number;
+    width?: number;
+    href?: string;
 }
 
 interface CarouselProps {
@@ -33,37 +36,65 @@ function Carousel(props: CarouselProps) {
     });
 
     return (
-        <div className='w-full max-w-full overflow-hidden relative' {...swipeHandlers}>
+        <div className='w-full max-w-full overflow-x-hidden relative' {...swipeHandlers}>
             <div
-                className='flex transition ease-in-out duration-700'
+                className='flex transition ease-in-out duration-1000'
                 style={{
-                    transform: `translateX(-${currentImage * 100}%)`
+                    transform: `translateX(-${currentImage * 105.5}%)`
                 }}
             >
-                {props.mobileImages.map((carouselImage: CarouselImage, index) => (
-                    <img
-                        key={`mobile-${index}`}
-                        src={carouselImage.image.src}
-                        alt={carouselImage.alt}
-                        height={681}
-                        width={327}
-                        className='min-w-full h-auto block sm:hidden'
-                        decoding='async'
-                        loading='lazy'
-                    />
-                ))}
-                {props.desktopImages.map((carouselImage: CarouselImage, index) => (
-                    <img
-                        key={`desktop-${index}`}
-                        src={carouselImage.image.src}
-                        alt={carouselImage.alt}
-                        height={681}
-                        width={1196}
-                        className='min-w-full h-auto hidden sm:block'
-                        decoding='async'
-                        loading='lazy'
-                    />
-                ))}
+                <div className='overflow-x-visible flex'>
+                    {props.mobileImages.map((carouselImage: CarouselImage, index) => {
+                        if(carouselImage.href){
+                            return <a href={carouselImage.href} key={`mobile-${index}`}>
+                                <img
+                                    src={carouselImage.image.src}
+                                    alt={carouselImage.alt}
+                                    height={carouselImage.height ? carouselImage.height : 681}
+                                    width={carouselImage.width ? carouselImage.width : 327}
+                                    className='min-w-full h-auto mr-5 block sm:hidden'
+                                    decoding='async'
+                                    loading='lazy'
+                                />
+                            </a>
+                        }
+                        return <img
+                            key={`mobile-${index}`}
+                            src={carouselImage.image.src}
+                            alt={carouselImage.alt}
+                            height={681}
+                            width={327}
+                            className='min-w-full h-auto mr-5 block sm:hidden'
+                            decoding='async'
+                            loading='lazy'
+                        />
+                    })}
+                    {props.desktopImages.map((carouselImage: CarouselImage, index) => {
+                        if(carouselImage.href){
+                            return <a href={carouselImage.href} key={`desktop-${index}`}>
+                                <img
+                                    src={carouselImage.image.src}
+                                    alt={carouselImage.alt}
+                                    height={carouselImage.height ? carouselImage.height : 681}
+                                    width={carouselImage.width ? carouselImage.width :1196}
+                                    className='min-w-full h-auto hidden mr-18 md:mr-[44px] lg:mr-10 xl:mr-[53px] 2xl:mr-[86px] sm:block'
+                                    decoding='async'
+                                    loading='lazy'
+                                />
+                            </a>
+                        }
+                        return <img
+                            key={`desktop-${index}`}
+                            src={carouselImage.image.src}
+                            alt={carouselImage.alt}
+                            height={681}
+                            width={1196}
+                            className='min-w-full h-auto hidden mr-18 md:mr-[44px] lg:mr-10 xl:mr-[53px] 2xl:mr-[86px] sm:block'
+                            decoding='async'
+                            loading='lazy'
+                        />
+                    })}
+                </div>
             </div>
 
             <div className='absolute hidden top-0 h-full w-full justify-between item-center text-white sm:flex'>
