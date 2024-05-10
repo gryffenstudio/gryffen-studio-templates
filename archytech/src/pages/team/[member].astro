@@ -8,6 +8,10 @@ import { getCollection } from 'astro:content';
 import CustomImage from '../../components/CustomImage.astro';
 import Icon from '../../components/Icon.astro';
 import type { CarouselImage } from '../../components/Carousel';
+import Carousel from '../../components/Carousel';
+import { getImage } from 'astro:assets';
+import ProjectCard from '../../components/ProjectCard.astro';
+import ContactUsSection from '../../components/ContactUsSection.astro';
 
 export async function getStaticPaths() {
     const members = await getCollection('team')
@@ -23,30 +27,24 @@ const completedProjects = await getCollection('projects', ({data}) => {
     return data.completionYear !== null && data.completionYear?.trim() !== '';
 })
 
-let featuredProjectsMobile: CarouselImage[] = [];
-let featuredProjectsDesktop: CarouselImage[] = [];
+let featuredProjectCarouselImages: CarouselImage[] = [];
+let featuredProjectCards = [];
 
 // Build featured project carousel image lists for both mobile and desktop
 for(let i = 0; i < 3; i ++){
     let carouselImageMobile: CarouselImage = {} as CarouselImage;
-    let carouselImageDesktop: CarouselImage ={} as CarouselImage;
+    
+    let completedProjectsMobileImage = await getImage({src:completedProjects[i].data.cardImageMobile, height:448, width:327, format:"webp"})
 
     if(completedProjects[i]){
-        carouselImageMobile.image = completedProjects[i].data.cardImageMobile.src;
+        carouselImageMobile.image = {src: completedProjectsMobileImage.src};
         carouselImageMobile.alt = completedProjects[i].data.cardImageAlt;
-        carouselImageMobile.height = completedProjects[i].data.cardImageMobile.height;
-        carouselImageMobile.width = completedProjects[i].data.cardImageMobile.width;
-        carouselImageMobile.href = `projects/${completedProjects[i].data.slug}`
+        carouselImageMobile.height = completedProjectsMobileImage.attributes.height;
+        carouselImageMobile.width = completedProjectsMobileImage.attributes.width;
+        carouselImageMobile.href = `/projects/${completedProjects[i].data.slug}`
 
-        carouselImageDesktop.image = completedProjects[i].data.cardImageDesktop.src;
-        carouselImageDesktop.alt = completedProjects[i].data.cardImageAlt;
-        carouselImageDesktop.height = completedProjects[i].data.cardImageDesktop.height;
-        carouselImageDesktop.width = completedProjects[i].data.cardImageDesktop.width;
-        carouselImageDesktop.href = `projects/${completedProjects[i].data.slug}`
-
-        featuredProjectsMobile.push(carouselImageMobile);
-
-        featuredProjectsDesktop.push(carouselImageDesktop);
+        featuredProjectCarouselImages.push(carouselImageMobile);
+        featuredProjectCards.push(completedProjects[i]);
     }
 }
 
@@ -138,11 +136,26 @@ const { member } = Astro.props;
                 </p>
             </div>
         </section>
-        <section>
-
+        <section class='flex flex-col'>
+            <h2 class='text-brand-black text-start font-semibold place-self-start text-2xl lg:text-3xl relative tracking-wide mb-10'>
+                Featured Projects
+                <span
+                    class='after:absolute after:block after:w-[20%] after:h-[3px] after:bg-brand-black after:mt-2 after:rounded-full'
+                ></span>
+            </h2>
+            <div class="block sm:hidden">
+                <Carousel mobileImages={featuredProjectCarouselImages} client:load />
+            </div>
+            <div class="hidden sm:flex justify-between">
+                {featuredProjectCards.map((project: any) => {
+                    return <ProjectCard projectName={project.data.projectName} projectSlug={project.data.slug} projectCategory={project.data.category}
+                    projectImageMobileSrc={project.data.cardImageMobile} projectImageDesktopSrc={project.data.cardImageDesktop} projectImageAlt={project.data.cardImageAlt}/>
+                })}
+            </div>
         </section>
     </main>
-
+    <ContactUsSection />
+    <script src='../../scripts/member.ts'></script>
 
 
 </Layout>

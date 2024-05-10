@@ -13,6 +13,6 @@ export default defineConfig({
     // adapter: netlify(),
     integrations: [react(), tailwind(), partytown(), robotsTxt(), sitemap()],
     prefetch: {
-        prefetchAll: true
+        prefetchAll: true,
     }
 });

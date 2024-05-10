@@ -10,8 +10,8 @@ export interface CarouselImage {
 }
 
 interface CarouselProps {
-    desktopImages: CarouselImage[];
     mobileImages: CarouselImage[];
+    desktopImages?: CarouselImage[];
 }
 
 function Carousel(props: CarouselProps) {
@@ -43,16 +43,16 @@ function Carousel(props: CarouselProps) {
                     transform: `translateX(-${currentImage * 105.5}%)`
                 }}
             >
-                <div className='overflow-x-visible flex'>
-                    {props.mobileImages.map((carouselImage: CarouselImage, index) => {
+                <div className='flex'>
+                    {props.mobileImages && props.mobileImages.map((carouselImage: CarouselImage, index) => {
                         if(carouselImage.href){
-                            return <a href={carouselImage.href} key={`mobile-${index}`}>
+                            return <a className='min-w-full h-auto mr-5 block sm:hidden' href={carouselImage.href} key={`mobile-${index}`}>
                                 <img
                                     src={carouselImage.image.src}
                                     alt={carouselImage.alt}
                                     height={carouselImage.height ? carouselImage.height : 681}
                                     width={carouselImage.width ? carouselImage.width : 327}
-                                    className='min-w-full h-auto mr-5 block sm:hidden'
+                                    className='min-w-full h-auto'
                                     decoding='async'
                                     loading='lazy'
                                 />
@@ -69,20 +69,7 @@ function Carousel(props: CarouselProps) {
                             loading='lazy'
                         />
                     })}
-                    {props.desktopImages.map((carouselImage: CarouselImage, index) => {
-                        if(carouselImage.href){
-                            return <a href={carouselImage.href} key={`desktop-${index}`}>
-                                <img
-                                    src={carouselImage.image.src}
-                                    alt={carouselImage.alt}
-                                    height={carouselImage.height ? carouselImage.height : 681}
-                                    width={carouselImage.width ? carouselImage.width :1196}
-                                    className='min-w-full h-auto hidden mr-18 md:mr-[44px] lg:mr-10 xl:mr-[53px] 2xl:mr-[86px] sm:block'
-                                    decoding='async'
-                                    loading='lazy'
-                                />
-                            </a>
-                        }
+                    {props.desktopImages && props.desktopImages.map((carouselImage: CarouselImage, index) => {
                         return <img
                             key={`desktop-${index}`}
                             src={carouselImage.image.src}

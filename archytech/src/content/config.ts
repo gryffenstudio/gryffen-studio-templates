@@ -1,4 +1,6 @@
 import { z, defineCollection } from "astro:content";
+import { getImage } from 'astro:assets';
+
 
 const projectCollection = defineCollection({
     type:'data',
@@ -22,19 +24,31 @@ const projectCollection = defineCollection({
         designBriefImageDesktop: image(),
         designBriefImageAlt: z.string(),
         interiorImagesMobile: z.array(z.object({
-            image: image(),
+            image: image().transform(
+                async (im: ImageMetadata) =>
+                    await getImage({src:im, height:681, width:327, format:"webp"})
+            ),
             alt: z.string()
         })),
         interiorImagesDesktop: z.array(z.object({
-            image: image(),
+            image: image().transform(
+                async (im: ImageMetadata) =>
+                    await getImage({src:im, height:681, width:1196, format:"webp"})
+            ),
             alt: z.string()
         })),
         exteriorImagesMobile: z.array(z.object({
-            image: image(),
+            image: image().transform(
+                async (im: ImageMetadata) =>
+                    await getImage({src:im, height:681, width:327, format:"webp"})
+            ),
             alt: z.string()
         })),
         exteriorImagesDesktop: z.array(z.object({
-            image: image(),
+            image: image().transform(
+                async (im: ImageMetadata) =>
+                    await getImage({src:im, height:681, width:1196, format:"webp"})
+            ),
             alt: z.string()
         })),
     })
