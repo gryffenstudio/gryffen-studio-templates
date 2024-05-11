@@ -34,7 +34,7 @@ let featuredProjectCards = [];
 for(let i = 0; i < 3; i ++){
     let carouselImageMobile: CarouselImage = {} as CarouselImage;
     
-    let completedProjectsMobileImage = await getImage({src:completedProjects[i].data.cardImageMobile, height:448, width:327, format:"webp"})
+    let completedProjectsMobileImage = await getImage({src:completedProjects[i].data.cardImageMobile, height:448, width:327, format:"webp"});
 
     if(completedProjects[i]){
         carouselImageMobile.image = {src: completedProjectsMobileImage.src};
