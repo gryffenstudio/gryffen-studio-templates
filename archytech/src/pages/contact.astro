@@ -12,6 +12,7 @@ import Icon from "../components/Icon.astro";
     title="Contact Us - Archytech"
     description="Contact Us Today and Let's Build Together!"
     robots={false}
+    showFooter={false}
 >
 
     <main class='relative flex min-h-lvh w-full bg-brand-black bg-blend-luminosity items-center px-6 pt-28 pb-10 md:pt-28 md:pb-0 lg:px-24'>
@@ -87,59 +88,59 @@ import Icon from "../components/Icon.astro";
             <section class="flex flex-col mt-8 container mx-auto z-20 md:mt-0 xl:w-1/2">
                 <form class="space-y-6 ">
                     <div class='relative'>
-                        <input
-                            class='relative rounded-none w-full appearance-none mt-6 bg-transparent py-2 text-white border-b-white border-b-2 focus:border-0 active:ring-transparent focus:border-b-2 focus:outline-0 focus:ring-0'
-                            type='text'
-                            id='name'
-                            name='name'
-                        />
                         <label
                             class='absolute text-white text-sm left-0'
                             for='name'
                         >
                             Name
                         </label>
-                    </div>
-                    <div class='relative'>
                         <input
                             class='relative rounded-none w-full appearance-none mt-6 bg-transparent py-2 text-white border-b-white border-b-2 focus:border-0 active:ring-transparent focus:border-b-2 focus:outline-0 focus:ring-0'
-                            type='tel'
-                            id='phoneNumber'
-                            name='phoneNumber'
+                            type='text'
+                            id='name'
+                            name='name'
                         />
+                    </div>
+                    <div class='relative'>
                         <label
                             class='absolute text-white text-sm left-0'
                             for='phoneNumber'
                         >
                             Phone Number
                         </label>
+                        <input
+                            class='relative rounded-none w-full appearance-none mt-6 bg-transparent py-2 text-white border-b-white border-b-2 focus:border-0 active:ring-transparent focus:border-b-2 focus:outline-0 focus:ring-0'
+                            type='tel'
+                            id='phoneNumber'
+                            name='phoneNumber'
+                        />
                     </div>
                     <div class='relative'>
-                        <input
-                            class='relative rounded-none mt-6 w-full appearance-none bg-transparent py-2 text-white border-b-white border-b-2 focus:border-0 active:ring-transparent focus:border-b-2 focus:outline-0 focus:ring-0'
-                            type='email'
-                            id='email'
-                            name='email'
-                        />
                         <label
                             class='absolute text-white text-sm left-0'
                             for='email'
                         >
                             Email Address
                         </label>
+                        <input
+                            class='relative rounded-none mt-6 w-full appearance-none bg-transparent py-2 text-white border-b-white border-b-2 focus:border-0 active:ring-transparent focus:border-b-2 focus:outline-0 focus:ring-0'
+                            type='email'
+                            id='email'
+                            name='email'
+                        />
                     </div>
                     <div class='relative'>
-                        <textarea
-                            class='relative rounded-none w-full mt-8 appearance-none bg-transparent py-4 text-white border-b-white border-b-2 focus:border-0 active:ring-transparent focus:border-b-2 focus:outline-0 focus:ring-0'
-                            id='message'
-                            name='message'
-                        />
                         <label
                             class='absolute text-white text-sm left-0'
                             for='message'
                         >
                             Message
                         </label>
+                        <textarea
+                            class='relative rounded-none w-full mt-8 appearance-none bg-transparent py-4 text-white border-b-white border-b-2 focus:border-0 active:ring-transparent focus:border-b-2 focus:outline-0 focus:ring-0'
+                            id='message'
+                            name='message'
+                        />
                     </div>
                     <button
                         type='submit'
@@ -174,6 +175,5 @@ import Icon from "../components/Icon.astro";
                 </div>
             </section>
         </div>
-        
     </main>
 </Layout>

@@ -8,9 +8,10 @@ interface Props {
     title: string;
     description: string;
     robots: boolean;
+    showFooter?: boolean;
 }
 
-const { title, description, robots } = Astro.props;
+const { title, description, robots, showFooter } = Astro.props;
 ---
 
 <!doctype html>
@@ -27,17 +28,6 @@ const { title, description, robots } = Astro.props;
     <body class='h-screen'>
         <Navbar />
         <slot />
-        <div id="footer-container"></div>
-        <script>
-        function isContactPage() {
-            return window.location.pathname === '/contact';
-        }
-
-        const isContact = isContactPage();
-        const footerContainer = document.getElementById('footer-container');
-        if (!isContact) {
-            footerContainer!.innerHTML = '<Footer />';
-        }
-        </script>
+        {showFooter === undefined || showFooter === true ? <Footer /> : null}
     </body>
 </html>
