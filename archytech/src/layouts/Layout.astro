@@ -11,6 +11,11 @@ interface Props {
 }
 
 const { title, description, robots } = Astro.props;
+
+// Get the current URL path
+const url = new URL(Astro.request.url);
+const pathname = url.pathname;
+const showFooter = pathname !== '/contact';
 ---
 
 <!doctype html>
@@ -27,6 +32,6 @@ const { title, description, robots } = Astro.props;
     <body class='h-screen'>
         <Navbar />
         <slot />
-        {Astro.url.pathname !== '/contact' && <Footer />}
+        {showFooter && <Footer />}
     </body>
 </html>
