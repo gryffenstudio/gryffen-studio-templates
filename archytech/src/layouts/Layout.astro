@@ -27,6 +27,7 @@ const { title, description, robots } = Astro.props;
     <body class='h-screen'>
         <Navbar />
         <slot />
+        <div id="footer-container"></div>
         <script>
         function isContactPage() {
             return window.location.pathname === '/contact';
