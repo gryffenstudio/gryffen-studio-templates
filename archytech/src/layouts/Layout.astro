@@ -27,16 +27,16 @@ const { title, description, robots } = Astro.props;
     <body class='h-screen'>
         <Navbar />
         <slot />
-    <script is:inline>
-      function isContactPage() {
-        return window.location.pathname === '/contact';
-      }
+        <script>
+        function isContactPage() {
+            return window.location.pathname === '/contact';
+        }
 
-      const isContact = isContactPage();
-      const footerContainer = document.getElementById('footer-container');
-      if (!isContact) {
-        footerContainer.innerHTML = '<Footer />';
-      }
-    </script>
+        const isContact = isContactPage();
+        const footerContainer = document.getElementById('footer-container');
+        if (!isContact) {
+            footerContainer!.innerHTML = '<Footer />';
+        }
+        </script>
     </body>
 </html>
