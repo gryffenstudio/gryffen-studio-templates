@@ -85,42 +85,62 @@ import Icon from "../components/Icon.astro";
                 </div>
             </section>
             <section class="flex flex-col mt-8 container mx-auto z-20 md:mt-0 xl:w-1/2">
-                <form class="space-y-6">
+<form class="space-y-6">
   <div class="relative">
     <input
-      class="w-full appearance-none bg-transparent py-2 text-white border-b-2 border-white focus:border-white focus:border-b-2 focus:outline-none focus:ring-0 -webkit-appearance-none -webkit-tap-highlight-color-transparent"
+      class="w-full bg-transparent py-2 text-white border-b-2 border-white focus:outline-none focus:ring-0 focus:border-white peer"
       type="text"
       id="name"
       name="name"
     />
-    <label class="absolute text-white text-sm left-0" for="name">Name</label>
+    <label
+      class="absolute text-white text-sm left-0 peer-focus:text-brand-red transition-colors duration-300"
+      for="name"
+    >
+      Name
+    </label>
   </div>
   <div class="relative">
     <input
-      class="w-full appearance-none bg-transparent py-2 text-white border-b-2 border-white focus:border-white focus:border-b-2 focus:outline-none focus:ring-0 -webkit-appearance-none -webkit-tap-highlight-color-transparent"
+      class="w-full bg-transparent py-2 text-white border-b-2 border-white focus:outline-none focus:ring-0 focus:border-white peer"
       type="tel"
       pattern="^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$"
       id="phoneNumber"
       name="phoneNumber"
     />
-    <label class="absolute text-white text-sm left-0" for="phoneNumber">Phone Number</label>
+    <label
+      class="absolute text-white text-sm left-0 peer-focus:text-brand-red transition-colors duration-300"
+      for="phoneNumber"
+    >
+      Phone Number
+    </label>
   </div>
   <div class="relative">
     <input
-      class="w-full appearance-none bg-transparent py-2 text-white border-b-2 border-white focus:border-white focus:border-b-2 focus:outline-none focus:ring-0 -webkit-appearance-none -webkit-tap-highlight-color-transparent"
+      class="w-full bg-transparent py-2 text-white border-b-2 border-white focus:outline-none focus:ring-0 focus:border-white peer"
       type="email"
       id="email"
       name="email"
     />
-    <label class="absolute text-white text-sm left-0" for="email">Email Address</label>
+    <label
+      class="absolute text-white text-sm left-0 peer-focus:text-brand-red transition-colors duration-300"
+      for="email"
+    >
+      Email Address
+    </label>
   </div>
   <div class="relative">
     <textarea
-      class="w-full appearance-none bg-transparent py-4 text-white border-b-2 border-white focus:border-white focus:border-b-2 focus:outline-none focus:ring-0 -webkit-appearance-none -webkit-tap-highlight-color-transparent"
+      class="w-full bg-transparent py-4 text-white border-b-2 border-white focus:outline-none focus:ring-0 focus:border-white peer"
       id="message"
       name="message"
     ></textarea>
-    <label class="absolute text-white text-sm left-0" for="message">Message</label>
+    <label
+      class="absolute text-white text-sm left-0 peer-focus:text-brand-red transition-colors duration-300"
+      for="message"
+    >
+      Message
+    </label>
   </div>
   <button
     type="submit"
