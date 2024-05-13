@@ -98,6 +98,8 @@ const { member } = Astro.props;
                         href=`tel:${member.data.phoneNumber.replace(/-/g,'')}`
                         icon='icon-[mage--phone]' 
                         label=`${member.data.name} phone number link`
+                        iconColor='text-white'
+                        bgColor='bg-brand-black'
                     />
                     <p class="text-brand-black">{member.data.phoneNumber}</p>
                 </div>
@@ -106,6 +108,8 @@ const { member } = Astro.props;
                         href=`mailto:${member.data.email}`
                         icon='icon-[eva--email-outline]' 
                         label=`${member.data.name} email link`
+                        iconColor='text-white'
+                        bgColor='bg-brand-black'
                     />
                     <p class="text-brand-black">{member.data.email}</p>
                 </div>
@@ -114,6 +118,8 @@ const { member } = Astro.props;
                         href=`https://maps.google.com/?q=${member.data.location}`
                         icon='icon-[carbon--location]' 
                         label=`${member.data.name} location link`
+                        iconColor='text-white'
+                        bgColor='bg-brand-black'
                     />
                     <p class="text-brand-black">{member.data.location}</p>
                 </div>
