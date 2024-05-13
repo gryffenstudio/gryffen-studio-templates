@@ -11,11 +11,6 @@ interface Props {
 }
 
 const { title, description, robots } = Astro.props;
-
-// Get the current URL path
-const url = new URL(Astro.request.url);
-const pathname = url.pathname;
-const showFooter = pathname !== '/contact';
 ---
 
 <!doctype html>
@@ -32,6 +27,16 @@ const showFooter = pathname !== '/contact';
     <body class='h-screen'>
         <Navbar />
         <slot />
-        {showFooter && <Footer />}
+    <script is:inline>
+      function isContactPage() {
+        return window.location.pathname === '/contact';
+      }
+
+      const isContact = isContactPage();
+      const footerContainer = document.getElementById('footer-container');
+      if (!isContact) {
+        footerContainer.innerHTML = '<Footer />';
+      }
+    </script>
     </body>
 </html>
