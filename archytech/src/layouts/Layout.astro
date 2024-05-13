@@ -24,9 +24,9 @@ const { title, description, robots } = Astro.props;
         <SEO title={title} description={description} url={Astro.url} robots={robots} />
         <title>{title}</title>
     </head>
-    <body class='h-lvh'>
+    <body class='h-screen'>
         <Navbar />
         <slot />
-        <Footer />
+        {Astro.url.pathname !== '/contact' && <Footer />}
     </body>
 </html>
