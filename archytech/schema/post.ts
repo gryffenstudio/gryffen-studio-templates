@@ -31,18 +31,26 @@ export default defineType({
             to: { type: 'author' },
         }),
         defineField({
-            name: 'mainImage',
-            title: 'Main image',
+            name: 'cardImageMobile',
+            title: 'Mobile Card Image',
             type: 'image',
             options: {
                 hotspot: true,
             },
         }),
         defineField({
-            name: 'categories',
-            title: 'Categories',
-            type: 'array',
-            of: [{ type: 'reference', to: { type: 'category' } }],
+            name: 'cardImageDesktop',
+            title: 'Desktop Card Image',
+            type: 'image',
+            options: {
+                hotspot: true,
+            },
+        }),
+        defineField({
+            name: 'category',
+            title: 'Category',
+            type: 'reference',
+            to: { type: 'category' },
         }),
         defineField({
             name: 'publishedAt',
@@ -61,7 +69,7 @@ export default defineType({
             title: 'title',
             author: 'author.name',
             description: 'description',
-            media: 'mainImage',
+            media: 'cardImageMobile',
         },
         prepare(selection) {
             const { author } = selection;

@@ -1,13 +1,15 @@
 import { createClient } from '@sanity/client';
 import type { PortableTextBlock } from '@portabletext/types';
-import type { ImageAsset, Slug } from '@sanity/types';
+import type { ImageAsset, SanityDocument, Slug } from '@sanity/types';
 import Author from '../../schema/author.ts';
+import Category from '../../schema/category.ts';
+
 
 export const client = createClient({
-    projectId: 'zgzkbg6y',
+    projectId: 'bpernsxq',
     dataset: 'production',
     useCdn: false,
-    apiVersion: '2024-03-29',
+    apiVersion: '2024-05-14',
 });
 
 export async function getPosts(): Promise<Post[]> {
@@ -26,8 +28,9 @@ export async function getPost(slug: string): Promise<Post> {
                         _id,
                         name,
                     },
-                    categories,
-                    mainImage,
+                    category,
+                    cardImageMobile,
+                    cardImageDesktop,
                     _createdAt,
                     body
         }
@@ -38,13 +41,32 @@ export async function getPost(slug: string): Promise<Post> {
     );
 }
 
+export async function getCategories(): Promise<Category[]> {
+    return await client.fetch(
+        `*[_type == "category" && defined(slug.current)]`,
+    );
+}
+
+export async function getCategory(ref: string): Promise<SanityDocument | undefined>{
+    return await client.getDocument(ref);
+}
+
 export interface Post {
     _type: 'post';
     _createdAt: string;
     title: string;
     description: string;
     slug: Slug;
-    mainImage?: ImageAsset;
+    cardImageMobile: ImageAsset;
+    cardImageDesktop: ImageAsset;
     body: PortableTextBlock[];
+    category: typeof Category;
     author: typeof Author;
+}
+
+export interface Category {
+    _type: 'category';
+    title: string;
+    description: string;
+    slug: string;
 }

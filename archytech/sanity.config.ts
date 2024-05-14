@@ -5,12 +5,9 @@ import { schemaTypes } from './schema';
 export default defineConfig({
     name: 'default',
     title: 'archytech',
-
-    projectId: 'zgzkbg6y',
+    projectId: 'bpernsxq',
     dataset: 'production',
-
     plugins: [structureTool(), visionTool()],
-
     schema: {
         types: schemaTypes,
     },
