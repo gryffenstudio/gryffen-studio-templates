@@ -56,4 +56,5 @@ export default defineConfig({
     vite: {
         plugins: [saRedirect()],
     },
+    trailingSlash: 'never',
 });
