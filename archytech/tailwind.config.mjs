@@ -11,9 +11,9 @@ export default {
                 'brand-gray': '#9D9D9D',
                 'brand-purple': '#895159',
             },
-        },
-        fontFamily: {
-            sans: ['Inter', 'sans-serif'],
+            fontFamily: {
+                inter: ['Inter', 'sans-serif'],
+            },
         },
     },
     plugins: [addDynamicIconSelectors()],

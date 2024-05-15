@@ -1,9 +1,6 @@
 import { createClient } from '@sanity/client';
 import type { PortableTextBlock } from '@portabletext/types';
 import type { ImageAsset, SanityDocument, Slug } from '@sanity/types';
-import Author from '../../schema/author.ts';
-import Category from '../../schema/category.ts';
-
 
 export const client = createClient({
     projectId: 'bpernsxq',
@@ -14,7 +11,20 @@ export const client = createClient({
 
 export async function getPosts(): Promise<Post[]> {
     return await client.fetch(
-        `*[_type == "post" && defined(slug.current)] | order(_createdAt desc)`,
+        `*[_type == "post" && defined(slug.current)] | order(_createdAt desc){
+            title,
+                    description,
+                    slug,
+                    author->{
+                        _id,
+                        name,
+                    },
+                    category->,
+                    cardImageMobile,
+                    cardImageDesktop,
+                    _createdAt,
+                    body
+        }`,
     );
 }
 
@@ -25,10 +35,12 @@ export async function getPost(slug: string): Promise<Post> {
                     description,
                     slug,
                     author->{
-                        _id,
                         name,
                     },
-                    category,
+                    category->{
+                        title,
+                        slug
+                    },
                     cardImageMobile,
                     cardImageDesktop,
                     _createdAt,
@@ -47,8 +59,13 @@ export async function getCategories(): Promise<Category[]> {
     );
 }
 
-export async function getCategory(ref: string): Promise<SanityDocument | undefined>{
-    return await client.getDocument(ref);
+export async function getCategory(slug: string): Promise<Category>{
+    return await client.fetch(
+        `*[_type == "category" && slug.current == $slug][0]`,
+        {
+            slug,
+        }
+    );
 }
 
 export interface Post {
@@ -60,13 +77,21 @@ export interface Post {
     cardImageMobile: ImageAsset;
     cardImageDesktop: ImageAsset;
     body: PortableTextBlock[];
-    category: typeof Category;
-    author: typeof Author;
+    category: Category;
+    author: Author;
 }
 
 export interface Category {
     _type: 'category';
     title: string;
     description: string;
-    slug: string;
+    slug: Slug;
+}
+
+export interface Author {
+    _type: 'author'
+    name: string;
+    slug: Slug;
+    websiteLink: URL;
+    image: ImageAsset;
 }

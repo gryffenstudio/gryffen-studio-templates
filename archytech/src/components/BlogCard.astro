@@ -6,6 +6,8 @@ import heroImage from '../assets/images/Blog-Hero.png';
 import heroImageMobile from '../assets/images/Blog-Hero-SM.png';
 import { Image } from 'astro:assets';
 import CustomImage from './CustomImage.astro';
+import CategoryTag from './CategoryTag.astro';
+import category from '../../schema/category';
 
 interface Props {
     post: Post;
@@ -13,44 +15,54 @@ interface Props {
 
 const { post } = Astro.props satisfies Props;
 
-const category = await getCategory(post.category._ref)
----
+let categoryCardData: any = {category: '', bgColor: ''};
 
-<article
-    class='flex w-full max-w-[327px] flex-col items-center duration-200 hover:scale-105 space-y-6 justify-center shadow-md md:max-w-[327px]'
->
-    <a class='' href=`/blog/${category?.slug?.current}/${post.slug.current}`>
-        {
-            post.cardImageMobile && post.cardImageDesktop ? (
-                <div class='flex items-center justify-center'>
-                    <CustomImage
-                        mobileImgUrl={urlFor(post.cardImageMobile)?.url() ?? heroImage}
-                        desktopImgUrl={urlFor(post.cardImageDesktop)?.url() ?? heroImageMobile}
-                        imageSizes={[
-                            [327, 303],
-                            [380, 303],
-                        ]}
-                        alt=`${post.title} Post Image`
-                        classList=''
-                    />
-                </div>
-            ) : (
-                    <CustomImage
-                        mobileImgUrl={heroImage}
-                        desktopImgUrl={heroImageMobile}
-                        imageSizes={[
-                            [327, 303],
-                            [380, 303],
-                        ]}
-                        alt=`${post.title} Post Image`
-                        classList=''
-                    />
-            )
-        }
-        <div class='p-4 flex flex-col w-full space-y-4'>
-            <h2 class='text-lg text-brand-black font-bold'>{post.title}</h2>
-            <p class='text-xl text-brand-black'>{post.description}</p>
-            <p class='text-xl text-brand-gray'>{post._createdAt}</p>
-        </div>
-    </a>
-</article>
+categoryCardData.category = post.category.title;
+
+switch(categoryCardData.category.toLowerCase()){
+    case 'news':
+        categoryCardData.bgColor = 'bg-brand-purple';
+        break;
+    case 'article':
+        categoryCardData.bgColor = 'bg-red-500';
+        break;
+    case 'tips':
+        categoryCardData.bgColor = 'bg-green-500';
+        break;
+    default:
+        categoryCardData.bgColor = 'bg-brand-black';
+}
+---
+<a class="flex w-full max-w-[327px] flex-col items-center duration-200 hover:scale-105  justify-center shadow-md md:max-w-[380px]" href=`/blog/${post.category.slug.current}/${post.slug.current}`>
+    {
+        post.cardImageMobile && post.cardImageDesktop ? (
+                <CustomImage
+                    mobileImgUrl={urlFor(post.cardImageMobile)?.url() ?? heroImage}
+                    desktopImgUrl={urlFor(post.cardImageDesktop)?.url() ?? heroImageMobile}
+                    imageSizes={[
+                        [327, 303],
+                        [380, 303],
+                    ]}
+                    alt=`${post.title} Post Image`
+                    classList=''
+                />
+        ) : (
+                <CustomImage
+                    mobileImgUrl={heroImage}
+                    desktopImgUrl={heroImageMobile}
+                    imageSizes={[
+                        [327, 303],
+                        [380, 303],
+                    ]}
+                    alt=`${post.title} Post Image`
+                    classList=''
+                />
+        )
+    }
+    <div class='p-4 flex flex-col w-full space-y-4'>
+        <CategoryTag category={categoryCardData.category} bgColor={categoryCardData.bgColor} />
+        <h2 class='text-lg text-brand-black font-bold'>{post.title}</h2>
+        <p class='text-brand-black'>{post.description}</p>
+        <p class='text-brand-gray'>{formatDate(post._createdAt)}</p>
+    </div>
+</a>
