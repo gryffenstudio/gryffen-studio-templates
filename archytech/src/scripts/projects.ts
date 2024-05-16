@@ -1,4 +1,3 @@
-
 let residentialButton = document.getElementById('residential-filter-button');
 let commercialButton = document.getElementById('commercial-filter-button');
 let inProgressButton = document.getElementById('in-progress-filter-button');
@@ -9,16 +8,16 @@ let commercialUnderline = document.getElementById('commercial-underline');
 let inProgressUnderline = document.getElementById('in-progress-underline');
 let showAllUnderline = document.getElementById('show-all-underline');
 
-let residentialProjectCards = document.getElementsByClassName('residential')
-let commercialProjectCards = document.getElementsByClassName('commercial')
-let inProgressProjectCards = document.getElementsByClassName('in_progress')
+let residentialProjectCards = document.getElementsByClassName('residential');
+let commercialProjectCards = document.getElementsByClassName('commercial');
+let inProgressProjectCards = document.getElementsByClassName('in_progress');
 
 // Store reference to the currently active link
 let activeProjectLink: HTMLAnchorElement | null = null;
 let touchStartX: number | null = null;
 let touchStartY: number | null = null;
 
-enum FilterSelection{
+enum FilterSelection {
     RESIDENTIAL = 'residential',
     COMMERCIAL = 'commercial',
     IN_PROGRESS = 'in_progress',
@@ -100,41 +99,49 @@ projectLinks.forEach(link => {
     });
 });
 
-function filterProjects(filter: FilterSelection){
-    switch(filter){
+type ProjectCardElement = HTMLElement & {
+    style: {
+        transition: string
+    }
+};
+
+function filterProjects(filter: FilterSelection) {
+    function hideCards(cards: HTMLCollectionOf<Element>) {
+        for (let i = 0; i < cards.length; i++) {
+            const card = cards[i] as HTMLElement;
+            card.classList.add('scale-0');
+            setTimeout(() => card.classList.add('hidden'), 750);
+        }
+    }
+
+    function showCards(cards: HTMLCollectionOf<Element>) {
+        for (let i = 0; i < cards.length; i++) {
+            const card = cards[i] as HTMLElement;
+            card.classList.remove('hidden');
+            setTimeout(() => card.classList.remove('scale-0'), 600);
+        }
+    }
+
+    switch (filter) {
         case FilterSelection.RESIDENTIAL:
-            //Show the underline
             residentialUnderline?.classList.toggle('invisible', false);
             commercialUnderline?.classList.toggle('invisible', true);
             inProgressUnderline?.classList.toggle('invisible', true);
             showAllUnderline?.classList.toggle('invisible', true);
 
-            //Slide in underline and set others back
             residentialUnderline?.classList.toggle('after:-translate-x-full', false);
             commercialUnderline?.classList.toggle('after:-translate-x-full', true);
             inProgressUnderline?.classList.toggle('after:-translate-x-full', true);
             showAllUnderline?.classList.toggle('after:-translate-x-full', true);
 
-            //Update the colors
             residentialButton?.classList.toggle('text-brand-gray', true);
             commercialButton?.classList.toggle('text-brand-gray', false);
             inProgressButton?.classList.toggle('text-brand-gray', false);
             showAllButton?.classList.toggle('text-brand-gray', false);
 
-            //Show all filtered in project cards
-            for(let i = 0; i < residentialProjectCards.length; i++){
-                residentialProjectCards[i].classList.toggle('hidden', false);
-            }
-
-            //Hide filtered out project cards
-            for(let i = 0; i < commercialProjectCards.length; i++){
-                commercialProjectCards[i].classList.toggle('hidden', true);
-            }
-
-            for(let i = 0; i < inProgressProjectCards.length; i++){
-                inProgressProjectCards[i].classList.toggle('hidden', true);
-            }
-
+            hideCards(commercialProjectCards);
+            hideCards(inProgressProjectCards);
+            showCards(residentialProjectCards);
             break;
 
         case FilterSelection.COMMERCIAL:
@@ -143,33 +150,19 @@ function filterProjects(filter: FilterSelection){
             inProgressUnderline?.classList.toggle('invisible', true);
             showAllUnderline?.classList.toggle('invisible', true);
 
-
-            //Slide in underline and set others back
             residentialUnderline?.classList.toggle('after:-translate-x-full', true);
             commercialUnderline?.classList.toggle('after:-translate-x-full', false);
             inProgressUnderline?.classList.toggle('after:-translate-x-full', true);
             showAllUnderline?.classList.toggle('after:-translate-x-full', true);
 
-            //Update the colors
             residentialButton?.classList.toggle('text-brand-gray', false);
             commercialButton?.classList.toggle('text-brand-gray', true);
             inProgressButton?.classList.toggle('text-brand-gray', false);
             showAllButton?.classList.toggle('text-brand-gray', false);
-            
-            //Show all filtered in project cards
-            for(let i = 0; i < commercialProjectCards.length; i++){
-                commercialProjectCards[i].classList.toggle('hidden', false);
-            }
 
-            //Hide filtered out project cards
-            for(let i = 0; i < residentialProjectCards.length; i++){
-                residentialProjectCards[i].classList.toggle('hidden', true);
-            }
-
-            for(let i = 0; i < inProgressProjectCards.length; i++){
-                inProgressProjectCards[i].classList.toggle('hidden', true);
-            }
-
+            hideCards(residentialProjectCards);
+            hideCards(inProgressProjectCards);
+            showCards(commercialProjectCards);
             break;
 
         case FilterSelection.IN_PROGRESS:
@@ -178,32 +171,19 @@ function filterProjects(filter: FilterSelection){
             inProgressUnderline?.classList.toggle('invisible', false);
             showAllUnderline?.classList.toggle('invisible', true);
 
-            //Slide in underline and set others back
             residentialUnderline?.classList.toggle('after:-translate-x-full', true);
             commercialUnderline?.classList.toggle('after:-translate-x-full', true);
             inProgressUnderline?.classList.toggle('after:-translate-x-full', false);
             showAllUnderline?.classList.toggle('after:-translate-x-full', true);
 
-            //Update the colors
             residentialButton?.classList.toggle('text-brand-gray', false);
             commercialButton?.classList.toggle('text-brand-gray', false);
             inProgressButton?.classList.toggle('text-brand-gray', true);
             showAllButton?.classList.toggle('text-brand-gray', false);
 
-            //Show all filtered in project cards
-            for(let i = 0; i < inProgressProjectCards.length; i++){
-                inProgressProjectCards[i].classList.toggle('hidden', false);
-            }
-
-            //Hide filtered out project cards
-            for(let i = 0; i < residentialProjectCards.length; i++){
-                residentialProjectCards[i].classList.toggle('hidden', true);
-            }
-
-            for(let i = 0; i < commercialProjectCards.length; i++){
-                commercialProjectCards[i].classList.toggle('hidden', true);
-            }
-
+            hideCards(residentialProjectCards);
+            hideCards(commercialProjectCards);
+            showCards(inProgressProjectCards);
             break;
 
         case FilterSelection.SHOW_ALL:
@@ -212,67 +192,23 @@ function filterProjects(filter: FilterSelection){
             inProgressUnderline?.classList.toggle('invisible', true);
             showAllUnderline?.classList.toggle('invisible', false);
 
-            //Slide in underline and set others back
             residentialUnderline?.classList.toggle('after:-translate-x-full', true);
             commercialUnderline?.classList.toggle('after:-translate-x-full', true);
             inProgressUnderline?.classList.toggle('after:-translate-x-full', true);
             showAllUnderline?.classList.toggle('after:-translate-x-full', false);
 
-            //Update the colors
             residentialButton?.classList.toggle('text-brand-gray', false);
             commercialButton?.classList.toggle('text-brand-gray', false);
             inProgressButton?.classList.toggle('text-brand-gray', false);
             showAllButton?.classList.toggle('text-brand-gray', true);
 
-            //Show all project cards
-            for(let i = 0; i < inProgressProjectCards.length; i++){
-                inProgressProjectCards[i].classList.toggle('hidden', false);
-            }
-
-            for(let i = 0; i < residentialProjectCards.length; i++){
-                residentialProjectCards[i].classList.toggle('hidden', false);
-            }
-
-            for(let i = 0; i < commercialProjectCards.length; i++){
-                commercialProjectCards[i].classList.toggle('hidden', false);
-            }
-
-            break;
-        default:
-            //Show all by default
-            residentialUnderline?.classList.toggle('invisible', true);
-            commercialUnderline?.classList.toggle('invisible', true);
-            inProgressUnderline?.classList.toggle('invisible', true);
-            showAllUnderline?.classList.toggle('invisible', false);
-
-            //Slide in underline and set others back
-            residentialUnderline?.classList.toggle('after:-translate-x-full', true);
-            commercialUnderline?.classList.toggle('after:-translate-x-full', true);
-            inProgressUnderline?.classList.toggle('after:-translate-x-full', true);
-            showAllUnderline?.classList.toggle('after:-translate-x-full', false);
-
-            //Update the colors
-            residentialButton?.classList.toggle('text-brand-gray', false);
-            commercialButton?.classList.toggle('text-brand-gray', false);
-            inProgressButton?.classList.toggle('text-brand-gray', false);
-            showAllButton?.classList.toggle('text-brand-gray', true);
-            
-            //Show all project cards
-            for(let i = 0; i < inProgressProjectCards.length; i++){
-                inProgressProjectCards[i].classList.toggle('hidden', false);
-            }
-
-            for(let i = 0; i < residentialProjectCards.length; i++){
-                residentialProjectCards[i].classList.toggle('hidden', false);
-            }
-
-            for(let i = 0; i < commercialProjectCards.length; i++){
-                commercialProjectCards[i].classList.toggle('hidden', false);
-            }
-
+            showCards(residentialProjectCards);
+            showCards(commercialProjectCards);
+            showCards(inProgressProjectCards);
             break;
     }
 }
+
 
 // Event listener for residential filter click
 document.getElementById('residential-filter-button')?.addEventListener('click', function () {

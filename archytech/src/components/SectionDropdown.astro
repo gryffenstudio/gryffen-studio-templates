@@ -8,14 +8,15 @@ const {header, bodyText} = Astro.props;
 ---
 
 <div class="relative flex flex-col w-full md:w-1/2">
-    <div class="flex justify-between items-center mb-6">
+    <div class="flex justify-between items-center mb-2">
         <h3 class="text-xl font-bold">{header}</h3>
         <button aria-label=`${header}-dropdown-button` class="dropdown-button flex items-center justify-center h-10 w-10">
-            <span id=`${header}-dropdown` class="icon-[iconamoon--arrow-down-2-thin] text-brand-black size-full"></span>
+            <span id=`${header}-dropdown` class="icon-[iconamoon--arrow-down-2-thin] text-brand-black size-full transform transition-all duration-700"></span>
         </button>
     </div>
-    <div id=`${header}-content` class="overflow-hidden max-h-0">
+    <div id=`${header}-content` class="overflow-hidden max-h-0 transform transition-all ease-in-out duration-700">
         <p class="text-brand-black">{bodyText}</p>
     </div>
-    <span class='after:absolute after:block after:w-full after:h-[3px] after:bg-brand-black after:-mt-2 after:rounded-full'></span>
+    <span class="after:absolute after:block after:w-full after:h-[3px] after:bg-brand-black after:rounded-full"></span>
 </div>
+

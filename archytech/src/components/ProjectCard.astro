@@ -13,7 +13,7 @@ interface Props {
 const {projectName, projectSlug, projectCategory, projectImageMobileSrc, projectImageDesktopSrc, projectImageAlt} = Astro.props;
 ---
 
-<a class=`relative group items-center justify-center flex flex-col text-white ${projectCategory}` href=`/projects/${projectSlug}`>
+<a class=`relative group items-center justify-center flex flex-col text-white transform transition-all duration-1000 ease-in-out ${projectCategory}` href=`/projects/${projectSlug}`>
     <CustomImage
         mobileImgUrl={projectImageMobileSrc}
         desktopImgUrl={projectImageDesktopSrc}
