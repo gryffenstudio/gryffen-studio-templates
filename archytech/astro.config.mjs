@@ -45,7 +45,7 @@ export default defineConfig({
         sanityIntegration({
             projectId: 'bpernsxq',
             dataset: 'production',
-            useCdn: true, 
+            useCdn: false, 
             apiVersion: "2024-05-14",
             studioBasePath: '/sanity-studio-admin'
         })
