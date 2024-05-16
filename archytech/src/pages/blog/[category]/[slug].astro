@@ -8,4 +8,4 @@ const { slug } = Astro.params as Params;
 
 const post = await getPost(slug ?? '');
 ---
-<h1>{post.title}</h1>
+<h1>{post.author}</h1>
