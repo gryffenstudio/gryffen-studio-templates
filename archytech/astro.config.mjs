@@ -50,9 +50,9 @@ export default defineConfig({
             studioBasePath: '/sanity-studio-admin'
         })
     ],
-    image: {
-        domains: ["cdn.sanity.io"],
-    },
+    // image: {
+    //     domains: ["cdn.sanity.io"],
+    // },
     prefetch: {
         prefetchAll: true,
     },
