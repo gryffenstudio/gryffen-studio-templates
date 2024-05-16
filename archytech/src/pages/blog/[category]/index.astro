@@ -1,10 +1,14 @@
 ---
+import { getCategories, getPosts, type Category, type Post } from '../../../utils/sanity';
+
 export async function getStaticPaths() {
-    return [
-        { params: { category: 'news'} },
-        { params: { category: 'tips' } },
-        { params: { category: 'articles' } }
-    ]
+    const paths: any = [];
+    const categories = await getCategories();
+    categories.map((cat: Category) => {
+        let categoryName = cat.slug.current;
+        paths.push({ params: { category: categoryName } });
+    });
+    return paths;
 }
 
 const { category } = Astro.params;

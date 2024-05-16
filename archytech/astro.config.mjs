@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
 import partytown from '@astrojs/partytown';
-import sanity from '@sanity/astro'
+import sanityIntegration from '@sanity/astro'
 import robotsTxt from 'astro-robots-txt';
 import sitemap from '@astrojs/sitemap';
 import netlify from '@astrojs/netlify';
@@ -38,14 +38,14 @@ const saRedirect = () => {
 
 // https://astro.build/config
 export default defineConfig({
-    // output: 'hybrid',
-    // adapter: netlify(),
+    output: 'hybrid',
+    adapter: netlify(),
     integrations: [
         react(), tailwind(), partytown(), robotsTxt(), sitemap(),
-        sanity({
+        sanityIntegration({
             projectId: 'bpernsxq',
             dataset: 'production',
-            useCdn: false, 
+            useCdn: true, 
             apiVersion: "2024-05-14",
             studioBasePath: '/sanity-studio-admin'
         })
@@ -56,5 +56,4 @@ export default defineConfig({
     vite: {
         plugins: [saRedirect()],
     },
-    trailingSlash: 'never',
 });

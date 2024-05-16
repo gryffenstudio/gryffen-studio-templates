@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useEffect, useState, memo } from 'react';
 import { useSwipeable } from 'react-swipeable';
 
 export interface CarouselImage {
@@ -14,8 +14,26 @@ interface CarouselProps {
     desktopImages?: CarouselImage[];
 }
 
+//Custom hook for checking for mobile or desktop
+function useMediaQuery(query: string): boolean {
+  const [matches, setMatches] = useState<boolean>(false);
+
+  useEffect(() => {
+    const mediaQuery: MediaQueryList = window.matchMedia(query);
+    setMatches(mediaQuery.matches);
+
+    const handler = (event: MediaQueryListEvent) => setMatches(event.matches);
+    mediaQuery.addEventListener('change', handler);
+
+    return () => mediaQuery.removeEventListener('change', handler);
+  }, [query]);
+
+  return matches;
+}
+
 function Carousel(props: CarouselProps) {
     const [currentImage, setCurrentImage] = useState<number>(0);
+    const isMobile = useMediaQuery('(max-width: 640px)');
 
     const previousSlide = () => {
         setCurrentImage((prevImage) =>
@@ -44,7 +62,7 @@ function Carousel(props: CarouselProps) {
                 }}
             >
                 <div className='flex'>
-                    {props.mobileImages && props.mobileImages.map((carouselImage: CarouselImage, index) => {
+                    {isMobile && props.mobileImages && props.mobileImages.map((carouselImage: CarouselImage, index) => {
                         if(carouselImage.href){
                             return <a className='min-w-full h-auto mr-5 block sm:hidden' href={carouselImage.href} key={`mobile-${index}`}>
                                 <img
@@ -69,7 +87,7 @@ function Carousel(props: CarouselProps) {
                             loading='lazy'
                         />
                     })}
-                    {props.desktopImages && props.desktopImages.map((carouselImage: CarouselImage, index) => {
+                    {!isMobile && props.desktopImages && props.desktopImages.map((carouselImage: CarouselImage, index) => {
                         return <img
                             key={`desktop-${index}`}
                             src={carouselImage.image.src}
@@ -108,4 +126,4 @@ function Carousel(props: CarouselProps) {
     );
 }
 
-export default Carousel;
+export default memo(Carousel);

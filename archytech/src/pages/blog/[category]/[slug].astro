@@ -1,13 +1,11 @@
 ---
-export async function getStaticPaths() {
-  return [
-    { params: { category: 'news', slug: 'welcome-to-archytech' } },
-    { params: { category: 'tips', slug: 'build-with-achrytech' } },
-    { params: { category: 'tips', slug: 'save-money-with-archytech' } }
-  ];
-}
+import type { Params } from 'astro';
+import {getPost } from '../../../utils/sanity';
 
-const { category, slug } = Astro.params;
+export const prerender = false;
+
+const { slug } = Astro.params as Params;
+
+const post = await getPost(slug ?? '');
 ---
-<h1>{category}</h1>
-<h1>{slug}</h1>
+<h1>{post.title}</h1>
