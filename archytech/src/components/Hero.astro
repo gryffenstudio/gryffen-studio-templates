@@ -16,6 +16,7 @@ const { heroBackgroundImgSrcList, alt } = Astro.props satisfies Props;
         alt={alt}
         width="375"
         height="812"
+        loading="eager"
     />
 
     <!-- Desktop Image -->
@@ -25,6 +26,7 @@ const { heroBackgroundImgSrcList, alt } = Astro.props satisfies Props;
         alt={alt}
         width="1440"
         height="1024"
+        loading="eager"
     />
     <slot />
 </header>
