@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
 import partytown from '@astrojs/partytown';
-import sanity from '@sanity/astro'
+import sanity from '@sanity/astro';
 import robotsTxt from 'astro-robots-txt';
 import sitemap from '@astrojs/sitemap';
 import netlify from '@astrojs/netlify';
@@ -40,17 +40,21 @@ const saRedirect = () => {
 export default defineConfig({
     adapter: netlify(),
     integrations: [
-        react(), tailwind(), partytown(), robotsTxt(), sitemap(),
+        react(),
+        tailwind(),
+        partytown(),
+        robotsTxt(),
+        sitemap(),
         sanity({
             projectId: 'bpernsxq',
             dataset: 'production',
-            useCdn: false, 
-            apiVersion: "2024-05-14",
-            studioBasePath: '/sanity-studio-admin'
-        })
+            useCdn: false,
+            apiVersion: '2024-05-14',
+            studioBasePath: '/sanity-studio-admin',
+        }),
     ],
     image: {
-        domains: ["cdn.sanity.io"],
+        domains: ['cdn.sanity.io'],
     },
     prefetch: {
         prefetchAll: true,

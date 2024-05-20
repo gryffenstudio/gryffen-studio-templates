@@ -9,92 +9,84 @@ interface Props {
     sectionProgress: string;
     imageSrc: ImageMetadata[];
 }
-const { sectionNum, sectionHeader, sectionDescription, sectionProgress, imageSrc } = Astro.props satisfies Props;
+const { sectionNum, sectionHeader, sectionDescription, sectionProgress, imageSrc } =
+    Astro.props satisfies Props;
 ---
-{sectionNum % 2 === 1 ? 
-    <section class='flex flex-col lg:flex-row w-full space-y-8 lg:space-y-0 lg:justify-around py-8 lg:py-24 lg:px-16 px-6'>
-        <div class='flex space-x-8 lg:mr-8 lg:w-1/2'>
-            <div class='flex flex-col space-y-2 items-center'>
-                <span class='text-3xl font-black text-brand-black'>0{sectionNum}</span>
-                <ScrollProgress
-                    isHeroScrollProgress={false}
-                    barColor='bg-brand-black'
-                    progressColor='bg-brand-gray'
-                    barHeight='h-64 lg:h-[358px]'
-                    progress={sectionProgress}
-                />
+
+{
+    sectionNum % 2 === 1 ? (
+        <section class='flex w-full flex-col space-y-8 px-6 py-8 lg:flex-row lg:justify-around lg:space-y-0 lg:px-16 lg:py-24'>
+            <div class='flex space-x-8 lg:mr-8 lg:w-1/2'>
+                <div class='flex flex-col items-center space-y-2'>
+                    <span class='text-3xl font-black text-brand-black'>0{sectionNum}</span>
+                    <ScrollProgress
+                        isHeroScrollProgress={false}
+                        barColor='bg-brand-black'
+                        progressColor='bg-brand-gray'
+                        barHeight='h-64 lg:h-[358px]'
+                        progress={sectionProgress}
+                    />
+                </div>
+                <div class='flex flex-col'>
+                    <h2 class='relative place-self-start text-start text-2xl font-semibold tracking-wide text-brand-black lg:text-3xl'>
+                        {sectionHeader}
+                        <span class='after:absolute after:mt-2 after:block after:h-[3px] after:w-[70px] after:rounded-full after:bg-brand-black' />
+                    </h2>
+                    <p class='mt-16 text-brand-black'>{sectionDescription}</p>
+                </div>
             </div>
-            <div class='flex flex-col'>
-                <h2
-                    class='text-brand-black text-start font-semibold place-self-start text-2xl lg:text-3xl relative tracking-wide'
-                >
-                    {sectionHeader}
-                    <span
-                        class='after:absolute after:block after:w-[70px] after:h-[3px] after:bg-brand-black after:mt-2 after:rounded-full'
-                    ></span>
-                </h2>
-                <p class='text-brand-black mt-16'>
-                    {sectionDescription}
-                </p>
+            <CustomImage
+                mobileImgUrl={imageSrc[0]}
+                desktopImgUrl={imageSrc[1]}
+                imageSizes={[
+                    [327, 448],
+                    [710, 448],
+                ]}
+                alt={`Section ${sectionNum} Image`}
+                classList='place-self-center'
+            />
+        </section>
+    ) : (
+        <section class='flex w-full flex-col space-y-8 bg-brand-black px-6 pb-8 lg:flex-row lg:justify-around lg:space-y-0 lg:px-16 lg:py-24'>
+            <CustomImage
+                mobileImgUrl={imageSrc[0]}
+                desktopImgUrl={imageSrc[1]}
+                imageSizes={[
+                    [327, 448],
+                    [710, 448],
+                ]}
+                alt={`Section ${sectionNum} Image`}
+                classList='hidden lg:block'
+            />
+            <div class='flex h-full space-x-8 lg:ml-8 lg:w-1/2'>
+                <div class='flex flex-col items-center space-y-2'>
+                    <span class='text-3xl font-black text-white'>0{sectionNum}</span>
+                    <ScrollProgress
+                        isHeroScrollProgress={false}
+                        barColor='bg-brand-gray'
+                        progressColor='bg-white'
+                        barHeight='h-64 lg:h-[358px]'
+                        progress={sectionProgress}
+                    />
+                </div>
+                <div class='flex flex-col'>
+                    <h2 class='relative place-self-start text-start text-2xl font-semibold tracking-wide text-white lg:text-3xl'>
+                        {sectionHeader}
+                        <span class='after:absolute after:mt-2 after:block after:h-[3px] after:w-[70px] after:rounded-full after:bg-white' />
+                    </h2>
+                    <p class='mt-16 text-white'>{sectionDescription}</p>
+                </div>
             </div>
-        </div>
-        <CustomImage
-            mobileImgUrl={imageSrc[0]}
-            desktopImgUrl={imageSrc[1]}
-            imageSizes={[
-                [327, 448],
-                [710, 448],
-            ]}
-            alt=`Section ${sectionNum} Image`
-            classList='place-self-center'
-        />
-    </section>
-:
-    <section class='flex flex-col lg:flex-row w-full space-y-8 lg:space-y-0 lg:justify-around pb-8 lg:py-24 lg:px-16 px-6 bg-brand-black'>
-        <CustomImage
-            mobileImgUrl={imageSrc[0]}
-            desktopImgUrl={imageSrc[1]}
-            imageSizes={[
-                [327, 448],
-                [710, 448],
-            ]}
-            alt=`Section ${sectionNum} Image`
-            classList='hidden lg:block'
-        />
-        <div class='flex space-x-8 h-full lg:ml-8 lg:w-1/2'>
-            <div class='flex flex-col space-y-2 items-center'>
-                <span class='text-3xl font-black text-white'>0{sectionNum}</span>
-                <ScrollProgress
-                    isHeroScrollProgress={false}
-                    barColor='bg-brand-gray'
-                    progressColor='bg-white'
-                    barHeight='h-64 lg:h-[358px]'
-                    progress={sectionProgress}
-                />
-            </div>
-            <div class='flex flex-col'>
-                <h2
-                    class='text-white text-start font-semibold place-self-start text-2xl lg:text-3xl relative tracking-wide'
-                >
-                    {sectionHeader}
-                    <span
-                        class='after:absolute after:block after:w-[70px] after:h-[3px] after:bg-white after:mt-2 after:rounded-full'
-                    ></span>
-                </h2>
-                <p class='text-white mt-16'>
-                    {sectionDescription}
-                </p>
-            </div>
-        </div>
-        <CustomImage
-            mobileImgUrl={imageSrc[0]}
-            desktopImgUrl={imageSrc[1]}
-            imageSizes={[
-                [327, 448],
-                [710, 448],
-            ]}
-            alt=`Section ${sectionNum} Image`
-            classList='lg:hidden place-self-center'
-        />
-    </section>
+            <CustomImage
+                mobileImgUrl={imageSrc[0]}
+                desktopImgUrl={imageSrc[1]}
+                imageSizes={[
+                    [327, 448],
+                    [710, 448],
+                ]}
+                alt={`Section ${sectionNum} Image`}
+                classList='lg:hidden place-self-center'
+            />
+        </section>
+    )
 }

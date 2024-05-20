@@ -20,22 +20,7 @@ const {
 } = Astro.props satisfies Props;
 ---
 
-<div class='flex space-x-6 items-center'>
-    <!-- <div class='flex flex-col'>
-        {blackHeightClass && blackHeightClass[0].length > 1 &&
-            <span class=`${blackHeightClass[0][0]} border-l-2 border-solid border-brand-black` />
-            <span class=`${grayHeightClass} border-l-2 border-solid border-brand-gray` />
-            <span class=`${blackHeightClass[0][1]} border-l-2 border-solid border-brand-black` />
-        }
-        {
-            blackHeightClass && blackHeightClass[0].length === 1 && progress === 0 ?
-            <span class=`${grayHeightClass} border-l-2 border-solid border-brand-gray` />
-            <span class=`${blackHeightClass[0][0]} border-l-2 border-solid border-brand-black` />
-            :
-            <span class=`${blackHeightClass[0][0]} border-l-2 border-solid border-brand-black` />
-            <span class=`${grayHeightClass} border-l-2 border-solid border-brand-gray` />
-        }
-    </div> -->
+<div class='flex items-center space-x-6'>
     <div class=`relative w-[2px] ${barColor} rounded-full ${barHeight}`>
         <div class=`${progressColor} absolute w-[2px] ${progress} h-[25%] rounded-full`></div>
     </div>

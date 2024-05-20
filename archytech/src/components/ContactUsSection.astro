@@ -5,32 +5,32 @@ import contactUsSectionImgSM from '../assets/images/Contact-Us-Section-Img-SM.pn
 ---
 
 <a
-    class='relative flex flex-col w-full h-[17rem] justify-center py-8 px-4 lg:px-20 overflow-hidden group'
+    class='group relative flex h-[17rem] w-full flex-col justify-center overflow-hidden px-4 py-8 lg:px-20'
     href='/contact'
 >
     <div>
         <!-- Mobile Image -->
         <Image
-            class='absolute z-0 inset-0 w-full h-full object-center object-cover block duration-1000 transition-all transform md:hidden group-hover:scale-110'
+            class='absolute inset-0 z-0 block h-full w-full transform object-cover object-center transition-all duration-1000 group-hover:scale-110 md:hidden'
             src={contactUsSectionImgSM}
             alt='Mobile Newsletter Image'
         />
         <!-- Desktop Image -->
         <Image
-            class='z-0 absolute inset-0 w-full h-full object-cover object-center hidden duration-1000 transition-all transform md:block group-hover:scale-110'
+            class='absolute inset-0 z-0 hidden h-full w-full transform object-cover object-center transition-all duration-1000 group-hover:scale-110 md:block'
             src={contactUsSectionImg}
             alt='Desktop Newsletter Image'
         />
     </div>
 
-    <div class='flex flex-col z-20 items-start justify-center space-y-8'>
-        <h2 class='text-white text-start font-semibold text-3xl relative tracking-wide'>
+    <div class='z-20 flex flex-col items-start justify-center space-y-8'>
+        <h2 class='relative text-start text-3xl font-semibold tracking-wide text-white'>
             CONTACT US
             <span
-                class='after:absolute after:block after:w-[70px] after:h-[3px] after:bg-white after:mt-2 after:rounded-full'
+                class='after:absolute after:mt-2 after:block after:h-[3px] after:w-[70px] after:rounded-full after:bg-white'
             ></span>
         </h2>
     </div>
-    <span class='z-10 bg-brand-black bg-blend-luminosity bg-opacity-50 left-0 absolute inset-0'
+    <span class='absolute inset-0 left-0 z-10 bg-brand-black bg-opacity-50 bg-blend-luminosity'
     ></span>
 </a>

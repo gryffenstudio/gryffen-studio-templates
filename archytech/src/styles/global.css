@@ -21,7 +21,7 @@
 
 @layer components {
     .hero-h1 {
-        @apply text-white font-semibold text-left text-4xl md:text-6xl 2xl:text-8xl;
+        @apply text-left text-4xl font-semibold text-white md:text-6xl 2xl:text-8xl;
     }
 }
 

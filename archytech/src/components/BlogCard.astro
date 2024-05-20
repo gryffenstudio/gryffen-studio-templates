@@ -15,11 +15,11 @@ interface Props {
 
 const { post } = Astro.props satisfies Props;
 
-let categoryCardData: any = {category: '', bgColor: ''};
+let categoryCardData: any = { category: '', bgColor: '' };
 
 categoryCardData.category = post.category.title;
 
-switch(categoryCardData.category.toLowerCase()){
+switch (categoryCardData.category.toLowerCase()) {
     case 'news':
         categoryCardData.bgColor = 'bg-brand-purple';
         break;
@@ -33,38 +33,41 @@ switch(categoryCardData.category.toLowerCase()){
         categoryCardData.bgColor = 'bg-brand-black';
 }
 ---
-<article class="flex w-full h-full max-w-[327px] flex-col items-center duration-200 hover:scale-105  justify-center shadow-md md:max-w-[380px]">
-    <a class="w-full h-full" href=`/blog/${post.category.slug.current}/${post.slug.current}`>
+
+<article
+    class='flex h-full w-full max-w-[327px] flex-col items-center justify-center shadow-md duration-200 hover:scale-105 md:max-w-[380px]'
+>
+    <a class='h-full w-full' href=`/blog/${post.category.slug.current}/${post.slug.current}`>
         {
             post.cardImageMobile && post.cardImageDesktop ? (
-                    <CustomImage
-                        mobileImgUrl={urlFor(post.cardImageMobile)?.url() ?? heroImage}
-                        desktopImgUrl={urlFor(post.cardImageDesktop)?.url() ?? heroImageMobile}
-                        imageSizes={[
-                            [327, 303],
-                            [380, 303],
-                        ]}
-                        alt=`${post.title} Post Image`
-                        classList=''
-                    />
+                <CustomImage
+                    mobileImgUrl={urlFor(post.cardImageMobile)?.url() ?? heroImage}
+                    desktopImgUrl={urlFor(post.cardImageDesktop)?.url() ?? heroImageMobile}
+                    imageSizes={[
+                        [327, 303],
+                        [380, 303],
+                    ]}
+                    alt={`${post.title} Post Image`}
+                    classList=''
+                />
             ) : (
-                    <CustomImage
-                        mobileImgUrl={heroImage}
-                        desktopImgUrl={heroImageMobile}
-                        imageSizes={[
-                            [327, 303],
-                            [380, 303],
-                        ]}
-                        alt=`${post.title} Post Image`
-                        classList=''
-                    />
+                <CustomImage
+                    mobileImgUrl={heroImage}
+                    desktopImgUrl={heroImageMobile}
+                    imageSizes={[
+                        [327, 303],
+                        [380, 303],
+                    ]}
+                    alt={`${post.title} Post Image`}
+                    classList=''
+                />
             )
         }
-        <div class='p-4 flex flex-col w-full space-y-4'>
+        <div class='flex w-full flex-col space-y-4 p-4'>
             <CategoryTag category={categoryCardData.category} bgColor={categoryCardData.bgColor} />
-            <h2 class='text-lg text-left text-brand-black font-bold'>{post.title}</h2>
-            <p class='text-brand-black text-left'>{post.description}</p>
-            <p class='text-brand-gray text-left'>{formatDate(post._createdAt)}</p>
+            <h2 class='text-left text-lg font-bold text-brand-black'>{post.title}</h2>
+            <p class='text-left text-brand-black'>{post.description}</p>
+            <p class='text-left text-brand-gray'>{formatDate(post._createdAt)}</p>
         </div>
     </a>
 </article>

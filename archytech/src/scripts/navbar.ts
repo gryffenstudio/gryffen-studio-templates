@@ -176,8 +176,7 @@ function updateLogoAndMenuToggleColors() {
         } else {
             setElementColor('fill-white', 'bg-white', 'before:bg-white', 'after:bg-white');
         }
-    }
-    else {
+    } else {
         // Apply desktop-specific color changes based on scroll percentage
         if (
             window.location.pathname === '/' &&

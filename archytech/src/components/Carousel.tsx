@@ -16,19 +16,19 @@ interface CarouselProps {
 
 //Custom hook for checking for mobile or desktop
 function useMediaQuery(query: string): boolean {
-  const [matches, setMatches] = useState<boolean>(false);
+    const [matches, setMatches] = useState<boolean>(false);
 
-  useEffect(() => {
-    const mediaQuery: MediaQueryList = window.matchMedia(query);
-    setMatches(mediaQuery.matches);
+    useEffect(() => {
+        const mediaQuery: MediaQueryList = window.matchMedia(query);
+        setMatches(mediaQuery.matches);
 
-    const handler = (event: MediaQueryListEvent) => setMatches(event.matches);
-    mediaQuery.addEventListener('change', handler);
+        const handler = (event: MediaQueryListEvent) => setMatches(event.matches);
+        mediaQuery.addEventListener('change', handler);
 
-    return () => mediaQuery.removeEventListener('change', handler);
-  }, [query]);
+        return () => mediaQuery.removeEventListener('change', handler);
+    }, [query]);
 
-  return matches;
+    return matches;
 }
 
 function Carousel(props: CarouselProps) {
@@ -37,13 +37,13 @@ function Carousel(props: CarouselProps) {
 
     const previousSlide = () => {
         setCurrentImage((prevImage) =>
-            prevImage === 0 ? props.mobileImages.length - 1 : prevImage - 1
+            prevImage === 0 ? props.mobileImages.length - 1 : prevImage - 1,
         );
     };
 
     const nextSlide = () => {
         setCurrentImage((prevImage) =>
-            prevImage === props.mobileImages.length - 1 ? 0 : prevImage + 1
+            prevImage === props.mobileImages.length - 1 ? 0 : prevImage + 1,
         );
     };
 
@@ -54,69 +54,85 @@ function Carousel(props: CarouselProps) {
     });
 
     return (
-        <div className='w-full max-w-full overflow-x-hidden relative' {...swipeHandlers}>
+        <div className='relative w-full max-w-full overflow-x-hidden' {...swipeHandlers}>
             <div
-                className='flex transition ease-in-out duration-1000'
+                className='flex transition duration-1000 ease-in-out'
                 style={{
-                    transform: `translateX(-${currentImage * 105.5}%)`
+                    transform: `translateX(-${currentImage * 105.5}%)`,
                 }}
             >
                 <div className='flex'>
-                    {isMobile && props.mobileImages && props.mobileImages.map((carouselImage: CarouselImage, index) => {
-                        if(carouselImage.href){
-                            return <a className='min-w-full h-auto mr-5 block sm:hidden' href={carouselImage.href} key={`mobile-${index}`}>
+                    {isMobile &&
+                        props.mobileImages &&
+                        props.mobileImages.map((carouselImage: CarouselImage, index) => {
+                            if (carouselImage.href) {
+                                return (
+                                    <a
+                                        className='mr-5 block h-auto min-w-full sm:hidden'
+                                        href={carouselImage.href}
+                                        key={`mobile-${index}`}
+                                    >
+                                        <img
+                                            src={carouselImage.image.src}
+                                            alt={carouselImage.alt}
+                                            height={
+                                                carouselImage.height ? carouselImage.height : 681
+                                            }
+                                            width={carouselImage.width ? carouselImage.width : 327}
+                                            className='h-auto min-w-full'
+                                            decoding='async'
+                                            loading='lazy'
+                                        />
+                                    </a>
+                                );
+                            }
+                            return (
                                 <img
+                                    key={`mobile-${index}`}
                                     src={carouselImage.image.src}
                                     alt={carouselImage.alt}
-                                    height={carouselImage.height ? carouselImage.height : 681}
-                                    width={carouselImage.width ? carouselImage.width : 327}
-                                    className='min-w-full h-auto'
+                                    height={681}
+                                    width={327}
+                                    className='mr-5 block h-auto min-w-full sm:hidden'
                                     decoding='async'
                                     loading='lazy'
                                 />
-                            </a>
-                        }
-                        return <img
-                            key={`mobile-${index}`}
-                            src={carouselImage.image.src}
-                            alt={carouselImage.alt}
-                            height={681}
-                            width={327}
-                            className='min-w-full h-auto mr-5 block sm:hidden'
-                            decoding='async'
-                            loading='lazy'
-                        />
-                    })}
-                    {!isMobile && props.desktopImages && props.desktopImages.map((carouselImage: CarouselImage, index) => {
-                        return <img
-                            key={`desktop-${index}`}
-                            src={carouselImage.image.src}
-                            alt={carouselImage.alt}
-                            height={681}
-                            width={1196}
-                            className='min-w-full h-auto hidden mr-18 md:mr-[44px] lg:mr-10 xl:mr-[53px] 2xl:mr-[86px] sm:block'
-                            decoding='async'
-                            loading='lazy'
-                        />
-                    })}
+                            );
+                        })}
+                    {!isMobile &&
+                        props.desktopImages &&
+                        props.desktopImages.map((carouselImage: CarouselImage, index) => {
+                            return (
+                                <img
+                                    key={`desktop-${index}`}
+                                    src={carouselImage.image.src}
+                                    alt={carouselImage.alt}
+                                    height={681}
+                                    width={1196}
+                                    className='mr-18 hidden h-auto min-w-full sm:block md:mr-[44px] lg:mr-10 xl:mr-[53px] 2xl:mr-[86px]'
+                                    decoding='async'
+                                    loading='lazy'
+                                />
+                            );
+                        })}
                 </div>
             </div>
 
-            <div className='absolute hidden top-0 h-full w-full justify-between item-center text-white sm:flex'>
+            <div className='item-center absolute top-0 hidden h-full w-full justify-between text-white sm:flex'>
                 <button aria-label='Previous Slide Button' onClick={previousSlide}>
-                    <span className="icon-[iconamoon--arrow-left-2-thin] h-24 w-24"></span>
+                    <span className='icon-[iconamoon--arrow-left-2-thin] h-24 w-24'></span>
                 </button>
                 <button aria-label='Next Slide Button' onClick={nextSlide}>
-                    <span className="icon-[iconamoon--arrow-right-2-thin] h-24 w-24"></span>
+                    <span className='icon-[iconamoon--arrow-right-2-thin] h-24 w-24'></span>
                 </button>
             </div>
 
-            <div className='absolute bottom-0 py-4 flex justify-center items-center w-full gap-6 sm:hidden'>
+            <div className='absolute bottom-0 flex w-full items-center justify-center gap-6 py-4 sm:hidden'>
                 {props.mobileImages.map((image: CarouselImage, i: number) => (
                     <div
                         key={'carousel-circle-' + i}
-                        className={`transition-all duration-500 rounded-full cursor-pointer ${
-                            i === currentImage ? 'bg-brand-black h-5 w-5 ' : 'bg-white h-4 w-4'
+                        className={`cursor-pointer rounded-full transition-all duration-500 ${
+                            i === currentImage ? 'h-5 w-5 bg-brand-black ' : 'h-4 w-4 bg-white'
                         }`}
                         onClick={() => setCurrentImage(i)}
                     />

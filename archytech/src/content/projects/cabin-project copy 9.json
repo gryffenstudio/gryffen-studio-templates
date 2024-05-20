@@ -19,61 +19,53 @@
         {
             "image": "../../assets/images/Cabin-Project-Interior-Image-1-SM.png",
             "alt": "Cabin Project Interior Design Image"
-        }
-        ,
+        },
         {
             "image": "../../assets/images/Cabin-Project-Interior-Image-1-SM.png",
             "alt": "Cabin Project Interior Design Image"
-        }
-        ,
+        },
         {
             "image": "../../assets/images/Cabin-Project-Interior-Image-1-SM.png",
             "alt": "Cabin Project Interior Design Image 2"
         }
     ],
-    "interiorImagesDesktop":[
+    "interiorImagesDesktop": [
         {
             "image": "../../assets/images/Cabin-Project-Interior-Image-1.png",
             "alt": "Cabin Project Interior Design Image"
-        }
-        ,
+        },
         {
             "image": "../../assets/images/Cabin-Project-Interior-Image-1.png",
             "alt": "Cabin Project Interior Design Image"
-        }
-        ,
+        },
         {
             "image": "../../assets/images/Cabin-Project-Interior-Image-1.png",
             "alt": "Cabin Project Interior Design Image 2"
         }
     ],
-    "exteriorImagesMobile":[
+    "exteriorImagesMobile": [
         {
             "image": "../../assets/images/Cabin-Project-Exterior-Image-1-SM.png",
             "alt": "Cabin Project Exterior Design Image"
-        }
-        ,
+        },
         {
             "image": "../../assets/images/Cabin-Project-Exterior-Image-1-SM.png",
             "alt": "Cabin Project Exterior Design Image"
-        }
-        ,
+        },
         {
             "image": "../../assets/images/Cabin-Project-Exterior-Image-1-SM.png",
             "alt": "Cabin Project Exterior Design Image 2"
         }
     ],
-    "exteriorImagesDesktop":[
+    "exteriorImagesDesktop": [
         {
             "image": "../../assets/images/Cabin-Project-Exterior-Image-1.png",
             "alt": "Cabin Project Exterior Design Image"
-        }
-        ,
+        },
         {
             "image": "../../assets/images/Cabin-Project-Exterior-Image-1.png",
             "alt": "Cabin Project Exterior Design Image"
-        }
-        ,
+        },
         {
             "image": "../../assets/images/Cabin-Project-Exterior-Image-1.png",
             "alt": "Cabin Project Exterior Design Image 2"

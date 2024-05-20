@@ -54,18 +54,13 @@ export async function getPost(slug: string): Promise<Post> {
 }
 
 export async function getCategories(): Promise<Category[]> {
-    return await client.fetch(
-        `*[_type == "category" && defined(slug.current)]`,
-    );
+    return await client.fetch(`*[_type == "category" && defined(slug.current)]`);
 }
 
-export async function getCategory(slug: string): Promise<Category>{
-    return await client.fetch(
-        `*[_type == "category" && slug.current == $slug][0]`,
-        {
-            slug,
-        }
-    );
+export async function getCategory(slug: string): Promise<Category> {
+    return await client.fetch(`*[_type == "category" && slug.current == $slug][0]`, {
+        slug,
+    });
 }
 
 export interface Post {
@@ -89,7 +84,7 @@ export interface Category {
 }
 
 export interface Author {
-    _type: 'author'
+    _type: 'author';
     name: string;
     slug: Slug;
     websiteLink: URL;

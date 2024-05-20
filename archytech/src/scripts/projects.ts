@@ -21,7 +21,7 @@ enum FilterSelection {
     RESIDENTIAL = 'residential',
     COMMERCIAL = 'commercial',
     IN_PROGRESS = 'in_progress',
-    SHOW_ALL = 'show_all'
+    SHOW_ALL = 'show_all',
 }
 
 // Get all the links with the hover effect
@@ -63,7 +63,7 @@ function resetHoverEffect(link: HTMLAnchorElement) {
 }
 
 // Add event listeners for touch events on each link
-projectLinks.forEach(link => {
+projectLinks.forEach((link) => {
     link.addEventListener('touchstart', (event: TouchEvent) => {
         // Reset previous hover effect if another link is touched
         if (activeProjectLink && activeProjectLink !== link) {
@@ -101,8 +101,8 @@ projectLinks.forEach(link => {
 
 type ProjectCardElement = HTMLElement & {
     style: {
-        transition: string
-    }
+        transition: string;
+    };
 };
 
 function filterProjects(filter: FilterSelection) {
@@ -209,27 +209,26 @@ function filterProjects(filter: FilterSelection) {
     }
 }
 
-
 // Event listener for residential filter click
 document.getElementById('residential-filter-button')?.addEventListener('click', function () {
-    filterProjects(FilterSelection.RESIDENTIAL)
+    filterProjects(FilterSelection.RESIDENTIAL);
 });
 
 // Event listener for residential filter click
 document.getElementById('commercial-filter-button')?.addEventListener('click', function () {
-    filterProjects(FilterSelection.COMMERCIAL)
+    filterProjects(FilterSelection.COMMERCIAL);
 });
 
 // Event listener for residential filter click
 document.getElementById('in-progress-filter-button')?.addEventListener('click', function () {
-    filterProjects(FilterSelection.IN_PROGRESS)
+    filterProjects(FilterSelection.IN_PROGRESS);
 });
 
 // Event listener for show all click
 document.getElementById('show-all-filter-button')?.addEventListener('click', function () {
-    filterProjects(FilterSelection.SHOW_ALL)
+    filterProjects(FilterSelection.SHOW_ALL);
 });
 
 window.addEventListener('load', () => {
-    filterProjects(FilterSelection.SHOW_ALL)
+    filterProjects(FilterSelection.SHOW_ALL);
 });

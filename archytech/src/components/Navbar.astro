@@ -3,11 +3,11 @@ import { Image } from 'astro:assets';
 import Icon from './Icon.astro';
 ---
 
-<nav class='fixed z-50 w-full items-center top-0 flex justify-between'>
+<nav class='fixed top-0 z-50 flex w-full items-center justify-between'>
     <a class='ml-4 mt-10 lg:ml-10 lg:mt-14' href='/' aria-label='Home'>
         <svg
             id='logo'
-            class='h-[35px] w-[35px] lg:h-[51px] lg:w-[43px] duration-300 transition-all fill-white transform'
+            class='h-[35px] w-[35px] transform fill-white transition-all duration-300 lg:h-[51px] lg:w-[43px]'
             viewBox='0 0 43 51'
             xmlns='http://www.w3.org/2000/svg'
         >
@@ -20,64 +20,64 @@ import Icon from './Icon.astro';
     </a>
     <div
         id='menu-toggle'
-        class='grid h-6 cursor-pointer w-6 place-content-center mr-6 mt-10 lg:mr-10 lg:mt-14'
+        class='mr-6 mt-10 grid h-6 w-6 cursor-pointer place-content-center lg:mr-10 lg:mt-14'
     >
         <div
             id='menu-toggle-element'
-            class="h-[3px] transform rounded-full bg-white w-6 transition-all duration-0 before:absolute before:h-[3px] before:w-6 before:-translate-y-2 before:transform before:rounded-full before:bg-white before:transition-all before:duration-200 before:content-[''] after:absolute after:h-[3px] after:w-6 after:translate-y-2 after:transform after:rounded-full after:bg-white after:transition-all after:duration-200 after:content-['']"
+            class="h-[3px] w-6 transform rounded-full bg-white transition-all duration-0 before:absolute before:h-[3px] before:w-6 before:-translate-y-2 before:transform before:rounded-full before:bg-white before:transition-all before:duration-200 before:content-[''] after:absolute after:h-[3px] after:w-6 after:translate-y-2 after:transform after:rounded-full after:bg-white after:transition-all after:duration-200 after:content-['']"
         >
         </div>
     </div>
 </nav>
 <div
     id='menu'
-    class='bg-brand-black top-0 bg-opacity-95 z-40 fixed bottom-0 right-0 left-0 transform translate-x-full invisible transition-all duration-500 ease-in-out'
+    class='invisible fixed bottom-0 left-0 right-0 top-0 z-40 translate-x-full transform bg-brand-black bg-opacity-95 transition-all duration-500 ease-in-out'
 >
-    <div class="relative h-full flex flex-col items-center justify-center">
-        <div class='flex w-full h-auto flex-col items-center justify-center space-y-6'>
-            <ul class='text-3xl space-y-6 text-center'>
+    <div class='relative flex h-full flex-col items-center justify-center'>
+        <div class='flex h-auto w-full flex-col items-center justify-center space-y-6'>
+            <ul class='space-y-6 text-center text-3xl'>
                 <li class='transform duration-200 hover:-translate-y-1'>
                     <a
                         href='/studio'
-                        class='relative text-white after:bg-brand-purple after:absolute after:h-0.5 after:w-0 after:-bottom-1 after:left-0 hover:after:w-full after:transition-all after:duration-200 cursor-pointer'
+                        class='relative cursor-pointer text-white after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:bg-brand-purple after:transition-all after:duration-200 hover:after:w-full'
                         >Studio</a
                     >
                 </li>
                 <li class='transform duration-200 hover:-translate-y-1'>
                     <a
                         href='/team'
-                        class='relative text-white after:bg-brand-purple after:absolute after:h-0.5 after:w-0 after:-bottom-1 after:left-0 hover:after:w-full after:transition-all after:duration-200 cursor-pointer'
+                        class='relative cursor-pointer text-white after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:bg-brand-purple after:transition-all after:duration-200 hover:after:w-full'
                         >Team</a
                     >
                 </li>
                 <li class='transform duration-200 hover:-translate-y-1'>
                     <a
                         href='/projects'
-                        class='relative text-white after:bg-brand-purple after:absolute after:h-0.5 after:w-0 after:-bottom-1 after:left-0 hover:after:w-full after:transition-all after:duration-200 cursor-pointer'
+                        class='relative cursor-pointer text-white after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:bg-brand-purple after:transition-all after:duration-200 hover:after:w-full'
                         >Projects</a
                     >
                 </li>
                 <li class='transform duration-200 hover:-translate-y-1'>
                     <a
                         href='/blog'
-                        class='relative text-white after:bg-brand-purple after:absolute after:h-0.5 after:w-0 after:-bottom-1 after:left-0 hover:after:w-full after:transition-all after:duration-200 cursor-pointer'
+                        class='relative cursor-pointer text-white after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:bg-brand-purple after:transition-all after:duration-200 hover:after:w-full'
                         >Blog</a
                     >
                 </li>
                 <li class='transform duration-200 hover:-translate-y-1'>
                     <a
-                        class='relative text-white after:bg-brand-purple after:absolute after:h-0.5 after:w-0 after:-bottom-1 after:left-0 hover:after:w-full after:transition-all after:duration-200 cursor-pointer'
+                        class='relative cursor-pointer text-white after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:bg-brand-purple after:transition-all after:duration-200 hover:after:w-full'
                         href='/contact'>Contact</a
                     >
                 </li>
             </ul>
         </div>
-        <div class='flex space-x-6 absolute bottom-20 md:right-20'>
+        <div class='absolute bottom-20 flex space-x-6 md:right-20'>
             <Icon
                 href='https://www.instagram.com'
                 icon='icon-[ri--instagram-line]'
                 label='Instagram Link'
-                iconColor="text-brand-black"
+                iconColor='text-brand-black'
                 bgColor='bg-white'
             />
             <Icon
@@ -96,6 +96,5 @@ import Icon from './Icon.astro';
             />
         </div>
     </div>
-    
 </div>
 <script src='../scripts/navbar.ts'></script>

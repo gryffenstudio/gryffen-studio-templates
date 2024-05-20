@@ -23,9 +23,10 @@ export default defineType({
             name: 'websiteLink',
             title: 'Website Link',
             type: 'url',
-            validation: Rule => Rule.uri({
-                scheme: ['http', 'https']
-            })
+            validation: (Rule) =>
+                Rule.uri({
+                    scheme: ['http', 'https'],
+                }),
         }),
         defineField({
             name: 'image',

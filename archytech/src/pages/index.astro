@@ -21,9 +21,9 @@ import newsletterSectionImageSM from '../assets/images/Newsletter-Section-Image-
 <Layout title='Landing - Archytech' description='Build with Archytech' robots={false}>
     <Hero heroBackgroundImgSrcList={[heroImageSM, heroImage]} alt='Home Page Hero Image'>
         <div class='absolute bottom-10 z-20 flex w-full flex-col space-y-8 2xl:space-y-10'>
-            <p class='text-white text-sm md:text-xl px-6 lg:px-20'>We believe in</p>
-            <h1 class='hero-h1 tracking-wide pl-6 lg:pl-20'>Great Architecure</h1>
-            <p class='text-white px-6 md:text-xl md:w-[65%] lg:px-20 lg:w-[50%] 2xl:w-[40%]'>
+            <p class='px-6 text-sm text-white md:text-xl lg:px-20'>We believe in</p>
+            <h1 class='hero-h1 pl-6 tracking-wide lg:pl-20'>Great Architecure</h1>
+            <p class='px-6 text-white md:w-[65%] md:text-xl lg:w-[50%] lg:px-20 2xl:w-[40%]'>
                 The foremost marketplace for designing and constructing houses globally,
                 distinguished for its unparalleled reliability and trustworthiness.
             </p>
@@ -38,7 +38,7 @@ import newsletterSectionImageSM from '../assets/images/Newsletter-Section-Image-
             </div>
         </div>
         <div
-            class='bg-brand-black bg-blend-luminosity md:backdrop-blur-xl bg-opacity-50 z-10 absolute top-0 left-0 w-full md:w-[43%] h-full'
+            class='absolute left-0 top-0 z-10 h-full w-full bg-brand-black bg-opacity-50 bg-blend-luminosity md:w-[43%] md:backdrop-blur-xl'
         >
         </div>
     </Hero>
@@ -72,40 +72,40 @@ import newsletterSectionImageSM from '../assets/images/Newsletter-Section-Image-
             imageSrc={[section4ImgSM, section4Img]}
         />
         <section
-            class='relative flex flex-col items-center justify-center w-full py-8 px-4 bg-brand-black bg-blend-luminosity'
+            class='relative flex w-full flex-col items-center justify-center bg-brand-black px-4 py-8 bg-blend-luminosity'
         >
             <!-- Mobile Image -->
             <Image
-                class='absolute z-0 inset-0 w-full h-full object-cover object-center block md:hidden'
+                class='absolute inset-0 z-0 block h-full w-full object-cover object-center md:hidden'
                 src={newsletterSectionImageSM}
                 alt='Mobile Newsletter Image'
-                width="375"
-                height="359"
+                width='375'
+                height='359'
             />
             <!-- Desktop Image -->
             <Image
-                class='z-0 absolute inset-0 w-full h-full object-cover object-center hidden md:block'
+                class='absolute inset-0 z-0 hidden h-full w-full object-cover object-center md:block'
                 src={newsletterSectionImage}
                 alt='Desktop Newsletter Image'
-                width="1440"
-                height="272"
+                width='1440'
+                height='272'
             />
-            <div class='flex flex-col z-10 items-center justify-center space-y-16'>
-                <h2 class='text-white text-start font-semibold text-3xl relative tracking-wide'>
+            <div class='z-10 flex flex-col items-center justify-center space-y-16'>
+                <h2 class='relative text-start text-3xl font-semibold tracking-wide text-white'>
                     STAY UP TO DATE WITH OUR NEWSLETTER
                     <span
-                        class='after:absolute after:block after:w-[70px] after:h-[3px] after:bg-white after:mt-2 after:rounded-full'
+                        class='after:absolute after:mt-2 after:block after:h-[3px] after:w-[70px] after:rounded-full after:bg-white'
                     ></span>
                 </h2>
                 <form
-                    class='mt-4 w-full flex flex-col items-center'
+                    class='mt-4 flex w-full flex-col items-center'
                     name='newsletterForm'
                     id='newsletterForm'
                     data-netlify='true'
                     method='post'
                 >
                     <input
-                        class='border-brand-gray block h-12 w-[327px] lg:w-[355px] rounded-lg border p-2.5 text-sm text-black focus:border-brand-red focus:outline-none focus:ring-0'
+                        class='focus:border-brand-red block h-12 w-[327px] rounded-lg border border-brand-gray p-2.5 text-sm text-black focus:outline-none focus:ring-0 lg:w-[355px]'
                         type='email'
                         id='email'
                         name='email'
@@ -116,7 +116,7 @@ import newsletterSectionImageSM from '../assets/images/Newsletter-Section-Image-
                     <button
                         type='submit'
                         id='subscribe-button'
-                        class='mt-4 h-12 w-[327px] lg:w-[355px] rounded-md bg-brand-purple py-2 font-visby-medium text-white hover:bg-opacity-80'
+                        class='font-visby-medium mt-4 h-12 w-[327px] rounded-md bg-brand-purple py-2 text-white hover:bg-opacity-80 lg:w-[355px]'
                     >
                         Subscribe
                     </button>

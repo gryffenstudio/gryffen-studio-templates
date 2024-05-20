@@ -1,27 +1,22 @@
 ---
-import Hero from "../components/Hero.astro";
-import ScrollProgress from "../components/ScrollProgress.astro";
-import Layout from "../layouts/Layout.astro";
+import Hero from '../components/Hero.astro';
+import ScrollProgress from '../components/ScrollProgress.astro';
+import Layout from '../layouts/Layout.astro';
 import heroImage from '../assets/images/Studio-Hero.png';
 import heroImageSM from '../assets/images/Studio-Hero-SM.png';
 import studioArchytechImage from '../assets/images/Studio-Archytech.png';
 import studioArchytechImageSM from '../assets/images/Studio-Archytech-SM.png';
 import studioDesignImage from '../assets/images/Studio-Design.png';
 import teamHeroImage from '../assets/images/Team-Hero.png';
-import CustomImage from "../components/CustomImage.astro";
-import SectionDropdown from "../components/SectionDropdown.astro";
-import ContactUsSection from "../components/ContactUsSection.astro";
-
+import CustomImage from '../components/CustomImage.astro';
+import SectionDropdown from '../components/SectionDropdown.astro';
+import ContactUsSection from '../components/ContactUsSection.astro';
 ---
 
-<Layout 
-    title='Studio - Archytech'
-    description='Building Dreams As a Team'
-    robots={false}
->
+<Layout title='Studio - Archytech' description='Building Dreams As a Team' robots={false}>
     <Hero heroBackgroundImgSrcList={[heroImageSM, heroImage]} alt='Projects Hero Image'>
-        <div class='bottom-10 z-20 absolute flex w-full flex-col space-y-8 md:space-y-10'>
-            <h1 class='hero-h1 bottom-0 tracking-wide px-6 lg:px-20'>Studio</h1>
+        <div class='absolute bottom-10 z-20 flex w-full flex-col space-y-8 md:space-y-10'>
+            <h1 class='hero-h1 bottom-0 px-6 tracking-wide lg:px-20'>Studio</h1>
             <div class='px-6 lg:px-20'>
                 <ScrollProgress
                     isHeroScrollProgress={true}
@@ -33,71 +28,99 @@ import ContactUsSection from "../components/ContactUsSection.astro";
             </div>
         </div>
         <div
-            class='bg-brand-black bg-blend-luminosity md:backdrop-blur-xl bg-opacity-50 z-10 absolute top-0 left-0 w-full md:w-[43%] h-full'
+            class='absolute left-0 top-0 z-10 h-full w-full bg-brand-black bg-opacity-50 bg-blend-luminosity md:w-[43%] md:backdrop-blur-xl'
         >
         </div>
     </Hero>
-    <main class="w-full items-center justify-center">
-        <section class="flex flex-col w-full items-start justify-end space-y-10 pb-10 px-6 md:py-20 lg:px-24 md:flex-row md:space-x-16 md:space-y-0">
-                <CustomImage
-                    mobileImgUrl={studioArchytechImageSM}
-                    desktopImgUrl={studioArchytechImage}
-                    imageSizes={[
-                        [327, 500],
-                        [598, 993],
-                    ]}
-                    alt="Archytech Historical Image"
-                    classList='hidden md:block w-1/2 h-auto'
-                    imgClassList=""
-                />
-            <div class="relative flex flex-col space-y-10 md:w-1/2">
-                <h2 class='text-brand-black text-start font-semibold place-self-start text-2xl lg:text-3xl relative tracking-wide'>
-                        ARCHYTECH DESIGN
-                        <span
-                            class='after:absolute after:block after:w-[20%] after:h-[3px] after:bg-brand-black after:mt-2 after:rounded-full'
-                        ></span>
+    <main class='w-full items-center justify-center'>
+        <section
+            class='flex w-full flex-col items-start justify-end space-y-10 px-6 pb-10 md:flex-row md:space-x-16 md:space-y-0 md:py-20 lg:px-24'
+        >
+            <CustomImage
+                mobileImgUrl={studioArchytechImageSM}
+                desktopImgUrl={studioArchytechImage}
+                imageSizes={[
+                    [327, 500],
+                    [598, 993],
+                ]}
+                alt='Archytech Historical Image'
+                classList='hidden md:block w-1/2 h-auto'
+                imgClassList=''
+            />
+            <div class='relative flex flex-col space-y-10 md:w-1/2'>
+                <h2
+                    class='relative place-self-start text-start text-2xl font-semibold tracking-wide text-brand-black lg:text-3xl'
+                >
+                    ARCHYTECH DESIGN
+                    <span
+                        class='after:absolute after:mt-2 after:block after:h-[3px] after:w-[20%] after:rounded-full after:bg-brand-black'
+                    ></span>
                 </h2>
-                <p class="text-brand-black leading-loose">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat 
-                cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                <p class='leading-loose text-brand-black'>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                    culpa qui officia deserunt mollit anim id est laborum.
                 </p>
             </div>
             <CustomImage
-            mobileImgUrl={studioArchytechImageSM}
-            desktopImgUrl={studioArchytechImage}
-            imageSizes={[
-                [327, 500],
-                [598, 993],
-            ]}
-            alt="Archytech Historical Image"
-            classList='w-full md:hidden'
-            imgClassList="min-w-full h-auto"
+                mobileImgUrl={studioArchytechImageSM}
+                desktopImgUrl={studioArchytechImage}
+                imageSizes={[
+                    [327, 500],
+                    [598, 993],
+                ]}
+                alt='Archytech Historical Image'
+                classList='w-full md:hidden'
+                imgClassList='min-w-full h-auto'
             />
         </section>
-        <section class="flex flex-col space-y-10 pb-10 md:pb-20 px-6 lg:px-24">
-            <div class="relative flex flex-col space-y-10">
-                <h2 class='text-brand-black text-start font-semibold place-self-start text-2xl lg:text-3xl relative tracking-wide'>
-                        We build your dreams
-                        <span
-                            class='after:absolute after:block after:w-[20%] after:h-[3px] after:bg-brand-black after:mt-2 after:rounded-full'
-                        ></span>
+        <section class='flex flex-col space-y-10 px-6 pb-10 md:pb-20 lg:px-24'>
+            <div class='relative flex flex-col space-y-10'>
+                <h2
+                    class='relative place-self-start text-start text-2xl font-semibold tracking-wide text-brand-black lg:text-3xl'
+                >
+                    We build your dreams
+                    <span
+                        class='after:absolute after:mt-2 after:block after:h-[3px] after:w-[20%] after:rounded-full after:bg-brand-black'
+                    ></span>
                 </h2>
-                <p class="text-brand-black leading-loose">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat 
-                cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                <p class='leading-loose text-brand-black'>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                    culpa qui officia deserunt mollit anim id est laborum.
                 </p>
             </div>
-            <div class="relative flex flex-col space-y-6">
-                <SectionDropdown header="Architecture" bodyText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. " />
-                <SectionDropdown header="Interior Design" bodyText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. " />
-                <SectionDropdown header="Experimental Design" bodyText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. " />
-                <SectionDropdown header="Project Coordination" bodyText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. " />
-                <SectionDropdown header="3D Architectural Renderings" bodyText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. " />
-                <SectionDropdown header="Property Selection Architecture" bodyText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. " />
+            <div class='relative flex flex-col space-y-6'>
+                <SectionDropdown
+                    header='Architecture'
+                    bodyText='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
+                />
+                <SectionDropdown
+                    header='Interior Design'
+                    bodyText='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
+                />
+                <SectionDropdown
+                    header='Experimental Design'
+                    bodyText='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
+                />
+                <SectionDropdown
+                    header='Project Coordination'
+                    bodyText='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
+                />
+                <SectionDropdown
+                    header='3D Architectural Renderings'
+                    bodyText='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
+                />
+                <SectionDropdown
+                    header='Property Selection Architecture'
+                    bodyText='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
+                />
             </div>
         </section>
         <CustomImage
@@ -107,27 +130,33 @@ import ContactUsSection from "../components/ContactUsSection.astro";
                 [520, 1196],
                 [520, 1196],
             ]}
-            alt="Archytech Design Image"
+            alt='Archytech Design Image'
             classList='hidden w-full md:block '
-            imgClassList="min-w-full px-6 lg:px-24 h-auto"
+            imgClassList='min-w-full px-6 lg:px-24 h-auto'
         />
-        <section class="flex items-start flex-col space-y-10 pb-10 px-6 md:py-20 md:flex-row md:justify-between md:space-y-0 lg:px-24">
-            <p class="text-brand-black text-left text-2xl place-self-center md:pr-10 md:w-1/2 ">
-                “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.”
+        <section
+            class='flex flex-col items-start space-y-10 px-6 pb-10 md:flex-row md:justify-between md:space-y-0 md:py-20 lg:px-24'
+        >
+            <p class='place-self-center text-left text-2xl text-brand-black md:w-1/2 md:pr-10'>
+                “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua.”
             </p>
-            <div class="flex flex-col space-y-6 md:w-[40%]">
-                <a href="/team" class="relative flex space-x-2 items-center w-fit">
-                    <h2 class="text-brand-black text-start font-semibold place-self-start text-2xl lg:text-3xl relative tracking-wide">
+            <div class='flex flex-col space-y-6 md:w-[40%]'>
+                <a href='/team' class='relative flex w-fit items-center space-x-2'>
+                    <h2
+                        class='relative place-self-start text-start text-2xl font-semibold tracking-wide text-brand-black lg:text-3xl'
+                    >
                         Meet our team
                         <span
-                            class='after:absolute after:block after:w-[70px] after:h-[3px] after:bg-brand-black after:mt-2 after:rounded-full'
+                            class='after:absolute after:mt-2 after:block after:h-[3px] after:w-[70px] after:rounded-full after:bg-brand-black'
                         ></span>
                     </h2>
-                    <span class="icon-[mynaui--arrow-right] text-brand-black size-7"></span>
+                    <span class='icon-[mynaui--arrow-right] size-7 text-brand-black'></span>
                 </a>
-                <p class='text-brand-black leading-loose'>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  
+                <p class='leading-loose text-brand-black'>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                 </p>
             </div>
         </section>
@@ -138,9 +167,9 @@ import ContactUsSection from "../components/ContactUsSection.astro";
                 [520, 500],
                 [520, 1196],
             ]}
-            alt="Archytech Design Image"
+            alt='Archytech Design Image'
             classList='max-w-full'
-            imgClassList="min-w-full max-h-[600px] 2xl:max-h-[800px] pb-10 px-6 md:pb-20 lg:px-24"
+            imgClassList='min-w-full max-h-[600px] 2xl:max-h-[800px] pb-10 px-6 md:pb-20 lg:px-24'
         />
     </main>
     <ContactUsSection />

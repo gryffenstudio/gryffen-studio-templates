@@ -7,7 +7,7 @@ interface DropdownButton extends HTMLButtonElement {
 const dropdownButtons: NodeListOf<DropdownButton> = document.querySelectorAll('.dropdown-button');
 
 // Attach click event listener to each dropdown button
-dropdownButtons.forEach(button => {
+dropdownButtons.forEach((button) => {
     button.addEventListener('click', () => {
         const header = getHeaderFromButton(button);
         if (header) {
@@ -26,13 +26,16 @@ function getHeaderFromButton(button: DropdownButton): HTMLHeadingElement | null 
 }
 
 function toggleDropdown(header: HTMLHeadingElement) {
-    const contentDiv = document.getElementById(`${header.textContent}-content`) as HTMLElement | null;
-    const arrowIcon = document.getElementById(`${header.textContent}-dropdown`) as HTMLElement | null;
+    const contentDiv = document.getElementById(
+        `${header.textContent}-content`,
+    ) as HTMLElement | null;
+    const arrowIcon = document.getElementById(
+        `${header.textContent}-dropdown`,
+    ) as HTMLElement | null;
 
     if (contentDiv && arrowIcon) {
-        const isClosed = contentDiv.classList.contains('max-h-0') && contentDiv.style.maxHeight === '';
-;
-
+        const isClosed =
+            contentDiv.classList.contains('max-h-0') && contentDiv.style.maxHeight === '';
         // Toggle visibility with a delay to enable smooth transition
         setTimeout(() => {
             if (isClosed) {

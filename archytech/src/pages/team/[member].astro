@@ -14,34 +14,39 @@ import ProjectCard from '../../components/ProjectCard.astro';
 import ContactUsSection from '../../components/ContactUsSection.astro';
 
 export async function getStaticPaths() {
-    const members = await getCollection('team')
+    const members = await getCollection('team');
     return members.map((member: any) => ({
         params: {
-            member: member.data.slug, 
+            member: member.data.slug,
         },
-        props: { member }
-    }))
+        props: { member },
+    }));
 }
 
-const completedProjects = await getCollection('projects', ({data}) => {
+const completedProjects = await getCollection('projects', ({ data }) => {
     return data.completionYear !== null && data.completionYear?.trim() !== '';
-})
+});
 
 let featuredProjectCarouselImages: CarouselImage[] = [];
 let featuredProjectCards = [];
 
 // Build featured project carousel image lists for both mobile and desktop
-for(let i = 0; i < 3; i ++){
+for (let i = 0; i < 3; i++) {
     let carouselImageMobile: CarouselImage = {} as CarouselImage;
-    
-    let completedProjectsMobileImage = await getImage({src:completedProjects[i].data.cardImageMobile, height:448, width:327, format:"webp"});
 
-    if(completedProjects[i]){
-        carouselImageMobile.image = {src: completedProjectsMobileImage.src};
+    let completedProjectsMobileImage = await getImage({
+        src: completedProjects[i].data.cardImageMobile,
+        height: 448,
+        width: 327,
+        format: 'webp',
+    });
+
+    if (completedProjects[i]) {
+        carouselImageMobile.image = { src: completedProjectsMobileImage.src };
         carouselImageMobile.alt = completedProjects[i].data.cardImageAlt;
         carouselImageMobile.height = completedProjectsMobileImage.attributes.height;
         carouselImageMobile.width = completedProjectsMobileImage.attributes.width;
-        carouselImageMobile.href = `/projects/${completedProjects[i].data.slug}`
+        carouselImageMobile.href = `/projects/${completedProjects[i].data.slug}`;
 
         featuredProjectCarouselImages.push(carouselImageMobile);
         featuredProjectCards.push(completedProjects[i]);
@@ -57,8 +62,8 @@ const { member } = Astro.props;
     robots={false}
 >
     <Hero heroBackgroundImgSrcList={[heroImageSM, heroImage]} alt=`Team Member Hero Image`>
-        <div class='bottom-10 z-20 absolute flex w-full flex-col space-y-8 md:space-y-10'>
-            <h1 class='hero-h1 bottom-0 tracking-wide px-6 lg:px-20'>Team</h1>
+        <div class='absolute bottom-10 z-20 flex w-full flex-col space-y-8 md:space-y-10'>
+            <h1 class='hero-h1 bottom-0 px-6 tracking-wide lg:px-20'>Team</h1>
             <div class='px-6 lg:px-20'>
                 <ScrollProgress
                     isHeroScrollProgress={true}
@@ -70,19 +75,25 @@ const { member } = Astro.props;
             </div>
         </div>
         <div
-            class='bg-brand-black bg-blend-luminosity md:backdrop-blur-xl bg-opacity-50 z-10 absolute top-0 left-0 w-full md:w-[43%] h-full'
+            class='absolute left-0 top-0 z-10 h-full w-full bg-brand-black bg-opacity-50 bg-blend-luminosity md:w-[43%] md:backdrop-blur-xl'
         >
         </div>
     </Hero>
 
-    <main class='container mx-auto items-center space-y-10 py-10 px-6 md:px-10 md:py-20 md:space-y-20'>
-        <section class="flex flex-col space-y-6 md:flex-row md:space-x-8">
-            <div class="flex flex-col space-y-6 w-fit place-self-center md:place-self-auto md:w-1/2">
-                <div class="flex flex-col items-start space-y-2 md:hidden">
-                    <h2 class="block text-brand-black text-2xl text-left font-bold">
+    <main
+        class='container mx-auto items-center space-y-10 px-6 py-10 md:space-y-20 md:px-10 md:py-20'
+    >
+        <section class='flex flex-col space-y-6 md:flex-row md:space-x-8'>
+            <div
+                class='flex w-fit flex-col space-y-6 place-self-center md:w-1/2 md:place-self-auto'
+            >
+                <div class='flex flex-col items-start space-y-2 md:hidden'>
+                    <h2 class='block text-left text-2xl font-bold text-brand-black'>
                         {member.data.name}
                     </h2>
-                    <p class="block text-brand-gray text-lg text-left font-medium">{member.data.role.toUpperCase()}</p>
+                    <p class='block text-left text-lg font-medium text-brand-gray'>
+                        {member.data.role.toUpperCase()}
+                    </p>
                 </div>
                 <CustomImage
                     mobileImgUrl={member.data.profileImageMobile}
@@ -93,75 +104,87 @@ const { member } = Astro.props;
                     ]}
                     alt=`${member.data.name} Profile Image`
                 />
-                <div class="flex items-center space-x-4">
-                    <Icon 
+                <div class='flex items-center space-x-4'>
+                    <Icon
                         href=`tel:${member.data.phoneNumber.replace(/-/g,'')}`
-                        icon='icon-[mage--phone]' 
+                        icon='icon-[mage--phone]'
                         label=`${member.data.name} phone number link`
                         iconColor='text-white'
                         bgColor='bg-brand-black'
                     />
-                    <p class="text-brand-black">{member.data.phoneNumber}</p>
+                    <p class='text-brand-black'>{member.data.phoneNumber}</p>
                 </div>
-                <div class="flex items-center space-x-4">
-                    <Icon 
+                <div class='flex items-center space-x-4'>
+                    <Icon
                         href=`mailto:${member.data.email}`
-                        icon='icon-[eva--email-outline]' 
+                        icon='icon-[eva--email-outline]'
                         label=`${member.data.name} email link`
                         iconColor='text-white'
                         bgColor='bg-brand-black'
                     />
-                    <p class="text-brand-black">{member.data.email}</p>
+                    <p class='text-brand-black'>{member.data.email}</p>
                 </div>
-                <div class="flex items-center space-x-4">
-                    <Icon 
+                <div class='flex items-center space-x-4'>
+                    <Icon
                         href=`https://maps.google.com/?q=${member.data.location}`
-                        icon='icon-[carbon--location]' 
+                        icon='icon-[carbon--location]'
                         label=`${member.data.name} location link`
                         iconColor='text-white'
                         bgColor='bg-brand-black'
                     />
-                    <p class="text-brand-black">{member.data.location}</p>
+                    <p class='text-brand-black'>{member.data.location}</p>
                 </div>
             </div>
-            <div class="flex flex-col space-y-6 md:w-1/2">
-                <div class="hidden md:flex flex-col items-start space-y-2">
-                    <h2 class="block text-brand-black text-2xl text-left font-bold">
+            <div class='flex flex-col space-y-6 md:w-1/2'>
+                <div class='hidden flex-col items-start space-y-2 md:flex'>
+                    <h2 class='block text-left text-2xl font-bold text-brand-black'>
                         {member.data.name}
                     </h2>
-                    <p class="block text-brand-gray text-lg text-left font-medium">{member.data.role.toUpperCase()}</p>
+                    <p class='block text-left text-lg font-medium text-brand-gray'>
+                        {member.data.role.toUpperCase()}
+                    </p>
                 </div>
-                <p class="text-brand-black leading-loose">
+                <p class='leading-loose text-brand-black'>
                     {member.data.description1}
                 </p>
-                <p class="text-brand-black leading-loose">
+                <p class='leading-loose text-brand-black'>
                     {member.data.description2}
                 </p>
-                <p class="text-brand-black leading-loose">
+                <p class='leading-loose text-brand-black'>
                     {member.data.description3}
                 </p>
             </div>
         </section>
         <section class='flex flex-col'>
-            <h2 class='text-brand-black text-start font-semibold place-self-start text-2xl lg:text-3xl relative tracking-wide mb-10'>
+            <h2
+                class='relative mb-10 place-self-start text-start text-2xl font-semibold tracking-wide text-brand-black lg:text-3xl'
+            >
                 Featured Projects
                 <span
-                    class='after:absolute after:block after:w-[20%] after:h-[3px] after:bg-brand-black after:mt-2 after:rounded-full'
+                    class='after:absolute after:mt-2 after:block after:h-[3px] after:w-[20%] after:rounded-full after:bg-brand-black'
                 ></span>
             </h2>
-            <div class="block sm:hidden">
+            <div class='block sm:hidden'>
                 <Carousel mobileImages={featuredProjectCarouselImages} client:load />
             </div>
-            <div class="hidden sm:flex justify-between">
-                {featuredProjectCards.map((project: any) => {
-                    return <ProjectCard projectName={project.data.projectName} projectSlug={project.data.slug} projectCategory={project.data.category}
-                    projectImageMobileSrc={project.data.cardImageMobile} projectImageDesktopSrc={project.data.cardImageDesktop} projectImageAlt={project.data.cardImageAlt}/>
-                })}
+            <div class='hidden justify-between sm:flex'>
+                {
+                    featuredProjectCards.map((project: any) => {
+                        return (
+                            <ProjectCard
+                                projectName={project.data.projectName}
+                                projectSlug={project.data.slug}
+                                projectCategory={project.data.category}
+                                projectImageMobileSrc={project.data.cardImageMobile}
+                                projectImageDesktopSrc={project.data.cardImageDesktop}
+                                projectImageAlt={project.data.cardImageAlt}
+                            />
+                        );
+                    })
+                }
             </div>
         </section>
     </main>
     <ContactUsSection />
     <script src='../../scripts/projects.ts'></script>
-
-
 </Layout>

@@ -10,10 +10,20 @@ interface Props {
     projectImageAlt: string;
 }
 
-const {projectName, projectSlug, projectCategory, projectImageMobileSrc, projectImageDesktopSrc, projectImageAlt} = Astro.props;
+const {
+    projectName,
+    projectSlug,
+    projectCategory,
+    projectImageMobileSrc,
+    projectImageDesktopSrc,
+    projectImageAlt,
+} = Astro.props;
 ---
 
-<a class=`relative group items-center justify-center flex flex-col text-white transform transition-all duration-1000 ease-in-out ${projectCategory}` href=`/projects/${projectSlug}`>
+<a
+    class=`relative group items-center justify-center flex flex-col text-white transform transition-all duration-1000 ease-in-out ${projectCategory}`
+    href=`/projects/${projectSlug}`
+>
     <CustomImage
         mobileImgUrl={projectImageMobileSrc}
         desktopImgUrl={projectImageDesktopSrc}
@@ -24,10 +34,12 @@ const {projectName, projectSlug, projectCategory, projectImageMobileSrc, project
         alt={projectImageAlt}
         classList='group-hover:blur-sm blur-none shadow-md shadow-brand-black transform transition-all duration-300'
     />
-    <p class='block opacity-0 z-20 absolute bottom-6 left-6 text-xl text-start transform transition-opacity duration-300 group-hover:opacity-100'>
+    <p
+        class='absolute bottom-6 left-6 z-20 block transform text-start text-xl opacity-0 transition-opacity duration-300 group-hover:opacity-100'
+    >
         {projectName}
     </p>
     <span
-        class='block bg-opacity-0 bg-brand-black bg-blend-luminosity z-10 absolute w-full h-full transform transition-all duration-300 group-hover:bg-opacity-20'
+        class='absolute z-10 block h-full w-full transform bg-brand-black bg-opacity-0 bg-blend-luminosity transition-all duration-300 group-hover:bg-opacity-20'
     ></span>
 </a>

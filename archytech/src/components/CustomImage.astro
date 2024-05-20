@@ -29,7 +29,17 @@ const desktopImg = await getImage({
 ---
 
 <picture class={classList}>
-    <source media='(max-width: 810px)' height={mobileImg.attributes.height} width={mobileImg.attributes.width} srcset={mobileImg.src} />
-    <source media='(min-width: 811px)' height={desktopImg.attributes.height} width={desktopImg.attributes.width} srcset={desktopImg.src} />
-    <img class={imgClassList} src={desktopImg.src} alt={alt} loading="lazy" decoding="async" />
+    <source
+        media='(max-width: 810px)'
+        height={mobileImg.attributes.height}
+        width={mobileImg.attributes.width}
+        srcset={mobileImg.src}
+    />
+    <source
+        media='(min-width: 811px)'
+        height={desktopImg.attributes.height}
+        width={desktopImg.attributes.width}
+        srcset={desktopImg.src}
+    />
+    <img class={imgClassList} src={desktopImg.src} alt={alt} loading='lazy' decoding='async' />
 </picture>
