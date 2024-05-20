@@ -1,11 +1,15 @@
 ---
-import type { Params } from 'astro';
-import {getPost } from '../../../utils/sanity';
+import {getPost, getPosts, type Post } from '../../../utils/sanity';
 
-export const prerender = false;
+export async function getStaticPaths() {
+    const posts = await getPosts();
+    return posts.map((post: Post) => ({
+        params: {slug: post.slug.current, category: post.category.title.toLowerCase()},
+    }));
+}
 
-const { slug } = Astro.params as Params;
+const { slug } = Astro.params
 
-const post = await getPost(slug ?? '');
+const post = await getPost(slug);
 ---
-<h1>{post.author}</h1>
+<h1>{post.title}</h1>

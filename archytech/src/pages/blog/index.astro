@@ -10,7 +10,6 @@ import heroImage from '../../assets/images/Blog-Hero.png';
 import heroImageSM from '../../assets/images/Blog-Hero-SM.png';
 import FilterButton from '../../components/FilterButton.astro';
 
-export const prerender = false;
 const posts = await getPosts();
 
 const currentPage: number | null = +Astro.url.searchParams?.get('page')! || 1;

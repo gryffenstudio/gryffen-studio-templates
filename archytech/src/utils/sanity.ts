@@ -5,7 +5,7 @@ import type { ImageAsset, SanityDocument, Slug } from '@sanity/types';
 export const client = createClient({
     projectId: 'bpernsxq',
     dataset: 'production',
-    useCdn: true,
+    useCdn: false,
     apiVersion: '2024-05-14',
 });
 
@@ -54,13 +54,13 @@ export async function getPost(slug: string): Promise<Post> {
 }
 
 export async function getCategories(): Promise<Category[]> {
-    return await client.config({useCdn: false}).fetch(
+    return await client.fetch(
         `*[_type == "category" && defined(slug.current)]`,
     );
 }
 
 export async function getCategory(slug: string): Promise<Category>{
-    return await client.config({useCdn: false}).fetch(
+    return await client.fetch(
         `*[_type == "category" && slug.current == $slug][0]`,
         {
             slug,
