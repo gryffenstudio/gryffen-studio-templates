@@ -42,7 +42,11 @@ export default defineConfig({
     integrations: [
         react(),
         tailwind(),
-        partytown(),
+        partytown({
+            config: {
+                forward: ['dataLayer.push'],
+            },
+        }),
         robotsTxt(),
         sitemap(),
         sanity({
