@@ -2,7 +2,7 @@
     "title": "Landing - Archytech",
     "description": "Build with Archytech",
     "image": {
-        "src": "https://archytech.netlify.app/src/assets/images/ArchytechLogo.png",
+        "src": "https://archytech.netlify.app/images/ArchytechLogo.svg",
         "alt": "Archytech Logo",
         "width": "43",
         "height": "51"
