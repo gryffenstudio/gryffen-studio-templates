@@ -6,7 +6,9 @@ export interface BuildDefaultStructuredDataProps {
     url: URL;
 }
 
-export default function buildDefaultStructuredData(props: BuildDefaultStructuredDataProps): StructuredDataInput[] {
+export default function buildDefaultStructuredData(
+    props: BuildDefaultStructuredDataProps,
+): StructuredDataInput[] {
     return [
         {
             type: 'WebSite',

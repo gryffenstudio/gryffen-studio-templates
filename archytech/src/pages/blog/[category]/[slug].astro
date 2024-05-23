@@ -76,7 +76,7 @@ const structuredData: StructuredDataInput[] = [
             items: [
                 { name: 'Home', url: siteData.url },
                 { name: 'Blog', url: `${siteData.url}/blog` },
-                { name: 'Category', url: `${siteData.url}/blog/${post.category.slug}` },
+                { name: 'Category', url: `${siteData.url}/blog/${post.category.slug.current}` },
                 { name: post.title, url: Astro.url },
             ],
         },
