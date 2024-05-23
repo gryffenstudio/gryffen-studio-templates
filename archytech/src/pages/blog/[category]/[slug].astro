@@ -34,7 +34,7 @@ const structuredData: StructuredDataInput[] = [
                 name: siteData.organizationName,
                 logo: {
                     '@type': 'ImageObject',
-                    url: siteData.image.src,
+                    url: siteData.logo.src,
                 },
             },
             mainEntityOfPage: {
@@ -67,7 +67,7 @@ const structuredData: StructuredDataInput[] = [
         data: {
             name: siteData.organizationName,
             url: siteData.url,
-            logo: siteData.image.src,
+            logo: siteData.logo.src,
         },
     } satisfies StructuredDataInput,
     {
