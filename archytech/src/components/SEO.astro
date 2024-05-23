@@ -1,28 +1,33 @@
 ---
 import siteData from '../data/siteData.json';
 import jsonLDGenerator from '../utils/SEOJsonLoad';
+import type { StructuredDataInput } from '../utils/structuredData';
 
 interface Props {
     title: string;
     description: string;
     url: URL;
+    structuredData?: StructuredDataInput[];
     image?: any;
     robots?: boolean;
 }
-const { title, description, url = Astro.url, image, robots } = Astro.props satisfies Props;
+const {
+    title,
+    description,
+    url = Astro.url,
+    structuredData,
+    image,
+    robots,
+} = Astro.props satisfies Props;
 
-const jsonLD = jsonLDGenerator({
-    url: Astro.props.url,
-    name: Astro.props.title,
-    description: Astro.props.description,
-});
+const jsonLD = jsonLDGenerator(structuredData ?? ([] as StructuredDataInput[]));
 ---
 
 <!-- SEO -->
 <link rel='canonical' href={url} />
 
 <!-- Open Graph -->
-<meta property='og:site_name' content='NurtureLume' />
+<meta property='og:site_name' content={siteData.organizationName} />
 <meta property='og:title' content={title} />
 <meta property='og:description' content={description} />
 <meta property='og:url' content={url} />
@@ -38,13 +43,13 @@ const jsonLD = jsonLDGenerator({
 <meta name='twitter:title' content={title} />
 <meta name='twitter:description' content={description} />
 <meta name='twitter:card' content='summary_large_image' />
-<meta name='twitter:site' content='@nurturelume' />
+<meta name='twitter:site' content='@archytech' />
 <meta name='twitter:image' content={image?.src || siteData.image.src} />
 <meta name='twitter:image:alt' content={image?.alt || siteData.image.alt} />
-<meta property='twitter:domain' content='nurturelume.com' />
+<meta property='twitter:domain' content='archytech.netlify.app' />
 <meta property='twitter:url' content={url} />
 
 {robots ?? <meta name='robots' content='noindex, nofollow' />}
 
 <!-- JSON LD -->
-<Fragment set:html={jsonLD} />
+<script type="application/ld+json" set:html={jsonLD} />

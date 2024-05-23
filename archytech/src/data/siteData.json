@@ -1,12 +1,13 @@
 {
-    "title": "All-in-One Childcare Software Solution for Connecting Parents with Childcare Providers | NurtureLume",
-    "description": "NurtureLume offers a centralized platform to support parents in finding perfect-fit childcare and equip providers with an easy-to-use childcare management system.",
+    "title": "Landing - Archytech",
+    "description": "Build with Archytech",
     "image": {
-        "src": "https://nurturelume.com/images/Logo.png",
-        "alt": "NurtureLume Logo",
+        "src": "https://archytech.netlify.app/src/assets/images/ArchytechLogo.png",
+        "alt": "Archytech Logo",
         "width": "43",
         "height": "51"
     },
-    "url": "https://nurturelume.com",
-    "id": "https://nurturelume.com/#website"
+    "organizationName": "Archytech",
+    "url": "https://archytech.netlify.app",
+    "id": "https://archytech.netlify.app/#website"
 }

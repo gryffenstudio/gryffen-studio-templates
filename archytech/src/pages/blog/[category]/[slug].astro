@@ -1,5 +1,9 @@
 ---
 import { getPost, getPosts, type Post } from '../../../utils/sanity';
+import type { StructuredDataInput } from '../../../utils/structuredData';
+import siteData from '../../../data/siteData.json';
+import { urlFor } from '../../../utils/image';
+import Layout from '../../../layouts/Layout.astro';
 
 export async function getStaticPaths() {
     const posts = await getPosts();
@@ -11,6 +15,79 @@ export async function getStaticPaths() {
 const { slug } = Astro.params;
 
 const post = await getPost(slug);
+const hello = 'hello';
+
+const structuredData: StructuredDataInput[] = [
+    {
+        type: 'BlogPosting',
+        data: {
+            headline: post.title,
+            description: post.description,
+            datePublished: post._createdAt,
+            dateModified: post._createdAt,
+            author: {
+                '@type': 'Person',
+                name: post.author.name,
+            },
+            publisher: {
+                '@type': 'Organization',
+                name: siteData.organizationName,
+                logo: {
+                    '@type': 'ImageObject',
+                    url: siteData.image.src,
+                },
+            },
+            mainEntityOfPage: {
+                '@type': 'WebPage',
+                '@id': Astro.url,
+            },
+            image: urlFor(post.cardImageMobile)?.url() ?? '',
+        },
+    } satisfies StructuredDataInput,
+    {
+        type: 'WebSite',
+        data: {
+            name: siteData.organizationName,
+            url: siteData.url,
+        },
+    } satisfies StructuredDataInput,
+    {
+        type: 'WebPage',
+        data: {
+            '@id': Astro.url,
+            name: post.title,
+            isPartOf: {
+                '@type': 'WebSite',
+                '@id': siteData.url,
+            },
+        },
+    } satisfies StructuredDataInput,
+    {
+        type: 'Organization',
+        data: {
+            name: siteData.organizationName,
+            url: siteData.url,
+            logo: siteData.image.src,
+        },
+    } satisfies StructuredDataInput,
+    {
+        type: 'BreadcrumbList',
+        data: {
+            items: [
+                { name: 'Home', url: siteData.url },
+                { name: 'Blog', url: `${siteData.url}/blog` },
+                { name: 'Category', url: `${siteData.url}/blog/${post.category.slug}` },
+                { name: post.title, url: Astro.url },
+            ],
+        },
+    } satisfies StructuredDataInput,
+];
 ---
 
+<Layout
+    title={post.title}
+    description={post.description}
+    robots={false}
+    structuredData={structuredData}
+/>
 <h1>{post.title}</h1>
