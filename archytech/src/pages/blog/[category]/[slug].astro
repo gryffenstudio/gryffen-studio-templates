@@ -88,6 +88,7 @@ const structuredData: StructuredDataInput[] = [
     title={post.title}
     description={post.description}
     robots={false}
+    image={urlFor(post.cardImageDesktop)?.url()}
     structuredData={structuredData}
 />
 <h1>{post.title}</h1>

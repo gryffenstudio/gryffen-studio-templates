@@ -12,11 +12,12 @@ interface Props {
     title: string;
     description: string;
     robots: boolean;
+    image?: any;
     structuredData?: StructuredDataInput[];
     showFooter?: boolean;
 }
 
-let { title, description, robots, structuredData, showFooter } = Astro.props;
+let { title, description, robots, image, structuredData, showFooter } = Astro.props;
 
 if (!structuredData) {
     const buildDefaultStructureDataInput: BuildDefaultStructuredDataProps = {
@@ -53,6 +54,7 @@ if (!structuredData) {
             title={title}
             description={description}
             url={Astro.url}
+            image={image}
             structuredData={structuredData}
             robots={robots}
         />
