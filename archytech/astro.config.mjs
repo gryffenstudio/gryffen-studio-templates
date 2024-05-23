@@ -38,6 +38,7 @@ const saRedirect = () => {
 
 // https://astro.build/config
 export default defineConfig({
+    site: 'https://archytech.netlify.app',
     adapter: netlify(),
     integrations: [
         react(),
