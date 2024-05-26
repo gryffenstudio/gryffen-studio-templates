@@ -35,7 +35,7 @@ switch (categoryCardData.category.toLowerCase()) {
 ---
 
 <article
-    class='flex h-full w-full max-w-[327px] flex-col items-center justify-center shadow-md duration-200 hover:scale-105 md:max-w-[380px]'
+    class='flex h-full w-full flex-col items-center justify-center shadow-md duration-200 hover:scale-105 md:max-w-[380px]'
 >
     <a class='h-full w-full' href=`/blog/${post.category.slug.current}/${post.slug.current}`>
         {
@@ -48,7 +48,7 @@ switch (categoryCardData.category.toLowerCase()) {
                         [380, 303],
                     ]}
                     alt={`${post.title} Post Image`}
-                    classList=''
+                    imgClassList='w-full h-auto'
                 />
             ) : (
                 <CustomImage

@@ -20,25 +20,16 @@ import newsletterSectionImageSM from '../assets/images/Newsletter-Section-Image-
 
 <Layout title='Landing - Archytech' description='Build with Archytech' robots={false}>
     <Hero heroBackgroundImgSrcList={[heroImageSM, heroImage]} alt='Home Page Hero Image'>
-        <div class='absolute bottom-10 z-20 flex w-full flex-col space-y-8 2xl:space-y-10'>
-            <p class='px-6 text-sm text-white md:text-xl lg:px-20'>We believe in</p>
-            <h1 class='hero-h1 pl-6 tracking-wide lg:pl-20'>Great Architecure</h1>
-            <p class='px-6 text-white md:w-[65%] md:text-xl lg:w-[50%] lg:px-20 2xl:w-[40%]'>
+        <div class='hero'>
+            <p class='px-6 text-sm text-white md:text-xl lg:px-20 lg:font-medium'>WE BELIEVE IN</p>
+            <h1 class='hero-h1 pl-6 tracking-wide lg:pl-20'>GREAT ARCHITECTURE</h1>
+            <p class='hero-paragraph'>
                 The foremost marketplace for designing and constructing houses globally,
                 distinguished for its unparalleled reliability and trustworthiness.
             </p>
-            <div class='px-6 lg:px-20'>
-                <ScrollProgress
-                    isHeroScrollProgress={true}
-                    barColor='bg-brand-black'
-                    progressColor='bg-brand-gray'
-                    barHeight='h-48 lg:h-56'
-                    progress='bottom-[75%]'
-                />
-            </div>
         </div>
         <div
-            class='absolute left-0 top-0 z-10 h-full w-full bg-brand-black bg-opacity-50 bg-blend-luminosity md:w-[43%] md:backdrop-blur-xl'
+            class='absolute left-0 top-0 z-10 h-full w-full bg-brand-black bg-opacity-50 bg-blend-luminosity'
         >
         </div>
     </Hero>

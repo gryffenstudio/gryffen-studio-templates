@@ -32,42 +32,30 @@ const postsForPage: Post[] = posts.slice(
     robots={false}
 >
     <Hero heroBackgroundImgSrcList={[heroImageSM, heroImage]} alt='Team Hero Image'>
-        <div class='absolute bottom-10 z-20 flex w-full flex-col space-y-8 md:space-y-10'>
-            <h1 class='hero-h1 bottom-0 px-6 tracking-wide lg:px-20'>Team</h1>
-            <div class='px-6 lg:px-20'>
-                <ScrollProgress
-                    isHeroScrollProgress={true}
-                    barColor='bg-brand-black'
-                    progressColor='bg-brand-gray'
-                    barHeight='h-48 lg:h-56'
-                    progress='bottom-[75%]'
-                />
-            </div>
+        <div class='hero'>
+            <h1 class='hero-h1 bottom-0 px-6 tracking-wide lg:px-20'>Blog</h1>
+            <p class='hero-paragraph'>The foremost marketplace for designing and constructing.</p>
         </div>
         <div
-            class='absolute left-0 top-0 z-10 h-full w-full bg-brand-black bg-opacity-50 bg-blend-luminosity md:w-[43%] md:backdrop-blur-xl'
+            class='absolute left-0 top-0 z-10 h-full w-full bg-brand-black bg-opacity-50 bg-blend-luminosity'
         >
         </div>
     </Hero>
-    <main class='flex w-full flex-col items-center px-6 py-8 lg:px-16 lg:py-16'>
-        <div>
-            <section
-                class='mb-8 flex w-full flex-col space-y-4 lg:flex-row lg:space-x-8 lg:space-y-0'
-            >
-                <FilterButton id='show-all' buttonText='SHOW ALL' />
-                <FilterButton id='news' buttonText='NEWS' />
-                <FilterButton id='articles' buttonText='ARTICLES' />
-                <FilterButton id='tips' buttonText='TIPS' />
-            </section>
-            <section
-                class='grid grid-cols-1 justify-items-center gap-y-6 md:grid-cols-2 md:gap-x-16 lg:grid-cols-3 lg:gap-y-10 2xl:grid-cols-4'
-            >
-                {
-                    posts.map((post: Post) => {
-                        return <BlogCard post={post} />;
-                    })
-                }
-            </section>
-        </div>
+    <main class='w-full flex-col items-center px-6 py-8 lg:px-20 lg:py-16'>
+        <section class='mb-8 flex w-full flex-col space-y-4 lg:flex-row lg:space-x-8 lg:space-y-0'>
+            <FilterButton id='show-all' buttonText='SHOW ALL' />
+            <FilterButton id='news' buttonText='NEWS' />
+            <FilterButton id='articles' buttonText='ARTICLES' />
+            <FilterButton id='tips' buttonText='TIPS' />
+        </section>
+        <section
+            class='grid grid-cols-1 justify-items-center gap-y-6 md:grid-cols-2 md:gap-x-24 lg:grid-cols-3 lg:gap-y-10 2xl:grid-cols-4'
+        >
+            {
+                posts.map((post: Post) => {
+                    return <BlogCard post={post} />;
+                })
+            }
+        </section>
     </main>
 </Layout>

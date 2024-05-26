@@ -93,7 +93,7 @@ function Carousel(props: CarouselProps) {
                                     alt={carouselImage.alt}
                                     height={681}
                                     width={327}
-                                    className='mr-5 block h-auto min-w-full sm:hidden'
+                                    className='mr-5 block h-auto max-h-[600px] min-w-full sm:hidden'
                                     decoding='async'
                                     loading='lazy'
                                 />
@@ -109,7 +109,7 @@ function Carousel(props: CarouselProps) {
                                     alt={carouselImage.alt}
                                     height={681}
                                     width={1196}
-                                    className='mr-18 hidden h-auto min-w-full sm:block md:mr-[44px] lg:mr-10 xl:mr-[53px] 2xl:mr-[86px]'
+                                    className='mr-18 hidden h-auto max-h-[850px] min-w-full sm:block md:mr-[44px] lg:mr-10 xl:mr-[53px] 2xl:mr-[86px]'
                                     decoding='async'
                                     loading='lazy'
                                 />

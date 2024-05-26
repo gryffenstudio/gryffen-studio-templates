@@ -20,8 +20,15 @@
 }
 
 @layer components {
+    .hero {
+        @apply absolute bottom-24 z-20 flex w-full flex-col space-y-8 md:space-y-10 lg:bottom-36;
+    }
     .hero-h1 {
-        @apply text-left text-4xl font-semibold text-white md:text-6xl 2xl:text-8xl;
+        @apply text-left text-4xl text-white md:text-6xl lg:text-8xl lg:font-light;
+    }
+
+    .hero-paragraph {
+        @apply w-[80%] px-6 text-white md:text-2xl lg:w-[90%] lg:px-20 lg:font-light;
     }
 }
 

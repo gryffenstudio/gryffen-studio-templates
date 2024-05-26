@@ -15,26 +15,18 @@ import ContactUsSection from '../components/ContactUsSection.astro';
 
 <Layout title='Studio - Archytech' description='Building Dreams As a Team' robots={false}>
     <Hero heroBackgroundImgSrcList={[heroImageSM, heroImage]} alt='Projects Hero Image'>
-        <div class='absolute bottom-10 z-20 flex w-full flex-col space-y-8 md:space-y-10'>
+        <div class='hero'>
             <h1 class='hero-h1 bottom-0 px-6 tracking-wide lg:px-20'>Studio</h1>
-            <div class='px-6 lg:px-20'>
-                <ScrollProgress
-                    isHeroScrollProgress={true}
-                    barColor='bg-brand-black'
-                    progressColor='bg-brand-gray'
-                    barHeight='h-48 lg:h-56'
-                    progress='bottom-[75%]'
-                />
-            </div>
+            <p class='hero-paragraph'>The foremost marketplace for designing and constructing.</p>
         </div>
         <div
-            class='absolute left-0 top-0 z-10 h-full w-full bg-brand-black bg-opacity-50 bg-blend-luminosity md:w-[43%] md:backdrop-blur-xl'
+            class='absolute left-0 top-0 z-10 h-full w-full bg-brand-black bg-opacity-50 bg-blend-luminosity'
         >
         </div>
     </Hero>
     <main class='w-full items-center justify-center'>
         <section
-            class='flex w-full flex-col items-start justify-end space-y-10 px-6 pb-10 md:flex-row md:space-x-16 md:space-y-0 md:py-20 lg:px-24'
+            class='flex w-full flex-col items-start justify-end space-y-10 px-6 pb-10 md:flex-row md:space-x-16 md:space-y-0 md:py-20 lg:px-20'
         >
             <CustomImage
                 mobileImgUrl={studioArchytechImageSM}
@@ -53,7 +45,7 @@ import ContactUsSection from '../components/ContactUsSection.astro';
                 >
                     ARCHYTECH DESIGN
                     <span
-                        class='after:absolute after:mt-2 after:block after:h-[3px] after:w-[20%] after:rounded-full after:bg-brand-black'
+                        class='after:absolute after:mt-2 after:block after:h-[3px] after:w-[20%] after:bg-brand-black'
                     ></span>
                 </h2>
                 <p class='leading-loose text-brand-black'>
@@ -77,14 +69,14 @@ import ContactUsSection from '../components/ContactUsSection.astro';
                 imgClassList='min-w-full h-auto'
             />
         </section>
-        <section class='flex flex-col space-y-10 px-6 pb-10 md:pb-20 lg:px-24'>
+        <section class='flex flex-col space-y-10 px-6 pb-10 md:pb-20 lg:px-20'>
             <div class='relative flex flex-col space-y-10'>
                 <h2
                     class='relative place-self-start text-start text-2xl font-semibold tracking-wide text-brand-black lg:text-3xl'
                 >
                     We build your dreams
                     <span
-                        class='after:absolute after:mt-2 after:block after:h-[3px] after:w-[20%] after:rounded-full after:bg-brand-black'
+                        class='after:absolute after:mt-2 after:block after:h-[3px] after:w-[20%] after:bg-brand-black'
                     ></span>
                 </h2>
                 <p class='leading-loose text-brand-black'>
@@ -135,7 +127,7 @@ import ContactUsSection from '../components/ContactUsSection.astro';
             imgClassList='min-w-full px-6 lg:px-24 h-auto'
         />
         <section
-            class='flex flex-col items-start space-y-10 px-6 pb-10 md:flex-row md:justify-between md:space-y-0 md:py-20 lg:px-24'
+            class='flex flex-col items-start space-y-10 px-6 pb-10 md:flex-row md:justify-between md:space-y-0 md:py-20 lg:px-20'
         >
             <p class='place-self-center text-left text-2xl text-brand-black md:w-1/2 md:pr-10'>
                 “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -148,7 +140,7 @@ import ContactUsSection from '../components/ContactUsSection.astro';
                     >
                         Meet our team
                         <span
-                            class='after:absolute after:mt-2 after:block after:h-[3px] after:w-[70px] after:rounded-full after:bg-brand-black'
+                            class='after:absolute after:mt-2 after:block after:h-[3px] after:w-[70px] after:bg-brand-black'
                         ></span>
                     </h2>
                     <span class='icon-[mynaui--arrow-right] size-7 text-brand-black'></span>

@@ -1,5 +1,9 @@
 ---
+import Hero from '../../../components/Hero.astro';
+import Layout from '../../../layouts/Layout.astro';
 import { getCategories, type Category } from '../../../utils/sanity';
+import heroImage from '../../assets/images/Blog-Hero.png';
+import heroImageSM from '../../assets/images/Blog-Hero-SM.png';
 
 export async function getStaticPaths() {
     const paths: any = [];
@@ -14,4 +18,19 @@ export async function getStaticPaths() {
 const { category } = Astro.params;
 ---
 
-<h1>{category}</h1>
+<Layout
+    title={`Archytech Blog - ${category}`}
+    description={'Learn about Archytech, architect news, and architect tips on the best blog in the architecture industry!'}
+    robots={false}
+>
+    <Hero heroBackgroundImgSrcList={[heroImageSM, heroImage]} alt='Team Hero Image'>
+        <div class='hero'>
+            <h1 class='hero-h1 bottom-0 px-6 tracking-wide lg:px-20'>{category}</h1>
+            <p class='hero-paragraph'>The foremost marketplace for designing and constructing.</p>
+        </div>
+        <div
+            class='absolute left-0 top-0 z-10 h-full w-full bg-brand-black bg-opacity-50 bg-blend-luminosity'
+        >
+        </div>
+    </Hero>
+</Layout>

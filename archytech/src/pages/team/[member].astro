@@ -62,27 +62,17 @@ const { member } = Astro.props;
     robots={false}
 >
     <Hero heroBackgroundImgSrcList={[heroImageSM, heroImage]} alt=`Team Member Hero Image`>
-        <div class='absolute bottom-10 z-20 flex w-full flex-col space-y-8 md:space-y-10'>
+        <div class='hero'>
             <h1 class='hero-h1 bottom-0 px-6 tracking-wide lg:px-20'>Team</h1>
-            <div class='px-6 lg:px-20'>
-                <ScrollProgress
-                    isHeroScrollProgress={true}
-                    barColor='bg-brand-black'
-                    progressColor='bg-brand-gray'
-                    barHeight='h-48 lg:h-56'
-                    progress='bottom-[75%]'
-                />
-            </div>
+            <p class='hero-paragraph'>The foremost marketplace for designing and constructing.</p>
         </div>
         <div
-            class='absolute left-0 top-0 z-10 h-full w-full bg-brand-black bg-opacity-50 bg-blend-luminosity md:w-[43%] md:backdrop-blur-xl'
+            class='absolute left-0 top-0 z-10 h-full w-full bg-brand-black bg-opacity-50 bg-blend-luminosity'
         >
         </div>
     </Hero>
 
-    <main
-        class='container mx-auto items-center space-y-10 px-6 py-10 md:space-y-20 md:px-10 md:py-20'
-    >
+    <main class='w-full items-center space-y-10 px-6 py-10 md:space-y-20 md:px-20 md:py-20'>
         <section class='flex flex-col space-y-6 md:flex-row md:space-x-8'>
             <div
                 class='flex w-fit flex-col space-y-6 place-self-center md:w-1/2 md:place-self-auto'
@@ -161,7 +151,7 @@ const { member } = Astro.props;
             >
                 Featured Projects
                 <span
-                    class='after:absolute after:mt-2 after:block after:h-[3px] after:w-[20%] after:rounded-full after:bg-brand-black'
+                    class='after:absolute after:mt-2 after:block after:h-[3px] after:w-[20%] after:bg-brand-black'
                 ></span>
             </h2>
             <div class='block sm:hidden'>

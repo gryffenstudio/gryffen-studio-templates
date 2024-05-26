@@ -29,12 +29,12 @@ const { project } = Astro.props;
         heroBackgroundImgSrcList={[project.data.heroImageMobile, project.data.heroImageDesktop]}
         alt={project.data.heroImageAlt}
     >
-        <div class='absolute bottom-10 z-20 flex w-full flex-col space-y-8 md:space-y-10'>
-            <h1 class='hero-h1 bottom-0 px-6 tracking-wide lg:-mb-8 lg:px-20'>
+        <div class='hero'>
+            <h1 class='hero-h1 bottom-20 px-6 tracking-wide lg:px-20'>
                 {project.data.projectName}
             </h1>
             <div class='block h-full justify-between space-y-8 px-6 lg:flex lg:px-20'>
-                <div class='relative right-0 flex flex-col place-self-end text-white lg:hidden'>
+                <div class='relative flex flex-col space-y-2 text-white lg:hidden'>
                     <p class='font-bold'>{project.data.location.toUpperCase()}</p>
                     <p class='font-bold'>
                         SIZE: <span class='font-normal'>{project.data.buildingSize}</span>
@@ -51,14 +51,9 @@ const { project } = Astro.props;
                         </span>
                     </p>
                 </div>
-                <ScrollProgress
-                    isHeroScrollProgress={true}
-                    barColor='bg-brand-black'
-                    progressColor='bg-brand-gray'
-                    barHeight='h-48 lg:h-56'
-                    progress='bottom-[75%]'
-                />
-                <div class='relative right-0 hidden flex-col place-self-end text-white lg:flex'>
+                <div
+                    class='absolute bottom-10 right-20 hidden flex-col space-y-2 place-self-end text-white lg:flex'
+                >
                     <p class='font-bold'>{project.data.location.toUpperCase()}</p>
                     <p class='font-bold'>
                         SIZE: <span class='font-normal'>{project.data.buildingSize}</span>
@@ -73,7 +68,7 @@ const { project } = Astro.props;
 
     <main class='w-full items-center justify-center'>
         <section
-            class='flex flex-col items-start justify-center space-y-10 px-6 py-8 md:flex-row md:justify-between md:space-y-0 lg:px-40 lg:py-20'
+            class='flex flex-col items-start justify-center space-y-10 px-6 py-8 md:flex-row md:justify-between md:space-y-0 lg:px-20 lg:py-20'
         >
             <div class='relative flex flex-col space-y-10 md:w-1/2'>
                 <h2
@@ -81,7 +76,7 @@ const { project } = Astro.props;
                 >
                     Design Brief
                     <span
-                        class='after:absolute after:mt-2 after:block after:h-[3px] after:w-[40%] after:rounded-full after:bg-brand-black'
+                        class='after:absolute after:mt-2 after:block after:h-[3px] after:w-[40%] after:bg-brand-black'
                     ></span>
                 </h2>
                 <p class='leading-loose text-brand-black md:w-3/4'>
@@ -108,16 +103,16 @@ const { project } = Astro.props;
                 ]}
                 alt={project.data.designBriefImageAlt}
                 classList='place-self-center flex justify-center w-full md:w-1/2 md:block md:justify-normal'
-                imgClassList='min-w-full h-auto'
+                imgClassList='min-w-full h-auto max-h-[800px]'
             />
         </section>
-        <section class='flex w-full flex-col place-content-center px-6 py-8 lg:px-40'>
+        <section class='flex w-full flex-col place-content-center px-6 py-8 lg:px-20'>
             <h2
                 class='relative mb-8 place-self-start text-start text-2xl font-semibold tracking-wide text-brand-black lg:text-3xl'
             >
                 Interior
                 <span
-                    class='after:absolute after:mt-2 after:block after:h-[3px] after:w-[40%] after:rounded-full after:bg-brand-black'
+                    class='after:absolute after:mt-2 after:block after:h-[3px] after:w-[40%] after:bg-brand-black'
                 ></span>
             </h2>
             <Carousel
@@ -126,13 +121,13 @@ const { project } = Astro.props;
                 client:load
             />
         </section>
-        <section class='flex w-full flex-col place-content-center px-6 py-8 lg:px-40'>
+        <section class='flex w-full flex-col place-content-center px-6 py-8 lg:px-20'>
             <h2
                 class='relative mb-8 place-self-start text-start text-2xl font-semibold tracking-wide text-brand-black lg:text-3xl'
             >
                 Exterior
                 <span
-                    class='after:absolute after:mt-2 after:block after:h-[3px] after:w-[40%] after:rounded-full after:bg-brand-black'
+                    class='after:absolute after:mt-2 after:block after:h-[3px] after:w-[40%] after:bg-brand-black'
                 ></span>
             </h2>
             <Carousel

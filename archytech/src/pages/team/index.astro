@@ -17,33 +17,23 @@ const team = await getCollection('team');
     robots={false}
 >
     <Hero heroBackgroundImgSrcList={[heroImageSM, heroImage]} alt='Team Hero Image'>
-        <div class='absolute bottom-10 z-20 flex w-full flex-col space-y-8 md:space-y-10'>
+        <div class='hero'>
             <h1 class='hero-h1 bottom-0 px-6 tracking-wide lg:px-20'>Team</h1>
-            <div class='px-6 lg:px-20'>
-                <ScrollProgress
-                    isHeroScrollProgress={true}
-                    barColor='bg-brand-black'
-                    progressColor='bg-brand-gray'
-                    barHeight='h-48 lg:h-56'
-                    progress='bottom-[75%]'
-                />
-            </div>
+            <p class='hero-paragraph'>The foremost marketplace for designing and constructing.</p>
         </div>
         <div
-            class='absolute left-0 top-0 z-10 h-full w-full bg-brand-black bg-opacity-50 bg-blend-luminosity md:w-[43%] md:backdrop-blur-xl'
+            class='absolute left-0 top-0 z-10 h-full w-full bg-brand-black bg-opacity-50 bg-blend-luminosity'
         >
         </div>
     </Hero>
-    <main
-        class='container mx-auto items-center space-y-10 px-6 py-10 md:space-y-20 md:px-10 md:py-20'
-    >
+    <main class='w-full items-center space-y-10 px-6 py-10 md:space-y-20 md:py-20 lg:px-20'>
         <section class='flex flex-col space-y-8 md:w-1/2'>
             <h2
                 class='relative place-self-start text-start text-2xl font-semibold tracking-wide text-brand-black lg:text-3xl'
             >
                 Meet our team
                 <span
-                    class='after:absolute after:mt-2 after:block after:h-[3px] after:w-[20%] after:rounded-full after:bg-brand-black'
+                    class='after:absolute after:mt-2 after:block after:h-[3px] after:w-[20%] after:bg-brand-black'
                 ></span>
             </h2>
             <p class='leading-loose text-brand-black'>
@@ -53,7 +43,7 @@ const team = await getCollection('team');
             </p>
         </section>
         <section
-            class='grid w-full grid-cols-1 justify-items-center gap-y-6 md:grid-cols-2 md:gap-x-16 lg:grid-cols-3 lg:gap-y-10 2xl:grid-cols-4'
+            class='grid w-full grid-cols-1 justify-items-center gap-y-6 md:grid-cols-2 md:gap-x-24 lg:grid-cols-3 lg:gap-y-10 2xl:grid-cols-4'
         >
             {
                 team.map((member: any) => {
