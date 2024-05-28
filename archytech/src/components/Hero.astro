@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets';
 
 interface Props {
-    heroBackgroundImgSrcList: ImageMetadata[];
+    heroBackgroundImgSrcList: any;
     alt: string;
 }
 const { heroBackgroundImgSrcList, alt } = Astro.props satisfies Props;

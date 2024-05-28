@@ -32,7 +32,7 @@ export default defineType({
         }),
         defineField({
             name: 'cardImageMobile',
-            title: 'Mobile Card Image',
+            title: 'Mobile Card Image (W 327px x H 303px)',
             type: 'image',
             options: {
                 hotspot: true,
@@ -40,7 +40,23 @@ export default defineType({
         }),
         defineField({
             name: 'cardImageDesktop',
-            title: 'Desktop Card Image',
+            title: 'Desktop Card Image (W 380px x H 303px)',
+            type: 'image',
+            options: {
+                hotspot: true,
+            },
+        }),
+        defineField({
+            name: 'heroImageMobile',
+            title: 'Mobile Hero Image (W 375px x H 812px)',
+            type: 'image',
+            options: {
+                hotspot: true,
+            },
+        }),
+        defineField({
+            name: 'heroImageDesktop',
+            title: 'Desktop Hero Image (W 1440px x H 1024px)',
             type: 'image',
             options: {
                 hotspot: true,
@@ -69,7 +85,7 @@ export default defineType({
             title: 'title',
             author: 'author.name',
             description: 'description',
-            media: 'cardImageMobile',
+            media: 'heroImageDesktop',
         },
         prepare(selection) {
             const { author } = selection;

@@ -4,6 +4,10 @@ import type { StructuredDataInput } from '../../../utils/structuredData';
 import siteData from '../../../data/siteData.json';
 import { urlFor } from '../../../utils/image';
 import Layout from '../../../layouts/Layout.astro';
+import Hero from '../../../components/Hero.astro';
+import { Image } from 'astro:assets';
+import { formatDate } from '../../../utils/dateUtils';
+import PortableText from '../../../components/PortableText.astro';
 
 export async function getStaticPaths() {
     const posts = await getPosts();
@@ -15,7 +19,6 @@ export async function getStaticPaths() {
 const { slug } = Astro.params;
 
 const post = await getPost(slug);
-const hello = 'hello';
 
 const structuredData: StructuredDataInput[] = [
     {
@@ -88,7 +91,49 @@ const structuredData: StructuredDataInput[] = [
     title={post.title}
     description={post.description}
     robots={false}
-    image={{src: urlFor(post.cardImageDesktop)?.url(), alt: `${post.title} image`}}
+    image={{ src: urlFor(post.cardImageDesktop)?.url(), alt: `${post.title} image` }}
     structuredData={structuredData}
-/>
-<h1>{post.title}</h1>
+>
+    <Hero
+        heroBackgroundImgSrcList={[
+            urlFor(post.heroImageMobile)?.url() ?? urlFor(post.cardImageMobile)?.url(),
+            urlFor(post.heroImageDesktop)?.url() ?? urlFor(post.cardImageDesktop)?.url(),
+        ]}
+        alt='Team Hero Image'
+    >
+        <div class='hero'>
+            <h1
+                class='hero-h1 bottom-0 px-6 leading-[120%] tracking-wide lg:px-20 lg:text-6xl lg:leading-[120%]'
+            >
+                {post.title}
+            </h1>
+            <p class='hero-paragraph'>{post.description}</p>
+        </div>
+        <div
+            class='absolute left-0 top-0 z-10 h-full w-full bg-brand-black bg-opacity-50 bg-blend-luminosity'
+        >
+        </div>
+    </Hero>
+    <article class='container mx-auto px-6 py-8 leading-6 lg:py-16'>
+        <div class='mb-8 flex items-center space-x-4'>
+            <a
+                href={post.author.websiteLink}
+                class=`flex items-center justify-center h-[70px] w-[70px] rounded-full hover:opacity-50`
+                aria-label='Author Website/Webpage Link'
+            >
+                <Image
+                    src={urlFor(post.author.image)?.url() ?? ''}
+                    alt='Author Image'
+                    height={600}
+                    width={600}
+                    class='rounded-full'
+                />
+            </a>
+            <div class='flex flex-col space-y-2'>
+                <span class='text-xl font-bold md:text-2xl'>{post.author.name}</span>
+                <span class='md:text-lg'>Published: {formatDate(post._createdAt)}</span>
+            </div>
+        </div>
+        <PortableText portableText={post.body} />
+    </article>
+</Layout>

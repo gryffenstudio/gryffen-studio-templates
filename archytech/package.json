@@ -18,6 +18,7 @@
         "@astrojs/tailwind": "^5.1.0",
         "@iconify-json/carbon": "^1.1.32",
         "@iconify-json/eva": "^1.1.10",
+        "@iconify-json/flowbite": "^1.1.5",
         "@iconify-json/iconamoon": "^1.1.4",
         "@iconify-json/mage": "^1.1.0",
         "@iconify-json/maki": "^1.1.24",

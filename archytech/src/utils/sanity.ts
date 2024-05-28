@@ -31,20 +31,17 @@ export async function getPosts(): Promise<Post[]> {
 export async function getPost(slug: string): Promise<Post> {
     return await client.fetch(
         `*[_type == "post" && slug.current == $slug][0]{
-                    title,
-                    description,
-                    slug,
+                    ...,
                     author->{
                         name,
+                        websiteLink,
+                        slug,
+                        image
                     },
                     category->{
                         title,
                         slug
                     },
-                    cardImageMobile,
-                    cardImageDesktop,
-                    _createdAt,
-                    body
         }
     `,
         {
@@ -71,6 +68,8 @@ export interface Post {
     slug: Slug;
     cardImageMobile: ImageAsset;
     cardImageDesktop: ImageAsset;
+    heroImageMobile: ImageAsset;
+    heroImageDesktop: ImageAsset;
     body: PortableTextBlock[];
     category: Category;
     author: Author;

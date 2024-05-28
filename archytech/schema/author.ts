@@ -25,7 +25,7 @@ export default defineType({
             type: 'url',
             validation: (Rule) =>
                 Rule.uri({
-                    scheme: ['http', 'https'],
+                    scheme: ['https'],
                 }),
         }),
         defineField({
