@@ -20,9 +20,6 @@
     blockquote {
         @apply relative border-l-2 border-brand-black pl-8 pt-10 italic before:icon-[flowbite--quote-solid] before:absolute before:left-6 before:top-0 before:h-8 before:w-8 before:font-sans before:text-6xl before:text-black md:text-xl;
     }
-    a {
-        @apply text-blue-500 decoration-0;
-    }
     ol {
         @apply list-inside list-decimal marker:font-bold md:text-xl;
     }
