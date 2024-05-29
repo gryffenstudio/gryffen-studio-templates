@@ -119,10 +119,18 @@ function Carousel(props: CarouselProps) {
             </div>
 
             <div className='item-center absolute top-0 hidden h-full w-full justify-between text-white sm:flex'>
-                <button aria-label='Previous Slide Button' onClick={previousSlide}>
+                <button
+                    className='h-fit w-fit place-self-center focus:outline-none'
+                    aria-label='Previous Slide Button'
+                    onClick={previousSlide}
+                >
                     <span className='icon-[iconamoon--arrow-left-2-thin] h-24 w-24'></span>
                 </button>
-                <button aria-label='Next Slide Button' onClick={nextSlide}>
+                <button
+                    className='h-fit w-fit place-self-center focus:outline-none'
+                    aria-label='Next Slide Button'
+                    onClick={nextSlide}
+                >
                     <span className='icon-[iconamoon--arrow-right-2-thin] h-24 w-24'></span>
                 </button>
             </div>
