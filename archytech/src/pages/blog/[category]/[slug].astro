@@ -115,7 +115,7 @@ const structuredData: StructuredDataInput[] = [
     <article class='container py-8 leading-6 lg:py-16'>
         <div class='mb-8 flex items-center space-x-4'>
             <a
-                href={post.author.websiteLink}
+                href={post.author.websiteLink ?? `/team/${post.author.slug.current}`}
                 class=`flex items-center justify-center h-[70px] w-[70px] rounded-full hover:opacity-50`
                 aria-label='Author Website/Webpage Link'
             >
