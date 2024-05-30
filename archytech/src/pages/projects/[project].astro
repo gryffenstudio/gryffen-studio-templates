@@ -30,10 +30,10 @@ const { project } = Astro.props;
         alt={project.data.heroImageAlt}
     >
         <div class='hero'>
-            <h1 class='hero-h1 bottom-20 px-6 tracking-wide lg:px-20'>
+            <h1 class='hero-h1'>
                 {project.data.projectName}
             </h1>
-            <div class='block h-full justify-between space-y-8 px-6 lg:flex lg:px-20'>
+            <div class='block h-full justify-between space-y-8 lg:flex'>
                 <div class='relative flex flex-col space-y-2 text-white lg:hidden'>
                     <p class='font-bold'>{project.data.location.toUpperCase()}</p>
                     <p class='font-bold'>
@@ -66,7 +66,7 @@ const { project } = Astro.props;
         </div>
     </Hero>
 
-    <main class='w-full items-center justify-center'>
+    <main class='container'>
         <section
             class='flex flex-col items-start justify-center space-y-10 px-6 py-8 md:flex-row md:justify-between md:space-y-0 lg:px-20 lg:py-20'
         >
@@ -102,7 +102,7 @@ const { project } = Astro.props;
                     [598, 681],
                 ]}
                 alt={project.data.designBriefImageAlt}
-                classList='place-self-center flex justify-center w-full md:w-1/2 md:block md:justify-normal'
+                classList='place-self-auto flex justify-center w-full md:w-1/2 md:block md:justify-normal'
                 imgClassList='min-w-full h-auto max-h-[800px]'
             />
         </section>
