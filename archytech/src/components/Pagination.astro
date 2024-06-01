@@ -13,10 +13,10 @@ const maxPage = Math.min(pageLength, normalizedCurrentPage + 1); // Ensure maxPa
     {
         prevUrl && (
             <a
-                class='flex h-10 w-10 items-center justify-center bg-white text-brand-black hover:bg-brand-purple hover:bg-opacity-50'
+                class='flex h-10 w-10 items-center justify-center border-[1px] border-brand-black bg-white text-brand-black no-underline hover:bg-brand-purple hover:bg-opacity-50 hover:text-brand-black'
                 href={prevUrl}
             >
-                <span class='icon-[maki--arrow] rotate-180' />
+                <span class='icon-[iconamoon--arrow-down-2-thin] h-8 w-8 rotate-90' />
             </a>
         )
     }
@@ -24,7 +24,7 @@ const maxPage = Math.min(pageLength, normalizedCurrentPage + 1); // Ensure maxPa
     {/* Always show the first page */}
     <a
         href={`${firstUrl}`}
-        class={`flex ${currentPage === 1 ? 'bg-brand-purple border-0 text-white pointer-events-none' : 'bg-white text-brand-black hover:bg-brand-purple hover:bg-opacity-50'} w-10 h-10 items-center justify-center`}
+        class={`flex no-underline ${currentPage === 1 ? 'bg-brand-purple border-0 text-white pointer-events-none' : 'bg-white text-brand-black hover:bg-brand-purple hover:bg-opacity-50 hover:text-brand-black border-[1px] border-brand-black'}  w-10 h-10 items-center justify-center`}
     >
         {1}
     </a>
@@ -35,8 +35,8 @@ const maxPage = Math.min(pageLength, normalizedCurrentPage + 1); // Ensure maxPa
             <>
                 {Array.from({ length: Math.min(pageLength, 3) - 1 }, (_, i) => i + 2).map((num) => (
                     <a
-                        href={`${firstUrl}?page=${num}`}
-                        class={`flex h-10 w-10 items-center justify-center bg-white text-brand-black hover:bg-brand-purple hover:bg-opacity-50`}
+                        href={`${firstUrl}/${num}`}
+                        class={`flex h-10 w-10 items-center justify-center border-[1px] border-brand-black bg-white text-brand-black no-underline hover:bg-brand-purple hover:bg-opacity-50 hover:text-brand-black`}
                     >
                         {num}
                     </a>
@@ -60,8 +60,8 @@ const maxPage = Math.min(pageLength, normalizedCurrentPage + 1); // Ensure maxPa
                 num !== pageLength &&
                 ((currentPage !== 1 && currentPage !== pageLength) || pageLength <= 3) && ( // Exclude the first and last pages from the loop
                     <a
-                        href={`${firstUrl}?page=${num}`}
-                        class={`flex ${currentPage === num ? 'pointer-events-none border-0 bg-brand-purple text-white' : 'bg-white text-brand-black hover:bg-brand-purple hover:bg-opacity-50'} h-10 w-10 items-center justify-center rounded-md`}
+                        href={`${firstUrl}/${num}`}
+                        class={`flex no-underline ${currentPage === num ? 'pointer-events-none border-0 bg-brand-purple text-white' : 'border-[1px] border-brand-black bg-white text-brand-black hover:bg-brand-purple hover:bg-opacity-50 hover:text-brand-black'} h-10 w-10 items-center justify-center`}
                     >
                         {num}
                     </a>
@@ -88,8 +88,8 @@ const maxPage = Math.min(pageLength, normalizedCurrentPage + 1); // Ensure maxPa
                         num !== 1 &&
                         num !== pageLength && ( // Exclude the first and last pages from the loop
                             <a
-                                href={`${firstUrl}?page=${num}`}
-                                class={`flex h-10 w-10 items-center justify-center bg-white text-brand-black hover:bg-brand-purple hover:bg-opacity-50`}
+                                href={`${firstUrl}/${num}`}
+                                class={`flex h-10 w-10 items-center justify-center border-[1px] border-brand-black bg-white text-brand-black no-underline hover:bg-brand-purple hover:bg-opacity-50`}
                             >
                                 {num}
                             </a>
@@ -103,8 +103,8 @@ const maxPage = Math.min(pageLength, normalizedCurrentPage + 1); // Ensure maxPa
     {
         pageLength !== 1 && ( // Only render if there's more than 1 page
             <a
-                href={`${firstUrl}?page=${pageLength}`}
-                class={`flex ${currentPage === pageLength ? 'border-brand-red text-brand-red hover:bg-brand-red pointer-events-none border-2 bg-white hover:text-white' : 'bg-brand-red text-white hover:opacity-75'} h-10 w-10 items-center justify-center rounded-md`}
+                href={`${firstUrl}/${pageLength}`}
+                class={`flex no-underline ${currentPage === pageLength ? 'pointer-events-none border-0 bg-brand-purple text-white' : 'border-[1px] border-brand-black bg-white text-brand-black hover:bg-brand-purple hover:bg-opacity-50 hover:text-brand-black'} h-10 w-10 items-center justify-center`}
             >
                 {pageLength}
             </a>
@@ -114,10 +114,10 @@ const maxPage = Math.min(pageLength, normalizedCurrentPage + 1); // Ensure maxPa
     {
         nextUrl && (
             <a
-                class='flex h-10 w-10 items-center justify-center bg-white text-brand-black hover:bg-brand-purple hover:bg-opacity-50'
+                class='flex h-10 w-10 items-center justify-center border-[1px] border-brand-black bg-white text-brand-black no-underline hover:bg-brand-purple hover:bg-opacity-50 hover:text-brand-black'
                 href={nextUrl}
             >
-                <span class='icon-[maki--arrow]' />
+                <span class='icon-[iconamoon--arrow-down-2-thin] h-8 w-8 -rotate-90' />
             </a>
         )
     }
