@@ -9,5 +9,13 @@ const webpUrl = urlFor(asset)?.format('webp').url();
 
 <picture>
     <source srcset={webpUrl} type='image/webp' />
-    <img class='h-auto max-h-[800px] w-full max-w-[1440px]' src={url} alt={alt} />
+    <img
+        class='h-auto max-h-[800px] w-full max-w-[1440px]'
+        height='800px'
+        width='1440px'
+        src={url}
+        alt={alt}
+        loading="lazy"
+        decoding="async"
+    />
 </picture>
