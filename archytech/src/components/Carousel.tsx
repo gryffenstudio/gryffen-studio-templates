@@ -58,7 +58,7 @@ function Carousel(props: CarouselProps) {
             <div
                 className='flex transition duration-1000 ease-in-out'
                 style={{
-                    transform: `translateX(-${currentImage * 105.5}%)`,
+                    transform: `translateX(-${currentImage * 106}%)`,
                 }}
             >
                 <div className='flex'>
@@ -109,7 +109,7 @@ function Carousel(props: CarouselProps) {
                                     alt={carouselImage.alt}
                                     height={681}
                                     width={1196}
-                                    className='mr-18 hidden h-auto max-h-[850px] min-w-full sm:block md:mr-[44px] lg:mr-10 xl:mr-[53px] 2xl:mr-[86px]'
+                                    className='mr-18 hidden h-auto max-h-[850px] min-w-full sm:block md:mr-[37.5px] lg:mr-[48px] xl:mr-[72px] 2xl:mr-[78px]'
                                     decoding='async'
                                     loading='lazy'
                                 />
