@@ -1,4 +1,4 @@
-import { useEffect, useState, memo, type PropsWithChildren, type ReactNode } from 'react';
+import { useEffect, useState, memo } from 'react';
 import { useSwipeable } from 'react-swipeable';
 
 export interface CarouselImage {
@@ -90,63 +90,84 @@ function Carousel(props: CarouselProps) {
                 }}
             >
                 <div className='flex'>
-                    {isMobile &&
-                        props.images &&
-                        props.images.mobileImages.map((carouselImage: CarouselImage, index) => {
-                            if (carouselImage.href) {
-                                return (
-                                    <a
-                                        className='block h-auto min-w-full sm:hidden'
-                                        href={carouselImage.href}
-                                        key={`mobile-${index}`}
-                                    >
+                    {isMobile && props.images && (
+                        <div
+                            className='grid gap-x-3'
+                            style={{
+                                gridTemplateColumns: `repeat(${props.images.mobileImages.length}, 100%)`,
+                            }}
+                        >
+                            {props.images.mobileImages.map(
+                                (carouselImage: CarouselImage, index) => {
+                                    if (carouselImage.href) {
+                                        return (
+                                            <a
+                                                className='block h-auto min-w-full sm:hidden'
+                                                href={carouselImage.href}
+                                                key={`mobile-${index}`}
+                                            >
+                                                <img
+                                                    src={carouselImage.image.src}
+                                                    alt={carouselImage.alt}
+                                                    height={
+                                                        carouselImage.height
+                                                            ? carouselImage.height
+                                                            : 681
+                                                    }
+                                                    width={
+                                                        carouselImage.width
+                                                            ? carouselImage.width
+                                                            : 327
+                                                    }
+                                                    className='mr-5 h-auto min-w-full'
+                                                    decoding='async'
+                                                    loading='lazy'
+                                                />
+                                            </a>
+                                        );
+                                    }
+                                    return (
                                         <img
+                                            key={`mobile-${index}`}
                                             src={carouselImage.image.src}
                                             alt={carouselImage.alt}
-                                            height={
-                                                carouselImage.height ? carouselImage.height : 681
-                                            }
-                                            width={carouselImage.width ? carouselImage.width : 327}
-                                            className='mr-5 h-auto min-w-full'
+                                            height={681}
+                                            width={327}
+                                            className='mr-3 block h-auto max-h-[600px] min-w-full sm:hidden'
                                             decoding='async'
                                             loading='lazy'
                                         />
-                                    </a>
-                                );
-                            }
-                            return (
-                                <img
-                                    key={`mobile-${index}`}
-                                    src={carouselImage.image.src}
-                                    alt={carouselImage.alt}
-                                    height={681}
-                                    width={327}
-                                    className='mr-3 block h-auto max-h-[600px] min-w-full sm:hidden'
-                                    decoding='async'
-                                    loading='lazy'
-                                />
-                            );
-                        })}
-                    {!isMobile &&
-                        props.images &&
-                        props.images.desktopImages &&
-                        props.images.desktopImages.map((carouselImage: CarouselImage, index) => {
-                            return (
-                                <img
-                                    key={`desktop-${index}`}
-                                    src={carouselImage.image.src}
-                                    alt={carouselImage.alt}
-                                    height={681}
-                                    width={1196}
-                                    className='mr-5 hidden h-auto max-h-[850px] min-w-full sm:block lg:mr-8 xl:mr-11'
-                                    decoding='async'
-                                    loading='lazy'
-                                />
-                            );
-                        })}
+                                    );
+                                },
+                            )}
+                        </div>
+                    )}
+                    {!isMobile && props.images && props.images.desktopImages && (
+                        <div
+                            className='grid gap-x-5 lg:gap-x-8 xl:gap-x-11'
+                            style={{
+                                gridTemplateColumns: `repeat(${props.images.desktopImages.length}, 100%)`,
+                            }}
+                        >
+                            {props.images.desktopImages.map(
+                                (carouselImage: CarouselImage, index) => (
+                                    <img
+                                        key={`desktop-${index}`}
+                                        src={carouselImage.image.src}
+                                        alt={carouselImage.alt}
+                                        height={681}
+                                        width={1196}
+                                        className='h-auto max-h-[850px] min-w-full'
+                                        decoding='async'
+                                        loading='lazy'
+                                    />
+                                ),
+                            )}
+                        </div>
+                    )}
                     {isMobile && props.testimonials && (
                         <div
-                            className='grid gap-x-3 transition duration-1000 ease-in-out'
+                            className='grid gap-x-3'
                             style={{
                                 gridTemplateColumns: `repeat(${props.testimonials.length}, 100%)`,
                             }}
@@ -161,7 +182,7 @@ function Carousel(props: CarouselProps) {
                                             decoding='async'
                                             loading='lazy'
                                         />
-                                        <div className='relative flex flex-col space-y-4 p-4'>
+                                        <div className='relative flex flex-col space-y-4 p-1'>
                                             <p className='text-xl font-medium'>
                                                 {testimonial.quote}
                                             </p>
@@ -176,17 +197,22 @@ function Carousel(props: CarouselProps) {
                         </div>
                     )}
                     {!isMobile && props.testimonials && (
-                        <div className='hidden h-fit w-full sm:flex'>
+                        <div
+                            className='grid gap-x-5 lg:gap-x-8 xl:gap-x-11'
+                            style={{
+                                gridTemplateColumns: `repeat(${props.testimonials.length}, 100%)`,
+                            }}
+                        >
                             {props.testimonials.map((testimonial: CarouselTestimonial, index) => {
                                 return (
                                     <div
-                                        className='mr-5 flex min-w-full items-center justify-between sm:mr-6 lg:mr-8 xl:mr-12'
+                                        className='flex min-w-full items-center justify-between'
                                         key={`testimonial-${index}`}
                                     >
                                         <div className='relative flex w-1/2 flex-col space-y-10'>
-                                            <p className='text-2xl font-medium'>
+                                            <q className='text-2xl font-medium'>
                                                 {testimonial.quote}
-                                            </p>
+                                            </q>
                                             <span className='absolute bottom-4 before:absolute before:block before:h-[3px] before:w-[33px] before:bg-brand-black' />
                                             <p className='ml-10 text-xl italic'>
                                                 {testimonial.clientName}
