@@ -34,7 +34,7 @@ const { project } = Astro.props;
                 {project.data.projectName}
             </h1>
             <div class='block h-full justify-between space-y-8 lg:flex'>
-                <div class='relative flex flex-col space-y-2 text-white lg:hidden'>
+                <div class='relative flex flex-col space-y-2 text-white xl:hidden'>
                     <p class='font-bold'>{project.data.location.toUpperCase()}</p>
                     <p class='font-bold'>
                         SIZE: <span class='font-normal'>{project.data.buildingSize}</span>
@@ -52,7 +52,7 @@ const { project } = Astro.props;
                     </p>
                 </div>
                 <div
-                    class='absolute bottom-10 right-20 hidden flex-col space-y-2 place-self-end text-white lg:flex'
+                    class='absolute bottom-10 right-20 hidden flex-col space-y-2 place-self-end text-white xl:flex'
                 >
                     <p class='font-bold'>{project.data.location.toUpperCase()}</p>
                     <p class='font-bold'>
@@ -116,8 +116,10 @@ const { project } = Astro.props;
                 ></span>
             </h2>
             <Carousel
-                mobileImages={project.data.interiorImagesMobile}
-                desktopImages={project.data.interiorImagesDesktop}
+                images={{
+                    mobileImages: project.data.interiorImagesMobile,
+                    desktopImages: project.data.interiorImagesDesktop,
+                }}
                 client:load
             />
         </section>
@@ -131,8 +133,10 @@ const { project } = Astro.props;
                 ></span>
             </h2>
             <Carousel
-                mobileImages={project.data.exteriorImagesMobile satisfies CarouselImage[]}
-                desktopImages={project.data.exteriorImagesDesktop satisfies CarouselImage[]}
+                images={{
+                    mobileImages: project.data.exteriorImagesMobile,
+                    desktopImages: project.data.exteriorImagesDesktop,
+                }}
                 client:load
             />
         </section>

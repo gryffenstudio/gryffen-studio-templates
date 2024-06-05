@@ -16,6 +16,7 @@ import heroImage from '../assets/images/Landing-Hero.png';
 import heroImageSM from '../assets/images/Landing-Hero-SM.png';
 import newsletterSectionImage from '../assets/images/Newsletter-Section-Image.png';
 import newsletterSectionImageSM from '../assets/images/Newsletter-Section-Image-SM.png';
+import Carousel from '../components/Carousel';
 ---
 
 <Layout title='Landing - Archytech' description='Build with Archytech' robots={false}>
@@ -62,6 +63,31 @@ import newsletterSectionImageSM from '../assets/images/Newsletter-Section-Image-
             sectionProgress='bottom-[0%]'
             imageSrc={[section4ImgSM, section4Img]}
         />
+        <section class='container py-8 lg:py-24'>
+            <Carousel
+                client:load
+                testimonials={[
+                    {
+                        mobileImage: { image: heroImageSM.src, alt: 'Testimonial 1' },
+                        desktopImage: { image: heroImage.src, alt: 'Testimonial 1' },
+                        quote: '“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. Lorem ipsum dolororis.”',
+                        clientName: 'T & H // Boulder, CO',
+                    },
+                    {
+                        mobileImage: { image: heroImageSM.src, alt: 'Testimonial 2' },
+                        desktopImage: { image: heroImage.src, alt: 'Testimonial 1' },
+                        quote: '“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. Lorem ipsum dolororis.”',
+                        clientName: 'T & H // Boulder, CO',
+                    },
+                    {
+                        mobileImage: { image: heroImageSM.src, alt: 'Testimonial 3' },
+                        desktopImage: { image: heroImage.src, alt: 'Testimonial 1' },
+                        quote: '“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. Lorem ipsum dolororis.”',
+                        clientName: 'T & H // Boulder, CO',
+                    },
+                ]}
+            />
+        </section>
         <section
             class='relative flex w-full flex-col items-center justify-center bg-brand-black px-4 py-8 bg-blend-luminosity'
         >

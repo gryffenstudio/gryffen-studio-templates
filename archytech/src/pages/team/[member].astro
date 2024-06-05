@@ -156,7 +156,7 @@ const { member } = Astro.props;
                 ></span>
             </h2>
             <div class='block sm:hidden'>
-                <Carousel mobileImages={featuredProjectCarouselImages} client:load />
+                <Carousel images={{mobileImages: featuredProjectCarouselImages}} client:load />
             </div>
             <div class='hidden grid-cols-3 gap-x-8 sm:grid'>
                 {
