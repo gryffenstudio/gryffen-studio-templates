@@ -138,36 +138,37 @@ function Carousel(props: CarouselProps) {
                                     alt={carouselImage.alt}
                                     height={681}
                                     width={1196}
-                                    className='mr-5 hidden h-auto max-h-[850px] min-w-full sm:block lg:mr-8 xl:mr-12'
+                                    className='mr-5 hidden h-auto max-h-[850px] min-w-full sm:block lg:mr-8 xl:mr-11'
                                     decoding='async'
                                     loading='lazy'
                                 />
                             );
                         })}
                     {isMobile && props.testimonials && (
-                        <div className='flex w-full max-w-full sm:hidden'>
+                        <div
+                            className='grid gap-x-3 transition duration-1000 ease-in-out'
+                            style={{
+                                gridTemplateColumns: `repeat(${props.testimonials.length}, 100%)`,
+                            }}
+                        >
                             {props.testimonials.map((testimonial: CarouselTestimonial, index) => {
                                 return (
-                                    <div
-                                        className='mr-[11px] flex w-full min-w-full flex-col items-center'
-                                        key={`testimonial-${index}`}
-                                    >
+                                    <div className='min-w-full' key={`testimonial-${index}`}>
                                         <img
-                                            key={`desktop-${index}`}
                                             src={testimonial.desktopImage.image}
                                             alt={testimonial.desktopImage.alt}
                                             className='w-full'
                                             decoding='async'
                                             loading='lazy'
                                         />
-                                        <div className='relative flex flex-col space-y-10'>
+                                        <div className='relative flex flex-col space-y-4 p-4'>
                                             <p className='text-xl font-medium'>
                                                 {testimonial.quote}
                                             </p>
-                                            <span className='absolute bottom-4 before:absolute before:block before:h-[3px] before:w-[33px] before:bg-brand-black' />
-                                            <p className='ml-10 text-xl italic'>
-                                                {testimonial.clientName}
-                                            </p>
+                                            <div className='flex items-center'>
+                                                <span className='pr-2 before:block before:h-[3px] before:w-[33px] before:bg-brand-black' />
+                                                <p className='italic'>{testimonial.clientName}</p>
+                                            </div>
                                         </div>
                                     </div>
                                 );
