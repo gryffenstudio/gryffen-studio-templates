@@ -79,7 +79,7 @@ function updateLogoAndMenuToggleColors() {
         if (
             window.location.pathname === '/' &&
             !isMenuOpen &&
-            ((scrollPercentage >= 14 && scrollPercentage < 31) ||
+            ((scrollPercentage >= 13 && scrollPercentage < 31) ||
                 (scrollPercentage >= 49 && scrollPercentage < 66) ||
                 scrollPercentage >= 84)
         ) {
@@ -115,7 +115,7 @@ function updateLogoAndMenuToggleColors() {
         if (
             window.location.pathname === '/' &&
             !isMenuOpen &&
-            ((scrollPercentage >= 16 && scrollPercentage < 34) ||
+            ((scrollPercentage >= 15 && scrollPercentage < 34) ||
                 (scrollPercentage >= 52 && scrollPercentage < 69) ||
                 scrollPercentage >= 87)
         ) {
@@ -269,7 +269,7 @@ document.getElementById('menu-toggle')?.addEventListener('click', function () {
         if (
             window.location.pathname === '/' &&
             isMenuOpen &&
-            ((scrollPercentage >= 14 && scrollPercentage < 31) ||
+            ((scrollPercentage >= 13 && scrollPercentage < 31) ||
                 (scrollPercentage >= 49 && scrollPercentage < 47) ||
                 scrollPercentage >= 84)
         ) {
@@ -295,7 +295,7 @@ document.getElementById('menu-toggle')?.addEventListener('click', function () {
         if (
             window.location.pathname === '/' &&
             isMenuOpen &&
-            ((scrollPercentage >= 16 && scrollPercentage < 34) ||
+            ((scrollPercentage >= 15 && scrollPercentage < 34) ||
                 (scrollPercentage >= 52 && scrollPercentage < 69) ||
                 scrollPercentage >= 87)
         ) {
