@@ -182,10 +182,10 @@ function Carousel(props: CarouselProps) {
                                             decoding='async'
                                             loading='lazy'
                                         />
-                                        <div className='relative flex flex-col space-y-4 p-1'>
-                                            <p className='text-xl font-medium'>
+                                        <div className='relative mt-4 flex flex-col space-y-8 p-1'>
+                                            <q className='text-xl font-medium'>
                                                 {testimonial.quote}
-                                            </p>
+                                            </q>
                                             <div className='flex items-center'>
                                                 <span className='pr-2 before:block before:h-[3px] before:w-[33px] before:bg-brand-black' />
                                                 <p className='italic'>{testimonial.clientName}</p>
@@ -210,7 +210,7 @@ function Carousel(props: CarouselProps) {
                                         key={`testimonial-${index}`}
                                     >
                                         <div className='relative flex w-1/2 flex-col space-y-10'>
-                                            <q className='text-2xl font-medium'>
+                                            <q className='text-2xl font-medium '>
                                                 {testimonial.quote}
                                             </q>
                                             <span className='absolute bottom-4 before:absolute before:block before:h-[3px] before:w-[33px] before:bg-brand-black' />
