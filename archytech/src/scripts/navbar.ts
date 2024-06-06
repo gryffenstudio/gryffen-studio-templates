@@ -98,7 +98,7 @@ function updateLogoAndMenuToggleColors() {
             setElementColor('fill-white', 'bg-white', 'before:bg-white', 'after:bg-white');
         } else if (
             window.location.pathname !== '/' &&
-            scrollPosition / window.innerHeight >= 0.85 &&
+            scrollPosition / window.innerHeight >= 0.84 &&
             !isMenuOpen
         ) {
             setElementColor(
@@ -134,7 +134,7 @@ function updateLogoAndMenuToggleColors() {
             setElementColor('fill-white', 'bg-white', 'before:bg-white', 'after:bg-white');
         } else if (
             window.location.pathname !== '/' &&
-            scrollPosition / window.innerHeight >= 0.85 &&
+            scrollPosition / window.innerHeight >= 0.84 &&
             !isMenuOpen
         ) {
             setElementColor(
@@ -283,7 +283,7 @@ document.getElementById('menu-toggle')?.addEventListener('click', function () {
             storedLogoColor = 'fill-white';
         } else if (
             window.location.pathname !== '/' &&
-            scrollPosition / window.innerHeight >= 0.85 &&
+            scrollPosition / window.innerHeight >= 0.84 &&
             isMenuOpen
         ) {
             storedLogoColor = 'fill-brand-black';
@@ -309,7 +309,7 @@ document.getElementById('menu-toggle')?.addEventListener('click', function () {
             storedLogoColor = 'fill-white';
         } else if (
             window.location.pathname !== '/' &&
-            scrollPosition / window.innerHeight >= 0.85 &&
+            scrollPosition / window.innerHeight >= 0.84 &&
             isMenuOpen
         ) {
             storedLogoColor = 'fill-brand-black';
