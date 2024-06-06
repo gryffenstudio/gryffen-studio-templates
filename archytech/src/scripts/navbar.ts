@@ -79,9 +79,9 @@ function updateLogoAndMenuToggleColors() {
         if (
             window.location.pathname === '/' &&
             !isMenuOpen &&
-            ((scrollPercentage >= 16 && scrollPercentage < 33) ||
-                (scrollPercentage >= 51 && scrollPercentage < 68) ||
-                scrollPercentage >= 86)
+            ((scrollPercentage >= 14 && scrollPercentage < 31) ||
+                (scrollPercentage >= 49 && scrollPercentage < 47) ||
+                scrollPercentage >= 84)
         ) {
             setElementColor(
                 'fill-brand-black',
@@ -92,8 +92,8 @@ function updateLogoAndMenuToggleColors() {
         } else if (
             window.location.pathname === '/' &&
             !isMenuOpen &&
-            ((scrollPercentage >= 33 && scrollPercentage < 51) ||
-                (scrollPercentage >= 68 && scrollPercentage < 86))
+            ((scrollPercentage >= 31 && scrollPercentage < 49) ||
+                (scrollPercentage >= 66 && scrollPercentage < 84))
         ) {
             setElementColor('fill-white', 'bg-white', 'before:bg-white', 'after:bg-white');
         } else if (
@@ -115,9 +115,9 @@ function updateLogoAndMenuToggleColors() {
         if (
             window.location.pathname === '/' &&
             !isMenuOpen &&
-            ((scrollPercentage >= 18 && scrollPercentage < 36) ||
-                (scrollPercentage >= 54 && scrollPercentage < 71) ||
-                scrollPercentage >= 89)
+            ((scrollPercentage >= 16 && scrollPercentage < 34) ||
+                (scrollPercentage >= 52 && scrollPercentage < 69) ||
+                scrollPercentage >= 87)
         ) {
             setElementColor(
                 'fill-brand-black',
@@ -128,8 +128,8 @@ function updateLogoAndMenuToggleColors() {
         } else if (
             window.location.pathname === '/' &&
             !isMenuOpen &&
-            ((scrollPercentage >= 36 && scrollPercentage < 54) ||
-                (scrollPercentage >= 71 && scrollPercentage < 89))
+            ((scrollPercentage >= 34 && scrollPercentage < 52) ||
+                (scrollPercentage >= 69 && scrollPercentage < 87))
         ) {
             setElementColor('fill-white', 'bg-white', 'before:bg-white', 'after:bg-white');
         } else if (
@@ -269,16 +269,16 @@ document.getElementById('menu-toggle')?.addEventListener('click', function () {
         if (
             window.location.pathname === '/' &&
             isMenuOpen &&
-            ((scrollPercentage >= 16 && scrollPercentage < 33) ||
-                (scrollPercentage >= 51 && scrollPercentage < 68) ||
-                scrollPercentage >= 86)
+            ((scrollPercentage >= 14 && scrollPercentage < 31) ||
+                (scrollPercentage >= 49 && scrollPercentage < 47) ||
+                scrollPercentage >= 84)
         ) {
             storedLogoColor = 'fill-brand-black';
         } else if (
             window.location.pathname === '/' &&
             isMenuOpen &&
-            ((scrollPercentage >= 33 && scrollPercentage < 51) ||
-                (scrollPercentage >= 68 && scrollPercentage < 86))
+            ((scrollPercentage >= 31 && scrollPercentage < 49) ||
+                (scrollPercentage >= 66 && scrollPercentage < 84))
         ) {
             storedLogoColor = 'fill-white';
         } else if (
@@ -295,16 +295,16 @@ document.getElementById('menu-toggle')?.addEventListener('click', function () {
         if (
             window.location.pathname === '/' &&
             isMenuOpen &&
-            ((scrollPercentage >= 18 && scrollPercentage < 36) ||
-                (scrollPercentage >= 54 && scrollPercentage < 71) ||
-                scrollPercentage >= 89)
+            ((scrollPercentage >= 16 && scrollPercentage < 34) ||
+                (scrollPercentage >= 52 && scrollPercentage < 69) ||
+                scrollPercentage >= 87)
         ) {
             storedLogoColor = 'fill-brand-black';
         } else if (
             window.location.pathname === '/' &&
             isMenuOpen &&
-            ((scrollPercentage >= 36 && scrollPercentage < 54) ||
-                (scrollPercentage >= 71 && scrollPercentage < 89))
+            ((scrollPercentage >= 34 && scrollPercentage < 52) ||
+                (scrollPercentage >= 69 && scrollPercentage < 87))
         ) {
             storedLogoColor = 'fill-white';
         } else if (
