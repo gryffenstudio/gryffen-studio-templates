@@ -22,6 +22,7 @@ enum FilterSelection {
     COMMERCIAL = 'commercial',
     IN_PROGRESS = 'in_progress',
     SHOW_ALL = 'show_all',
+    LOAD = 'load',
 }
 
 // Get all the links with the hover effect
@@ -212,6 +213,21 @@ function filterProjects(filter: FilterSelection) {
             showCards(commercialProjectCards);
             showCards(inProgressProjectCards);
             break;
+        default:
+            residentialUnderline?.classList.toggle('invisible', true);
+            commercialUnderline?.classList.toggle('invisible', true);
+            inProgressUnderline?.classList.toggle('invisible', true);
+            showAllUnderline?.classList.toggle('invisible', false);
+
+            residentialUnderline?.classList.toggle('after:-translate-x-full', true);
+            commercialUnderline?.classList.toggle('after:-translate-x-full', true);
+            inProgressUnderline?.classList.toggle('after:-translate-x-full', true);
+            showAllUnderline?.classList.toggle('after:-translate-x-full', false);
+
+            residentialButton?.classList.toggle('text-brand-gray', false);
+            commercialButton?.classList.toggle('text-brand-gray', false);
+            inProgressButton?.classList.toggle('text-brand-gray', false);
+            showAllButton?.classList.toggle('text-brand-gray', true);
     }
 }
 
@@ -236,5 +252,5 @@ document.getElementById('show-all-filter-button')?.addEventListener('click', fun
 });
 
 window.addEventListener('load', () => {
-    filterProjects(FilterSelection.SHOW_ALL);
+    filterProjects(FilterSelection.LOAD);
 });
