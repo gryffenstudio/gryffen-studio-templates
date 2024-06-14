@@ -110,15 +110,15 @@ function filterProjects(filter: FilterSelection) {
         for (let i = 0; i < cards.length; i++) {
             const card = cards[i] as HTMLElement;
             card.classList.add('scale-0');
-            setTimeout(() => card.classList.add('hidden'), 750);
+            setTimeout(() => card.classList.add('hidden'), 700);
         }
     }
 
     function showCards(cards: HTMLCollectionOf<Element>) {
         for (let i = 0; i < cards.length; i++) {
             const card = cards[i] as HTMLElement;
-            card.classList.remove('hidden');
-            setTimeout(() => card.classList.remove('scale-0'), 600);
+            setTimeout(() => card.classList.remove('hidden'), 700);
+            setTimeout(() => card.classList.remove('scale-0'), 1000);
         }
     }
 
@@ -139,6 +139,7 @@ function filterProjects(filter: FilterSelection) {
             inProgressButton?.classList.toggle('text-brand-gray', false);
             showAllButton?.classList.toggle('text-brand-gray', false);
 
+            hideCards(residentialProjectCards);
             hideCards(commercialProjectCards);
             hideCards(inProgressProjectCards);
             showCards(residentialProjectCards);
@@ -160,6 +161,7 @@ function filterProjects(filter: FilterSelection) {
             inProgressButton?.classList.toggle('text-brand-gray', false);
             showAllButton?.classList.toggle('text-brand-gray', false);
 
+            hideCards(commercialProjectCards);
             hideCards(residentialProjectCards);
             hideCards(inProgressProjectCards);
             showCards(commercialProjectCards);
@@ -181,6 +183,7 @@ function filterProjects(filter: FilterSelection) {
             inProgressButton?.classList.toggle('text-brand-gray', true);
             showAllButton?.classList.toggle('text-brand-gray', false);
 
+            hideCards(inProgressProjectCards);
             hideCards(residentialProjectCards);
             hideCards(commercialProjectCards);
             showCards(inProgressProjectCards);
@@ -202,6 +205,9 @@ function filterProjects(filter: FilterSelection) {
             inProgressButton?.classList.toggle('text-brand-gray', false);
             showAllButton?.classList.toggle('text-brand-gray', true);
 
+            hideCards(residentialProjectCards);
+            hideCards(commercialProjectCards);
+            hideCards(inProgressProjectCards);
             showCards(residentialProjectCards);
             showCards(commercialProjectCards);
             showCards(inProgressProjectCards);
