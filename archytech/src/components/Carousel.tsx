@@ -144,7 +144,7 @@ function Carousel(props: CarouselProps) {
                     )}
                     {!isMobile && props.images && props.images.desktopImages && (
                         <div
-                            className='grid gap-x-5 lg:gap-x-8 xl:gap-x-11'
+                            className='grid gap-x-5 lg:gap-x-6 xl:gap-x-[46px]'
                             style={{
                                 gridTemplateColumns: `repeat(${props.images.desktopImages.length}, 100%)`,
                             }}
@@ -180,7 +180,9 @@ function Carousel(props: CarouselProps) {
                                             alt={testimonial.desktopImage.alt}
                                             className='w-full'
                                             decoding='async'
-                                            loading='lazy'
+                                            height={500}
+                                            width={500}
+                                            loading='eager'
                                         />
                                         <div className='relative mt-4 flex flex-col space-y-8 p-1'>
                                             <q className='text-xl font-medium'>
@@ -198,7 +200,7 @@ function Carousel(props: CarouselProps) {
                     )}
                     {!isMobile && props.testimonials && (
                         <div
-                            className='grid gap-x-5 lg:gap-x-8 xl:gap-x-11'
+                            className='grid gap-x-5 lg:gap-x-6 xl:gap-x-[46px]'
                             style={{
                                 gridTemplateColumns: `repeat(${props.testimonials.length}, 100%)`,
                             }}
@@ -226,7 +228,7 @@ function Carousel(props: CarouselProps) {
                                                 height={500}
                                                 width={500}
                                                 decoding='async'
-                                                loading='lazy'
+                                                loading='eager'
                                             />
                                         </div>
                                     </div>
