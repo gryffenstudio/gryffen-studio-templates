@@ -178,11 +178,11 @@ function Carousel(props: CarouselProps) {
                                         <img
                                             src={testimonial.desktopImage.image}
                                             alt={testimonial.desktopImage.alt}
-                                            className='w-full'
+                                            className='h-[300px] w-full'
                                             decoding='async'
-                                            height={500}
-                                            width={500}
-                                            loading='eager'
+                                            height={300}
+                                            width={375}
+                                            loading='lazy'
                                         />
                                         <div className='relative mt-4 flex flex-col space-y-8 p-1'>
                                             <q className='text-xl font-medium'>
@@ -225,8 +225,9 @@ function Carousel(props: CarouselProps) {
                                                 key={`desktop-${index}`}
                                                 src={testimonial.desktopImage.image}
                                                 alt={testimonial.desktopImage.alt}
-                                                height={500}
-                                                width={500}
+                                                className='h-[400px] w-[600px]'
+                                                height={400}
+                                                width={600}
                                                 decoding='async'
                                                 loading='eager'
                                             />
