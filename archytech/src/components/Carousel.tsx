@@ -178,7 +178,7 @@ function Carousel(props: CarouselProps) {
                                         <img
                                             src={testimonial.desktopImage.image}
                                             alt={testimonial.desktopImage.alt}
-                                            className='h-[300px] w-full'
+                                            className='h-[250px] w-full'
                                             decoding='async'
                                             height={300}
                                             width={375}
@@ -227,7 +227,7 @@ function Carousel(props: CarouselProps) {
                                                 alt={testimonial.desktopImage.alt}
                                                 className='h-[400px] w-[600px]'
                                                 height={400}
-                                                width={600}
+                                                width={500}
                                                 decoding='async'
                                                 loading='eager'
                                             />
