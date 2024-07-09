@@ -2,18 +2,18 @@
     "title": "Landing - Construx",
     "description": "Build with Construx",
     "logo": {
-        "src": "https://construx.netlify.app/ConstruxLogo.svg",
+        "src": "https://construx-template.netlify.app/ConstruxLogo.svg",
         "alt": "Construx Logo",
         "width": "43",
         "height": "51"
     },
     "image":{
-        "src": "https://construx.netlify.app/Landing-Hero.png",
+        "src": "https://construx-template.netlify.app/Landing-Hero.png",
         "alt": "Construx Home Page Image",
         "width": "1200",
         "height": "600"
     },
     "organizationName": "Construx",
-    "url": "https://construx.netlify.app",
-    "id": "https://construx.netlify.app/#website"
+    "url": "https://construx-template.netlify.app",
+    "id": "https://construx-template.netlify.app/#website"
 }

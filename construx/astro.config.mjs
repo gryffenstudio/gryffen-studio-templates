@@ -38,7 +38,7 @@ const saRedirect = () => {
 
 // https://astro.build/config
 export default defineConfig({
-    site: 'https://construx.netlify.app',
+    site: 'https://construx-template.netlify.app',
     adapter: netlify(),
     devToolbar: {
         enabled: false,
