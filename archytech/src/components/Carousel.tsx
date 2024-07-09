@@ -121,7 +121,6 @@ function Carousel(props: CarouselProps) {
                                                     }
                                                     className='mr-5 h-auto min-w-full'
                                                     decoding='async'
-                                                    loading='lazy'
                                                 />
                                             </a>
                                         );
@@ -135,7 +134,6 @@ function Carousel(props: CarouselProps) {
                                             width={327}
                                             className='mr-3 block h-auto max-h-[600px] min-w-full sm:hidden'
                                             decoding='async'
-                                            loading='lazy'
                                         />
                                     );
                                 },
@@ -159,7 +157,6 @@ function Carousel(props: CarouselProps) {
                                         width={1196}
                                         className='h-auto max-h-[850px] min-w-full'
                                         decoding='async'
-                                        loading='lazy'
                                     />
                                 ),
                             )}
@@ -182,7 +179,6 @@ function Carousel(props: CarouselProps) {
                                             decoding='async'
                                             height={300}
                                             width={375}
-                                            loading='lazy'
                                         />
                                         <div className='relative mt-4 flex flex-col space-y-8 p-1'>
                                             <q className='text-xl font-medium'>
@@ -229,7 +225,6 @@ function Carousel(props: CarouselProps) {
                                                 height={400}
                                                 width={500}
                                                 decoding='async'
-                                                loading='eager'
                                             />
                                         </div>
                                     </div>
