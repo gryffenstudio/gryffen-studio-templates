@@ -11,4 +11,15 @@
 }
 
 @layer utilities {
+    .left-to-right-text-color {
+        background: linear-gradient(to right, white 50%, red 50%);
+        background-size: 200% 100%;
+        background-position: left;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        transition: background-position 0.5s ease-in-out;
+     }
+     .left-to-right-text-color:hover {
+        background-position: right;
+     }
 }
