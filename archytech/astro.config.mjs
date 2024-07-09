@@ -40,6 +40,9 @@ const saRedirect = () => {
 export default defineConfig({
     site: 'https://archytech.netlify.app',
     adapter: netlify(),
+    devToolbar: {
+        enabled: false,
+    },
     integrations: [
         react(),
         tailwind(),

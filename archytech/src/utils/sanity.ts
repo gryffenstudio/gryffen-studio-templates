@@ -1,16 +1,26 @@
 import { createClient } from '@sanity/client';
 import type { PortableTextBlock } from '@portabletext/types';
-import type { ImageAsset, SanityDocument, Slug } from '@sanity/types';
+import type { ImageAsset, Slug } from '@sanity/types';
+import imageUrlBuilder from '@sanity/image-url';
+import type { Image } from '@sanity/types';
 
-export const client = createClient({
+const sanityClient = createClient({
     projectId: 'bpernsxq',
     dataset: 'production',
     useCdn: false,
     apiVersion: '2024-05-14',
 });
 
+const imageBuilder = imageUrlBuilder(sanityClient);
+
+export function urlFor(source: Image) {
+    if (source) {
+        return imageBuilder.image(source);
+    }
+}
+
 export async function getPosts(): Promise<Post[]> {
-    return await client.fetch(
+    return await sanityClient.fetch(
         `*[_type == "post" && defined(slug.current)] | order(_createdAt desc){
             title,
                     description,
@@ -29,7 +39,7 @@ export async function getPosts(): Promise<Post[]> {
 }
 
 export async function getPost(slug: string): Promise<Post> {
-    return await client.fetch(
+    return await sanityClient.fetch(
         `*[_type == "post" && slug.current == $slug][0]{
                     ...,
                     author->{
@@ -51,11 +61,11 @@ export async function getPost(slug: string): Promise<Post> {
 }
 
 export async function getCategories(): Promise<Category[]> {
-    return await client.fetch(`*[_type == "category" && defined(slug.current)]`);
+    return await sanityClient.fetch(`*[_type == "category" && defined(slug.current)]`);
 }
 
 export async function getCategory(slug: string): Promise<Category> {
-    return await client.fetch(`*[_type == "category" && slug.current == $slug][0]`, {
+    return await sanityClient.fetch(`*[_type == "category" && slug.current == $slug][0]`, {
         slug,
     });
 }

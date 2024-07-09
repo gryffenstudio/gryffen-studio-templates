@@ -4,9 +4,6 @@ import Footer from '../components/Footer.astro';
 import SEO from '../components/SEO.astro';
 import '../styles/global.css';
 import type { StructuredDataInput } from '../utils/structuredData';
-import buildDefaultStructuredData, {
-    type BuildDefaultStructuredDataProps,
-} from '../utils/defaultStructuredData';
 
 interface Props {
     title: string;
@@ -18,14 +15,6 @@ interface Props {
 }
 
 let { title, description, robots, image, structuredData, showFooter } = Astro.props;
-
-if (!structuredData) {
-    const buildDefaultStructureDataInput: BuildDefaultStructuredDataProps = {
-        title: title,
-        url: Astro.url,
-    };
-    structuredData = buildDefaultStructuredData(buildDefaultStructureDataInput);
-}
 ---
 
 <!doctype html>

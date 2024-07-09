@@ -1,7 +1,8 @@
 ---
 import siteData from '../data/siteData.json';
 import jsonLDGenerator from '../utils/SEOJsonLoad';
-import type { StructuredDataInput } from '../utils/structuredData';
+import type { BuildDefaultStructuredDataProps, StructuredDataInput } from '../utils/structuredData';
+import buildDefaultStructuredData from '../utils/structuredData';
 
 interface Props {
     title: string;
@@ -20,7 +21,14 @@ const {
     robots,
 } = Astro.props satisfies Props;
 
-const jsonLD = jsonLDGenerator(structuredData ?? ([] as StructuredDataInput[]));
+const buildDefaultStructureDataInput: BuildDefaultStructuredDataProps = {
+    title: title,
+    url: Astro.url,
+};
+
+const jsonLD = jsonLDGenerator(
+    structuredData ?? buildDefaultStructuredData(buildDefaultStructureDataInput),
+);
 ---
 
 <!-- SEO -->
