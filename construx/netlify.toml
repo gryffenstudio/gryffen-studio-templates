@@ -1,0 +1,5 @@
+[[redirects]]
+from = "/sanity-studio-admin*"
+to = "/sanity-studio-admin"
+status = 301
+force = true
