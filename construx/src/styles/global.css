@@ -7,19 +7,29 @@
 @layer base {
 }
 
+.css {
+    
+}
+
 @layer components {
+    .cta-btn {
+        
+    }
 }
 
 @layer utilities {
     .left-to-right-text-color {
-        background: linear-gradient(to right, white 50%, red 50%);
+        font-size: 64px;
+        font-weight: bold;
+        background: linear-gradient(to left, black 50%, red 50%);
         background-size: 200% 100%;
-        background-position: left;
+        background-position: right;
+        background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        transition: background-position 0.5s ease-in-out;
-     }
-     .left-to-right-text-color:hover {
-        background-position: right;
-     }
+        transition: background-position 0.8s ease-in;
+    }
+    .left-to-right-text-color:hover {
+        background-position: left;
+    }
 }
