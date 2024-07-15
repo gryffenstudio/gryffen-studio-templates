@@ -5,6 +5,43 @@
 @tailwind utilities;
 
 @layer base {
+    h1 {
+        @apply text-5xl md:text-left xl:text-[64px];
+    }
+    h2 {
+        @apply text-3xl md:text-left md:text-5xl;
+    }
+    h3 {
+        @apply text-2xl md:text-left md:text-4xl;
+    }
+    h4 {
+        @apply text-xl md:text-left md:text-3xl;
+    }
+    /* blockquote {
+        @apply border-brand-black before:icon-[flowbite--quote-solid] relative border-l-2 pl-8 pt-10 italic before:absolute before:left-6 before:top-0 before:h-8 before:w-8 before:font-sans before:text-6xl before:text-black md:text-xl;
+    } */
+    ol {
+        @apply list-inside list-decimal marker:font-bold md:text-xl;
+    }
+    ul {
+        @apply list-inside list-disc space-y-2 marker:pl-6 marker:font-bold md:text-xl;
+    }
+
+    a {
+        /* @apply hover:text-brand-purple text-blue-500 underline; */
+    }
+
+    p {
+        @apply md:text-xl;
+    }
+
+    p:empty {
+        @apply my-8;
+    }
+
+    p:empty + p:empty {
+        @apply my-16;
+    }
 }
 
 .css {
@@ -29,5 +66,8 @@
     }
     .left-to-right-text-color:hover {
         background-position: left;
+    }
+    .hamburger-toggle {
+        @apply [&>div::after]:translate-y-0 [&>div::after]:-rotate-45 [&>div::before]:translate-y-0 [&>div::before]:rotate-45 [&>div]:h-0 [&>div]:bg-white;
     }
 }
