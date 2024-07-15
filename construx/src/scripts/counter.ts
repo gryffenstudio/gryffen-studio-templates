@@ -7,7 +7,7 @@ interface CounterElement extends HTMLElement {
 }
 
 // Function to animate the counter from 0 to the target value
-const animateCounter = (element: CounterElement, duration: number = 8000) => {
+const animateCounter = (element: CounterElement, duration: number = 5000) => {
     const targetValue = parseInt(element.dataset.targetValue); // Retrieve the target value from the data attribute
     const startValue = 0;
     const increment = targetValue / (duration / 60); // Calculate the increment value for each frame (assuming 60 frames per second)
