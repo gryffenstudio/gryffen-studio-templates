@@ -38,30 +38,35 @@ import Icon from '../components/Icon.astro';
         /> -->
     </header>
     <main class=''>
-        <section class='container'>
-            <h1>hello</h1>
-            <h1>hello</h1>
-            <h1>hello</h1>
-            <h1>hello</h1>
-            <h1>hello</h1>
-            <h1>hello</h1>
-            <h1>hello</h1>
-            <h1>hello</h1>
-            <h1>hello</h1>
-            <h1>hello</h1>
-            <h1>hello</h1>
-            <h1>hello</h1>
-            <h1>hello</h1>
-            <h1>hello</h1>
-            <h1>hello</h1>
-            <h1>hello</h1>
-            <h1>hello</h1>
-            <h1>hello</h1>
-            <h1>hello</h1>
-            <h1>hello</h1>
-            <h1>hello</h1>
-            <h1>hello</h1>
-            <h1>hello</h1>
+        <section class='bg-brand-orange container'>
+            <div class='auto-grid grid gap-y-14 py-9 text-white'>
+                <div class='flex flex-col items-center justify-center space-y-1'>
+                    <span id='client-count' class='text-4xl tracking-wide' data-target-value='1050'
+                        >0</span
+                    >
+                    <span class='text-sm capitalize'>happy clients</span>
+                </div>
+                <div class='flex flex-col items-center justify-center space-y-1 text-2xl'>
+                    <span id='yoe-count' class='text-4xl tracking-wide' data-target-value='25'
+                        >0</span
+                    >
+                    <span class='text-sm capitalize'>years of experience</span>
+                </div>
+                <div class='flex flex-col items-center justify-center space-y-1 text-2xl'>
+                    <span id='projects-count' class='text-4xl tracking-wide' data-target-value='350'
+                        >0</span
+                    >
+                    <span class='text-sm capitalize'>projects completed</span>
+                </div>
+                <div class='flex flex-col items-center justify-center space-y-1 text-2xl'>
+                    <span id='awards-count' class='text-4xl tracking-wide' data-target-value='15'
+                        >0</span
+                    >
+                    <span class='text-sm capitalize'>global awards</span>
+                </div>
+            </div>
         </section>
     </main>
 </Layout>
+
+<script src='../scripts/counter.ts'></script>
