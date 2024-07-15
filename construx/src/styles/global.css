@@ -26,19 +26,18 @@
     ul {
         @apply list-inside list-disc space-y-2 marker:pl-6 marker:font-bold md:text-xl;
     }
-
     a {
         /* @apply hover:text-brand-purple text-blue-500 underline; */
     }
-
+    button {
+        @apply touch-manipulation;
+    }
     p {
         @apply md:text-xl;
     }
-
     p:empty {
         @apply my-8;
     }
-
     p:empty + p:empty {
         @apply my-16;
     }
