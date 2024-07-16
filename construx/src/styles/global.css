@@ -94,9 +94,9 @@
         }
     }
     .active-menu {
-        animation: expand 0.7s ease-in-out forwards;
+        animation: expand 0.5s ease-in forwards;
     }
     .inactive-menu {
-        animation: contract 0.7s ease-in-out forwards;
+        animation: contract 0.5s ease-in forwards;
     }
 }
