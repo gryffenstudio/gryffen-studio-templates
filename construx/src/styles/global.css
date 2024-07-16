@@ -17,9 +17,6 @@
     h4 {
         @apply text-xl md:text-left md:text-3xl;
     }
-    /* blockquote {
-        @apply border-brand-black before:icon-[flowbite--quote-solid] relative border-l-2 pl-8 pt-10 italic before:absolute before:left-6 before:top-0 before:h-8 before:w-8 before:font-sans before:text-6xl before:text-black md:text-xl;
-    } */
     ol {
         @apply list-inside list-decimal marker:font-bold md:text-xl;
     }
@@ -27,7 +24,6 @@
         @apply list-inside list-disc space-y-2 marker:pl-6 marker:font-bold md:text-xl;
     }
     a {
-        /* @apply hover:text-brand-purple text-blue-500 underline; */
     }
     button {
         @apply touch-manipulation;
@@ -41,9 +37,6 @@
     p:empty + p:empty {
         @apply my-16;
     }
-}
-
-.css {
 }
 
 @layer components {
@@ -71,5 +64,39 @@
     }
     .auto-grid {
         grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+    }
+    @keyframes expand {
+        0% {
+            width: 4rem;
+            height: 4rem;
+            bottom: 2.5rem;
+            right: 1.5rem;
+        }
+        100% {
+            width: 250vw;
+            height: 250dvh;
+            bottom: -100vh;
+            right: -100vw;
+        }
+    }
+    @keyframes contract {
+        0% {
+            width: 250vw;
+            height: 250dvh;
+            bottom: -100vh;
+            right: -100vw;
+        }
+        100% {
+            width: 4rem;
+            height: 4rem;
+            bottom: 2.5rem;
+            right: 1.5rem;
+        }
+    }
+    .active-menu {
+        animation: expand 0.7s ease-in-out forwards;
+    }
+    .inactive-menu {
+        animation: contract 0.7s ease-in-out forwards;
     }
 }
