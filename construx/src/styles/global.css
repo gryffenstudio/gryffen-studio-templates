@@ -69,13 +69,15 @@
         0% {
             width: 4rem;
             height: 4rem;
+            border-radius: 100%;
             bottom: 2.5rem;
             right: 1.5rem;
         }
         100% {
             width: 250vw;
             height: 250dvh;
-            bottom: -100vh;
+            border-radius: 100%;
+            bottom: -100dvh;
             right: -100vw;
         }
     }
@@ -83,20 +85,22 @@
         0% {
             width: 250vw;
             height: 250dvh;
-            bottom: -100vh;
+            border-radius: 100%;
+            bottom: -100dvh;
             right: -100vw;
         }
         100% {
             width: 4rem;
             height: 4rem;
+            border-radius: 100%;
             bottom: 2.5rem;
             right: 1.5rem;
         }
     }
     .active-menu {
-        animation: expand 0.5s ease-in forwards;
+        animation: expand 0.5s ease-out forwards;
     }
     .inactive-menu {
-        animation: contract 0.5s ease-in forwards;
+        animation: contract 0.5s ease-out forwards;
     }
 }
