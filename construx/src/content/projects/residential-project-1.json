@@ -1,0 +1,14 @@
+{
+    "projectName": "Residential Project 1",
+    "slug": "residential-project-1",
+    "category": "in_progress",
+    "featured": true,
+    "cardImageMobile": {
+        "image": "../../assets/images/residential-project-1-SM.png",
+        "alt": "Residential Project 1 Card Image Mobile"
+    },
+    "cardImageDesktop": {
+        "image": "../../assets/images/residential-project-1.png",
+        "alt": "Residential Project 1 Card Image Desktop"
+    }
+}

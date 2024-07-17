@@ -37,6 +37,20 @@
     p:empty + p:empty {
         @apply my-16;
     }
+
+    .swiper-custom-pagination {
+        top: unset !important;
+        left: unset !important;
+        bottom: unset !important;
+        right: unset !important;
+        position: unset !important;
+        width: auto !important;
+    }
+
+    .swiper-custom-pagination .swiper-pagination-bullet,
+    .swiper-custom-pagination .swiper-pagination-bullet-active {
+        @apply bg-black;
+    }
 }
 
 @layer components {
@@ -63,7 +77,7 @@
         @apply [&>div::after]:translate-y-0 [&>div::after]:-rotate-45 [&>div::before]:translate-y-0 [&>div::before]:rotate-45 [&>div]:h-0 [&>div]:bg-white;
     }
     .auto-grid {
-        grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(min(18rem, 100%), 1fr));
     }
     @keyframes expand {
         0% {
@@ -98,9 +112,9 @@
         }
     }
     .active-menu {
-        animation: expand 0.5s ease-out forwards;
+        animation: expand 0.3s ease-out forwards;
     }
     .inactive-menu {
-        animation: contract 0.5s ease-out forwards;
+        animation: contract 0.3s ease-out forwards;
     }
 }

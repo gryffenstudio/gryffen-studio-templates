@@ -2,8 +2,50 @@
 import Layout from '../layouts/Layout.astro';
 import heroImageSM from '../assets/images/Home-Hero-SM.png';
 import svgOverlay from '../assets/svg/mobile-home-hero-mask.svg?raw';
-import { Image } from 'astro:assets';
+import residentialHomeSvg from '../assets/svg/residential-home-service.svg?raw';
+import { getImage, Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
 import Icon from '../components/Icon.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import Carousel, { type CarouselImage, type ProjectSlide } from '../components/Carousel';
+
+const projects = await getCollection('projects', ({ data }) => {
+    return data.featured == true;
+});
+
+let featuredProjectCarouselSlides: ProjectSlide[] = [];
+
+for (let i = 0; i < projects.length; i++) {
+    let carouselProjectSlide: ProjectSlide = {} as ProjectSlide;
+    let carouselMobileImageObject: CarouselImage = {} as CarouselImage;
+    let carouselDesktopImageObject: CarouselImage = {} as CarouselImage;
+
+    let featuredProjectMobileImage = await getImage({
+        src: projects[i].data.cardImageMobile.image,
+        height: 330,
+        width: 327,
+        format: 'webp',
+    });
+
+    carouselMobileImageObject.image = featuredProjectMobileImage;
+    carouselMobileImageObject.alt = projects[i].data.cardImageMobile.alt;
+
+    let featuredProjectDesktopImage = await getImage({
+        src: projects[i].data.cardImageDesktop.image,
+        height: 330,
+        width: 360,
+        format: 'webp',
+    });
+
+    carouselDesktopImageObject.image = featuredProjectDesktopImage;
+    carouselDesktopImageObject.alt = projects[i].data.cardImageDesktop.alt;
+
+    carouselProjectSlide.mobileImage = carouselMobileImageObject;
+    carouselProjectSlide.desktopImage = carouselDesktopImageObject;
+    carouselProjectSlide.href = projects[i].data.slug;
+
+    featuredProjectCarouselSlides.push(carouselProjectSlide);
+}
 ---
 
 <Layout title='Landing - Construx' description='Build with Construx' robots={false}>
@@ -38,33 +80,90 @@ import Icon from '../components/Icon.astro';
         /> -->
     </header>
     <main class=''>
-        <section class='bg-brand-orange container'>
-            <div class='auto-grid grid gap-y-14 py-9 text-white'>
-                <div class='flex flex-col items-center justify-center space-y-1'>
-                    <span id='client-count' class='text-4xl tracking-wide' data-target-value='1050'
-                        >0</span
-                    >
-                    <span class='text-sm capitalize'>happy clients</span>
+        <section class='bg-brand-orange'>
+            <div class='container flex flex-wrap items-center justify-between py-9 text-white'>
+                <div
+                    class='flex flex-col items-center justify-between space-y-10 md:w-[45%] md:flex-row md:space-y-0 lg:w-[42%] xl:w-[40%]'
+                >
+                    <div class='flex flex-col items-center justify-center space-y-1'>
+                        <span
+                            id='client-count'
+                            class='text-4xl tracking-wide'
+                            data-target-value='1050'>0</span
+                        >
+                        <span class='text-sm capitalize'>happy clients</span>
+                    </div>
+                    <div class='flex flex-col items-center justify-center space-y-1 text-2xl'>
+                        <span id='yoe-count' class='text-4xl tracking-wide' data-target-value='25'
+                            >0</span
+                        >
+                        <span class='text-sm capitalize'>years of experience</span>
+                    </div>
                 </div>
-                <div class='flex flex-col items-center justify-center space-y-1 text-2xl'>
-                    <span id='yoe-count' class='text-4xl tracking-wide' data-target-value='25'
-                        >0</span
-                    >
-                    <span class='text-sm capitalize'>years of experience</span>
-                </div>
-                <div class='flex flex-col items-center justify-center space-y-1 text-2xl'>
-                    <span id='projects-count' class='text-4xl tracking-wide' data-target-value='350'
-                        >0</span
-                    >
-                    <span class='text-sm capitalize'>projects completed</span>
-                </div>
-                <div class='flex flex-col items-center justify-center space-y-1 text-2xl'>
-                    <span id='awards-count' class='text-4xl tracking-wide' data-target-value='15'
-                        >0</span
-                    >
-                    <span class='text-sm capitalize'>global awards</span>
+                <div
+                    class='flex flex-col items-center justify-between space-y-10 md:w-[45%] md:flex-row md:space-y-0 lg:w-[42%] xl:w-[40%]'
+                >
+                    <div class='flex flex-col items-center justify-center space-y-1 text-2xl'>
+                        <span
+                            id='projects-count'
+                            class='text-4xl tracking-wide'
+                            data-target-value='350'>0</span
+                        >
+                        <span class='text-sm capitalize'>projects completed</span>
+                    </div>
+                    <div class='flex flex-col items-center justify-center space-y-1 text-2xl'>
+                        <span
+                            id='awards-count'
+                            class='text-4xl tracking-wide'
+                            data-target-value='15'>0</span
+                        >
+                        <span class='text-sm capitalize'>global awards</span>
+                    </div>
                 </div>
             </div>
+        </section>
+        <section class='container my-16'>
+            <h3 class='text-center font-bold'>Services We Offer</h3>
+            <div class='auto-grid grid justify-items-center gap-x-4 gap-y-14 py-9'>
+                <ServiceCard
+                    icon={residentialHomeSvg}
+                    service='build your home'
+                    description='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco la'
+                    href='/services/residential'
+                />
+                <ServiceCard
+                    icon={residentialHomeSvg}
+                    service='build your home'
+                    description='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco la'
+                    href='/services/residential'
+                />
+                <ServiceCard
+                    icon={residentialHomeSvg}
+                    service='build your home'
+                    description='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco la'
+                    href='/services/residential'
+                />
+                <ServiceCard
+                    icon={residentialHomeSvg}
+                    service='build your home'
+                    description='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco la'
+                    href='/services/residential'
+                />
+                <ServiceCard
+                    icon={residentialHomeSvg}
+                    service='build your home'
+                    description='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco la'
+                    href='/services/residential'
+                />
+            </div>
+        </section>
+        <section class='container mb-16'>
+            <h3 class='text-center font-bold'>Featured Projects</h3>
+            <Carousel client:load projectSlides={featuredProjectCarouselSlides} />
+        </section>
+        <section class='container mb-16'>
+            <h3 class='text-center font-bold'>About Us</h3>
+            <div class=''></div>
         </section>
     </main>
 </Layout>

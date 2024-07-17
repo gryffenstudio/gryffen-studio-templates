@@ -1,0 +1,24 @@
+---
+import Icon from './Icon.astro';
+import linkArrow from '../assets/svg/link-arrow.svg?raw';
+
+interface Props {
+    icon: string;
+    service: string;
+    description: string;
+    href: string;
+}
+
+const { icon, service, description, href } = Astro.props;
+---
+
+<div
+    class='flex h-[496px] w-full max-w-[327px] flex-col items-center justify-center rounded-lg border px-5 leading-7 shadow-md'
+>
+    <Icon icon={icon} />
+    <p class='mt-6 text-center text-2xl font-bold capitalize'>{service}</p>
+    <p class='mt-7 text-center'>{description}</p>
+    <a class='mt-10 flex items-center justify-center font-bold' href={href}
+        >Read More <span class='ml-2'><Icon icon={linkArrow} /></span>
+    </a>
+</div>
