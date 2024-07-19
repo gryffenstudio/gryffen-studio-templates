@@ -22,6 +22,23 @@ const projectCollection = defineCollection({
         }),
 });
 
+const reviewCollection = defineCollection({
+    type: 'data',
+    schema: ({ image }) =>
+        z.object({
+            reviewerName: z.string().max(100, {
+                message: 'Project name is too long!',
+            }),
+            featured: z.boolean(),
+            reviewerLocation: z.string(),
+            review: z.string(),
+            reviewerImage: z.object({
+                image: image(),
+                alt: z.string(),
+            }),
+        }),
+});
+
 // const teamCollection = defineCollection({
 //     type: 'data',
 //     schema: ({ image }) =>
@@ -46,5 +63,6 @@ const projectCollection = defineCollection({
 
 export const collections = {
     projects: projectCollection,
+    reviews: reviewCollection,
     // team: teamCollection,
 };

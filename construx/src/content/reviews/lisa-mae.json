@@ -1,0 +1,10 @@
+{
+    "reviewerName": "lisa mae",
+    "featured": true,
+    "reviewerLocation": "colorado springs, co",
+    "reviewerImage": {
+        "image": "../../assets/images/lisa-mae-review.png",
+        "alt": "Lisa Mae Image"
+    },
+    "review": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip"
+}

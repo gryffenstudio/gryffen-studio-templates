@@ -7,44 +7,79 @@ import { getImage, Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import Icon from '../components/Icon.astro';
 import ServiceCard from '../components/ServiceCard.astro';
-import Carousel, { type CarouselImage, type ProjectSlide } from '../components/Carousel';
+import Carousel, {
+    type CarouselImage,
+    type ProjectSlide,
+    type ReviewSlide,
+} from '../components/Carousel';
 
 const projects = await getCollection('projects', ({ data }) => {
-    return data.featured == true;
+    return data.featured;
 });
 
-let featuredProjectCarouselSlides: ProjectSlide[] = [];
+const filteredProjects = projects.slice(0, 3);
 
-for (let i = 0; i < projects.length; i++) {
+const reviews = await getCollection('reviews', ({ data }) => {
+    return data.featured;
+});
+
+const filteredReviews = reviews.slice(0, 5);
+
+let featuredProjectCarouselSlides: ProjectSlide[] = [];
+let reviewCarouselSlides: ReviewSlide[] = [];
+
+for (let i = 0; i < filteredProjects.length; i++) {
     let carouselProjectSlide: ProjectSlide = {} as ProjectSlide;
-    let carouselMobileImageObject: CarouselImage = {} as CarouselImage;
-    let carouselDesktopImageObject: CarouselImage = {} as CarouselImage;
+    let carouselMobileProjectImageObject: CarouselImage = {} as CarouselImage;
+    let carouselDesktopProjectImageObject: CarouselImage = {} as CarouselImage;
 
     let featuredProjectMobileImage = await getImage({
-        src: projects[i].data.cardImageMobile.image,
+        src: filteredProjects[i].data.cardImageMobile.image,
         height: 330,
         width: 327,
         format: 'webp',
     });
 
-    carouselMobileImageObject.image = featuredProjectMobileImage;
-    carouselMobileImageObject.alt = projects[i].data.cardImageMobile.alt;
+    carouselMobileProjectImageObject.image = featuredProjectMobileImage;
+    carouselMobileProjectImageObject.alt = filteredProjects[i].data.cardImageMobile.alt;
 
     let featuredProjectDesktopImage = await getImage({
-        src: projects[i].data.cardImageDesktop.image,
+        src: filteredProjects[i].data.cardImageDesktop.image,
         height: 330,
         width: 360,
         format: 'webp',
     });
 
-    carouselDesktopImageObject.image = featuredProjectDesktopImage;
-    carouselDesktopImageObject.alt = projects[i].data.cardImageDesktop.alt;
+    carouselDesktopProjectImageObject.image = featuredProjectDesktopImage;
+    carouselDesktopProjectImageObject.alt = filteredProjects[i].data.cardImageDesktop.alt;
 
-    carouselProjectSlide.mobileImage = carouselMobileImageObject;
-    carouselProjectSlide.desktopImage = carouselDesktopImageObject;
-    carouselProjectSlide.href = projects[i].data.slug;
+    carouselProjectSlide.mobileImage = carouselMobileProjectImageObject;
+    carouselProjectSlide.desktopImage = carouselDesktopProjectImageObject;
+    carouselProjectSlide.href = filteredProjects[i].data.slug;
 
     featuredProjectCarouselSlides.push(carouselProjectSlide);
+}
+
+for (let i = 0; i < filteredReviews.length; i++) {
+    let carouselReviewSlide: ReviewSlide = {} as ReviewSlide;
+    let carouselReviewImageObject: CarouselImage = {} as CarouselImage;
+    // console.log(reviews[i].data);
+    let reviewMobileImage = await getImage({
+        src: filteredReviews[i].data.reviewerImage.image,
+        height: 125,
+        width: 130,
+        format: 'webp',
+    });
+
+    carouselReviewImageObject.image = reviewMobileImage;
+    carouselReviewImageObject.alt = filteredReviews[0].data.reviewerImage.alt;
+
+    carouselReviewSlide.reviewerName = filteredReviews[i].data.reviewerName;
+    carouselReviewSlide.reviewerLocation = filteredReviews[i].data.reviewerLocation;
+    carouselReviewSlide.reviewerImage = carouselReviewImageObject;
+    carouselReviewSlide.review = filteredReviews[i].data.review;
+
+    reviewCarouselSlides.push(carouselReviewSlide);
 }
 ---
 
@@ -123,8 +158,8 @@ for (let i = 0; i < projects.length; i++) {
             </div>
         </section>
         <section class='container my-16'>
-            <h3 class='text-center font-bold'>Services We Offer</h3>
-            <div class='auto-grid grid justify-items-center gap-x-4 gap-y-14 py-9'>
+            <h3 class='text-center text-2xl font-bold'>Services We Offer</h3>
+            <div class='auto-grid grid justify-items-center gap-x-4 gap-y-14 py-8'>
                 <ServiceCard
                     icon={residentialHomeSvg}
                     service='build your home'
@@ -158,12 +193,37 @@ for (let i = 0; i < projects.length; i++) {
             </div>
         </section>
         <section class='container mb-16'>
-            <h3 class='text-center font-bold'>Featured Projects</h3>
-            <Carousel client:load projectSlides={featuredProjectCarouselSlides} />
+            <h3 class='text-center text-2xl font-bold'>Featured Projects</h3>
+            <div class='mt-8 lg:hidden'>
+                <Carousel client:load projectSlides={featuredProjectCarouselSlides} />
+            </div>
+            <div class='mt-8 hidden space-x-8 lg:flex'>
+                {
+                    featuredProjectCarouselSlides.map((project: ProjectSlide, index: number) => {
+                        return (
+                            <a href={project.href} aria-label={`Featured Project ${index} Link`}>
+                                <img
+                                    src={project.desktopImage.image.src}
+                                    alt={project.desktopImage.alt}
+                                    height={330}
+                                    width={327}
+                                    class='h-auto w-full'
+                                />
+                            </a>
+                        );
+                    })
+                }
+            </div>
         </section>
         <section class='container mb-16'>
-            <h3 class='text-center font-bold'>About Us</h3>
-            <div class=''></div>
+            <h3 class='text-center text-2xl font-bold'>Reviews From Clients</h3>
+            <div class='mt-8'>
+                <Carousel client:load reviewSlides={reviewCarouselSlides} />
+            </div>
+        </section>
+        <section class='container mb-16'>
+            <h3 class='text-center text-2xl font-bold'>About Us</h3>
+            <div class='mt-8'></div>
         </section>
     </main>
 </Layout>

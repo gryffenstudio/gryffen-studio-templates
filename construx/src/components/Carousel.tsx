@@ -1,7 +1,4 @@
 // Import Swiper React components
-import * as ReactDOMServer from 'react-dom/server';
-
-// Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
@@ -12,6 +9,7 @@ import 'swiper/css/pagination';
 // import required modules
 import { Navigation, Pagination } from 'swiper/modules';
 import type { PaginationOptions } from 'swiper/types';
+import { useEffect, useState } from 'react';
 
 export interface CarouselImage {
     image: any;
@@ -36,38 +34,145 @@ export interface CarouselProps {
     reviewSlides?: ReviewSlide[];
 }
 
+//Custom hook for checking for mobile or desktop
+function useMediaQuery(query: string): boolean {
+    const [matches, setMatches] = useState<boolean>(false);
+
+    useEffect(() => {
+        const mediaQuery: MediaQueryList = window.matchMedia(query);
+        setMatches(mediaQuery.matches);
+
+        const handler = (event: MediaQueryListEvent) => setMatches(event.matches);
+        mediaQuery.addEventListener('change', handler);
+
+        return () => mediaQuery.removeEventListener('change', handler);
+    }, [query]);
+
+    return matches;
+}
+
 export default function Carousel(props: CarouselProps) {
+    const isMobile = useMediaQuery('(max-width: 1024px)');
+
     const pagination: PaginationOptions = {
         clickable: true,
         el: '.swiper-custom-pagination',
         type: 'bullets',
     };
+
     return (
         <div className='relative mt-8'>
-            <Swiper
-                spaceBetween={10}
-                navigation={true}
-                pagination={pagination}
-                modules={[Pagination, Navigation]}
-            >
-                {props.projectSlides &&
-                    props.projectSlides.map((project: ProjectSlide, index) => {
-                        return (
-                            <SwiperSlide
-                                key={`featuredProject-${index}`}
-                                className='flex h-fit w-full items-center justify-center bg-blue-500'
-                            >
-                                <img
-                                    src={project.mobileImage.image.src}
-                                    alt={project.mobileImage.alt}
-                                    height={330}
-                                    width={327}
-                                    className='h-auto w-full lg:hidden'
-                                />
-                            </SwiperSlide>
-                        );
-                    })}
-            </Swiper>
+            <div className='flex items-center justify-center space-x-2'>
+                <button className='image-swiper-button-prev hidden h-8 w-8 items-center justify-center bg-black p-8 text-white disabled:hidden lg:flex'>
+                    prev
+                </button>
+
+                <Swiper
+                    spaceBetween={10}
+                    slidesPerView={1}
+                    pagination={pagination}
+                    modules={[Navigation, Pagination]}
+                    breakpoints={{
+                        1024: {
+                            navigation: {
+                                enabled: true,
+                                nextEl: '.image-swiper-button-next',
+                                prevEl: '.image-swiper-button-prev',
+                            },
+                        },
+                    }}
+                >
+                    {isMobile &&
+                        props.projectSlides &&
+                        props.projectSlides.map((project: ProjectSlide, index) => {
+                            return (
+                                <SwiperSlide
+                                    key={`featuredProject-mobile-${index}`}
+                                    className='flex h-fit w-full items-center justify-center'
+                                >
+                                    <a
+                                        href={project.href}
+                                        aria-label={`Featured Project ${index} Link`}
+                                    >
+                                        <img
+                                            src={project.desktopImage.image.src}
+                                            alt={project.desktopImage.alt}
+                                            height={330}
+                                            width={327}
+                                            className='h-auto w-full'
+                                        />
+                                    </a>
+                                </SwiperSlide>
+                            );
+                        })}
+                    {isMobile &&
+                        props.reviewSlides &&
+                        props.reviewSlides.map((review: ReviewSlide, index) => {
+                            return (
+                                <SwiperSlide
+                                    key={`review-mobile-${index}`}
+                                    className='flex h-fit w-full items-center justify-center'
+                                >
+                                    <div className='flex h-auto w-full flex-col items-center justify-center rounded-xl border border-zinc-400 px-4 py-8'>
+                                        <div className='flex h-[90px] w-[90px] items-center justify-center rounded-full'>
+                                            <img
+                                                src={review.reviewerImage.image.src}
+                                                alt={review.reviewerImage.alt}
+                                                height={600}
+                                                width={600}
+                                                className='rounded-full'
+                                            />
+                                        </div>
+                                        <p className='text-2xl font-bold capitalize leading-9'>
+                                            {review.reviewerName}
+                                        </p>
+                                        <p className='font-semibold capitalize leading-9 text-neutral-400'>
+                                            {review.reviewerLocation}
+                                        </p>
+                                        <p className='mt-5 text-center font-bold leading-[30px] text-neutral-400'>
+                                            {review.review}
+                                        </p>
+                                    </div>
+                                </SwiperSlide>
+                            );
+                        })}
+                    {!isMobile &&
+                        props.reviewSlides &&
+                        props.reviewSlides.map((review: ReviewSlide, index) => {
+                            return (
+                                <SwiperSlide
+                                    key={`featuredProject-mobile-${index}`}
+                                    className='flex h-fit w-full items-center justify-center'
+                                >
+                                    <div className='flex h-[370px] w-full flex-col items-center justify-center rounded-xl border border-zinc-400 px-20 py-8'>
+                                        <div className='flex h-[90px] w-[90px] items-center justify-center rounded-full'>
+                                            <img
+                                                src={review.reviewerImage.image.src}
+                                                alt={review.reviewerImage.alt}
+                                                height={600}
+                                                width={600}
+                                                className='rounded-full'
+                                            />
+                                        </div>
+                                        <p className='text-2xl font-bold capitalize leading-9'>
+                                            {review.reviewerName}
+                                        </p>
+                                        <p className='font-semibold capitalize leading-9 text-neutral-400'>
+                                            {review.reviewerLocation}
+                                        </p>
+                                        <p className='mt-5 text-center font-bold leading-[30px] text-neutral-400'>
+                                            {review.review}
+                                        </p>
+                                    </div>
+                                </SwiperSlide>
+                            );
+                        })}
+                </Swiper>
+                <button className='image-swiper-button-next hidden h-8 w-8 items-center justify-center place-self-center bg-black p-8 text-white disabled:hidden lg:flex'>
+                    next
+                </button>
+            </div>
+
             <div className='flex items-center justify-center space-x-4 pt-4'>
                 <div className='swiper-custom-pagination' />
             </div>
