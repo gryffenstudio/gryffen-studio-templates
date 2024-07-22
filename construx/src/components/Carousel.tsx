@@ -64,9 +64,12 @@ export default function Carousel(props: CarouselProps) {
     return (
         <div className='relative mt-8'>
             <div className='flex items-center justify-center space-x-2'>
+                {/* Custom Previous Button */}
                 <div className='relative hidden items-center justify-center lg:flex'>
-                    {/* Custom Previous Button */}
-                    <button className='image-swiper-button-prev peer z-10 h-8 w-8 items-center justify-center rounded-full border border-black p-4 disabled:opacity-20 lg:flex'>
+                    <button
+                        aria-label='Carousel Prev Button'
+                        className='image-swiper-button-prev peer z-10 h-8 w-8 items-center justify-center rounded-full border border-black p-4 disabled:opacity-20 lg:flex'
+                    >
                         <span className='icon-[simple-line-icons--arrow-up] absolute left-2 z-0 h-4 w-4 -rotate-90 text-black peer-disabled:opacity-20' />
                     </button>
                 </div>
@@ -173,7 +176,10 @@ export default function Carousel(props: CarouselProps) {
 
                 {/* Custom Next Button */}
                 <div className='relative hidden items-center justify-center lg:flex'>
-                    <button className='image-swiper-button-next peer z-10 h-8 w-8 items-center justify-center rounded-full border border-black p-4 disabled:opacity-20 lg:flex'>
+                    <button
+                        aria-label='Carousel Next Button'
+                        className='image-swiper-button-next peer z-10 h-8 w-8 items-center justify-center rounded-full border border-black p-4 disabled:opacity-20 lg:flex'
+                    >
                         <span className='icon-[simple-line-icons--arrow-up] absolute right-2 z-0 h-4 w-4 rotate-90 text-black peer-disabled:opacity-20' />
                     </button>
                 </div>
