@@ -195,7 +195,11 @@ for (let i = 0; i < filteredReviews.length; i++) {
         <section class='container mb-16'>
             <h3 class='text-center text-2xl font-bold'>Featured Projects</h3>
             <div class='mt-8 lg:hidden'>
-                <Carousel client:load projectSlides={featuredProjectCarouselSlides} />
+                <Carousel
+                    client:load
+                    projectSlides={featuredProjectCarouselSlides}
+                    paginationClass='.swiper-custom-pagination-projects'
+                />
             </div>
             <div class='mt-8 hidden space-x-8 lg:flex'>
                 {
@@ -218,7 +222,11 @@ for (let i = 0; i < filteredReviews.length; i++) {
         <section class='container mb-16'>
             <h3 class='text-center text-2xl font-bold'>Reviews From Clients</h3>
             <div class='mt-8'>
-                <Carousel client:load reviewSlides={reviewCarouselSlides} />
+                <Carousel
+                    client:load
+                    reviewSlides={reviewCarouselSlides}
+                    paginationClass='.swiper-custom-pagination-reviews'
+                />
             </div>
         </section>
         <section class='container mb-16'>

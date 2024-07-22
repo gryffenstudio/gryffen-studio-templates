@@ -19,6 +19,7 @@
         "@iconify-json/iconamoon": "^1.1.4",
         "@iconify-json/mage": "^1.1.0",
         "@iconify-json/openmoji": "^1.1.52",
+        "@iconify-json/simple-line-icons": "^1.1.8",
         "@iconify/tailwind": "^1.1.1",
         "@portabletext/types": "^2.0.13",
         "@sanity/astro": "^3.1.4",

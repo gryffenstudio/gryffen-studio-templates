@@ -32,9 +32,10 @@ export interface ReviewSlide {
 export interface CarouselProps {
     projectSlides?: ProjectSlide[];
     reviewSlides?: ReviewSlide[];
+    paginationClass: string;
 }
 
-//Custom hook for checking for mobile or desktop
+// Custom hook for checking for mobile or desktop
 function useMediaQuery(query: string): boolean {
     const [matches, setMatches] = useState<boolean>(false);
 
@@ -56,36 +57,41 @@ export default function Carousel(props: CarouselProps) {
 
     const pagination: PaginationOptions = {
         clickable: true,
-        el: '.swiper-custom-pagination',
+        el: props.paginationClass,
         type: 'bullets',
     };
 
     return (
         <div className='relative mt-8'>
             <div className='flex items-center justify-center space-x-2'>
-                <button className='image-swiper-button-prev hidden h-8 w-8 items-center justify-center bg-black p-8 text-white disabled:hidden lg:flex'>
-                    prev
-                </button>
-
-                <Swiper
-                    spaceBetween={10}
-                    slidesPerView={1}
-                    pagination={pagination}
-                    modules={[Navigation, Pagination]}
-                    breakpoints={{
-                        1024: {
-                            navigation: {
-                                enabled: true,
-                                nextEl: '.image-swiper-button-next',
-                                prevEl: '.image-swiper-button-prev',
+                <div className='relative hidden items-center justify-center lg:flex'>
+                    {/* Custom Previous Button */}
+                    <button className='image-swiper-button-prev peer z-10 h-8 w-8 items-center justify-center rounded-full border border-black p-4 disabled:opacity-20 lg:flex'>
+                        <span className='icon-[simple-line-icons--arrow-up] absolute left-2 z-0 h-4 w-4 -rotate-90 text-black peer-disabled:opacity-20' />
+                    </button>
+                </div>
+                <div className='w-full lg:w-[90%]'>
+                    <Swiper
+                        spaceBetween={10}
+                        slidesPerView={1}
+                        pagination={pagination}
+                        modules={[Navigation, Pagination]}
+                        observer
+                        observeParents
+                        parallax
+                        breakpoints={{
+                            1024: {
+                                navigation: {
+                                    enabled: true,
+                                    nextEl: '.image-swiper-button-next',
+                                    prevEl: '.image-swiper-button-prev',
+                                },
                             },
-                        },
-                    }}
-                >
-                    {isMobile &&
-                        props.projectSlides &&
-                        props.projectSlides.map((project: ProjectSlide, index) => {
-                            return (
+                        }}
+                    >
+                        {isMobile &&
+                            props.projectSlides &&
+                            props.projectSlides.map((project: ProjectSlide, index) => (
                                 <SwiperSlide
                                     key={`featuredProject-mobile-${index}`}
                                     className='flex h-fit w-full items-center justify-center'
@@ -103,12 +109,10 @@ export default function Carousel(props: CarouselProps) {
                                         />
                                     </a>
                                 </SwiperSlide>
-                            );
-                        })}
-                    {isMobile &&
-                        props.reviewSlides &&
-                        props.reviewSlides.map((review: ReviewSlide, index) => {
-                            return (
+                            ))}
+                        {isMobile &&
+                            props.reviewSlides &&
+                            props.reviewSlides.map((review: ReviewSlide, index) => (
                                 <SwiperSlide
                                     key={`review-mobile-${index}`}
                                     className='flex h-fit w-full items-center justify-center'
@@ -134,14 +138,12 @@ export default function Carousel(props: CarouselProps) {
                                         </p>
                                     </div>
                                 </SwiperSlide>
-                            );
-                        })}
-                    {!isMobile &&
-                        props.reviewSlides &&
-                        props.reviewSlides.map((review: ReviewSlide, index) => {
-                            return (
+                            ))}
+                        {!isMobile &&
+                            props.reviewSlides &&
+                            props.reviewSlides.map((review: ReviewSlide, index) => (
                                 <SwiperSlide
-                                    key={`featuredProject-mobile-${index}`}
+                                    key={`review-desktop-${index}`}
                                     className='flex h-fit w-full items-center justify-center'
                                 >
                                     <div className='flex h-[370px] w-full flex-col items-center justify-center rounded-xl border border-zinc-400 px-20 py-8'>
@@ -165,16 +167,20 @@ export default function Carousel(props: CarouselProps) {
                                         </p>
                                     </div>
                                 </SwiperSlide>
-                            );
-                        })}
-                </Swiper>
-                <button className='image-swiper-button-next hidden h-8 w-8 items-center justify-center place-self-center bg-black p-8 text-white disabled:hidden lg:flex'>
-                    next
-                </button>
+                            ))}
+                    </Swiper>
+                </div>
+
+                {/* Custom Next Button */}
+                <div className='relative hidden items-center justify-center lg:flex'>
+                    <button className='image-swiper-button-next peer z-10 h-8 w-8 items-center justify-center rounded-full border border-black p-4 disabled:opacity-20 lg:flex'>
+                        <span className='icon-[simple-line-icons--arrow-up] absolute right-2 z-0 h-4 w-4 rotate-90 text-black peer-disabled:opacity-20' />
+                    </button>
+                </div>
             </div>
 
             <div className='flex items-center justify-center space-x-4 pt-4'>
-                <div className='swiper-custom-pagination' />
+                <div className={props.paginationClass.replace('.', '')} />
             </div>
         </div>
     );
