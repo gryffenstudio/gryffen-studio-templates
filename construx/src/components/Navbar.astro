@@ -5,13 +5,13 @@
 <nav class='z-30 pt-10'>
     <span
         id='menu-span'
-        class='bg-brand-orange ease--in-out fixed bottom-10 right-6 z-50 h-16 w-16 rounded-full transition-all'
+        class='ease--in-out fixed bottom-10 right-6 z-50 h-16 w-16 rounded-full bg-brand-orange transition-all md:hidden'
     >
     </span>
     <button
         id='menu-toggle'
         aria-label='Menu Button'
-        class='fixed bottom-[60px] right-11 z-50 grid h-6 w-6 cursor-pointer place-content-center'
+        class='fixed bottom-[60px] right-11 z-50 grid h-6 w-6 cursor-pointer place-content-center md:hidden'
     >
         <div
             id='menu-toggle-element'
@@ -22,15 +22,47 @@
 
     <div class='container flex items-center justify-between'>
         <a href='/'>LOGO</a>
-        <div class='flex space-x-[18px]'>
-            <button class='icon-[iconamoon--search-light] h-8 w-8' aria-label='Search Button'
-            ></button>
+        <div class='hidden items-center justify-center space-x-8 lg:flex'>
+            <a
+                href='/about'
+                class='cursor-pointer capitalize leading-relaxed text-gray-800 hover:opacity-30'
+                >about</a
+            >
+            <a
+                href='/services'
+                class='cursor-pointer capitalize leading-relaxed text-gray-800 hover:opacity-30'
+                >services</a
+            >
+            <a
+                href='/portfolio'
+                class='cursor-pointer capitalize leading-relaxed text-gray-800 hover:opacity-30'
+                >portfolio</a
+            >
+            <a
+                href='/blog'
+                class='cursor-pointer capitalize leading-relaxed text-gray-800 hover:opacity-30'
+                >blog</a
+            >
+            <a
+                href='/careers'
+                class='cursor-pointer capitalize leading-relaxed text-gray-800 hover:opacity-30'
+                >careers</a
+            >
+        </div>
+        <div class='flex items-center justify-center space-x-[18px]'>
+            <div class='flex items-center space-x-1'>
+                <button class='icon-[iconamoon--search-light] h-8 w-8' aria-label='Search Button'>
+                </button>
+                <span class='hidden leading-relaxed tracking-wide lg:inline-block'> Search </span>
+            </div>
+
             <a
                 href=`tel:0000000000`
                 aria-label='Call Button'
-                class='bg-brand-orange flex h-8 w-8 items-center justify-center rounded-[5px] hover:opacity-50'
+                class='flex h-8 w-8 items-center justify-center rounded-[5px] bg-brand-orange hover:opacity-50 lg:h-[38px] lg:w-[132px] lg:rounded-xl lg:px-8 lg:py-3'
             >
-                <span class='icon-[mage--phone] h-6 w-6 text-white'></span>
+                <span class='icon-[mage--phone] h-6 w-6 text-white lg:hidden'></span>
+                <span class='font-medium tracking-tight text-white'>Contact</span>
             </a>
         </div>
     </div>
