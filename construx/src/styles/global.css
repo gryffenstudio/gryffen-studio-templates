@@ -9,13 +9,11 @@
         @apply text-5xl md:text-left xl:text-[64px];
     }
     h2 {
-        @apply text-3xl md:text-left md:text-5xl;
+        @apply text-center text-2xl font-bold capitalize leading-loose text-black;
     }
     h3 {
-        @apply text-2xl md:text-left md:text-4xl;
     }
     h4 {
-        @apply text-xl md:text-left md:text-3xl;
     }
     ol {
         @apply list-inside list-decimal marker:font-bold md:text-xl;

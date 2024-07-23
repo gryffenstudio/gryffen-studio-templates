@@ -1,0 +1,111 @@
+---
+import logo from '../assets/svg/logo.svg?raw';
+import Icon from './Icon.astro';
+---
+
+<footer class='container py-5 lg:pt-14'>
+    <div class='flex flex-col space-y-6 lg:flex-row lg:justify-between lg:space-y-0'>
+        <div class='lg:w-full'>
+            <Icon icon={logo} />
+            <p class='leading-snug'>
+                We help specialize in your perfect home blah blah blah blah blah
+            </p>
+        </div>
+        <div class='flex lg:w-1/2 lg:justify-between'>
+            <div class='flex flex-col space-y-1'>
+                <a
+                    href='/about'
+                    class='cursor-pointer uppercase leading-snug text-gray-800 hover:opacity-30'
+                    >about</a
+                >
+                <a
+                    href='/services'
+                    class='cursor-pointer uppercase leading-snug text-gray-800 hover:opacity-30'
+                    >services</a
+                >
+                <a
+                    href='/portfolio'
+                    class='cursor-pointer uppercase leading-snug text-gray-800 hover:opacity-30'
+                    >portfolio</a
+                >
+                <a
+                    href='/blog'
+                    class='cursor-pointer uppercase leading-snug text-gray-800 hover:opacity-30'
+                    >blog</a
+                >
+                <a
+                    href='/contact'
+                    class='cursor-pointer uppercase leading-snug text-gray-800 hover:opacity-30'
+                    >contact</a
+                >
+                <a
+                    href='/careers'
+                    class='cursor-pointer uppercase leading-snug text-gray-800 hover:opacity-30'
+                    >careers</a
+                >
+            </div>
+            <div class='mx-auto flex flex-col space-y-1 lg:mx-0'>
+                <a
+                    href='/about'
+                    class='cursor-pointer uppercase leading-snug text-gray-800 hover:opacity-30'
+                    >about</a
+                >
+                <a
+                    href='/services'
+                    class='cursor-pointer uppercase leading-snug text-gray-800 hover:opacity-30'
+                    >services</a
+                >
+                <a
+                    href='/portfolio'
+                    class='cursor-pointer uppercase leading-snug text-gray-800 hover:opacity-30'
+                    >portfolio</a
+                >
+                <a
+                    href='/blog'
+                    class='cursor-pointer uppercase leading-snug text-gray-800 hover:opacity-30'
+                    >blog</a
+                >
+                <a
+                    href='/contact'
+                    class='cursor-pointer uppercase leading-snug text-gray-800 hover:opacity-30'
+                    >contact</a
+                >
+                <a
+                    href='/careers'
+                    class='cursor-pointer uppercase leading-snug text-gray-800 hover:opacity-30'
+                    >careers</a
+                >
+            </div>
+        </div>
+    </div>
+    <div class='mt-11 flex flex-col'>
+        <span class='text-2xl font-bold leading-snug text-gray-800'>Follow</span>
+        <div class='mt-7 space-x-3'>
+            <a
+                href='https://www.facebook.com'
+                class='icon-[ri--facebook-fill] h-[30px] w-[30px] cursor-pointer text-black hover:opacity-30'
+            ></a>
+            <a
+                href='https://www.instagram.com'
+                class='icon-[ri--instagram-line] h-[30px] w-[30px] cursor-pointer text-black hover:opacity-30'
+            ></a>
+        </div>
+    </div>
+    <div class='mt-10 flex flex-col lg:mt-20 lg:flex-row lg:justify-between'>
+        <div class='order-2 mt-4 flex lg:order-none lg:mt-0 lg:w-[40%] lg:justify-between'>
+            <span class='text-sm leading-relaxed text-gray-800'>© 2024 Construx LLC</span>
+            <a
+                href='/terms-and-conditions'
+                class='ml-4 text-sm capitalize leading-relaxed text-gray-800'>Terms & Conditions</a
+            >
+        </div>
+        <div class='order-1 flex lg:order-none lg:w-[40%] lg:justify-between'>
+            <a href='/cookie-policy' class='text-sm capitalize leading-relaxed text-gray-800'
+                >cookie policy</a
+            >
+            <a href='/privacy-policy' class='ml-4 text-sm capitalize leading-relaxed text-gray-800'
+                >privacy policy</a
+            >
+        </div>
+    </div>
+</footer>
