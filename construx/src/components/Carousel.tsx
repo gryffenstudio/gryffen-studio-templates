@@ -73,7 +73,7 @@ export default function Carousel(props: CarouselProps) {
                         <span className='icon-[simple-line-icons--arrow-up] absolute left-2 z-0 h-4 w-4 -rotate-90 text-black peer-disabled:opacity-20' />
                     </button>
                 </div>
-                <div className='w-full lg:w-[90%]'>
+                <div className='w-full lg:w-[92%]'>
                     <Swiper
                         spaceBetween={10}
                         slidesPerView={1}

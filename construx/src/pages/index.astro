@@ -1,7 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import heroImageSM from '../assets/images/Home-Hero-SM.png';
-import svgOverlay from '../assets/svg/mobile-home-hero-mask.svg?raw';
+import heroImageSM from '../assets/images/home-hero-SM.png';
+import heroImage from '../assets/images/home-hero.png';
+import aboutUsImg1 from '../assets/images/about-us-section-image-1.png';
+import aboutUsImg2 from '../assets/images/about-us-section-image-2.png';
+import mobileSvgOverlay from '../assets/svg/mobile-home-hero-mask.svg?raw';
+import arrowDownCircled from '../assets/svg/arrow-down-circled.svg?raw';
 import residentialHomeSvg from '../assets/svg/residential-home-service.svg?raw';
 import { getImage, Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
@@ -84,9 +88,10 @@ for (let i = 0; i < filteredReviews.length; i++) {
 ---
 
 <Layout title='Landing - Construx' description='Build with Construx' robots={false}>
-    <header class='relative'>
+    <header class='relative mt-[6px]'>
+        <!-- Mobile Hero Section --->
         <div class='absolute -top-[85px] z-20 *:w-screen md:hidden'>
-            <Icon icon={svgOverlay} />
+            <Icon icon={mobileSvgOverlay} />
         </div>
         <div class='relative'>
             <Image
@@ -98,21 +103,38 @@ for (let i = 0; i < filteredReviews.length; i++) {
                 loading='eager'
             />
             <h1
-                class='absolute bottom-5 z-20 pl-4 pr-20 text-start font-bold uppercase leading-[60px] tracking-wide text-white'
+                class='absolute bottom-5 z-20 pl-4 pr-20 text-start font-bold uppercase leading-[60px] tracking-wide text-white md:hidden'
             >
                 building your future homes
             </h1>
         </div>
-        <div class='absolute left-0 top-0 z-10 h-full w-full bg-black bg-opacity-40'></div>
-        <!-- Desktop Hero
-        <Image
-            class='absolute inset-0 hidden h-full w-full object-cover object-center md:block'
-            src={heroBackgroundImgSrcList[1]}
-            alt={alt}
-            width='1440'
-            height='1024'
-            loading='eager'
-        /> -->
+        <div class='absolute left-0 top-0 z-10 h-full w-full bg-black bg-opacity-40 md:hidden'>
+        </div>
+        <!-- Desktop Hero Section --->
+        <div class='relative hidden md:block'>
+            <div
+                class="absolute -left-36 -top-[76px] bottom-0 right-0 z-20 bg-[url('../assets/svg/desktop-home-hero-mask.svg')] bg-repeat"
+            >
+            </div>
+            <Image
+                class='hidden max-h-[450px] w-screen md:block'
+                src={heroImage}
+                alt='Home Page Desktop Hero Image'
+                width='1440'
+                height='450'
+                loading='eager'
+            />
+        </div>
+        <div class='container flex items-center justify-between py-20'>
+            <h1
+                class='pr-20 text-start font-bold uppercase leading-[60px] tracking-wide text-black'
+            >
+                building your future homes
+            </h1>
+            <button aria-label='Arrow Down Button'>
+                <Icon icon={arrowDownCircled} />
+            </button>
+        </div>
     </header>
     <main>
         <section class='bg-brand-orange'>
@@ -157,7 +179,7 @@ for (let i = 0; i < filteredReviews.length; i++) {
                 </div>
             </div>
         </section>
-        <section class='container my-16'>
+        <section class='container mb-8 mt-16'>
             <h2>Services We Offer</h2>
             <div class='auto-grid grid justify-items-center gap-x-4 gap-y-14 py-8'>
                 <ServiceCard
@@ -231,26 +253,43 @@ for (let i = 0; i < filteredReviews.length; i++) {
         </section>
         <section class='container mb-16'>
             <h2>About Us</h2>
-            <div class='mt-4'>
-                <h3 class='text-start text-3xl font-bold capitalize leading-loose'>
-                    we are here for you
-                </h3>
+            <div class='mt-8 flex md:mt-20 md:flex-col xl:flex-row'>
+                <div class='hidden justify-center space-x-8 md:flex xl:w-2/3 xl:justify-normal'>
+                    <Image
+                        class='relative top-[-35px]'
+                        src={aboutUsImg1}
+                        alt='About Us Section Image 1'
+                        height={327}
+                        width={245}
+                    />
+                    <Image
+                        src={aboutUsImg2}
+                        alt='About Us Section Image 2'
+                        height={327}
+                        width={245}
+                    />
+                </div>
+                <div class='xl:w-1/2'>
+                    <h3 class='text-start text-3xl font-bold capitalize leading-loose'>
+                        we are here for you
+                    </h3>
 
-                <p class='text-start text-xl capitalize leading-[30px] text-zinc-800'>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                    nostrud exercitation ullamco la. enim ad minim veniam, quis nostrud exercitation
-                    ullamco la.
-                </p>
-                <button
-                    class='mt-10 inline-flex h-12 w-[152px] items-center justify-center rounded-[10px] bg-violet-600 px-8 py-3'
-                >
-                    <div
-                        class="font-['DM Sans'] text-base font-medium leading-normal tracking-tight text-white"
+                    <p class='text-start text-xl capitalize leading-[30px] text-zinc-800'>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco la. enim ad minim veniam, quis nostrud
+                        exercitation ullamco la.
+                    </p>
+                    <button
+                        class='mt-10 inline-flex h-12 w-[152px] items-center justify-center rounded-[10px] bg-violet-600 px-8 py-3'
                     >
-                        Learn more
-                    </div>
-                </button>
+                        <div
+                            class="font-['DM Sans'] text-base font-medium leading-normal tracking-tight text-white"
+                        >
+                            Learn more
+                        </div>
+                    </button>
+                </div>
             </div>
         </section>
         <section class='bg-brand-orange py-8'>
