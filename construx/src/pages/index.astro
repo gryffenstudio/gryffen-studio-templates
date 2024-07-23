@@ -16,6 +16,7 @@ import Carousel, {
     type ProjectSlide,
     type ReviewSlide,
 } from '../components/Carousel';
+import ContactForm from '../components/ContactForm.astro';
 
 const projects = await getCollection('projects', ({ data }) => {
     return data.featured;
@@ -293,7 +294,12 @@ for (let i = 0; i < filteredReviews.length; i++) {
             </div>
         </section>
         <section class='bg-brand-orange py-8'>
-            <h2 class='text-[32px] font-bold capitalize leading-loose text-white'>Contact Us</h2>
+            <h2 class='text-[32px] font-bold capitalize leading-loose text-white md:hidden'>
+                Contact Us
+            </h2>
+            <div class='container'>
+                <ContactForm />
+            </div>
         </section>
     </main>
 </Layout>
