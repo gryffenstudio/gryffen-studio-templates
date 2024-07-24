@@ -42,11 +42,10 @@
         @apply resize-none appearance-none rounded-lg px-2 py-2 outline-none focus:outline-none focus:ring-0;
     }
     label {
-        @apply absolute start-0 top-4 z-10 ml-2 origin-[0] scale-100 transform text-sm duration-300;
+        @apply absolute start-0 top-4 z-10 ml-2 origin-[0] scale-75 transform text-sm duration-300;
     }
-
     select {
-        @apply rounded-lg px-2 py-2;
+        @apply w-full appearance-none rounded-lg px-2 py-2 outline-none;
     }
 
     /* Target all classes containing 'swiper-custom-pagination' */

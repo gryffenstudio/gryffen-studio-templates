@@ -126,7 +126,7 @@ for (let i = 0; i < filteredReviews.length; i++) {
                 loading='eager'
             />
         </div>
-        <div class='container flex items-center justify-between py-20'>
+        <div class='container hidden items-center justify-between py-20 md:flex'>
             <h1
                 class='pr-20 text-start font-bold uppercase leading-[60px] tracking-wide text-black'
             >
@@ -294,10 +294,10 @@ for (let i = 0; i < filteredReviews.length; i++) {
             </div>
         </section>
         <section class='bg-brand-orange py-8'>
-            <h2 class='text-[32px] font-bold capitalize leading-loose text-white md:hidden'>
+            <h2 class='text-[32px] font-bold capitalize leading-loose text-white xl:hidden'>
                 Contact Us
             </h2>
-            <div class='container'>
+            <div class='container hidden xl:block'>
                 <ContactForm />
             </div>
         </section>
