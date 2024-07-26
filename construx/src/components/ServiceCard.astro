@@ -12,13 +12,40 @@ interface Props {
 const { icon, service, description, href } = Astro.props;
 ---
 
-<div
-    class='flex h-[496px] w-full max-w-[375px] flex-col items-center justify-center rounded-lg border px-5 leading-7 shadow-md'
->
-    <Icon icon={icon} />
-    <p class='mt-6 text-center text-2xl font-bold capitalize'>{service}</p>
-    <p class='mt-7 text-center'>{description}</p>
-    <a class='mt-10 flex items-center justify-center font-bold' href={href}
-        >Read More <span class='ml-2'><Icon icon={linkArrow} /></span>
-    </a>
+<div class='perspective-1000'>
+    <div
+        class='service-card initial-fold flex h-[496px] w-full max-w-[375px] flex-col items-center justify-center rounded-lg border px-5 leading-7 shadow-md'
+    >
+        <Icon icon={icon} />
+        <p class='mt-6 text-center text-2xl font-bold capitalize'>{service}</p>
+        <p class='mt-7 text-center'>{description}</p>
+        <a class='mt-10 flex items-center justify-center font-bold' href={href}
+            >Read More <span class='ml-2'><Icon icon={linkArrow} /></span>
+        </a>
+    </div>
 </div>
+
+<!-- <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const cards = document.querySelectorAll('.service-card');
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-foldDown');
+                        entry.target.classList.remove('initial-fold');
+                        observer.unobserve(entry.target); // Stop observing once the animation is applied
+                    }
+                });
+            },
+            {
+                threshold: 0.99, // Adjust the threshold as needed
+            },
+        );
+
+        cards.forEach((card) => {
+            observer.observe(card);
+        });
+    });
+</script> -->
