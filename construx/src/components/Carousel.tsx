@@ -64,24 +64,32 @@ export default function Carousel(props: CarouselProps) {
     return (
         <div className='relative mt-8'>
             <div className='flex items-center justify-center space-x-2'>
-                {/* Custom Previous Button */}
-                <div className='relative hidden items-center justify-center lg:flex'>
-                    <button
-                        aria-label='Carousel Prev Button'
-                        className='image-swiper-button-prev peer z-10 h-8 w-8 items-center justify-center rounded-full border border-black p-4 disabled:opacity-20 lg:flex'
-                    >
-                        <span className='icon-[simple-line-icons--arrow-up] absolute left-2 z-0 h-4 w-4 -rotate-90 text-black peer-disabled:opacity-20' />
-                    </button>
+                <div className='absolute -top-[73px] right-0 flex justify-end space-x-10'>
+                    {/* Custom Previous Button */}
+                    <div className='relative hidden items-center justify-center lg:flex'>
+                        <button
+                            aria-label='Carousel Prev Button'
+                            className='image-swiper-button-prev peer disabled:opacity-20 lg:flex'
+                        >
+                            <span className='icon-[carbon--arrow-left] h-[30px] w-[30px] text-black peer-disabled:opacity-20' />
+                        </button>
+                    </div>
+                    {/* Custom Next Button */}
+                    <div className='relative hidden items-center justify-center lg:flex'>
+                        <button
+                            aria-label='Carousel Next Button'
+                            className='image-swiper-button-next peer disabled:opacity-20 lg:flex'
+                        >
+                            <span className='icon-[carbon--arrow-right] h-[30px] w-[30px] text-black peer-disabled:opacity-20' />
+                        </button>
+                    </div>
                 </div>
-                <div className='w-full lg:w-[92%]'>
+                <div className='w-full'>
                     <Swiper
                         spaceBetween={10}
                         slidesPerView={1}
                         pagination={pagination}
                         modules={[Navigation, Pagination]}
-                        observer
-                        observeParents
-                        parallax
                         breakpoints={{
                             1024: {
                                 navigation: {
@@ -89,6 +97,8 @@ export default function Carousel(props: CarouselProps) {
                                     nextEl: '.image-swiper-button-next',
                                     prevEl: '.image-swiper-button-prev',
                                 },
+                                slidesPerView: 1.2,
+                                centeredSlides: true,
                             },
                         }}
                     >
@@ -118,27 +128,33 @@ export default function Carousel(props: CarouselProps) {
                             props.reviewSlides.map((review: ReviewSlide, index) => (
                                 <SwiperSlide
                                     key={`review-mobile-${index}`}
-                                    className='flex h-fit w-full items-center justify-center'
+                                    className='flex h-fit w-full items-center justify-center rounded-xl bg-white'
                                 >
-                                    <div className='flex h-auto w-full flex-col items-center justify-center rounded-xl border border-zinc-400 px-4 py-8'>
-                                        <div className='flex h-[90px] w-[90px] items-center justify-center rounded-full'>
-                                            <img
-                                                src={review.reviewerImage.image.src}
-                                                alt={review.reviewerImage.alt}
-                                                height={600}
-                                                width={600}
-                                                className='rounded-full'
-                                            />
-                                        </div>
-                                        <p className='text-2xl font-bold capitalize leading-9'>
-                                            {review.reviewerName}
-                                        </p>
-                                        <p className='font-semibold capitalize leading-9 text-neutral-400'>
-                                            {review.reviewerLocation}
-                                        </p>
-                                        <p className='mt-5 text-center font-bold leading-[30px] text-neutral-400'>
+                                    <div className='flex w-full flex-col items-center justify-center space-y-7 rounded-xl px-4 py-8'>
+                                        <span className='icon-[raphael--quote] h-[45px] w-[45px] text-brand-green-primary' />
+
+                                        <p className='mt-5 text-center font-bold leading-[30px]'>
                                             {review.review}
                                         </p>
+                                        <div className='flex items-center justify-center space-x-4'>
+                                            <div className='flex h-[53px] w-[56px] items-center justify-center rounded-full'>
+                                                <img
+                                                    src={review.reviewerImage.image.src}
+                                                    alt={review.reviewerImage.alt}
+                                                    height={2700}
+                                                    width={4096}
+                                                    className='rounded-full'
+                                                />
+                                            </div>
+                                            <div className='flex flex-col space-y-2'>
+                                                <p className='text-brand-gray-dark font-bold capitalize leading-tight'>
+                                                    {review.reviewerName}
+                                                </p>
+                                                <p className='text-brand-gray-light text-sm font-semibold capitalize leading-tight'>
+                                                    {review.reviewerLocation}
+                                                </p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </SwiperSlide>
                             ))}
@@ -147,41 +163,37 @@ export default function Carousel(props: CarouselProps) {
                             props.reviewSlides.map((review: ReviewSlide, index) => (
                                 <SwiperSlide
                                     key={`review-desktop-${index}`}
-                                    className='flex h-fit w-full items-center justify-center'
+                                    className='flex h-fit w-full items-center justify-center rounded-xl bg-white'
                                 >
-                                    <div className='flex h-[370px] w-full flex-col items-center justify-center rounded-xl border border-zinc-400 px-20 py-8'>
-                                        <div className='flex h-[90px] w-[90px] items-center justify-center rounded-full'>
-                                            <img
-                                                src={review.reviewerImage.image.src}
-                                                alt={review.reviewerImage.alt}
-                                                height={600}
-                                                width={600}
-                                                className='rounded-full'
-                                            />
-                                        </div>
-                                        <p className='text-2xl font-bold capitalize leading-9'>
-                                            {review.reviewerName}
-                                        </p>
-                                        <p className='font-semibold capitalize leading-9 text-neutral-400'>
-                                            {review.reviewerLocation}
-                                        </p>
-                                        <p className='mt-5 text-center font-bold leading-[30px] text-neutral-400'>
+                                    <div className='flex h-[370px] w-full flex-col items-center justify-center space-y-8 rounded-xl border px-20 py-8'>
+                                        <span className='icon-[raphael--quote] h-[45px] w-[45px] text-brand-green-primary' />
+
+                                        <p className='mt-5 text-center font-bold leading-[30px]'>
                                             {review.review}
                                         </p>
+                                        <div className='flex items-center justify-center space-x-4'>
+                                            <div className='flex h-[56px] w-[56px] items-center justify-center rounded-full'>
+                                                <img
+                                                    src={review.reviewerImage.image.src}
+                                                    alt={review.reviewerImage.alt}
+                                                    height={600}
+                                                    width={600}
+                                                    className='rounded-full'
+                                                />
+                                            </div>
+                                            <div className='flex flex-col space-y-2'>
+                                                <p className='text-brand-gray-dark font-bold capitalize leading-tight'>
+                                                    {review.reviewerName}
+                                                </p>
+                                                <p className='text-brand-gray-light text-sm font-semibold capitalize leading-tight'>
+                                                    {review.reviewerLocation}
+                                                </p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </SwiperSlide>
                             ))}
                     </Swiper>
-                </div>
-
-                {/* Custom Next Button */}
-                <div className='relative hidden items-center justify-center lg:flex'>
-                    <button
-                        aria-label='Carousel Next Button'
-                        className='image-swiper-button-next peer z-10 h-8 w-8 items-center justify-center rounded-full border border-black p-4 disabled:opacity-20 lg:flex'
-                    >
-                        <span className='icon-[simple-line-icons--arrow-up] absolute right-2 z-0 h-4 w-4 rotate-90 text-black peer-disabled:opacity-20' />
-                    </button>
                 </div>
             </div>
 

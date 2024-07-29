@@ -138,10 +138,12 @@ for (let i = 0; i < filteredReviews.length; i++) {
         </div>
     </header>
     <main>
-        <section class='bg-brand-orange'>
-            <div class='container flex flex-wrap items-center justify-between py-9 text-white'>
+        <section class='bg-brand-green-primary'>
+            <div
+                class='container flex flex-col items-center justify-between space-y-10 py-9 text-white md:flex-row md:flex-wrap md:space-y-0'
+            >
                 <div
-                    class='flex flex-col items-center justify-between space-y-10 md:w-[45%] md:flex-row md:space-y-0 lg:w-[42%] xl:w-[40%]'
+                    class='flex flex-col items-center justify-between space-y-10 md:w-[46%] md:flex-row md:space-y-0 lg:w-[42%] xl:w-[40%]'
                 >
                     <div class='flex flex-col items-center justify-center space-y-1'>
                         <span
@@ -182,7 +184,7 @@ for (let i = 0; i < filteredReviews.length; i++) {
         </section>
         <section class='container mb-8 mt-16'>
             <h2>Services We Offer</h2>
-            <div class='auto-grid grid justify-items-center gap-x-4 gap-y-14 py-8'>
+            <div class='auto-grid grid justify-items-center gap-x-4 gap-y-8 py-8'>
                 <ServiceCard
                     icon={residentialHomeSvg}
                     service='build your home'
@@ -242,14 +244,16 @@ for (let i = 0; i < filteredReviews.length; i++) {
                 }
             </div>
         </section>
-        <section class='container mb-16'>
-            <h2>Reviews From Clients</h2>
-            <div class='mt-8'>
-                <Carousel
-                    client:load
-                    reviewSlides={reviewCarouselSlides}
-                    paginationClass='.swiper-custom-pagination-reviews'
-                />
+        <section class='bg-brand-gray mb-16 py-10'>
+            <div class='container'>
+                <h2>Reviews From Clients</h2>
+                <div class='mt-8'>
+                    <Carousel
+                        client:load
+                        reviewSlides={reviewCarouselSlides}
+                        paginationClass='.swiper-custom-pagination-reviews'
+                    />
+                </div>
             </div>
         </section>
         <section class='container mb-16'>
@@ -281,27 +285,84 @@ for (let i = 0; i < filteredReviews.length; i++) {
                         quis nostrud exercitation ullamco la. enim ad minim veniam, quis nostrud
                         exercitation ullamco la.
                     </p>
-                    <button
-                        class='mt-10 inline-flex h-12 w-[152px] items-center justify-center rounded-[10px] bg-violet-600 px-8 py-3'
-                    >
-                        <div
-                            class="font-['DM Sans'] text-base font-medium leading-normal tracking-tight text-white"
-                        >
-                            Learn more
-                        </div>
+                    <button class='primary-btn mt-10 w-[152px]'>
+                        <div class='font-medium leading-normal tracking-tight'>Learn more</div>
                     </button>
                 </div>
             </div>
         </section>
-        <section class='bg-brand-orange py-8'>
-            <h2 class='text-[32px] font-bold capitalize leading-loose text-white xl:hidden'>
-                Contact Us
-            </h2>
-            <div class='container hidden xl:block'>
+        <section class='bg-brand-green-primary py-8'>
+            <div class='container'>
                 <ContactForm />
             </div>
         </section>
-    </main>
-</Layout>
+        <section class='mt-8 lg:hidden'>
+            <div class='flex flex-col items-center justify-center bg-white'>
+                <div class='flex flex-col'>
+                    <h3 class='mb-4 text-xl font-bold leading-[30px]'>Contact Information</h3>
 
-<script src='../scripts/counter.ts'></script>
+                    <div class='mb-4 flex items-center space-x-6'>
+                        <a
+                            href='https://maps.google.com/?q=0000+Design+Drive+Denver+Colorado'
+                            class=`flex items-center justify-center p-1.5 h-8 w-8 rounded-full bg-black hover:opacity-50`
+                            aria-label='Construx Location Link'
+                        >
+                            <span class='icon-[ep--location] h-6 w-6 text-white'></span>
+                        </a>
+                        <div class='flex flex-col space-y-1'>
+                            <span class='font-bold leading-[30px] text-[#303136]'
+                                >Cnstrx Office</span
+                            >
+                            <span class='text-sm text-[#303136]'>000 Parkway Blg. 16</span>
+                            <span class='text-sm text-[#303136]'>Colorado Springs, CO</span>
+                        </div>
+                    </div>
+                    <div class='mb-4 flex items-center space-x-6'>
+                        <a
+                            href=`tel:000000000`
+                            class=`flex items-center justify-center h-8 w-8 p-1.5 rounded-full bg-black hover:opacity-50`
+                            aria-label='Construx Location Link'
+                        >
+                            <span class='icon-[mage--phone] h-6 w-6 text-white'></span>
+                        </a>
+                        <div class='flex flex-col space-y-1'>
+                            <span class='font-bold leading-[30px] text-[#303136]'>Call Us</span>
+                            <span class='text-sm text-[#303136]'>000-000-0000</span>
+                        </div>
+                    </div>
+                    <div class='mb-4 flex items-center space-x-6'>
+                        <a
+                            href='mailto:mail@construx.construction'
+                            class=`flex items-center justify-center p-1.5 h-8 w-8 rounded-full bg-black hover:opacity-50`
+                            aria-label='Construx Location Link'
+                        >
+                            <span class='icon-[eva--email-outline] h-6 w-6 text-white'></span>
+                        </a>
+                        <div class='flex flex-col space-y-1'>
+                            <span class='font-bold leading-[30px] text-[#303136]'>Mail Us</span>
+                            <span class='text-sm text-[#303136]'>mail@construx.construction</span>
+                        </div>
+                    </div>
+                    <div class='mb-4 flex items-center space-x-6'>
+                        <a
+                            href='https://maps.google.com/?q=0000+Design+Drive+Denver+Colorado'
+                            class=`flex items-center justify-center p-1.5 h-8 w-8 rounded-full bg-black hover:opacity-50`
+                            aria-label='Construx Location Link'
+                        >
+                            <span class='icon-[ri--building-4-line] h-6 w-6 text-white'></span>
+                        </a>
+                        <div class='flex flex-col space-y-1'>
+                            <span class='font-bold leading-[30px] text-[#303136]'
+                                >Opening Hours</span
+                            >
+                            <span class='text-sm text-[#303136]'>Mon-Fri: 8AM - 5PM</span>
+                            <span class='text-sm text-[#303136]'>Sat-Sun: CLOSED</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src='../scripts/counter.ts'></script>
+</Layout>
