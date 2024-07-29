@@ -182,49 +182,83 @@ for (let i = 0; i < filteredReviews.length; i++) {
                 </div>
             </div>
         </section>
-        <section class='container mb-8 mt-16'>
-            <h2>Services We Offer</h2>
-            <div class='auto-grid grid justify-items-center gap-x-4 gap-y-8 py-8'>
+        <section id='services' class='container mb-8 mt-16 flex flex-col'>
+            <div class='flex items-center justify-center lg:justify-between'>
+                <h2>Services We Offer</h2>
+                <a
+                    class='hidden items-center justify-center font-bold leading-loose lg:flex'
+                    href='/services'
+                    >Explore Our Services<span
+                        class='icon-[carbon--arrow-right] ml-2 h-5 w-5 place-self-center text-black'
+                    ></span>
+                </a>
+            </div>
+            <div class='flex w-full flex-col items-center justify-between py-8 lg:flex-row'>
                 <ServiceCard
                     icon={residentialHomeSvg}
                     service='build your home'
-                    description='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco la'
-                    href='/services/residential'
+                    description='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod'
                 />
                 <ServiceCard
                     icon={residentialHomeSvg}
                     service='build your home'
-                    description='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco la'
-                    href='/services/residential'
+                    description='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod'
                 />
                 <ServiceCard
                     icon={residentialHomeSvg}
                     service='build your home'
-                    description='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco la'
-                    href='/services/residential'
-                />
-                <ServiceCard
-                    icon={residentialHomeSvg}
-                    service='build your home'
-                    description='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco la'
-                    href='/services/residential'
-                />
-                <ServiceCard
-                    icon={residentialHomeSvg}
-                    service='build your home'
-                    description='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco la'
-                    href='/services/residential'
+                    description='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod'
                 />
             </div>
+            <div class='mt-8 hidden w-full items-center justify-between lg:flex'>
+                <ServiceCard
+                    icon={residentialHomeSvg}
+                    service='build your home'
+                    description='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod'
+                />
+                <ServiceCard
+                    icon={residentialHomeSvg}
+                    service='build your home'
+                    description='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod'
+                />
+                <ServiceCard
+                    icon={residentialHomeSvg}
+                    service='build your home'
+                    description='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod'
+                />
+            </div>
+            <a
+                class='flex items-center justify-center place-self-end font-bold leading-loose lg:hidden'
+                href='/services'
+                >Explore Our Services<span
+                    class='icon-[carbon--arrow-right] ml-2 h-5 w-5 place-self-center text-black'
+                ></span>
+            </a>
         </section>
         <section class='container mb-16'>
-            <h2>Featured Projects</h2>
-            <div class='mt-8 lg:hidden'>
+            <div class='flex items-center justify-center lg:justify-between'>
+                <h2>Featured Projects</h2>
+                <a
+                    class='hidden items-center justify-center font-bold leading-loose lg:flex'
+                    href='/portfolio'
+                    >Browse Our Portfolio<span
+                        class='icon-[carbon--arrow-right] ml-2 h-5 w-5 place-self-center text-black'
+                    ></span>
+                </a>
+            </div>
+            <div class='mt-0 flex flex-col lg:hidden'>
                 <Carousel
                     client:load
                     projectSlides={featuredProjectCarouselSlides}
                     paginationClass='.swiper-custom-pagination-projects'
                 />
+                <a
+                    class='mt-8 flex items-center justify-center place-self-end font-bold leading-loose lg:hidden'
+                    href='/portfolio'
+                    >Browse Our Portfolio<span
+                        class='icon-[carbon--arrow-right] ml-2 h-5 w-5 place-self-center text-black'
+                    ></span>
+                </a>
             </div>
             <div class='mt-8 hidden space-x-8 lg:flex'>
                 {
@@ -258,7 +292,7 @@ for (let i = 0; i < filteredReviews.length; i++) {
         </section>
         <section class='container mb-16'>
             <h2>About Us</h2>
-            <div class='mt-8 flex md:mt-20 md:flex-col xl:flex-row'>
+            <div class='mt-4 flex md:mt-20 md:flex-col xl:flex-row'>
                 <div class='hidden justify-center space-x-8 md:flex xl:w-2/3 xl:justify-normal'>
                     <Image
                         class='relative top-[-35px]'
@@ -365,4 +399,16 @@ for (let i = 0; i < filteredReviews.length; i++) {
     </main>
 
     <script src='../scripts/counter.ts'></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const arrowDownButton = document.querySelector<HTMLButtonElement>(
+                'button[aria-label="Arrow Down Button"]',
+            );
+            const servicesSection = document.querySelector<HTMLDivElement>('#services');
+
+            arrowDownButton?.addEventListener('click', () => {
+                servicesSection?.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
 </Layout>
