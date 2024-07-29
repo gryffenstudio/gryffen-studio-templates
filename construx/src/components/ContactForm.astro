@@ -157,20 +157,26 @@
             });
         });
 
-        // Force repaint for iOS Safari
-        labels.forEach((label) => {
-            label.style.display = 'none';
-            label.offsetHeight; // Trigger a reflow
-            label.style.display = '';
-        });
-
-        // Handle initial state for inputs that may have values pre-filled
+        // Handle input and textarea elements
         inputs.forEach((input) => {
             const label = input.nextElementSibling as HTMLLabelElement;
-            if (input.value) {
-                label.classList.remove('-translate-y-[5px]', 'scale-100');
-                label.classList.add('-translate-y-9', 'scale-75');
-            }
+
+            // Function to update label state based on input value
+            const updateLabel = () => {
+                if (input.value) {
+                    label.classList.remove('-translate-y-[5px]', 'scale-100');
+                    label.classList.add('-translate-y-9', 'scale-75');
+                } else {
+                    label.classList.add('-translate-y-[5px]', 'scale-100');
+                    label.classList.remove('-translate-y-9', 'scale-75');
+                }
+            };
+
+            // Update label on page load
+            updateLabel();
+
+            // Update label on input events
+            input.addEventListener('input', updateLabel);
         });
     });
 </script>
