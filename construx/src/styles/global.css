@@ -75,10 +75,13 @@
 
     /* Add these styles to your existing CSS */
 
-    input:placeholder-shown + label,
-    select:placeholder-shown + label,
-    textarea:placeholder-shown + label {
+    input + label,
+    select + label,
+    textarea + label {
         transform: translateY(-1px) scale(1);
+        transition:
+            transform 0.2s ease-out,
+            scale 0.2s ease-out;
     }
 
     input:not(:placeholder-shown) + label,
