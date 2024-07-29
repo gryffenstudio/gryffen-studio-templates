@@ -75,7 +75,7 @@
 
     /* Add these styles to your existing CSS */
 
-    input + label,
+    /* input + label,
     select + label,
     textarea + label {
         transform: translateY(-1px) scale(1);
@@ -88,7 +88,7 @@
     select:not(:placeholder-shown) + label,
     textarea:not(:placeholder-shown) + label {
         transform: translateY(-36px) scale(0.75);
-    }
+    } */
 }
 
 @layer components {

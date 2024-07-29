@@ -17,14 +17,14 @@
             action='/'
         >
             <div class='relative'>
-                <input placeholder='' id='name' type='text' class='peer w-full' />
+                <input placeholder=' ' id='name' type='text' class='peer w-full' />
                 <label
                     class='-translate-y-9 peer-placeholder-shown:-translate-y-1 peer-placeholder-shown:scale-100 peer-focus:-translate-y-9 peer-focus:scale-75 rtl:peer-focus:left-auto rtl:peer-focus:translate-x-2'
                     >Name</label
                 >
             </div>
             <div class='relative'>
-                <input placeholder='' id='email' type='email' class='peer w-full' />
+                <input placeholder=' ' id='email' type='email' class='peer w-full' />
                 <label
                     class='-translate-y-9 peer-placeholder-shown:-translate-y-1 peer-placeholder-shown:scale-100 peer-focus:-translate-y-9 peer-focus:scale-75 rtl:peer-focus:left-auto rtl:peer-focus:translate-x-2'
                     >Email</label
@@ -50,14 +50,14 @@
                 >
             </div>
             <div class='relative'>
-                <input placeholder='' type='tel' id='phone' name='phone' class='peer w-full' />
+                <input placeholder=' ' type='tel' id='phone' name='phone' class='peer w-full' />
                 <label
                     class='-translate-y-9 peer-placeholder-shown:-translate-y-1 peer-placeholder-shown:scale-100 peer-focus:-translate-y-9 peer-focus:scale-75 rtl:peer-focus:left-auto rtl:peer-focus:translate-x-2'
                     >Phone</label
                 >
             </div>
             <div class='relative col-span-2'>
-                <textarea placeholder='' class='peer w-full'></textarea>
+                <textarea placeholder=' ' class='peer w-full'></textarea>
                 <label
                     class='-translate-y-9 peer-placeholder-shown:-translate-y-1 peer-placeholder-shown:scale-100 peer-focus:-translate-y-9 peer-focus:scale-75 rtl:peer-focus:left-auto rtl:peer-focus:translate-x-2'
                     >Message</label
@@ -136,10 +136,7 @@
     document.addEventListener('DOMContentLoaded', () => {
         const selectInputs = document.querySelectorAll<HTMLSelectElement>('.select-input');
         const labelSelect = document.querySelector<HTMLLabelElement>('.label-select');
-        const labels = document.querySelectorAll<HTMLLabelElement>('label');
-        const inputs = document.querySelectorAll<HTMLInputElement>('input, select, textarea');
 
-        // Handle change event for select elements
         selectInputs.forEach((select) => {
             select.addEventListener('change', (event) => {
                 const target = event.target as HTMLSelectElement;
@@ -155,28 +152,6 @@
                     labelSelect?.classList.remove('scale-75');
                 }
             });
-        });
-
-        // Handle input and textarea elements
-        inputs.forEach((input) => {
-            const label = input.nextElementSibling as HTMLLabelElement;
-
-            // Function to update label state based on input value
-            const updateLabel = () => {
-                if (input.value) {
-                    label.classList.remove('-translate-y-[5px]', 'scale-100');
-                    label.classList.add('-translate-y-9', 'scale-75');
-                } else {
-                    label.classList.add('-translate-y-[5px]', 'scale-100');
-                    label.classList.remove('-translate-y-9', 'scale-75');
-                }
-            };
-
-            // Update label on page load
-            updateLabel();
-
-            // Update label on input events
-            input.addEventListener('input', updateLabel);
         });
     });
 </script>
