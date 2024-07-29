@@ -136,7 +136,10 @@
     document.addEventListener('DOMContentLoaded', () => {
         const selectInputs = document.querySelectorAll<HTMLSelectElement>('.select-input');
         const labelSelect = document.querySelector<HTMLLabelElement>('.label-select');
+        const labels = document.querySelectorAll<HTMLLabelElement>('label');
+        const inputs = document.querySelectorAll<HTMLInputElement>('input, select, textarea');
 
+        // Handle change event for select elements
         selectInputs.forEach((select) => {
             select.addEventListener('change', (event) => {
                 const target = event.target as HTMLSelectElement;
@@ -152,6 +155,22 @@
                     labelSelect?.classList.remove('scale-75');
                 }
             });
+        });
+
+        // Force repaint for iOS Safari
+        labels.forEach((label) => {
+            label.style.display = 'none';
+            label.offsetHeight; // Trigger a reflow
+            label.style.display = '';
+        });
+
+        // Handle initial state for inputs that may have values pre-filled
+        inputs.forEach((input) => {
+            const label = input.nextElementSibling as HTMLLabelElement;
+            if (input.value) {
+                label.classList.remove('-translate-y-[5px]', 'scale-100');
+                label.classList.add('-translate-y-9', 'scale-75');
+            }
         });
     });
 </script>

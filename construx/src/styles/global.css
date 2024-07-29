@@ -72,6 +72,20 @@
     .swiper-slide-next {
         background-color: red !important;
     }
+
+    /* Add these styles to your existing CSS */
+
+    input:placeholder-shown + label,
+    select:placeholder-shown + label,
+    textarea:placeholder-shown + label {
+        transform: translateY(-1px) scale(1);
+    }
+
+    input:not(:placeholder-shown) + label,
+    select:not(:placeholder-shown) + label,
+    textarea:not(:placeholder-shown) + label {
+        transform: translateY(-36px) scale(0.75);
+    }
 }
 
 @layer components {
