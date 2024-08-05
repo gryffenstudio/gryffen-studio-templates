@@ -143,7 +143,7 @@ for (let i = 0; i < filteredReviews.length; i++) {
                 class='container flex flex-col items-center justify-between space-y-10 py-9 text-white md:flex-row md:flex-wrap md:space-y-0'
             >
                 <div
-                    class='flex flex-col items-center justify-between space-y-10 md:w-[46%] md:flex-row md:space-y-0 lg:w-[42%] xl:w-[40%]'
+                    class='flex flex-col items-center justify-between space-y-10 font-bold md:w-[46%] md:flex-row md:space-y-0 lg:w-[42%] xl:w-[40%]'
                 >
                     <div class='flex flex-col items-center justify-center space-y-1'>
                         <span
@@ -157,11 +157,11 @@ for (let i = 0; i < filteredReviews.length; i++) {
                         <span id='yoe-count' class='text-4xl tracking-wide' data-target-value='25'
                             >0</span
                         >
-                        <span class='text-sm capitalize'>years of experience</span>
+                        <span class='text-sm font-bold capitalize'>years of experience</span>
                     </div>
                 </div>
                 <div
-                    class='flex flex-col items-center justify-between space-y-10 md:w-[45%] md:flex-row md:space-y-0 lg:w-[42%] xl:w-[40%]'
+                    class='flex flex-col items-center justify-between space-y-10 font-bold md:w-[45%] md:flex-row md:space-y-0 lg:w-[42%] xl:w-[40%]'
                 >
                     <div class='flex flex-col items-center justify-center space-y-1 text-2xl'>
                         <span
@@ -182,9 +182,9 @@ for (let i = 0; i < filteredReviews.length; i++) {
                 </div>
             </div>
         </section>
-        <section id='services' class='container mb-8 mt-16 flex flex-col'>
+        <section id='services' class='container my-16 flex flex-col'>
             <div class='flex items-center justify-center lg:justify-between'>
-                <h2>Services We Offer</h2>
+                <h2 class='text-brand-green-primary'>Services We Offer</h2>
                 <a
                     class='hidden items-center justify-center font-bold leading-loose lg:flex'
                     href='/services'
@@ -239,7 +239,7 @@ for (let i = 0; i < filteredReviews.length; i++) {
         </section>
         <section class='container mb-16'>
             <div class='flex items-center justify-center lg:justify-between'>
-                <h2>Featured Projects</h2>
+                <h2 class='text-brand-green-primary'>Featured Projects</h2>
                 <a
                     class='hidden items-center justify-center font-bold leading-loose lg:flex'
                     href='/portfolio'
@@ -280,9 +280,9 @@ for (let i = 0; i < filteredReviews.length; i++) {
                 }
             </div>
         </section>
-        <section class='bg-brand-gray mb-16 py-10'>
+        <section class='mb-16 bg-brand-gray py-10'>
             <div class='container'>
-                <h2>Reviews From Clients</h2>
+                <h2 class='text-brand-green-primary lg:text-start'>Reviews From Clients</h2>
                 <div class='mt-8'>
                     <Carousel
                         client:load
@@ -293,7 +293,7 @@ for (let i = 0; i < filteredReviews.length; i++) {
             </div>
         </section>
         <section class='container mb-16'>
-            <h2>About Us</h2>
+            <h2 class='text-brand-green-primary lg:ml-[274px] lg:pt-10'>About Us</h2>
             <div class='mt-4 flex md:mt-20 md:flex-col xl:flex-row'>
                 <div class='hidden justify-center space-x-8 md:flex xl:w-2/3 xl:justify-normal'>
                     <Image
@@ -327,12 +327,12 @@ for (let i = 0; i < filteredReviews.length; i++) {
                 </div>
             </div>
         </section>
-        <section class='bg-brand-green-primary py-8'>
+        <section class='mb-8 bg-brand-green-primary py-8 lg:mb-16 lg:bg-white'>
             <div class='container'>
                 <ContactForm />
             </div>
         </section>
-        <section class='mt-8 lg:hidden'>
+        <section class='mb-8 mt-8 lg:hidden'>
             <div class='flex flex-col items-center justify-center bg-white'>
                 <div class='flex flex-col'>
                     <h3 class='mb-4 text-xl font-bold leading-[30px]'>Contact Information</h3>
