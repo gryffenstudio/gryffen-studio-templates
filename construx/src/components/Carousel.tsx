@@ -147,10 +147,10 @@ export default function Carousel(props: CarouselProps) {
                                                 />
                                             </div>
                                             <div className='flex flex-col space-y-2'>
-                                                <p className='text-brand-gray-dark font-bold capitalize leading-tight'>
+                                                <p className='font-bold capitalize leading-tight text-brand-gray-dark'>
                                                     {review.reviewerName}
                                                 </p>
-                                                <p className='text-brand-gray-light text-sm font-semibold capitalize leading-tight'>
+                                                <p className='text-sm font-semibold capitalize leading-tight text-brand-gray-dark'>
                                                     {review.reviewerLocation}
                                                 </p>
                                             </div>
@@ -182,10 +182,10 @@ export default function Carousel(props: CarouselProps) {
                                                 />
                                             </div>
                                             <div className='flex flex-col space-y-2'>
-                                                <p className='text-brand-gray-dark font-bold capitalize leading-tight'>
+                                                <p className='font-bold capitalize leading-tight text-brand-gray-dark'>
                                                     {review.reviewerName}
                                                 </p>
-                                                <p className='text-brand-gray-light text-sm font-semibold capitalize leading-tight'>
+                                                <p className='text-sm font-semibold capitalize leading-tight text-brand-gray-dark'>
                                                     {review.reviewerLocation}
                                                 </p>
                                             </div>

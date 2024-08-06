@@ -1,0 +1,17 @@
+---
+interface Props {
+    h1Text: string;
+    description: string;
+}
+
+const { h1Text, description } = Astro.props;
+---
+
+<header class='h-[453px] w-full place-content-center'>
+    <div class='container'>
+        <h1 class='text-center'>{h1Text}</h1>
+        <p class='mt-8 text-center text-2xl first-letter:capitalize'>
+            {description}
+        </p>
+    </div>
+</header>

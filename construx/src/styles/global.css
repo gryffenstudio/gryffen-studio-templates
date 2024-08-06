@@ -6,7 +6,7 @@
 
 @layer base {
     h1 {
-        @apply text-5xl md:text-left xl:text-[64px];
+        @apply text-5xl font-bold uppercase md:text-left xl:text-[64px];
     }
     h2 {
         @apply text-center text-2xl font-bold capitalize leading-loose text-black;
@@ -27,7 +27,6 @@
         @apply touch-manipulation;
     }
     p {
-        @apply md:text-xl;
     }
     p:empty {
         @apply my-8;
@@ -93,7 +92,7 @@
 
 @layer components {
     .primary-btn {
-        @apply bg-brand-green-secondary inline-flex h-12 items-center justify-center rounded-[10px] px-8 py-3 hover:opacity-50;
+        @apply inline-flex h-12 items-center justify-center rounded-[10px] bg-brand-green-secondary px-8 py-3 hover:opacity-50;
     }
 }
 
