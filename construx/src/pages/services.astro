@@ -1,10 +1,60 @@
 ---
-import ServiceSection from '../components/ServiceSection.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import Layout from '../layouts/Layout.astro';
+import residentialHomeSvg from '../assets/svg/residential-home-service.svg?raw';
 import Hero from '../components/Hero.astro';
 ---
 
 <Layout title='Landing - Construx' description='Build with Construx' robots={false}>
     <Hero h1Text='our services' description='We provide the best services for our customers' />
+    <main class='container'>
+        <section class='lg:flex lg:justify-between'>
+            <h2
+                class='text-left text-[32px] font-semibold normal-case leading-[45px] first-letter:capitalize lg:w-1/3 lg:text-[40px]'
+            >
+                what we offer to our clients
+            </h2>
+            <p class='mb-14 mt-4 capitalize leading-[30px] lg:mt-0 lg:w-1/2'>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                exercitation ullamco la
+            </p>
+        </section>
+        <section class='my-16'>
+            <div
+                class='flex w-full flex-col items-center justify-between space-y-12 py-8 lg:space-y-16'
+            >
+                <ServiceCard
+                    icon={residentialHomeSvg}
+                    service='build your home'
+                    description='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco la quis nostrud exercitation ullamco la quis nostrud exercitation ullamco la'
+                />
+                <ServiceCard
+                    icon={residentialHomeSvg}
+                    service='build your home'
+                    description='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco la quis nostrud exercitation ullamco la quis nostrud exercitation ullamco la'
+                />
+                <ServiceCard
+                    icon={residentialHomeSvg}
+                    service='build your home'
+                    description='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco la quis nostrud exercitation ullamco la quis nostrud exercitation ullamco la'
+                />
+                <ServiceCard
+                    icon={residentialHomeSvg}
+                    service='build your home'
+                    description='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco la quis nostrud exercitation ullamco la quis nostrud exercitation ullamco la'
+                />
+                <ServiceCard
+                    icon={residentialHomeSvg}
+                    service='build your home'
+                    description='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco la quis nostrud exercitation ullamco la quis nostrud exercitation ullamco la'
+                />
+                <ServiceCard
+                    icon={residentialHomeSvg}
+                    service='build your home'
+                    description='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco la quis nostrud exercitation ullamco la quis nostrud exercitation ullamco la'
+                />
+            </div>
+        </section>
+    </main>
 </Layout>

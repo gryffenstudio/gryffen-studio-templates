@@ -1,6 +1,5 @@
 ---
 import Icon from './Icon.astro';
-import linkArrow from '../assets/svg/link-arrow.svg?raw';
 
 interface Props {
     icon: string;
@@ -13,11 +12,22 @@ const { icon, service, description } = Astro.props;
 
 <div class='perspective-1000'>
     <div
-        class='service-card initial-fold flex w-full max-w-[375px] flex-col items-center justify-center space-y-7 rounded-lg'
+        class='service-card initial-fold flex h-[496px] w-full max-w-[375px] flex-col items-center justify-center rounded-lg border px-5 leading-7 shadow-md md:max-w-full lg:h-[250px] lg:flex-row lg:px-10'
     >
-        <Icon icon={icon} />
-        <p class='text-center text-2xl font-bold capitalize'>{service}</p>
-        <p class='text-center leading-8'>{description}</p>
+        <div
+            class='flex flex-col items-center justify-center lg:w-1/2 lg:items-start xl:flex-row xl:items-center xl:justify-start'
+        >
+            <div class='lg:ml-20 xl:ml-0'>
+                <Icon icon={icon} />
+            </div>
+            <p class='mt-6 text-center text-2xl font-bold capitalize lg:text-3xl xl:ml-7 xl:mt-0'>
+                {service}
+            </p>
+        </div>
+
+        <p class='mt-8 text-center capitalize leading-8 lg:mt-0 lg:w-2/3 lg:text-left'>
+            {description}
+        </p>
     </div>
 </div>
 

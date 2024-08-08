@@ -10,7 +10,7 @@ import residentialHomeSvg from '../assets/svg/residential-home-service.svg?raw';
 import { getImage, Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import Icon from '../components/Icon.astro';
-import ServiceCard from '../components/ServiceCard.astro';
+import Service from '../components/Service.astro';
 import Carousel, {
     type CarouselImage,
     type ProjectSlide,
@@ -194,34 +194,34 @@ for (let i = 0; i < filteredReviews.length; i++) {
             <div
                 class='flex w-full flex-col items-center justify-between space-y-8 py-8 lg:flex-row lg:space-y-0'
             >
-                <ServiceCard
+                <Service
                     icon={residentialHomeSvg}
                     service='build your home'
                     description='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod'
                 />
-                <ServiceCard
+                <Service
                     icon={residentialHomeSvg}
                     service='build your home'
                     description='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod'
                 />
-                <ServiceCard
+                <Service
                     icon={residentialHomeSvg}
                     service='build your home'
                     description='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod'
                 />
             </div>
             <div class='mt-8 hidden w-full items-center justify-between lg:flex'>
-                <ServiceCard
+                <Service
                     icon={residentialHomeSvg}
                     service='build your home'
                     description='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod'
                 />
-                <ServiceCard
+                <Service
                     icon={residentialHomeSvg}
                     service='build your home'
                     description='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod'
                 />
-                <ServiceCard
+                <Service
                     icon={residentialHomeSvg}
                     service='build your home'
                     description='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod'

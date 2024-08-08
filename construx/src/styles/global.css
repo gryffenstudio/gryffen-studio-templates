@@ -6,7 +6,7 @@
 
 @layer base {
     h1 {
-        @apply text-5xl font-bold uppercase md:text-left xl:text-[64px];
+        @apply text-5xl font-bold uppercase md:text-left;
     }
     h2 {
         @apply text-center text-2xl font-bold capitalize leading-loose text-black;
